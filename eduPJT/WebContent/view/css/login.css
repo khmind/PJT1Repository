@@ -4,7 +4,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: #fff;
+  background: #fef5ed;
 }
 .logo_img{
   margin-top: 10px;
@@ -23,7 +23,7 @@
   z-index: 1;
   position: absolute;
   background: #FFF;
-  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 70px rgba(0, 0, 0, 0.2);
   border-top: 5px solid #7ac142;
   float: left;
   transition: all 0.2s ease-out;
