@@ -21,16 +21,19 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
     <style type="text/css">
-    	.th1 { width:  5%; }
-    	.th2 { width:  50%; }
-    	.th3 { width:  20%; }
-    	.th4 { width:  20%; }
+    	.th1 { width:  2%; }
+    	.th2 { width:  30%; }
+    	.th3 { width:  10%; }
+    	.th4 { width:  10%; }
+    	.th5 { width:  10%; }
+    	.th6 { width:  10%; }
+    	
     	
     	.custom-select{ width: 100px }
     	
@@ -63,10 +66,24 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 float-right">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-							<button type="button" class="btn btn-outline-primary">등록</button>
-							<button type="button" class="btn btn-outline-secondary" >삭제</button>
+							<select name="sel1" class="custom-select">
+						<option selected>- 메뉴 -</option>
+						<option value="1">전체</option>
+						<option value="2">한식</option>
+						<option value="2">양식</option>
+						<option value="2">중식</option>
+						<option value="2">일식</option>
+						<option value="2">베이킹</option>
+					</select> 
+							<select name="sel1" class="custom-select">
+						<option selected>- 정렬 -</option>
+						<option value="1">등록순</option>
+						<option value="2">추천순</option>
+						<option value="2">관심순</option>
+					</select> 
+							
 							
                     <!-- Topbar Search -->
   
@@ -85,10 +102,12 @@
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
+                                
                             </div>
                         </div>
                     </form>                        
-                        							
+                     <button type="button" class="btn btn-outline-secondary" >비활성화</button>   							
+                     <button type="button" class="btn btn-outline-secondary" >삭제</button>   							
 							                            
                         </div>
 
@@ -99,7 +118,9 @@
 					      <th class="th1" ><input type="checkbox"></th>
 					      <th class="th1" scope="col">#</th>
 					      <th scope="col">제목</th>
+					      <th scope="col">글쓴이</th>
 					      <th scope="col">등록일자</th>
+					      <th scope="col">조회수</th>
 					      <th scope="col">수정일자</th>
 					    </tr>
 					  </thead>
@@ -107,23 +128,29 @@
 					    <tr>
 					      <th class="th1" ><input type="checkbox"></th>
 					      <th class="th1" scope="row">1</th>
-					      <td class="th2" >Mark</td>
-					      <td class="th3" >Otto</td>
-					      <td class="th4" >@mdo</td>
+					      <td class="th2" scope="row">Mark</td>
+					      <td class="th3" scope="row">Otto</td>
+					      <td class="th4" scope="row">Otto</td>
+					      <td class="th5" scope="row">Otto</td>
+					      <td class="th6" scope="row">@mdo</td>
 					    </tr>
 					    <tr>
 					      <th class="th1" ><input type="checkbox"></th>    
 					      <th class="th1" scope="row">2</th>
-					      <td class="th2" >Mark</td>
-					      <td class="th3" >Otto</td>
-					      <td class="th4" >@mdo</td>
+					      <td class="th2" scope="row">Mark</td>
+					      <td class="th3" scope="row">Otto</td>
+					      <td class="th4" scope="row">@mdo</td>
+					      <td class="th4" scope="row">@mdo</td>
+					      <td class="th4" scope="row">@mdo</td>
 					    </tr>
 					    <tr>
 					      <th class="th1" ><input type="checkbox"></th>    
 					      <th class="th1" scope="row">3</th>
-					      <td class="th2" >Mark</td>
-					      <td class="th3" >Otto</td>
-					      <td class="th4" >@mdo</td>
+					      <td class="th2" scope="row">Mark</td>
+					      <td class="th3" scope="row">Otto</td>
+					      <td class="th4" scope="row">@mdo</td>
+					      <td class="th4" scope="row">@mdo</td>
+					      <td class="th4" scope="row">@mdo</td>
 					    </tr>
 					  </tbody>
 					</table>
