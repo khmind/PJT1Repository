@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-	<meta http-equiv="Pragma" content="no-cache"/> 
+	<meta http-equiv="Pragma" content="no-cache"/>
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>      
 <title>Insert title here</title>
@@ -44,54 +44,63 @@
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">공지사항수정</h1>
+                    <h1 class="h3 mb-2 text-gray-800">문의답변</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header mb-4">
+                        <div class="card-header mb-4" style="display:flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-			
 							<h3>제목</h3>
-	              			<textarea rows="2%" cols="100%" placeholder="제목작성" ></textarea>	                            
+	              			<textarea rows="2%" style=" margin-left: 70px; width:72%;"></textarea>	                            
                         </div>
-						<h3 style="margin-left: 20px;">내용</h3>
-      					<textarea rows="22%" placeholder="내용작성" style="margin-left: 20px;margin-bottom :20px; width:70%;"></textarea>
-                    </div> 
-                    <div class="btn" style="display: flex; justify-content: flex-end; ">
-                    	<button type="button" class="btn btn-outline-primary"  onclick="confirmModal1()" style="width:75px">등록</button>
-                    	<script type="text/javascript">
+                        <div style="display:flex;">
+							<h3 style="margin-left: 20px;">내용</h3>
+	      					<textarea rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"></textarea>
+	                   	</div>
+	                   	<div style="display:flex; disabled:true;">  
+	                   		<h3 style="margin-left: 20px; ">사용자</h3>
+	                   		<textarea rows="2%" placeholder="닉네임" style="margin-left: 40px; margin-bottom :20px; width:70%;"></textarea> 
+	                   	</div>
+	                   	<div style="display:flex;">  
+	                   		<h3 style="margin-left: 20px;">등록일자</h3>
+	                   		<textarea rows="2%" placeholder="2024:05:16 00:00:00" style="margin-left: 15px; margin-bottom :20px; width:70%;"></textarea> 
+	                   	</div>
+					</div>
+					<hr>
+					<div style="display:flex;">
+						<h3 id="text1"style="margin-left: 20px;">답변</h3> 
+						<textarea rows="5%" placeholder="답변내용" style="margin-left: 70px; width:70%;"></textarea>
+					</div>
+					<div style="display:flex; margin-top: 20px;">
+						<h3 id="text1"style="margin-left: 15px;">답변일자</h3> 
+						<textarea rows="2%" placeholder="2024:05:16 00:00:00" style="margin-left: 20px; width:70%;"></textarea>
+					</div>
+						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">
+	                    	<button type="button" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal1()">등록</button>
+	                    	<script type="text/javascript">
                     		function confirmModal1() {
 								if (window.confirm("등록을 완료했습니다.")){
-									location = "table_공지사항.html";
+									location = "table_문의.html";
 								}
 								else{
 									console.log("취소.변화없음");
 								}
 							}
                     	</script>
-      					<button type="button" class="btn btn-outline-secondary ml-3" onclick="confirmModal2()" style="width:75px">수정</button>
-      						<script type="text/javascript">
+	                    	<button type="button" class="btn btn-outline-secondary ml-3" style="width:75px" onclick="location.href='table_문의수정.html'">수정</button>
+	                    	<button type="button" class="btn btn-outline-danger ml-3" style="width:75px" onclick="confirmModal2()">삭제</button>
+	                    		<script type="text/javascript">
                     		function confirmModal2() {
-								if (window.confirm("수정을 완료했습니다.")){
-									location = "table_공지사항.html";
-								}
-								else{
-									console.log("취소.변화없음");
-								}
-							}
-                    	</script>
-      					<button type="button" class="btn btn-outline-danger ml-3" onclick="confirmModal3()" style="width:75px">삭제</button>
-      						<script type="text/javascript">
-                    		function confirmModal3() {
 								if (window.confirm("삭제을 완료했습니다.")){
-									location = "table_공지사항.html";
+									location = "table_문의.html";
 								}
 								else{
 									console.log("취소.변화없음");
 								}
 							}
                     	</script>
-					</div>                      
+                    	</div>
+                                             
                 </div>
                 <!-- /.container-fluid -->
 

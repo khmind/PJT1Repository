@@ -28,9 +28,10 @@
     
     <style type="text/css">
     	.th1 { width:  5%; }
-    	.th2 { width:  50%; }
-    	.th3 { width:  20%; }
+    	.th2 { width:  10%; }
+    	.th3 { width:  40%; }
     	.th4 { width:  20%; }
+    	.th5 { width:  20%; }
     	
     	.custom-select{ width: 100px }
     	
@@ -66,15 +67,24 @@
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
+                    <h1 class="h3 mb-2 text-gray-800">문의</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-							<a href="table_공지사항등록.html"><button type="button" class="btn btn-outline-primary">등록</button></a>
-							<button type="button" class="btn btn-outline-danger" >삭제</button>
-							
+							<button type="button" class="btn btn-outline-primary">읽음</button>
+								<button type="button" class="btn btn-outline-danger" onclick="confirmModal()">삭제</button>
+                    	<script type="text/javascript">
+                    		function confirmModal() {
+								if (window.confirm("삭제하시겠습니까?")){
+									
+								}
+								else{
+									console.log("취소.변화없음");
+								}
+							}
+                    	</script>
                     <!-- Topbar Search -->
   
 					<select name="sel1" class="custom-select">
@@ -105,32 +115,40 @@
 					    <tr>
 					      <th class="th1"><input type="checkbox" name="chk" value="selectall" onclick="selectAll(this)"></th>
 					      <th class="th1" scope="col">no.</th>
+					      <th scope="col">작성자</th>
 					      <th scope="col">제목</th>
 					      <th scope="col">등록일자</th>
-					      <th scope="col">수정일자</th>
+					      <th scope="col">답변상태</th>
+					      <th scope="col">답변일자</th>
 					    </tr>
 					  </thead> 
 					  <tbody>
-					    <tr>
+					    <tr >
 					      <th class="th1"><input type="checkbox" name="chk" value="1"></th>
-					      <th class="th1" scope="row"  onClick="location.href='table_공지사항수정.html'" style="cursor: pointer;">1</th>
-					      <td class="th2"  onClick="location.href='table_공지사항수정.html'" style="cursor: pointer;">Mark</td>
-					      <td class="th3"  onClick="location.href='table_공지사항수정.html'" style="cursor: pointer;">2024-05-13</td>
-					      <td class="th4"  onClick="location.href='table_공지사항수정.html'" style="cursor: pointer;">2024-05-14</td>
+					      <th class="th1" scope="row" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">1</th>
+					      <td class="th2" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">nickname</td>
+					      <td class="th3" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">Mark</td>
+					      <td class="th4" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2024-05-13</td>
+					      <th class="th2" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">O</th>
+					      <td class="th5" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2024-05-14</td>
 					    </tr>
 					    <tr>
 					      <th class="th1" ><input type="checkbox" name="chk" value="2"></th>    
-					      <th class="th1" scope="row">2</th>
-					      <td class="th2" >Mark</td>
-					      <td class="th3" >2024-05-13</td>
-					      <td class="th4" >2024-05-14</td>
+					      <th class="th1" scope="row" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2</th>
+					      <td class="th2" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">nickname</td>
+					      <td class="th3" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">Mark</td>
+					      <td class="th4" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2024-05-13</td>
+					      <th class="th2" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">X</th>
+					      <td class="th5" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2024-05-14</td>
 					    </tr>
 					    <tr>
 					      <th class="th1" ><input type="checkbox" name="chk" value="3"></th>    
-					      <th class="th1" scope="row">3</th>
-					      <td class="th2" >Mark</td>
-					      <td class="th3" >2024-05-13</td>
-					      <td class="th4" >2024-05-14</td>
+					      <th class="th1" scope="row" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">3</th>
+					      <td class="th2" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">nickname</td>
+					      <td class="th3" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">Mark</td>
+					      <td class="th4" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2024-05-13</td>
+					      <th class="th2" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">X</th>
+					      <td class="th5" onClick="location.href='table_문의등록.html'" style="cursor: pointer;">2024-05-14</td>
 					    </tr>
 					  </tbody>
 					</table>
