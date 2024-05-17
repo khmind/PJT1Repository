@@ -48,16 +48,19 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header mb-4"> 
+                        <div class="card-header mb-4" style="display: flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
 			
 							<h3>제목</h3>
-	              			<textarea rows="2%" cols="100%" placeholder="제목작성" ></textarea>	                            
+	              			<textarea rows="2%" placeholder="제목작성"  style=" margin-left: 70px; width:72%;"></textarea>	                            
                         </div>
-						<h3 style="margin-left: 20px;">내용</h3>
-      					<textarea rows="22%" placeholder="내용작성" style="margin-left: 20px; margin-bottom :20px; width:70%;"></textarea>
+                        <div style="display: flex;">
+	                        <h3 style="margin-left: 20px;">내용</h3>
+	      					<textarea placeholder="내용작성" rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"></textarea>
+                        </div>
+						
                     </div> 
-                    <div class="btn" style="display: flex; justify-content: flex-end; ">
+                    <div class="btn" style="display: flex; justify-content: end">
                     		<button type="button" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal()">등록</button>
                     	<script type="text/javascript">
                     		function confirmModal() {
@@ -69,7 +72,17 @@
 								}
 							}
                     	</script>
-      
+      					<button type="button" class="btn btn-outline-secondary ml-3" onclick="confirmModal3()" style="width:75px">삭제</button>
+      						<script type="text/javascript"> 
+                    		function confirmModal3() {
+								if (window.confirm("삭제을 완료했습니다.")){
+									location = "table_공지사항.html";
+								}
+								else{
+									console.log("취소.변화없음");
+								}
+							}
+                    	</script>
 					</div>                           
                 </div>
                 <!-- /.container-fluid -->
