@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Pragma" content="no-cache"/> 
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>      
-<title>Insert title here</title>
+<title>공지사항수정/삭제</title>
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -44,28 +44,26 @@
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">공지사항등록</h1>
+                    <h1 class="h3 mb-2 text-gray-800">공지사항수정/삭제</h1>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header mb-4" style="display: flex;"> 
+                    <div class="card mb-4">
+                        <div class="card-body mb-4" style="display : flex;">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-			
-							<h3>제목</h3>
-	              			<textarea rows="2%" placeholder="제목작성"  style=" margin-left: 70px; width:72%;"></textarea>	                            
+							<span class="textfield">제목</span>
+	              			<textarea rows="2%"  placeholder="제목작성" style="margin-left: 20px; width: 72%"></textarea>	                            
                         </div>
-                        <div style="display: flex;">
-	                        <h3 style="margin-left: 20px;">내용</h3>
-	      					<textarea placeholder="내용작성" rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"></textarea>
+                        <div style="display : flex;">
+							<span class="textfield" style="margin-left:20px;">내용</span>
+	      					<textarea rows="10%" placeholder="내용작성" style="margin-left: 20px;margin-bottom :20px; width:70%;"></textarea>
                         </div>
-						
                     </div> 
-                    <div class="btn" style="display: flex; justify-content: end">
-                    		<button type="button" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal()">등록</button>
-                    	<script type="text/javascript">
-                    		function confirmModal() {
-								if (window.confirm("등록을 완료했습니다.")){
-									location = "table_공지사항.html"; 
+                    <div class="btn" style="display: flex; justify-content: flex-end; ">
+      					<button type="button" class="btn btn-outline-primary ml-3" onclick="confirmModal2()" style="width:75px">수정</button>
+      						<script type="text/javascript">
+                    		function confirmModal2() {
+								if (window.confirm("수정을 완료했습니다.")){
+									location = "bk_announcement.html";
 								}
 								else{
 									console.log("취소.변화없음");
@@ -76,14 +74,14 @@
       						<script type="text/javascript"> 
                     		function confirmModal3() {
 								if (window.confirm("삭제을 완료했습니다.")){
-									location = "table_공지사항.html";
+									location = "bk_announcement.html";
 								}
 								else{
 									console.log("취소.변화없음");
 								}
 							}
                     	</script>
-					</div>                           
+					</div>                      
                 </div>
                 <!-- /.container-fluid -->
 

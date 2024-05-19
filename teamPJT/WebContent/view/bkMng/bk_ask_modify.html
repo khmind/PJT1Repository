@@ -9,7 +9,7 @@
 	<meta http-equiv="Pragma" content="no-cache"/>
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>      
-<title>Insert title here</title>
+<title>문의사항수정</title>
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -47,40 +47,39 @@
                     <h1 class="h3 mb-2 text-gray-800">문의사항수정/삭제</h1>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header mb-4" style="display:flex;"> 
+                    <div class="card mb-4">
+                        <div class="card-body mb-4" style="display:flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-							<h3>제목</h3>
+							<span class="textfield">제목</span>
 	              			<textarea placeholder="제모모모모모모목" rows="2%" style=" margin-left: 70px; width:72%;" disabled></textarea>	                            
                         </div>
                         <div style="display:flex;">
-							<h3 style="margin-left: 20px;">내용</h3>
+							<span class="textfield" style="margin-left:20px;">내용</span>
 	      					<textarea placeholder="내요요요요요용" rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"></textarea>
 	                   	</div>
 	                   	<div style="display:flex; disabled:true;">  
-	                   		<h3 style="margin-left: 20px; ">사용자</h3>
-	                   		<textarea rows="2%" placeholder="닉네임" style="margin-left: 40px; margin-bottom :20px; width:70%;" disabled></textarea> 
+	                   		<span class="textfield" style="margin-left:20px;">사용자</span>
+	                   		<textarea rows="2%" placeholder="닉네임" style="margin-left: 55px; margin-bottom :20px; width:70%;" disabled></textarea> 
 	                   	</div>
 	                   	<div style="display:flex;">  
-	                   		<h3 style="margin-left: 20px;">등록일자</h3>
-	                   		<textarea rows="2%" placeholder="2024:05:16 00:00:00" style="margin-left: 15px; margin-bottom :20px; width:70%;" disabled></textarea> 
+	                   		<span class="textfield" style="margin-left:20px;">등록일자</span>
+	                   		<textarea rows="2%" placeholder="2024:05:16 00:00:00" style="margin-left: 40px; margin-bottom :20px; width:70%;" disabled></textarea> 
 	                   	</div>
-					</div>
-					<hr>
-					<div style="display:flex;">
-						<h3 id="text1"style="margin-left: 20px;">답변</h3> 
-						<textarea rows="5%" placeholder="답변내용" style="margin-left: 70px; width:70%;"></textarea>
-					</div>
-					<div style="display:flex; margin-top: 20px;">
-						<h3 id="text1"style="margin-left: 15px;">답변일자</h3> 
-						<textarea rows="2%" placeholder="2024:05:16 00:00:00" style="margin-left: 20px; width:70%;" disabled></textarea>
+						<div style="display:flex; margin-top: 20px;">
+							<span class="textfield" style="margin-left:20px;">답변</span>
+							<textarea rows="5%" placeholder="답변내용" style="margin-left: 70px; width:70%;"></textarea>
+						</div>
+						<div style="display:flex; margin-top: 20px;">
+							<span class="textfield" style="margin-left:20px;">답변일자</span>
+							<textarea rows="2%" placeholder="2024:05:16 00:00:00" style="margin-left: 40px; width:70%;" disabled></textarea>
+						</div>
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">
 	                    	<button type="button" class="btn btn-outline-primary ml-3" style="width:75px" onclick="confirmModal1()">수정</button>
 	                    		<script type="text/javascript">
 		                    		function confirmModal1() {
 										if (window.confirm("수정을 완료했습니다.")){
-											location = "table_문의.html";
+											location = "bk_ask.html";
 										}
 										else{
 											console.log("취소.변화없음");
@@ -91,7 +90,7 @@
 	                    		<script type="text/javascript">
 		                    		function confirmModal2() {
 										if (window.confirm("삭제을 완료했습니다.")){
-											location = "table_문의.html";
+											location = "bk_ask.html";
 										}
 										else{
 											console.log("취소.변화없음");
