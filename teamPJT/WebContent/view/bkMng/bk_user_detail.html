@@ -11,7 +11,7 @@
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>        
 
-    <title>사용자정보</title>
+    <title>사용자관리</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,23 +24,33 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        
+    <link href="../css/comm.admin.css" rel="stylesheet">
     
     <style type="text/css">
-    	table{
-    		margin: 100px 50px 10px 50px;
-    	}
-    	.card { 
-    		width: 70%;
-    		border-left: 0.25rem solid #4e73df !important; 
-    	}
     	
+    	table{
+    		margin: 100px auto;    	    		
+    		width:  25%; 
+    		font-weight: bold;
+    	}
     	
     	p {
-    		margin: 30px 50px 100px 200px;
-    	}
-    </style>
+    		margin: 20px 50px 100px 100px;    		 
+    	}    	
+    	
 
+    </style>
+    
+	<script type="text/javascript">
+	
+
+	
+	</script>  
+	
 </head>
+
+
 
 <body id="page-top">
 
@@ -61,30 +71,33 @@
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">사용자정보(관리자정보)</h1>
-						 
-						<div class="card">
-						  <div class="card-body">					    
-						    
-							<table>
-								<tr><td>사용자</td><td>동백이</td></tr>
-								<tr>
-									<td>email</td>
-									<td><input type="email" value=""></td>
-								</tr>
-								<tr>
-									<td>PW 초기화 &nbsp;&nbsp;&nbsp;</td>
-									<td>
-										<input type="text" value="1#sd7fs!" disabled>
-										<button type="button" class="btn btn-outline-success">초기화</button>
-									</td>
-								</tr>														
-							</table>
-							<p><button type="button" class="btn btn-outline-primary">수정</button></p>					    
-						    
-						  </div>
-						</div>      
+                    <h1 class="h3 mb-2 text-gray-800">사용자관리</h1>
 
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">	
+						    
+						<table>	
+							<tr>
+								<td>사용자</td>
+								<td>동백이</td></tr>
+							<tr>
+								<td>email</td>
+								<td><input type="email" value=""></td>
+							</tr>
+							<tr>
+								<td>PW 초기화 </td>
+								<td>
+									<input type="text" value="1#sd7fs!" disabled>
+									<button type="button" class="btn btn-outline-success">초기화</button>
+								</td>
+							</tr>	
+ 							<tr>
+								<td colspan="2" ><hr><p><button type="button" class="btn btn-outline-primary">수정</button></p></td>
+							</tr>												
+						</table>
+						
+		
+					</div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -106,24 +119,9 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/sb.js"></script>    
-
+    <script src="js/sb.js"></script>  
+        
 </body>
 
 </html>

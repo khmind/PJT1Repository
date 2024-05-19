@@ -11,7 +11,7 @@
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>        
 
-    <title>사용자관리</title>
+    <title>관리자관리</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,22 +26,33 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
     <style type="text/css">
-    	
     	.th1 { width:  10%; }
     	.th2 { width:  30%; }
     	.th3 { width:  30%; }
-    	.th4 { width:  10%; } 
-    	.th5 { width:  10%; } 
-    	.th6 { width:  10%; }
-    	.th7 { width:  30%; }     	
+    	.th4 { width:  30%; }
     	
     	.custom-select{ width: 100px }
     	
+    	tr, td{
+    		cursor: pointer;
     	}
+    	
+    	
+    	tr:hover{    		
+    		background-color: skyblue;    		
+    	}    	
     	
     </style>
     
-    
+	<script type="text/javascript">
+	
+	
+		function move(){		
+			window.open('bk_user_detail.html', '_self');
+		}
+	
+	
+	</script>      
 
 </head>
 
@@ -64,19 +75,12 @@
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">사용자관리</h1>
+                    <h1 class="h3 mb-2 text-gray-800">관리자관리</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">					                    
                     
-                        <div class="card-header py-3 float-right">  
-                        
-							<select name="sel1" class="custom-select">
-								<option selected>- 정렬 -</option>
-								<option value="1">등록순</option>
-								<option value="2">추천순</option>
-								<option value="2">관심순</option>
-							</select>                         
+                        <div class="card-header py-3 float-right">
 							<select name="sel1" class="custom-select">
 								<option selected>- 전체 -</option>
 								<option value="1">성명</option>
@@ -98,64 +102,43 @@
                         </div>
 						<table class="table">
 							<thead class="thead-dark">
-															
-								<tr>				      
+								<tr>					      
 									<th class="th1" scope="col">#</th>
-									<th class="th2" scope="col">사용자</th>
-									<th class="th3" scope="col">email</th>
-									<th class="th4" scope="col">등록CNT</th>
-									<th class="th5" scope="col">추천CNT</th>
-									<th class="th6" scope="col">관심CNT</th>
-									<th class="th7" scope="col">가입일자</th>									
+									<th scope="col">사용자</th>
+									<th scope="col">email</th>
+									<th scope="col">가입일자</th>
 								</tr>
-								</a>
 							</thead>
 							<tbody>
-								<tr onClick="location.href='userInfo.html'">			      
-									<td scope="row">1</td>
-									<td scope="row">홍길동</td>
-									<td scope="row">aaa@aaa.com</td>
-									<td scope="row">10</td>
-									<td scope="row">3</td>
-									<td scope="row">5</td>
-									<td scope="row">YYYY.MM.DD</td>	
-																
+								<tr onClick="move()">					      
+									<th class="th1" scope="row">1</th>
+									<td class="th2" scope="row">홍길동</td>
+									<td class="th3" scope="row">aaa@aaa.com</td>
+									<td class="th4" scope="row">YYYY.MM.DD</td>
 								</tr>
-								<tr onClick="location.href='userInfo.html'">					      
-									<td scope="row">1</td>
-									<td scope="row">홍길동</td>
-									<td scope="row">aaa@aaa.com</td>
-									<td scope="row">10</td>
-									<td scope="row">3</td>
-									<td scope="row">5</td>
-									<td scope="row">YYYY.MM.DD</td>	
+								<tr onClick="move()">					      
+									<th class="th1" scope="row">1</th>
+									<td class="th2" scope="row">홍길동</td>
+									<td class="th3" scope="row">aaa@aaa.com</td>
+									<td class="th4" scope="row">YYYY.MM.DD</td>
 								</tr>
-								<tr onClick="location.href='userInfo.html'">						      
-									<td scope="row">1</td>
-									<td scope="row">홍길동</td>
-									<td scope="row">aaa@aaa.com</td>
-									<td scope="row">10</td>
-									<td scope="row">3</td>
-									<td scope="row">5</td>
-									<td scope="row">YYYY.MM.DD</td>	
+								<tr onClick="move()">					      
+									<th class="th1" scope="row">1</th>
+									<td class="th2" scope="row">홍길동</td>
+									<td class="th3" scope="row">aaa@aaa.com</td>
+									<td class="th4" scope="row">YYYY.MM.DD</td>
 								</tr>
-								<tr onClick="location.href='userInfo.html'">					      
-									<td scope="row">1</td>
-									<td scope="row">홍길동</td>
-									<td scope="row">aaa@aaa.com</td>
-									<td scope="row">10</td>
-									<td scope="row">3</td>
-									<td scope="row">5</td>
-									<td scope="row">YYYY.MM.DD</td>	
+								<tr onClick="move()">					      
+									<th class="th1" scope="row">1</th>
+									<td class="th2" scope="row">홍길동</td>
+									<td class="th3" scope="row">aaa@aaa.com</td>
+									<td class="th4" scope="row">YYYY.MM.DD</td>
 								</tr>
-								<tr onClick="location.href='userInfo.html'">						      
-									<td scope="row">1</td>
-									<td scope="row">홍길동</td>
-									<td scope="row">aaa@aaa.com</td>
-									<td scope="row">10</td>
-									<td scope="row">3</td>
-									<td scope="row">5</td>
-									<td scope="row">YYYY.MM.DD</td>	
+								<tr onClick="move()">					      
+									<th class="th1" scope="row">1</th>
+									<td class="th2" scope="row">홍길동</td>
+									<td class="th3" scope="row">aaa@aaa.com</td>
+									<td class="th4" scope="row">YYYY.MM.DD</td>
 								</tr>									    					    				    
 							</tbody>
 						</table>
@@ -179,7 +162,7 @@
 					</div>
                 </div>
                 <!-- /.container-fluid -->
-<!-- <a href="./userInfo.html">	ddd	</a>	 -->
+
             </div>
             <!-- End of Main Content -->
 
@@ -198,23 +181,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/sb.js"></script>    
+    <script src="js/sb.js"></script>  
 
 </body>
 
