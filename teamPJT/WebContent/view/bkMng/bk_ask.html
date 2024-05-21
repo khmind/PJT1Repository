@@ -76,33 +76,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-							<button type="button" class="btn btn-outline-primary">읽음</button>
-								<button type="button" class="btn btn-outline-danger" onclick="confirmModal()">삭제</button>
-                    	<script type="text/javascript">
-                    		function confirmModal() {
-								if (window.confirm("삭제하시겠습니까?")){
-									
-								}
-								else{
-									console.log("취소.변화없음");
-								}
-							}
-                    	</script>
-                    <!-- Topbar Search -->
-                    <select name="sel1" class="custom-select"> 
-						<option selected>- 답변여부 -</option>
-						<option value="1">답변완료</option>
-						<option value="2">답변필요</option> 
-					</select>
-  
-					<select name="sel2" class="custom-select"> 
-						<option selected>- 전체 -</option>
-						<option value="1">제목</option>
-						<option value="2">내용</option> 
-					</select>                  
-                    
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
@@ -113,6 +87,31 @@
                             </div>
                         </div>
                     </form>                        
+					<select name="sel2" class="custom-select float-right"> 
+						<option selected>- 전체 -</option>
+						<option value="1">제목</option>
+						<option value="2">내용</option> 
+					</select>                  
+                    <select name="sel1" class="custom-select float-right mr-1"> 
+						<option selected>- 답변여부 -</option>
+						<option value="1">답변완료</option>
+						<option value="2">답변필요</option> 
+					</select>
+					<button type="button" class="btn btn-outline-danger float-right mr-1" onclick="confirmModal()">삭제</button>
+                    	<script type="text/javascript">
+                    		function confirmModal() {
+								if (window.confirm("삭제하시겠습니까?")){
+									
+								}
+								else{
+									console.log("취소.변화없음");
+								}
+							}
+                    	</script>
+					<button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button>
+                    <!-- Topbar Search -->
+  
+                    
                         							
 							                            
                         </div>
