@@ -5,8 +5,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-</head>
+</head>  
 <body>
 
 </body>
-</html>  
+</html>    
