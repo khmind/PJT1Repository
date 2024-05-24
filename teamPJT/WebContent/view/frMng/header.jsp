@@ -56,7 +56,7 @@
 								data-bs-auto-close="outside" aria-expanded="false">일식</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link link text-black display-4" href="#" 
+							<a class="nav-link link text-black display-4" href="fr_recipelist_snk.jsp" 
 								aria-expanded="false">간식</a>
 						</li>
 						<li class="nav-item">
@@ -64,7 +64,7 @@
 						</li>
 					</ul>
 					<div >
-						<a href="fr_recipelist_all.jsp" style="margin-right: 20px; color: black"><i class="fas fa-search fa-2x"></i></a>	
+						<a href="fr_recipelist_all.jsp" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a>	
 					</div>
 					<div class="navbar-buttons mbr-section-btn">
 						<a class="btn btn-warning-outline display-4" href="../login.html">

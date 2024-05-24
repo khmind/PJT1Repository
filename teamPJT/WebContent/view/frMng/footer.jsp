@@ -37,9 +37,8 @@
                     <ul class="row-links-soc">
 						<li class="row-links-soc-item mbr-fonts-style display-10">
 					        <a href="#" class="text-white">맛있는 레시피</a>
-					    </li><li class="row-links-soc-item mbr-fonts-style display-10">
-					        <a href="#" class="text-white">공지사항</a>
-					    </li><li class="row-links-soc-item mbr-fonts-style display-10">
+					    </li>
+					    <li class="row-links-soc-item mbr-fonts-style display-10">
 					        <a href="#" class="text-white">오시는길</a>                        
 					    </li>
 				    </ul>
