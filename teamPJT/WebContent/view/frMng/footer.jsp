@@ -18,6 +18,10 @@
   <link rel="stylesheet" href="https://r.mobirisesite.com/418493/assets/theme/css/style.css?rnd=1714583083056">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="https://r.mobirisesite.com/418493/assets/css/mbr-additional.css?rnd=1714583083056" type="text/css">
+	<style type="text/css">
+		.footer2{position: absolute; bottom: 0;
+		width: 100%}
+	</style>  
 </head>
 <body>
 
