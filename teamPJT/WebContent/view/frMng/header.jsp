@@ -60,7 +60,7 @@
 								aria-expanded="false">간식</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link link text-black display-4" href="#">공지사항</a>
+							<a class="nav-link link text-black display-4" href="fr_user_info.jsp">공지사항</a>
 						</li>
 					</ul>
 					<div >
