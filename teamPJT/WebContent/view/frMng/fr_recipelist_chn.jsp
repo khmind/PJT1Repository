@@ -19,7 +19,11 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="https://r.mobirisesite.com/418493/assets/css/mbr-additional.css?rnd=1714583083056" type="text/css">
   <style type="text/css">
-  	.card:hover{background-color: #ebe7b7}
+  	.card{transition: transform .5s; transform: scale(1.0);}
+  	.card:hover{background-color: #ebe7b7;
+  		transform: scale(1.1);  
+    transition: transform .5s; 
+  	}
   </style>
 </head>
 
