@@ -10,7 +10,7 @@
 
 <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="flex-direction: row;">
             <div class="col-12 col-md-12 col-lg">
                 <div class="text-wrapper align-left">
                     <h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">

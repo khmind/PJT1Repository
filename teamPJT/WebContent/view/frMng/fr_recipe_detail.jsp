@@ -27,10 +27,18 @@
 				<div class="col-12 col-md-12 col-lg">
 					<div class="text-wrapper align-left">
 						<div style="margin-top: 33px;">
-							<p><strong style="color: orange; font-size: 20px;">레시피등록</strong></p>
+							<p><strong style="color: orange; font-size: 20px;">레시피</strong></p>
 						</div>
-						<div style="text-align: center;">
-							<textarea rows="26" cols="60"></textarea>
+						<div style="text-align: center; line-height: 3.1">
+							<!-- <textarea rows="26" cols="60" style="text-align: left;"> -->
+								1. 계란과 양배추를 준비<br>
+								2. 적당한 크기로 양배추를 썰기<br>
+								3. 오목한 그릇에 밥 1공기 넣기<br>
+								4. 썬 양배추를 위에 올리고 가운데에 자리를 만들어 날계란 넣기<br>
+								5. 전자레인지에 넣을 수 있는 그릇이나 랩을 씌움<br>
+								6. 전자레인지 3분 돌린후 간장과 참기름 넣어주기(입맛에 맞게 조절)<br>
+								7. 맛있게 비비기
+							<!-- </textarea> -->
 						</div>
 					</div>
 				</div>
@@ -61,14 +69,20 @@
 						<strong style="font-size: 20px;">하<input type="radio" checked></strong>
 					</p>
 					<div style="margin-top: 30px;">
-						<p><strong style="color: orange; font-size: 20px;">재료등록</strong></p>
+						<p><strong style="color: orange; font-size: 20px;">재료준비</strong></p>
 					</div>
-					<div style="text-align: center;">
-						<textarea rows="10" cols="60"></textarea>
+					<div style="text-align: left; line-height: 3.1">
+						<!-- <textarea rows="10" cols="60" style="background-color: "> -->
+							양배추 2줌<br>
+							간장 2T<br>
+							밥 1공기<br>
+							계란 1개<br>
+							참기름 (있어도 되고 없어도 됨)
+						<!-- </textarea> -->
 					</div>
 				</div>
 				<hr>
-				<table style="display: flex; justify-content: space-around">
+				<table style="display: flex; justify-content: space-around; margin-bottom: 80px;">
 					<tr>
 						<td colspan="3">
 							<textarea rows="1" cols="80" placeholder="마음에 드셨나요? 댓글남겨주세요." 
@@ -80,6 +94,11 @@
 					<tr style="display: flex; justify-content: space-around">
 						<td>사용자1</td>
 						<td>맛있어요</td>
+						<td><%=formatter.format(c_time) %></td>
+					</tr>
+					<tr style="display: flex; justify-content: space-around">
+						<td>사용자2</td>
+						<td>완전 쉬움</td>
 						<td><%=formatter.format(c_time) %></td>
 					</tr>
 				</table>
