@@ -40,6 +40,12 @@
 	#submit:hover {
 	    background-color: #00C6ED;
 	}	
+   	tr, td{
+   		cursor: pointer;
+   	}
+   	tr:hover{    		
+   		background-color: skyblue;    		
+   	}	
 	.bd-sidebar{
 		padding-top: 10px;
 		padding-bottom: 300px;	

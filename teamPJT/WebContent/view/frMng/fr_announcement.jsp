@@ -25,6 +25,12 @@
 	i:hover, #i:active  {
 		 color: gray		 
 	}	
+   	tr, td{
+   		cursor: pointer;
+   	}
+   	tr:hover{    		
+   		background-color: skyblue;    		
+   	}	
 	.bd-sidebar{
 		padding-top: 10px;
 		padding-bottom: 300px;	
