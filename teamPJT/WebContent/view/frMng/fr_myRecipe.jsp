@@ -73,7 +73,7 @@
 			
 			    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">			      
 		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="#" ></a>
-			      <h2 class="bd-title" id="content">나의레시피</h2>
+			      <h4 class="bd-title" id="content">나의레시피</h4>
 			    </div>
 			    
 			    <form class="">			    
