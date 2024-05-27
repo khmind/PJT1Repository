@@ -55,7 +55,7 @@
 			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="#">
 					  <img src="../img/제육.jpg" class="card-img-top" alt="..." style="width:300px; height: 200px;">
 					  <div class="card-body">
-					    <p class="card-text">맛있는 제육~맛있는 제육~맛있는 제육</p>
+					    <p class="card-text">맛있는 제육</p>
 					  </div>
 					</div>
 					<div class="card" style="width: 300px;cursor: pointer;" onclick="#">
@@ -77,7 +77,7 @@
 					  </div>
 					</div>
 			    </div>
-			    <div class="col-12" style=" display: flex; justify-content: space-around">
+			    <div class="col-12" style=" display: flex; justify-content: space-around; margin-top: 15px;">
 					<div class="card" style="width: 300px;cursor: pointer;" onclick="#">
 					  <img src="../img/콩나물국.png" class="card-img-top" alt="..." style="width:300px; height: 200px;">
 					  <div class="card-body">

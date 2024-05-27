@@ -35,7 +35,7 @@
 			<input type="text" class="form-control bg-light border-0 small mt-2" placeholder="Search for..."
 				 aria-label="Search" aria-describedby="basic-addon2" style="width:400px; height: 50px;">
 				<div class="input-group-append">
-					<button class="btn btn-info mb-3" type="button" style=" width:100px; height: 50px; font-size: 12px;">검색</button>
+					<button class="btn btn-info mb-3" type="button" style=" width:120px; height: 50px; font-size: 12px;">검색</button>
 				</div>
 			</div>
 		</form>
@@ -78,7 +78,7 @@
 					  </div>
 					</div>
 			    </div>
-			    <div class="col-12" style=" display: flex; justify-content: space-around">
+			    <div class="col-12" style=" display: flex; justify-content: space-around ; margin-top: 15px;">
 			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="#">
 					  <img src="../img/잡채.jpg" class="card-img-top" alt="..." style=" width:300px;height: 200px;">
 					  <div class="card-body">
