@@ -13,34 +13,13 @@
 		imgFile++;
 	}
 </script>
-<!-- <style type="text/css">
-	.container{
-		margin-top: 20px; 
-	}
-</style> -->
 </head>
 <body>
 	<form action="">
 		<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq"
 			id="features-66-ubxwyl9azq">
 			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-12 col-md-12 col-lg">
-						<div class="text-wrapper align-left">
-							<div style="text-align: right">
-								<input type="submit" value="등록"
-									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
-							</div>
-							<div style="margin-top: 20px;">
-								<p>
-									<strong style="color: orange; font-size: 20px;">레시피등록</strong>
-								</p>
-							</div>
-							<div style="text-align: center;">
-								<textarea rows="26" cols="60"></textarea>
-							</div>
-						</div>
-					</div>
+				<div class="row justify-content-center" style="flex-direction: row;">
 					<div class="col-12 col-md-12 col-lg-6 image-wrapper">
 						<h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
 							<strong style="color: orange; font-size: 20px;">레시피 제목 :
@@ -83,6 +62,22 @@
 						</div>
 						<div style="text-align: center; padding-bottom: 30px;">
 							<textarea rows="10" cols="60"></textarea>
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg">
+						<div class="text-wrapper align-left">
+							<div style="text-align: right">
+								<input type="submit" value="등록"
+									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
+							</div>
+							<div style="margin-top: 20px;">
+								<p>
+									<strong style="color: orange; font-size: 20px;">레시피등록</strong>
+								</p>
+							</div>
+							<div style="text-align: center;">
+								<textarea rows="26" cols="60"></textarea>
+							</div>
 						</div>
 					</div>
 					<hr>
