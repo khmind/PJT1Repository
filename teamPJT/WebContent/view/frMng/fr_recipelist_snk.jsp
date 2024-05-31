@@ -18,26 +18,61 @@
   <link rel="stylesheet" href="https://r.mobirisesite.com/418493/assets/theme/css/style.css?rnd=1714583083056">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;700&display=swap&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="stylesheet" href="https://r.mobirisesite.com/418493/assets/css/mbr-additional.css?rnd=1714583083056" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
   <style type="text/css">
   	.card{transition: transform .5s; transform: scale(1.0);}
   	.card:hover{background-color: #ebe7b7;
   				transform: scale(1.1);  
    				transition: transform .5s; 
-  	}
+  		}
+  	.button1:hover{background-color: white;}
+  	.search-box{
+	height: 50px;
+	width: 400px;
+	background: white;
+	border-radius: 40px;
+	padding: 10px;
+	border: 1px solid #f9deec; 
+	font-size: 24px;
+}
+.search-txt{
+	width: 220px;
+	background: none;
+	outline:none;
+	border: none;
+	float: left;
+	padding:0;
+	color: #797979;
+	font-size: 15px;
+	line-height: 30px;
+	margin-left: 10px;
+
+}
+.search-btn{
+	height: 100%;
+	width: 40px;
+	background: none;
+	border-radius: 50%x;
+	padding: 10px;
+	border: none; 
+	font-size:16px;
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	color:lightgray;
+	float: right;
+	
+}
+  	
   </style>
 </head>
 
 <body>
 <!--검색창-->
 	 <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="  display: flex; justify-content: center; margin-top: 30px;">
-		<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
-			<div class="input-group">
-			<input type="text" class="form-control bg-light border-0 small mt-2" placeholder="Search for..."
-				 aria-label="Search" aria-describedby="basic-addon2" style="width:400px; height: 50px;">
-				<div class="input-group-append">
-					<button class="btn btn-info mb-3" type="button" style=" width:120px; height: 50px; font-size: 12px;">검색</button>
-				</div>
-			</div>
+		<form class="search-box" >
+			<input class="search-txt" type="text" name="" placeholder="search">
+			<button class="search-btn" type="submit"><i class="fa fa-search fa-lg"></i></button>
 		</form>
 	</section>
 	<!--검색창-->
@@ -45,10 +80,14 @@
 	<section data-bs-version="5.1" class="slider4 mbr-embla cid-ubxwyl8tSX" id="gallery-5-ubxwyl8tSX">
 		<div class="container" style="margin-top: 30px;">
 			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 10px; margin-bottom: 10px;">
-			 <button type="button" class="btn btn-info" style="width: 120px; height: 50px; font-size: 12px; margin: 0">최신순</button>
-			 <button type="button" class="btn btn-info" style="width: 120px; height: 50px; font-size: 12px; margin: 0">추천순</button>
-			 <button type="button" class="btn btn-info" style="width: 120px; height: 50px; font-size: 12px; margin: 0">관심순</button>
-			 <button type="button" class="btn btn-info" style="width: 120px; height: 50px; font-size: 12px; margin: 0">난이도순</button>
+				<input type="button" class="button1"style="width: 90px; height: 50px;background-color: #0dcaf0; color: white;
+						 border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 10px 0 0 10px;" value="최신순" >
+				<input type="button" class="button1"style="width: 90px; height: 50px; 
+						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px;" value="추천순">
+				<input type="button" class="button1"style="width: 90px; height: 50px; 
+						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px;" value="관심순">
+				<input type="button" class="button1"style="width: 90px; height: 50px; 
+						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 0 10px 10px 0; " value="난이도순">
 			</div>
 			
 		    <div class="row">
