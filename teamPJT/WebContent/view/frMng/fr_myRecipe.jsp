@@ -31,27 +31,17 @@
 	i{
 		float: left;
 		padding-left: 5px;	
-	}	
-    	
-	/* input:hover, #search:hover, #search:active { */		
-	input:hover  {
-		/* box-shadow: 1px 1px 1px black;
-		outline-style: solid; */
-		
-		/* background-color: lightgray */
-	}
-	i{
-		color: lightgray
+		color: lightgray	
 	}
 	i:hover, #i:active  {
 		 color: gray		 
 	}
-   	tr, td{
+   	tbody tr{
    		cursor: pointer;
-   	}
-   	tr:hover{    		
+   	}   	    
+    tbody tr:hover{    		
    		background-color: skyblue;    		
-   	}
+   	}	
 	.bd-sidebar{
 		padding-top: 10px;
 		padding-bottom: 300px;	

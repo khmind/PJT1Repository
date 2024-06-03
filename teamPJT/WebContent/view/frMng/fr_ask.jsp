@@ -11,14 +11,8 @@
 	input, i{
 		float: left;
 		padding-left: 2px;
-	}	
-	/* input:hover, #search:hover, #search:active { */		
-	input:hover  {
-		/* box-shadow: 1px 1px 1px black;
-		outline-style: solid; */
-		
-		/* background-color: lightgray */
 	}
+
 	i{
 		color: lightgray
 	}
@@ -39,11 +33,11 @@
 	}
 	#submit:hover {
 	    background-color: #00C6ED;
-	}	
-   	tr, td{
+	}
+   	tbody tr{
    		cursor: pointer;
-   	}
-   	tr:hover{    		
+   	}   	    
+    tbody tr:hover{    		
    		background-color: skyblue;    		
    	}	
 	.bd-sidebar{
@@ -77,7 +71,7 @@
 			    </form>
 				
 				<table class="table">
-				  <thead>
+				  <thead>				  
 				    <tr>
 				      <th><input type="checkbox"></th>
 				      <th>순번</th>

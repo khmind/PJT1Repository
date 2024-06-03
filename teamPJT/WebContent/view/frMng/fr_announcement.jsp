@@ -25,10 +25,10 @@
 	i:hover, #i:active  {
 		 color: gray		 
 	}	
-   	tr, td{
+   	tbody tr{
    		cursor: pointer;
-   	}
-   	tr:hover{    		
+   	}   	    
+    tbody tr:hover{    		
    		background-color: skyblue;    		
    	}	
 	.bd-sidebar{
