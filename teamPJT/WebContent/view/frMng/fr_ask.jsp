@@ -18,12 +18,12 @@
 	}
 	i:hover, #i:active  {
 		 color: gray		 
-	}	
+	}		
 	#submit{
 		float: right;
 		height: 30px;
 		width: 80px;
-        background-color: blue;
+        background-color: #00B700;
         color: white;
        	padding-top: 7px;
        	padding-bottom :7px;
@@ -32,7 +32,22 @@
         display: inline-block;		
 	}
 	#submit:hover {
-	    background-color: #00C6ED;
+	    background-color: #006F00;
+	}
+	#del{
+		float: right;
+		height: 30px;
+		width: 80px;
+        background-color: #ED0000;
+        color: white;
+       	padding-top: 7px;
+       	padding-bottom :7px;       	
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;		
+	}
+	#del:hover {
+	    background-color: #C90000;
 	}
    	tbody tr{
    		cursor: pointer;
@@ -46,6 +61,13 @@
 	}    	
 
 </style>
+<script type="text/javascript">
+
+	function detail(){		
+		window.open('fr_ask_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
+	}
+
+</script>
 </head>
 <body>
 
@@ -66,8 +88,9 @@
 			    
 			    <form class="">            		
             		<input type="search" placeholder="  Search" aria-label="Search">
-            		<a href="#" target="_blank" ><i class="fas fa-search fa-2x"></i></a>
-            		<a href="#" target="_blank" id="submit">삭제</a>	
+            		<a href="#" target="_blank" ><i class="fas fa-search fa-2x"></i></a>            				
+            		<a href="#" target="_blank" id="del">삭제</a>
+            		<a href="#" target="_blank" id="submit">등록</a>
 			    </form>
 				
 				<table class="table">
@@ -79,52 +102,52 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">10</td>
 				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
 				    </tr>				  
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">9</td>
 				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">8</td>
 				      <td class="text-muted">다섯 번째 문의사항 입니다.</td>
 				    </tr>				  
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">7</td>
 				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
 				    </tr>				  
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">6</td>
 				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">5</td>
 				      <td class="text-muted">다섯 번째 문의사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">4</td>
 				      <td class="text-muted">네 번째 문의사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">3</td>
 				      <td class="text-muted">세 번째 문의사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">2</td>
 				      <td class="text-muted">두 번째 문의사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td><input type="checkbox"></td>
 				      <td class="text-muted">1</td>
 				      <td class="text-muted">첫 번째 문의사항 입니다.</td>

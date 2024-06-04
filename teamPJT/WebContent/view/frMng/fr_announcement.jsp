@@ -37,6 +37,13 @@
 	}    	
 
 </style>
+<script type="text/javascript">
+
+	function detail(){		
+		window.open('fr_announcement_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
+	}
+
+</script>
 </head>
 <body>
 
@@ -68,43 +75,43 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>				      
+				    <tr onClick="detail()">				      
 				      <td class="text-muted">10</td>
 				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
 				    </tr>				  
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">9</td>
 				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">8</td>
 				      <td class="text-muted">다섯 번째 공지사항 입니다.</td>
 				    </tr>				  
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">7</td>
 				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
 				    </tr>				  
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">6</td>
 				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">5</td>
 				      <td class="text-muted">다섯 번째 공지사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">4</td>
 				      <td class="text-muted">네 번째 공지사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">3</td>
 				      <td class="text-muted">세 번째 공지사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">2</td>
 				      <td class="text-muted">두 번째 공지사항 입니다.</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">		
 				      <td class="text-muted">1</td>
 				      <td class="text-muted">첫 번째 공지사항 입니다.</td>
 				    </tr>
