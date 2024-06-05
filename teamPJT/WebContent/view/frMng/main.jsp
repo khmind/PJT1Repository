@@ -24,7 +24,6 @@
                 <img class="w-100" src="../assets/images/photo-1505935428862-770b6f24f629.jpeg" alt="" >
             </div>
         </div>
-        
     </div>
 </section>
 

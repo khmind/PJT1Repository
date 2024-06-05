@@ -32,6 +32,7 @@
 	padding: 10px;
 	border: 1px solid #f9deec; 
 	font-size: 24px;
+	margin-top: 20px;
 }
 .search-txt{
 	width: 220px;

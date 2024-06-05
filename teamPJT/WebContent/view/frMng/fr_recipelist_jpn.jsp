@@ -24,7 +24,7 @@
   				transform: scale(1.1);  
    			 	ransition: transform .5s; 
   	}
-  	 	.search-box{
+.search-box{
 	height: 50px;
 	width: 400px;
 	background: white;
@@ -32,6 +32,7 @@
 	padding: 10px;
 	border: 1px solid #f9deec; 
 	font-size: 24px;
+	margin-top: 20px;
 }
 .search-txt{
 	width: 220px;
