@@ -8,22 +8,35 @@
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
 
-    var radioInputs = document.querySelectorAll('input[name="inlineRadioOptions"]');
+   
+    document.querySelectorAll('.chk1, .chk2, .chk3, .chk4, .chk5, .chk6').forEach(function(element) {
+        element.style.display = 'none';
+    });
 
+   
+    document.querySelector('.chk1').style.display = 'flex';
+    document.querySelector('.chk4').style.display = 'flex';
+    
+    var radioInputs = document.querySelectorAll('input[name="inlineRadioOptions"]');
     radioInputs.forEach(function(input) {
         input.addEventListener("change", function() {
             var selectedValue = this.value;
 
-            document.querySelectorAll('.chk1, .chk2, .chk3').forEach(function(element) {
+           
+            document.querySelectorAll('.chk1, .chk2, .chk3, .chk4, .chk5, .chk6').forEach(function(element) {
                 element.style.display = 'none';
             });
 
+           
             if (selectedValue === 'option1') {
                 document.querySelector('.chk1').style.display = 'flex';
+                document.querySelector('.chk4').style.display = 'flex';
             } else if (selectedValue === 'option2') {
                 document.querySelector('.chk2').style.display = 'flex';
+                document.querySelector('.chk5').style.display = 'flex';
             } else if (selectedValue === 'option3') {
                 document.querySelector('.chk3').style.display = 'flex';
+                document.querySelector('.chk6').style.display = 'flex';
             }
         });
     });
@@ -33,23 +46,10 @@ document.addEventListener("DOMContentLoaded", function() {
 <body>
 <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq">
       <div class="container" style="margin-top: 20px;">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-12 col-lg">
-                <div class="text-wrapper align-left" style="height : 500px;
-                 border-radius: 50px;background-image: url('../assets/images/photo-1496412705862-e0088f16f791.jpeg');
-                 background-size: cover;">
-                    <h1 style=" color: white;margin-top: 50px;">
-                        <strong>맛있는 레시피</strong>
-                    </h1>
-                    <p style="color: white; margin-top: 30px;">
-			                    당신의 요리 능력을 세계에 공개하고 싶다면,<br> 맛있는 레시피가 당신을 위한 완벽한 플랫폼입니다.<br>
-			                    맛있는 레시피는 요리에 관심이 있는 사람들이 <br>레시피를 찾고 공유하는 공간이기도 합니다.<br>
-			                    맛있는 레시피는 여러분의 요리를 세계와 공유하고,<br> 더 많은 쉐프들과 소통할 수 있는 기회를 제공합니다.
-                    </p>
-                </div>
-            </div>
+        <div class="row justify-content-center" style="flex-direction: row;">
             <div class="col-12 col-md-12 col-lg-6 image-wrapper" style="height: 500px;">
-            	<div style=" margin-left : 60px;width: 500px; display: flex; justify-content: space-around; background: #fffd9e; ">
+            	<div style=" margin-left : 60px;width: 500px; display: flex; margin-top:30px;
+            		justify-content: space-around; background: #fffd9e; ">
 	         		<div class="form-check form-check-inline">
 					  상<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
 					</div>
@@ -66,10 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						<img src="../img/피자.jpg" class="card-img-top" alt="..." style="width:100%; height: 300px;">
 						<div class="card-body">
 							<p class="card-text">
-							맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자
-							맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자
-							맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자
-							맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는 피자맛있는</p>
+							맛있는 피자</p>
 						</div>
 					</div>
             	</div>
@@ -92,15 +89,42 @@ document.addEventListener("DOMContentLoaded", function() {
 					</div>
             	</div>
             </div>
+            <div class=" col-12 col-md-12 col-lg " style="margin-bottom: 150px;">
+            	<div style="margin-top: 30px; margin-left: 30px;">
+					<p><strong style="color: orange; font-size: 20px;">재료준비</strong></p>
+				</div>
+                <div class="chk4 text-wrapper align-left"  style="text-align: left; line-height: 3.1;
+                	border: 1px solid #fcd2fb; width: 550px;">
+                	양배추 2줌1<br>
+					간장 2T1<br>
+					밥 1공기1<br>
+					계란 1개1<br>
+					참기름 (있어도 되고 없어도 됨)
+                </div>
+                <div class="chk5 text-wrapper align-left"  style="text-align: left; line-height: 3.1;
+               	 	border: 1px solid #fcd2fb; width: 550px;">
+                	양배추 2줌2<br>
+					간장 2T2<br>
+					밥 1공기2<br>
+					계란 1개2<br>
+					참기름 (있어도 되고 없어도 됨)
+                </div>
+                <div class="chk6 text-wrapper align-left"  style="text-align: left; line-height: 3.1;
+               		border: 1px solid #fcd2fb; width: 550px;">
+                	양배추 2줌3<br>
+					간장 2T3<br>
+					밥 1공기3<br>
+					계란 1개3<br>
+					참기름 (있어도 되고 없어도 됨)
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
 <section data-bs-version="5.1" class="slider4 mbr-embla cid-ubxwyl8tSX" id="gallery-5-ubxwyl8tSX">
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-12 content-head">
-        
         <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">
           오늘의 추천 레시피
         </h5>
