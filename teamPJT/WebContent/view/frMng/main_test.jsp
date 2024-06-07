@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 					</div>
 					<div class="form-check form-check-inline">
 					  하<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
-					</div>
+					</div> 
             	</div>
             	<div class="chk1" style="display: flex; justify-content: center; ">
 	            	<div class="card" style="width:100%;cursor: pointer; margin-top: 20px;" 
