@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="container" style="margin-top: 20px;">
         <div class="row justify-content-center" style="flex-direction: row;">
             <div class="col-12 col-md-12 col-lg-6 image-wrapper" style="height: 500px;">
-            	<div style=" margin-left : 60px;width: 500px; display: flex; margin-top:30px;
+            	<div style=" width: 100%; display: flex; margin-top:30px;
             		justify-content: space-around; background: #fffd9e; ">
 	         		<div class="form-check form-check-inline">
 					  상<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", function() {
 					</div>
             	</div>
             	<div class="chk1" style="display: flex; justify-content: center; ">
-	            	<div class="card" style="width: 500px;cursor: pointer; margin-top: 20px;" 
+	            	<div class="card" style="width:100%;cursor: pointer; margin-top: 20px;" 
 	            		onclick="location.href='fr_recipe_detail.jsp'">
-						<img src="../img/피자.jpg" class="card-img-top" alt="..." style="width:100%; height: 300px;">
+						<img src="../img/피자.jpg" class="card-img-top" alt="..." style="width:100%; height: 350px;">
 						<div class="card-body">
 							<p class="card-text">
 							맛있는 피자</p>
@@ -71,30 +71,30 @@ document.addEventListener("DOMContentLoaded", function() {
 					</div>
             	</div>
             	<div class="chk2" style="display: none; justify-content: center; ">
-	            	<div class="card" style="width: 500px;cursor: pointer; margin-top: 20px;" 
+	            	<div class="card" style="width: 100%;cursor: pointer; margin-top: 20px;" 
 	            		onclick="location.href='fr_recipe_detail.jsp'">
-						<img src="../img/짜장면.jpg" class="card-img-top" alt="..." style="width:100%; height: 300px;">
+						<img src="../img/짜장면.jpg" class="card-img-top" alt="..." style="width:100%; height: 350px;">
 						<div class="card-body">
 							<p class="card-text">맛있는 짜장면</p>
 						</div>
 					</div>
             	</div>
             	<div class="chk3" style="display: none; justify-content: center;">
-	            	<div class="card" style="width: 500px;cursor: pointer; margin-top: 20px;" 
+	            	<div class="card" style="width: 100%;cursor: pointer; margin-top: 20px;" 
 	            		onclick="location.href='fr_recipe_detail.jsp'">
-						<img src="../img/제육.jpg" class="card-img-top" alt="..." style="width:100%; height: 300px;">
+						<img src="../img/제육.jpg" class="card-img-top" alt="..." style="width:100%; height: 350px;">
 						<div class="card-body">
 							<p class="card-text">맛있는 제육</p>
 						</div>
 					</div>
             	</div>
             </div>
-            <div class=" col-12 col-md-12 col-lg " style="margin-bottom: 150px;">
+            <div class=" col-12 col-md-12 col-lg " style="margin-bottom: 150px; ">
             	<div style="margin-top: 30px; margin-left: 30px;">
 					<p><strong style="color: orange; font-size: 20px;">재료준비</strong></p>
 				</div>
                 <div class="chk4 text-wrapper align-left"  style="text-align: left; line-height: 3.1;
-                	border: 1px solid #fcd2fb; width: 550px;">
+                	border: 1px solid #fcd2fb; width: 100%;">
                 	양배추 2줌1<br>
 					간장 2T1<br>
 					밥 1공기1<br>
