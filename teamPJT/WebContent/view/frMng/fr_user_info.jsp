@@ -66,10 +66,12 @@
 				     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
 				     <label for="floatingInput">Email address</label>
 				   </div>    
-					<div class="form-button">
-					    <!-- <button class="btn btn-primary w-100 py-2" type="submit">수정</button> -->
+					<div class="form-button">					    
 					    <button class="btn btn-secondary w-100 py-2" type="submit">수정</button>
 					</div>    
+					<div class="form-button">					    
+					    <button class="btn btn-warning w-100 py-2" type="submit">로그아웃</button>
+					</div>    					
 				</form>
 				
 			</main>
