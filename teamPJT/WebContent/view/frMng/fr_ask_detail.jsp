@@ -7,11 +7,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 	
-	#list{
+	#list1, #list2, #list3, #list4{
 		float: right;
 		height: 30px;
-		width: 80px;
-        background-color: blue;
+		width: 80px;        
         color: white;
        	padding-top: 7px;
        	padding-bottom :7px;
@@ -19,9 +18,31 @@
         text-decoration: none;
         display: inline-block;
 	}
-	#list:hover {
+	#list1{
+		background-color: blue;
+	}
+	#list2{
+		background-color: #ED0000;
+	}
+	#list3{
+		background-color: #086A87;
+	}
+	#list4{
+		background-color: #00B700;
+	}
+	
+ 	#list1:hover {
 	    background-color: #00C6ED;
-	}	
+	}
+ 	#list2:hover {
+	    background-color: #C90000;
+	}
+ 	#list3:hover {
+	    background-color: #0489B1;
+	}
+ 	#list4:hover {
+	    background-color: #006F00;
+	}			
 	
 	.bd-sidebar{
 		padding-top: 10px;
@@ -35,10 +56,6 @@
 		margin-left: 40px;
 		width: 600px;
 	}
-	
-/* 	table, tr, td{
-		border: 1px solid black;
-	} */
 
 </style>
 <script type="text/javascript">
@@ -96,26 +113,32 @@
 						</textarea></td>					
 					</tr>
 					<tr>	
-						<td>사용자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="동백이" readonly></td>					
+						<td>사용자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="동백이" disabled ></td>					
 					</tr>
 					<tr>
-						<td>등록일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="2024:05:03 00:00:00" readonly></td>					
+						<td>등록일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="2024:05:03 00:00:00" disabled></td>					
 					</tr>		
 					<tr>	
-						<td>답변</td><td><textarea rows="3%" class="textA" readonly></textarea></td>					
+						<td>답변</td><td><textarea rows="3%" class="textA" disabled ></textarea></td>					
 					</tr>
 					<tr>
-						<td>답변일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="2024:05:03 00:00:00" readonly></td>					
-					</tr>					
-																		
+						<td>답변일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="2024:05:03 00:00:00" disabled></td>					
+					</tr>
+	
+				</table>
+				<br>
+				<table align="center">
 					<tr>
-						<td colspan="2"><a href="javascript:list()" id="list">목록</a></td>
+					<!-- 등록/수정/삭제 는 경우에 따라 활성화 비활성화 한다.  -->
+						<td><a href="javascript:list()" id="list4">등록</a></td><td></td>
+						<td><a href="javascript:list()" id="list3">수정</a></td><td></td>
+						<td><a href="javascript:list()" id="list2">삭제</a></td><td></td>
+						<td><a href="javascript:list()" id="list1">목록</a></td><td></td>
 					</tr>
 				</table>
 				
 			</main>     
             <!-- End of Main Content -->
-			
 			
 			<!--  왼쪽 메뉴  -->
 	  		<!-- Sidebar -->

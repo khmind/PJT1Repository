@@ -90,7 +90,7 @@
             		<input type="search" placeholder="  Search" aria-label="Search">
             		<a href="#" target="_blank" ><i class="fas fa-search fa-2x"></i></a>            				
             		<a href="#" target="_blank" id="del">삭제</a>
-            		<a href="#" target="_blank" id="submit">등록</a>
+            		<a href="#" target="_blank" id="submit"  onClick="detail()">등록</a>            		
 			    </form>
 				
 				<table class="table">

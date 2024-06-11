@@ -48,6 +48,15 @@
 	}   		
 
 </style>
+
+<script type="text/javascript">
+
+	function detail(){		
+		window.open('fr_recipe_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
+	}
+
+</script>
+
 </head>
 <body>
 
@@ -91,7 +100,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr>	
+				    <tr onClick="detail()">	
 				      <td>10</td>			      
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -100,7 +109,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>
-				    <tr>	
+				    <tr onClick="detail()">	
 				      <td>9</td>			      
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -109,7 +118,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>				    				  
-				    <tr>	
+				    <tr onClick="detail()">	
 				      <td>8</td>			      
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -118,7 +127,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>				  
-				    <tr>	
+				    <tr onClick="detail()">	
 				      <td>7</td>			      
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -127,7 +136,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>				  
-				    <tr>	
+				    <tr onClick="detail()">	
 				      <td>6</td>			      
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -136,7 +145,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td>5</td>
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -145,7 +154,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td>4</td>
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -154,7 +163,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td>3</td>
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -163,7 +172,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td>2</td>
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
@@ -172,7 +181,7 @@
 				      <td class="text-muted">중</td>
 				      <td class="text-muted">YYYY.MM.DD</td>
 				    </tr>
-				    <tr>
+				    <tr onClick="detail()">
 				      <td>1</td>
 				      <td class="text-muted">한식</td>
 				      <td class="text-muted">잡채</td>
