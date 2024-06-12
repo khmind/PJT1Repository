@@ -63,7 +63,7 @@
 			    </div>
 				<br>
 				
-				<table border=1>
+				<table>
 					<tr>
 						<td>제목</td><td>	<textarea rows="1%" class="textA"  readonly>공지사항1</textarea></td>					
 					</tr>

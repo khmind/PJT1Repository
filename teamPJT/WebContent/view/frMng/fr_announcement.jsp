@@ -11,13 +11,6 @@
 	input, i{
 		float: left;
 		padding-left: 2px;
-	}	
-	/* input:hover, #search:hover, #search:active { */		
-	input:hover  {
-		/* box-shadow: 1px 1px 1px black;
-		outline-style: solid; */
-		
-		/* background-color: lightgray */
 	}
 	i{
 		color: lightgray
