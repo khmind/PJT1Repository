@@ -20,9 +20,9 @@ public class Info_controller implements Controller{
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		System.out.println("=====6");
+				
 		if(model.get("adLogin") == null) {
-			return "/bkMng/index.html";
+			return "index.html";
 		}
 		else {
 			InfoVO adLogin = (InfoVO)model.get("adLogin");
@@ -35,7 +35,7 @@ public class Info_controller implements Controller{
 				return "/view/bkMng/bk_announcement.html";
 			}
 			else {
-				return "/bkMng/index.html";
+				return "index.html";
 			}
 		}
 		
