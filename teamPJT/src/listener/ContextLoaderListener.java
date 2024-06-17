@@ -8,7 +8,12 @@ import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
 
 import controller.bkMng.Info_controller;
+import controller.bkMng.LogOut_Controller;
+import controller.bkMng.Maneger_Controller;
+import controller.bkMng.User_Controller;
 import dao.bkMng.InfoDAO;
+import dao.bkMng.ManegerDAO;
+import dao.bkMng.UserDAO;
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener{
@@ -21,20 +26,26 @@ public class ContextLoaderListener implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("222222222222222222");
+		
 		ServletContext sc=sce.getServletContext();
 		
 		try {
-			InitialContext ic=new InitialContext();
-			System.out.println("==========1");
+			InitialContext ic = new InitialContext();
+		
 			DataSource ds=(DataSource)ic.lookup("java:comp/env/jdbc/myDB");
-			System.out.println("==========2");
+		
 			InfoDAO dao =  new InfoDAO();
-			System.out.println("==========3");
+			ManegerDAO manegerDAO =  new ManegerDAO();
+			UserDAO userDAO =  new UserDAO();
+		
 			dao.setDataSource(ds);
-			System.out.println("==========4");
+			userDAO.setDataSource(ds);
+		
 			sc.setAttribute("/view/bkMng/login.do", new Info_controller().setInfoDAO(dao));
-			System.out.println("==========5");
+			sc.setAttribute("/view/bkMng/logout.do", new LogOut_Controller());
+			sc.setAttribute("/view/bkMng/user.do", new User_Controller().setDAO(userDAO));
+			sc.setAttribute("/view/bkMng/maneger.do", new Maneger_Controller().setDAO(manegerDAO));
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
