@@ -6,7 +6,7 @@ public class ManegerDAO {
 	
 	DataSource ds;
 	
-	public void setDataSource(DataSource ds) {
+	public void setDataSource(DataSource ds) { 
 		this.ds=ds;
 	}
 
