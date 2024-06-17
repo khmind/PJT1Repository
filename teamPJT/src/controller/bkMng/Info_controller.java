@@ -8,21 +8,21 @@ import controller.Controller;
 import dao.bkMng.InfoDAO;
 import vo.bkMng.InfoVO;
 
-public class Info_Controller implements Controller{
+public class Info_controller implements Controller{
 
 	InfoDAO infoDAO;
 	
 	
-	public Info_Controller setInfoDAO(InfoDAO infoDAO) {
+	public Info_controller setInfoDAO(InfoDAO infoDAO) {
 		this.infoDAO = infoDAO;
 		return this;
 	}
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
-		System.out.println("=====6");
+				
 		if(model.get("adLogin") == null) {
-			return "/bkMng/index.html";
+			return "index.html";
 		}
 		else {
 			InfoVO adLogin = (InfoVO)model.get("adLogin");
@@ -35,7 +35,7 @@ public class Info_Controller implements Controller{
 				return "/view/bkMng/bk_announcement.html";
 			}
 			else {
-				return "/bkMng/index.html";
+				return "index.html";
 			}
 		}
 		
