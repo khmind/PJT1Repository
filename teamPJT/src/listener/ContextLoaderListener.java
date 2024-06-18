@@ -43,7 +43,7 @@ public class ContextLoaderListener implements ServletContextListener{
 		
 			dao.setDataSource(ds);
 			userDAO.setDataSource(ds);
-			listDAO.setDs(ds);
+			listDAO.setDs(ds); 
 		
 			sc.setAttribute("/view/bkMng/login.do", new Info_controller().setInfoDAO(dao));
 			sc.setAttribute("/view/bkMng/logout.do", new LogOut_Controller());

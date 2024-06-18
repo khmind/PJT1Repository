@@ -11,7 +11,7 @@ public class Recipe_listVO {
 	private String recipe_content;
 	private String recipe_stuff;
 	private String recipe_show;
-	private int recipe_good;
+	private int recipe_good; 
 	private int recipe_rcm;
 	private int recipe_cnt;
 	private String recipe_level;

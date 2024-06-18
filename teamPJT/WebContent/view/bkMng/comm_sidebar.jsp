@@ -72,7 +72,7 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
                 <a class="nav-link" href="javascript:goAction('recipe.do')">
                     <i class="fas fa-fw fa-table"></i>
                     <span>레시피관리</span></a>
-            </li>
+            </li> 
 			<hr class="sidebar-divider my-0">            
             
             <!-- Nav Item - 메뉴관리 -->

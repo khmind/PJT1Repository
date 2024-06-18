@@ -12,7 +12,7 @@ public class Recipe_list_Controller implements Controller{
 		this.listDAO=listDAO;
 		return this;
 	}
-	@Override
+	@Override 
 	public String execute(Map<String, Object> model) throws Exception {
 		
 		model.put("recipe_list", listDAO.recipeList());

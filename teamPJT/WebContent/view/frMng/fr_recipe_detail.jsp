@@ -27,11 +27,11 @@
 									style="width: 200px; height: 200px;">
 							</div>
 							<div class="card" style="width: 18rem;">
-								<img src="../img/recipe02.png" class="card-img-top" alt="..."
+								<img src="../img/frMng/recipe02.png" class="card-img-top" alt="..."
 									style="width: 200px; height: 200px;">
 							</div>
 							<div class="card" style="width: 18rem;">
-								<img src="../img/recipe03.png" class="card-img-top" alt="..."
+								<img src="../img/frMng/recipe03.png" class="card-img-top" alt="..."
 									style="width: 200px; height: 200px;">
 							</div>
 						</div>

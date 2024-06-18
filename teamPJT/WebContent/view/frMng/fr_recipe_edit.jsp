@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <title>맛있는 레시피</title>
 <script type="text/javascript">
-	let imgFile=1;
+	let imgFile=1; 
 	function addFile() {
 		$("#d_file").append("<br>"+"<input type='file' name='file"+imgFile+"'/>");
 		imgFile++;
