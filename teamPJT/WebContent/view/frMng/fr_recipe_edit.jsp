@@ -39,14 +39,14 @@
 									<div class="image_container1"
 										style="width: 210px; height: 200px; border-right: 1px solid pink; border-left: 1px solid pink">
 									<input type="file" name="upload" id="upload1" class="image" accept="image/*" />
-									<img id="preview1" src="../img/recipe01.png" style="width: 100%; height: 100%">
+									<img id="preview1" src="../img/frMng/recipe01.png" style="width: 100%; height: 100%">
 									</div>
 								</div>
 								<div class="card" style="width: 18rem;">
 									<div class="image_container2"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
 									<input type="file" name="upload" id="upload2" class="image" accept="image/*" />
-									<img id="preview2" src="../img/recipe02.png" style="width: 100%; height: 100%">
+									<img id="preview2" src="../img/frMng/recipe02.png" style="width: 100%; height: 100%">
 									
 									</div>
 								</div>
@@ -54,7 +54,7 @@
 									<div class="image_container3"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
 										<input type="file" name="upload" id="upload3" class="image" accept="image/*" />
-									<img id="preview3" src="../img/recipe03.png" style="width: 100%; height: 100%">
+									<img id="preview3" src="../img/frMng/recipe03.png" style="width: 100%; height: 100%">
 										
 									</div>
 								</div>

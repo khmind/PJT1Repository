@@ -30,8 +30,13 @@ public class Recipe_listDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs =null;
 		List<Recipe_listVO> recipelist = new ArrayList<Recipe_listVO>();
-		String sql = "select recipe_id, class_id, recipte_title, user_id, recipe_rcm,"
-				+ "recipe_good, recipe_show, recipe_date from recipe order by recipe_date asc";
+		String sql = "select a.RECIPE_ID, d.CLASS_NAME, c.IMG_MAIN,\r\n" + 
+				"	a.RECIPE_TITLE, b.USER_NAME, a.RECIPE_RCM,\r\n" + 
+				"    a.RECIPE_GOOD, a.RECIPE_SHOW, a.RECIPE_DATE\r\n" + 
+				"    from recipe_info a\r\n" + 
+				"    inner join user_info b on a.USER_ID = b.USER_ID\r\n" + 
+				"    inner join recipe_image_info c on a.RECIPE_ID = c.RECIPE_ID\r\n" + 
+				"    inner join recipe_class_info d on a.CLASS_ID = d.CLASS_ID;";
 		
 		try {
 			conn = ds.getConnection();
@@ -41,9 +46,10 @@ public class Recipe_listDAO {
 			while(rs.next()) {
 				Recipe_listVO listVO= new Recipe_listVO()
 						.setRecipe_id(rs.getString("recipe_id"))
-						.setClass_id(rs.getString("class_id"))
+						.setClass_name(rs.getString("class_name"))
+						.setImg_main(rs.getString("img_main"))
 						.setRecipe_title(rs.getString("recipe_title"))
-						.setUser_id(rs.getString("user_id"))
+						.setUser_name(rs.getString("user_name"))
 						.setRecipe_rcm(rs.getInt("recipe_rcm"))
 						.setRecipe_good(rs.getInt("recipe_good"))
 						.setRecipe_show(rs.getString("recipe_show"))

@@ -18,6 +18,10 @@ public class Recipe_listVO {
 	private String user_id; //사용자번호(  규칙 : U001 )
 	private Date recipe_date;
 	
+	private String img_main;
+	private String class_name;
+	private String user_name;
+	
 	
 	public String getRecipe_id() {
 		return recipe_id;
@@ -101,6 +105,28 @@ public class Recipe_listVO {
 	}
 	public Recipe_listVO setRecipe_date(Date date) {
 		this.recipe_date = date;
+		return this;
+	}
+	
+	public String getImg_main() {
+		return img_main;
+	}
+	public Recipe_listVO setImg_main(String img_main) {
+		this.img_main = img_main;
+		return this;
+	}
+	public String getClass_name() {
+		return class_name;
+	}
+	public Recipe_listVO setClass_name(String class_name) {
+		this.class_name = class_name;
+		return this;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public Recipe_listVO setUser_name(String user_name) {
+		this.user_name = user_name;
 		return this;
 	}
 	

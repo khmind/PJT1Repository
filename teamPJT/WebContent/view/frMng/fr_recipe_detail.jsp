@@ -23,7 +23,7 @@
 					<div class="row">
 						<div style="display: flex; justify-content: space-around">
 							<div class="card" style="width: 18rem;">
-								<img src="../img/recipe01.png" class="card-img-top" alt="..."
+								<img src="../img/frMng/recipe01.png" class="card-img-top" alt="..."
 									style="width: 200px; height: 200px;">
 							</div>
 							<div class="card" style="width: 18rem;">

@@ -50,6 +50,8 @@ public class DispatcherServlet extends HttpServlet{
 				
 				
 				
+			}else if("/view/bkMng/recipe.do".equals(servletPath)) {
+				
 			}
 			
 			String viewUrl = contro.execute(model);
