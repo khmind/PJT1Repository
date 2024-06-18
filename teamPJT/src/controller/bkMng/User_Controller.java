@@ -20,11 +20,11 @@ public class User_Controller implements Controller{
 	public String execute(Map<String, Object> model) throws Exception {
 		
 		
-		//UserVO user = (UserVO) userDAO.selectList();
-		System.out.println("-------------1");
+		//UserVO user = (UserVO) userDAO.selectList();	
 		
-		//String a = sel2
-		model.put("userlist", userDAO.selectList());
+		UserVO user = (UserVO)model.get("user");
+
+		model.put("userlist", userDAO.selectList(user));
 		return "bk_user.jsp";
 	}
 
