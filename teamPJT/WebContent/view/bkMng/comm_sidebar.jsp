@@ -15,10 +15,10 @@
 </style>
 <script type="text/javascript">
 
-	function goAction(arg){
+	function goAction(arg){		
 		
 		frm.action = arg;
-		frm.submit();		
+		frm.submit();	
 		
 	}
 
@@ -94,7 +94,7 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
             <!-- Nav Item - 로그아웃 -->
             <li class="nav-item">
                 <a class="nav-link" href="javascript:goAction('logout.do')">                
-                    <img alt="" src="./img/logout1.png" width="20px" height="30px">
+                    <img alt="" src="./img/logout.png" width="20px" height="30px">
                      <span>로그아웃</span></a>
                 </a>
                    
