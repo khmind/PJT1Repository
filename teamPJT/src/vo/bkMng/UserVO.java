@@ -14,6 +14,12 @@ public class UserVO {
 	private int goodCnt;
 	private int rcmCnt;
 	
+	private String sel1;
+	private String sel2;
+	private String searchText;
+	
+	
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -77,6 +83,28 @@ public class UserVO {
 		this.rcmCnt = rcmCnt;
 		return this;
 	}
+	public String getSel1() {
+		return sel1;
+	}
+	public UserVO setSel1(String sel1) {
+		this.sel1 = sel1;
+		return this;
+	}
+	public String getSel2() {
+		return sel2;
+	}
+	public UserVO setSel2(String sel2) {
+		this.sel2 = sel2;
+		return this;
+	}
+	public String getSearchText() {
+		return searchText;
+	}
+	public UserVO setSearchText(String searchText) {
+		this.searchText = searchText;
+		return this;
+	}
+	
 	
 	 	
 	

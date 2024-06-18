@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import vo.bkMng.InfoVO;
+import vo.bkMng.UserVO;
 
 @WebServlet("*.do")
 public class DispatcherServlet extends HttpServlet{
@@ -48,9 +49,20 @@ public class DispatcherServlet extends HttpServlet{
 				}
 			}else if("/view/bkMng/user.do".equals(servletPath)) {
 				
+				String a = arg0.getParameter("sel1");
+				String b = arg0.getParameter("sel2");
+				String c = arg0.getParameter("searchText");
 				
+				System.out.println( " a : " + a + ", b : "+ b +", c : " +c);	
+				
+				model.put("user", new UserVO()
+							.setSel1(arg0.getParameter("sel1"))
+							.setSel2(arg0.getParameter("sel2"))
+							.setSearchText(arg0.getParameter("searchText"))
+						);
 				
 			}else if("/view/bkMng/recipe.do".equals(servletPath)) {
+
 				
 			} 
 			

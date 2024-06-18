@@ -14,6 +14,7 @@ public class Maneger_Controller implements Controller{
 		return this;
 	}
 	
+	
 
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {

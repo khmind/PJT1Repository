@@ -22,13 +22,16 @@ public class UserDAO {
 	}
 	
 	
-	public List<UserVO> selectList() throws Exception {
+	public List<UserVO> selectList(UserVO userV) throws Exception {
 		
 		int total = 0, start = 0, end = 0;
 		int pageSize = 3;		// 페이징할 수
 		int pageSeperate = 10;	// 페이징할 단위
 		int pageTotal = 0;		// 전체페이지
 		int cpage = 0;		
+		
+		
+		System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText());
 		
 		Connection conn = null;
 		Statement stmt = null;

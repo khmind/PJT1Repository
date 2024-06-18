@@ -64,25 +64,12 @@
 	
 		
 		function search(){
-			
-			alert("11");
-			
-			
-			//let frm = document.frm;
-			let frm = document.forms["frm"];
-		
-			
-			alert("frm : " + frm); 
-			
-			//let tt = frm.seaText.value;
-			
-			//alert("tt : " + tt);
-			
-			//alert('sel1 : ' + document.forms["frm"].sel1.value);
 
-			frm.action = "user.do";
-			frm.submit();	
+			//alert("sel1 : " +  document.frmGo.sel1.value + ", sel2 "  +  document.frmGo.sel2.value );
+			//alert("4 : " +  document.frmGo.seaText.value);
 			
+			frmGo.action = "user.do";
+			frmGo.submit();
 			 
 		}		
 	
@@ -113,7 +100,7 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">					                    
-                     <form action="user.do" method="post" name="frm">
+                     <form action="user.do" method="post" name="frmGo">
                         <div class="card-header py-3 float-right">  
                         
 							<select name="sel1" class="custom-select">
@@ -130,7 +117,7 @@
 		                  
 		            		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 		                        <div class="input-group">
-		                            <input name="seaText" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+		                            <input name="searchText" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
 		                                aria-label="Search" aria-describedby="basic-addon2">
 		                            <div class="input-group-append">
 		                            	<a href="javascript:search()">
@@ -143,6 +130,7 @@
 		                  	</div>                     
                         </div>
                         </form> 
+                        
 						<table class="table">
 							<thead class="thead-dark">	
 								<tr>
