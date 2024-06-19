@@ -47,7 +47,8 @@ public class UserDAO {
 		if ( userV.getSel1() != null &&  userV.getSel1() != "") {
 			order = " order by " + userV.getSel1() + " desc " ;
 		}
-
+		
+		
 		String sql =
 				" select a.user_id, a.user_name, a.user_email, a.user_pw, a.user_role, a.user_date, b.cnt, b.goodCnt, b.rcmCnt \n" + 
 				" from user_info as a \n" + 
