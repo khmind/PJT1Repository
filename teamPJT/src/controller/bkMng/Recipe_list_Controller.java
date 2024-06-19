@@ -13,7 +13,7 @@ public class Recipe_list_Controller implements Controller{
 		return this;
 	}
 	@Override 
-	public String execute(Map<String, Object> model) throws Exception {
+	public String execute(String flag, Map<String, Object> model) throws Exception {
 		
 		model.put("recipe_list", listDAO.recipeList());
 		return "bk_recipe.jsp";

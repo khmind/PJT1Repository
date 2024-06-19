@@ -28,15 +28,25 @@ public class UserDAO {
 		int pageSize = 3;		// 페이징할 수
 		int pageSeperate = 10;	// 페이징할 단위
 		int pageTotal = 0;		// 전체페이지
-		int cpage = 0;		
-		
+		int cpage = 0;
 		
 		System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText());
 		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		List<UserVO> UserVOs = new ArrayList<UserVO>();
+		List<UserVO> list = new ArrayList<UserVO>();
+		
+		String where = "" ;
+		String order = "";
+		
+		if ( userV.getSel2() != null &&  userV.getSel2() != "") {				
+			where = " and " +  userV.getSel2() + " like '%" + userV.getSearchText() +"%'";
+		}
+		
+		if ( userV.getSel1() != null &&  userV.getSel1() != "") {
+			order = " order by " + userV.getSel1() + " desc " ;
+		}
 
 		String sql =
 				" select a.user_id, a.user_name, a.user_email, a.user_pw, a.user_role, a.user_date, b.cnt, b.goodCnt, b.rcmCnt \n" + 
@@ -46,10 +56,12 @@ public class UserDAO {
 				" 	from recipe_info \n" + 
 				"   group by user_id \n" + 
 				" ) as b \n" + 
-				" on a.user_id = b.user_id \n";
+				" on a.user_id = b.user_id \n" +
+				" where 1=1 \n" +
+				where +
+				order ;
 		
-		
-		
+		System.out.println("sql : " + sql);
 					
 		try {
 		
@@ -68,9 +80,12 @@ public class UserDAO {
 						.setUser_date(rs.getDate("user_date"))			
 						.setCnt(rs.getInt("cnt"))
 						.setGoodCnt(rs.getInt("goodCnt"))
-						.setRcmCnt(rs.getInt("rcmCnt"));
+						.setRcmCnt(rs.getInt("rcmCnt"))
+						.setSel1(userV.getSel1())
+						.setSel2(userV.getSel2())
+						.setSearchText(userV.getSearchText());
 				
-				UserVOs.add(user);		
+				list.add(user);		
 				
 			}
 			
@@ -82,7 +97,7 @@ public class UserDAO {
 		    try {if (conn != null) conn.close();} catch(Exception e) {}		    
 		}
 		
-		return UserVOs;
+		return list;
 	}
 	
 /*	

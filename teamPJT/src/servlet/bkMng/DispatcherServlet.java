@@ -29,6 +29,10 @@ public class DispatcherServlet extends HttpServlet{
 		
 		String servletPath = arg0.getServletPath();
 		
+		String flag ="";
+		
+		
+		
 		System.out.println(servletPath);
 		
 		try {
@@ -61,12 +65,14 @@ public class DispatcherServlet extends HttpServlet{
 							.setSearchText(arg0.getParameter("searchText"))
 						);
 				
+				flag = "list";
+				
 			}else if("/view/bkMng/recipe.do".equals(servletPath)) {
 
 				
 			} 
 			
-			String viewUrl = contro.execute(model);
+			String viewUrl = contro.execute(flag, model);
 			
 			for(String key : model.keySet()) {
 				arg0.setAttribute(key, model.get(key));

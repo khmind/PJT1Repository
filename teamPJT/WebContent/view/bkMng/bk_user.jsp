@@ -30,10 +30,10 @@
     <link href="../css/comm.admin.css" rel="stylesheet">
     
     <style type="text/css">
-    	.th0 { width:  5%; }
+    	.th0 { width:  2%; }
     	.th1 { width:  10%; }
     	.th2 { width:  10%; }
-    	.th3 { width:  30%; }
+    	.th3 { width:  25%; }
     	.th4 { width:  10%; } 
     	.th5 { width:  10%; } 
     	.th6 { width:  10%; }
@@ -64,20 +64,25 @@
 	
 		
 		function search(){
-
-			//alert("sel1 : " +  document.frmGo.sel1.value + ", sel2 "  +  document.frmGo.sel2.value );
-			//alert("4 : " +  document.frmGo.seaText.value);
 			
 			frmGo.action = "user.do";
-			frmGo.submit();
-			 
+			frmGo.submit();			 
 		}		
+		
+		
+		function setValue(){
+
+			 frmGo.sel1.value = frmGo.h_sel1.value;
+			 frmGo.sel2.value = frmGo.h_sel2.value;
+			 frmGo.searchText.value = frmGo.h_searchText.value;
+			
+		}
 	
 	</script>  
 	
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="setValue()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -99,8 +104,8 @@
                     <h1 class="h3 mb-2 text-gray-800">사용자관리</h1>
 
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">					                    
-                     <form action="user.do" method="post" name="frmGo">
+                    <form action="user.do" method="post" name="frmGo">
+                    <div class="card shadow mb-4">
                         <div class="card-header py-3 float-right">  
                         
 							<select name="sel1" class="custom-select">
@@ -117,7 +122,7 @@
 		                  
 		            		<div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 		                        <div class="input-group">
-		                            <input name="searchText" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+		                            <input name="searchText" type="search" value ="" class="form-control bg-light border-0 small" placeholder="Search for..."
 		                                aria-label="Search" aria-describedby="basic-addon2">
 		                            <div class="input-group-append">
 		                            	<a href="javascript:search()">
@@ -129,14 +134,15 @@
 		                        </div>
 		                  	</div>                     
                         </div>
-                        </form> 
+                        
                         
 						<table class="table">
 							<thead class="thead-dark">	
 								<tr>
 									<th class="th0" scope="col"></th>			      
 									<th class="th1" scope="col">#</th>
-									<th class="th2" scope="col">사용자</th>
+									<th class="th2" scope="col">사용자번호</th>
+									<th class="th2" scope="col">성명</th>
 									<th class="th3" scope="col">email</th>
 									<th class="th4" scope="col">등록CNT</th>
 									<th class="th5" scope="col">추천CNT</th>
@@ -145,22 +151,30 @@
 								</tr>								
 							</thead>
 							<tbody>
- 							
-							<c:forEach var="user" items="${userlist}">  
+
+							<c:forEach var="user" items="${userlist}" varStatus="status">  
 								<tr onClick="move()">			
 									<td scope="row"></td>      
-									<td scope="row">1</td>
+									<td scope="row">${status.count}</td>
 									<td scope="row">${user.user_id }</td>
+									<td scope="row">${user.user_name }</td>
 									<td scope="row">${user.user_email }</td>
 									<td scope="row">${user.cnt }</td>
 									<td scope="row">${user.goodCnt }</td>
 									<td scope="row">${user.rcmCnt }</td>
 									<td scope="row">${user.user_date }</td>
+									
+									<c:if test="${status.last}">
+										<input type="hidden" value="${user.sel1 }" name="h_sel1" >
+										<input type="hidden" value="${user.sel2 }" name="h_sel2" >
+										<input type="hidden" value="${user.searchText }" name="h_searchText">
+									</c:if>								
 								</tr>
 							</c:forEach>
-			    				    
+
 							</tbody>
 						</table>
+						
 						<nav aria-label="Page navigation example">  
 						  <ul class="pagination justify-content-center">
 						    <li class="page-item">
@@ -177,9 +191,9 @@
 						      </a>
 						    </li>
 						  </ul>
-						</nav>
-					</div>
-					
+						</nav> 
+					</div>		
+					</form>			
                 </div>
                 <!-- /.container-fluid -->
 

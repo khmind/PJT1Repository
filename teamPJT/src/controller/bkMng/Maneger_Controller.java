@@ -17,7 +17,7 @@ public class Maneger_Controller implements Controller{
 	
 
 	@Override
-	public String execute(Map<String, Object> model) throws Exception {
+	public String execute(String flag, Map<String, Object> model) throws Exception {
 
 		return "bk_admin.jsp";
 	}

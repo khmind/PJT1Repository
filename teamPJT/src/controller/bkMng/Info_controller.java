@@ -19,7 +19,7 @@ public class Info_controller implements Controller{
 	}
 
 	@Override
-	public String execute(Map<String, Object> model) throws Exception {
+	public String execute(String flag, Map<String, Object> model) throws Exception {
 				
 		if(model.get("adLogin") == null) {
 			return "index.html";

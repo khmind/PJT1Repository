@@ -17,15 +17,22 @@ public class User_Controller implements Controller{
 	
 
 	@Override
-	public String execute(Map<String, Object> model) throws Exception {
+	public String execute(String flag, Map<String, Object> model) throws Exception {
 		
 		
 		//UserVO user = (UserVO) userDAO.selectList();	
+		String retrunValue = "";
 		
-		UserVO user = (UserVO)model.get("user");
-
-		model.put("userlist", userDAO.selectList(user));
-		return "bk_user.jsp";
+		if (flag.equals("list")) {
+		
+			UserVO user = (UserVO)model.get("user");
+	
+			model.put("userlist", userDAO.selectList(user));
+			
+			retrunValue = "bk_user.jsp";
+			
+		}
+		return retrunValue;
 	}
 
 }

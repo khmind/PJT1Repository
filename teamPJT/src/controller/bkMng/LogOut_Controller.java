@@ -9,7 +9,7 @@ import controller.Controller;
 public class LogOut_Controller implements Controller{
 
 	@Override
-	public String execute(Map<String, Object> model) throws Exception {
+	public String execute(String flag, Map<String, Object> model) throws Exception {
 
 		HttpSession session = (HttpSession)model.get("session");
 		session.invalidate();
