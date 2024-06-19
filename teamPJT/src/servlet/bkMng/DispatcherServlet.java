@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import vo.bkMng.InfoVO;
+import vo.bkMng.NoticeVO;
 import vo.bkMng.UserVO;
 
 @WebServlet("*.do")
@@ -70,7 +71,40 @@ public class DispatcherServlet extends HttpServlet{
 			}else if("/view/bkMng/recipe.do".equals(servletPath)) {
 
 				
-			} 
+			}else if("/view/bkMng/notice.do".equals(servletPath)) {
+				
+			}else if("/view/bkMng/notice_update.do".equals(servletPath)) {
+					
+					if(arg0.getParameter("notice_id")!=null) {
+						System.out.println("-------------7");
+						model.put("notice_modify", new NoticeVO()
+								.setNotice_id(arg0.getParameter("notice_id"))
+								.setNotice_title(arg0.getParameter("notice_title"))
+								.setNotice_content(arg0.getParameter("notice_content"))
+								);
+					}else {
+						System.out.println("-------------11");
+						model.put("notice_modify", new NoticeVO()
+								.setNotice_id(arg0.getParameter("notice_id"))
+								.setNotice_title(arg0.getParameter("notice_title"))
+								.setNotice_content(arg0.getParameter("notice_content"))
+								);					
+					}
+					
+			}else if("/view/bkMng/notice_register.do".equals(servletPath)){
+					
+					if(arg0.getParameter("notice_title")!=null) {
+						model.put("notice_register", new NoticeVO()
+								//.setNotice_id(arg0.getParameter("notice_id"))
+								.setNotice_title(arg0.getParameter("notice_title"))
+								.setNotice_content(arg0.getParameter("notice_content"))
+								);		
+						System.out.println(arg0.getParameter("notice_title")+"**********************");
+					}
+				} 
+			
+			
+			
 			
 			String viewUrl = contro.execute(flag, model);
 			
