@@ -30,7 +30,7 @@
       username="pjt"
       password="mysql#987"
       driverClassName="com.mysql.jdbc.Driver"
-      url="jdbc:mysql://192.168.0.25:3306/recipe">
+      url="jdbc:mysql://192.168.0.9:3306/recipe">
     </Resource>                              
                                   
     <WatchedResource>WEB-INF/web.xml</WatchedResource>

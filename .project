@@ -3,6 +3,8 @@
 	<name>PJT1Repository</name>
 	<comment></comment>
 	<projects>
+		<project>Servers</project>
+		<project>teamPJT</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>

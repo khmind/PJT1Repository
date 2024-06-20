@@ -77,7 +77,7 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
             
             <!-- Nav Item - 메뉴관리 -->
             <li class="nav-item">
-                <a class="nav-link" href="bk_menu.html">
+                <a class="nav-link" href="javascript:goAction('category.do')">
                     <i class="fas fa-fw fa-table"></i>
                     <span>메뉴관리</span></a>
             </li>            
