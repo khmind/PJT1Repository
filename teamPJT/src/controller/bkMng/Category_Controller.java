@@ -22,9 +22,9 @@ public class Category_Controller implements Controller{
 		if(flag.equals("cate_list")) {
 			returnValue = cate_list(flag, model);
 		}
-		else if(flag.equals("cate_update")) {
+		else if(flag.equals("cate_edit")) {
 			returnValue = cate_update(flag, model);
-		}
+		} 
 		else if(flag.equals("cate_add")) {
 			returnValue = cate_add(flag,model);
 		}
@@ -39,8 +39,9 @@ public class Category_Controller implements Controller{
 	private String cate_delete(String flag, Map<String, Object> model) throws Exception {
 		
 		String[] no = (String[])model.get("no");
-		cateDAO.delete(no);
-		
+		//cateDAO.delete(no);
+		int res = cateDAO.delete(no);
+		System.out.println("?????????????????????"+res);
 		return "redirect:category.do";
 	}
 
@@ -55,7 +56,20 @@ public class Category_Controller implements Controller{
 
 	private String cate_update(String flag, Map<String, Object> model) throws Exception{
 		
-		return null;
+		if(model.get("cate_edit") == null) {
+			
+			String id = (String)model.get("cate_id");
+			CategoryVO cateVO=cateDAO.detail(id);
+			model.put("cateUp", cateVO);
+			
+			return "bk_category_edit.jsp";
+		}
+		else {
+			CategoryVO vo = (CategoryVO)model.get("cate_edit");
+			cateDAO.update(vo);
+			
+			return "redirect:category.do";
+		}
 	}
 
 	private String cate_list(String flag, Map<String, Object> model) throws Exception{
