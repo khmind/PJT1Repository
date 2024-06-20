@@ -24,12 +24,6 @@ public class UserDAO {
 	
 	public List<UserVO> selectList(UserVO userV) throws Exception {
 		
-		int total = 0, start = 0, end = 0;
-		int pageSize = 3;		// 페이징할 수
-		int pageSeperate = 10;	// 페이징할 단위
-		int pageTotal = 0;		// 전체페이지
-		int cpage = 0;
-		
 		System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText());
 		
 		Connection conn = null;
@@ -38,7 +32,12 @@ public class UserDAO {
 		List<UserVO> list = new ArrayList<UserVO>();
 		
 		String where = "" ;
-		String order = "";
+		String order = "";		
+		int total = 0, start = 0, endP = 0;		
+		int pageSize = 3;		// 페이징할 수
+		int pageSeperate = 10;	// 페이징할 단위
+		int pageTotal = 0;		// 전체페이지
+		int cpage = 0;		
 		
 		if ( userV.getSel2() != null &&  userV.getSel2() != "") {				
 			where = " and " +  userV.getSel2() + " like '%" + userV.getSearchText() +"%'";
@@ -48,6 +47,17 @@ public class UserDAO {
 			order = " order by " + userV.getSel1() + " desc " ;
 		}
 		
+		String sqlCnt =
+				" select count(a.user_id) \n" + 
+				" from user_info as a \n" + 
+				" inner join ( \n" + 
+				" 	select user_id, count(*) as cnt,  sum(recipe_good) as goodCnt, sum(recipe_rcm) as rcmCnt \n" + 
+				" 	from recipe_info \n" + 
+				"   group by user_id \n" + 
+				" ) as b \n" + 
+				" on a.user_id = b.user_id \n" +
+				" where 1=1 \n" +
+				where ;	
 		
 		String sql =
 				" select a.user_id, a.user_name, a.user_email, a.user_pw, a.user_role, a.user_date, b.cnt, b.goodCnt, b.rcmCnt \n" + 
@@ -62,12 +72,30 @@ public class UserDAO {
 				where +
 				order ;
 		
+		System.out.println("sqlCnt : " + sqlCnt);
 		System.out.println("sql : " + sql);
 					
-		try {
-		
+		try {		
+			
 			conn = ds.getConnection();			
-			stmt = conn.createStatement();
+			stmt = conn.createStatement();			
+
+			rs = stmt.executeQuery(sqlCnt);
+			if (rs.next())
+				total = rs.getInt(1);
+			rs.close();
+			
+			cpage = 1;
+			
+			pageTotal = (total-1)/pageSize;
+			if (cpage<0) cpage=0;
+			if (cpage>pageTotal) cpage=pageTotal;		
+			
+			start = cpage * pageSize + 1;
+			endP = start + pageSize - 1;
+			
+			System.out.println(" total : " + total + ", start : " + start +", endP : " + endP);			
+
 			rs = stmt.executeQuery(sql);
 						
 			while(rs.next()) {
@@ -81,10 +109,7 @@ public class UserDAO {
 						.setUser_date(rs.getDate("user_date"))			
 						.setCnt(rs.getInt("cnt"))
 						.setGoodCnt(rs.getInt("goodCnt"))
-						.setRcmCnt(rs.getInt("rcmCnt"))
-						.setSel1(userV.getSel1())
-						.setSel2(userV.getSel2())
-						.setSearchText(userV.getSearchText());
+						.setRcmCnt(rs.getInt("rcmCnt"));
 				
 				list.add(user);		
 				
