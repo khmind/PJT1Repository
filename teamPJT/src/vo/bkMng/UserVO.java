@@ -17,8 +17,7 @@ public class UserVO {
 	private String sel1;
 	private String sel2;
 	private String searchText;
-	
-	
+	private String page;
 	
 	public String getUser_id() {
 		return user_id;
@@ -104,8 +103,12 @@ public class UserVO {
 		this.searchText = searchText;
 		return this;
 	}
-	
-	
-	 	
+	public String getPage() {
+		return page;
+	}
+	public UserVO setPage(String page) {
+		this.page = page;
+		return this;
+	} 	
 	
 }
