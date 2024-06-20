@@ -40,8 +40,7 @@ public class UserDAO {
 		int pageSeperate = 10;	// 페이징할 단위
 		int pageTotal = 0;		// 전체페이지
 		int cpage = 0;		
-		
-		
+				
 	  	int page=3;
 		int limit=3;
 		
