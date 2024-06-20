@@ -2,8 +2,6 @@ package controller.bkMng;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import controller.Controller;
 import dao.bkMng.UserDAO;
 import vo.bkMng.UserVO;

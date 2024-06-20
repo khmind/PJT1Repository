@@ -27,8 +27,10 @@ public class UserDAO {
 		System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText());
 		
 		Connection conn = null;
+		PreparedStatement pstmt = null;		
 		Statement stmt = null;
 		ResultSet rs = null;
+		
 		List<UserVO> list = new ArrayList<UserVO>();
 		
 		String where = "" ;
@@ -38,6 +40,13 @@ public class UserDAO {
 		int pageSeperate = 10;	// 페이징할 단위
 		int pageTotal = 0;		// 전체페이지
 		int cpage = 0;		
+		
+		
+	  	int page=3;
+		int limit=3;
+		
+		int startrow=(page-1)*limit;
+				
 		
 		if ( userV.getSel2() != null &&  userV.getSel2() != "") {				
 			where = " and " +  userV.getSel2() + " like '%" + userV.getSearchText() +"%'";
@@ -70,7 +79,9 @@ public class UserDAO {
 				" on a.user_id = b.user_id \n" +
 				" where 1=1 \n" +
 				where +
-				order ;
+				order +
+				" limit ?, ?"
+				;
 		
 		System.out.println("sqlCnt : " + sqlCnt);
 		System.out.println("sql : " + sql);
@@ -94,11 +105,20 @@ public class UserDAO {
 			start = cpage * pageSize + 1;
 			endP = start + pageSize - 1;
 			
-			System.out.println(" total : " + total + ", start : " + start +", endP : " + endP);			
-
-			rs = stmt.executeQuery(sql);
-						
+			System.out.println(" total : " + total + ", start : " + start +", endP : " + endP);
+			System.out.println(" -------------0 ");
+			System.out.println(" 0 startrow : "  + startrow + ", limit : " + limit);
+			
+			pstmt = conn.prepareStatement(sql); System.out.println(" -------------1 ");
+			pstmt.setInt(1,startrow); System.out.println(" -------------2 ");
+			pstmt.setInt(2, limit); System.out.println(" -------------3 ");
+			rs = pstmt.executeQuery();
+			
+			System.out.println(" startrow : "  + startrow + ", limit : " + limit);
+			
 			while(rs.next()) {
+				
+				System.out.println(" -------------rs.next() ");
 				
 				UserVO user = new UserVO()
 						.setUser_id(rs.getString("user_id"))
