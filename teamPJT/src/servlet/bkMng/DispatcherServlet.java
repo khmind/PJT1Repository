@@ -104,6 +104,7 @@ public class DispatcherServlet extends HttpServlet {
 			}
 			else if("/view/bkMng/cate_add.do".equals(servletPath)) {
 				System.out.println("add=========1");
+				
 				if(arg0.getParameter("cate_id") != null) {
 					System.out.println("add=========2");
 					model.put("add", new CategoryVO()
@@ -120,7 +121,7 @@ public class DispatcherServlet extends HttpServlet {
 				String[] del=arg0.getParameterValues("del_id");
 				for(int i=0; i<del.length; i++) {
 					
-					System.out.println("delete======1"+del[i]);
+					System.out.println("delete======2"+del[i]);
 				}
 				String btn = arg0.getParameter("btn");
 				if(btn.equals("delete")) {
@@ -131,6 +132,18 @@ public class DispatcherServlet extends HttpServlet {
 					model.put("no", ids);
 				}
 				flag = "cate_delete";
+			}
+			else if("/view/bkMng/cate_edit.do".equals(servletPath)) {
+				
+				System.out.println("edit======1");
+				if(arg0.getParameter("vv") !=null) {
+					model.put("cate_edit", new CategoryVO()
+							.setCate_id("cate_id")
+							.setCate_name("cate_name")
+							.setCate_order("cate_order")
+							.setCate_place("cate_place"));
+				}
+				flag="cate_edit";
 			}
 
 			

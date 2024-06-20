@@ -1,6 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
     <meta charset="utf-8">
@@ -77,14 +78,14 @@
                     <h1 class="h3 mb-2 text-gray-800">메뉴관리/수정</h1>
                     <div id="menu_update">
                     	<div class="row"><span class="title_content">메뉴코드 </span>
-                    	<input class="textfield" type="text" placeholder="F001" disabled></div>
+                    	<input class="textfield" name="cate_id" type="text" placeholder="${cateUp.cate_id }" disabled></div>
 					<div class="row"><span class="title_content">메뉴명 </span>
-                    	<input class="textfield" type="text"></div>
+                    	<input class="textfield" name="cate_name" type="text" value="${cateUp.cate_name }"></div>
 					<div class="row"><span class="title_content">메뉴순서 </span>
-                    	<input class="textfield" type="text"></div>
+                    	<input class="textfield" name="cate_order" type="text" value="${cateUp.cate_order }"></div>
 					<div class="row"><span class="title_content">위치 </span>
-                    	<select name="place">
-					      		<option value="" disabled selected>=선택=</option>
+                    	<select name="cate_place">
+					      		<option value="" disabled selected>${cateUp.cate_place }</option>
 					      		<option value="F">F</option>
 					      		<option value="B">B</option>
 					      		<option value="B_F">B_F</option>
