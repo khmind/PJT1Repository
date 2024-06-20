@@ -165,9 +165,9 @@
 									<td scope="row">${user.user_id }</td>
 									<td scope="row">${user.user_name }</td>
 									<td scope="row">${user.user_email }</td>
-									<td scope="row">${user.cnt }</td>
-									<td scope="row">${user.goodCnt }</td>
+									<td scope="row">${user.cnt }</td>									
 									<td scope="row">${user.rcmCnt }</td>
+									<td scope="row">${user.goodCnt }</td>
 									<td scope="row">${user.user_date }</td>
 								</tr>
 							</c:forEach>
