@@ -21,24 +21,31 @@ public class Info_controller implements Controller{
 	@Override
 	public String execute(String flag, Map<String, Object> model) throws Exception {
 				
+		System.out.println("-------------5");
+		String returnValue="";
+		if(flag.equals("login")) {
+			returnValue = login(flag, model);
+		}
+		return returnValue;
+		
+	}
+	
+	public String login(String flag, Map<String, Object> model) throws Exception{
 		if(model.get("adLogin") == null) {
 			return "index.html";
 		}
 		else {
 			InfoVO adLogin = (InfoVO)model.get("adLogin");
 			InfoVO vo = infoDAO.exist(adLogin.getUser_email(), adLogin.getUser_pw());
-			
 			if(vo != null) {
 				HttpSession session = (HttpSession)model.get("session");
 				session.setAttribute("infoVO", vo);
-				
-				return "/view/bkMng/bk_announcement.html";
+				return "notice.do";
 			}
 			else {
 				return "index.html";
 			}
 		}
-		
 	}
 
 }

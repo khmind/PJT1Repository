@@ -45,13 +45,14 @@ public class DispatcherServlet extends HttpServlet{
 			Controller contro=(Controller)sc.getAttribute(servletPath);
 			
 			if("/view/bkMng/login.do".equals(servletPath)) {
-				
+				flag = "login";
 				if(arg0.getParameter("email") != null) {
 					model.put("adLogin", new InfoVO()
 							.setUser_email(arg0.getParameter("email"))
 							.setUser_pw(arg0.getParameter("password"))
 							);
 				}
+				flag = "login";
 			}else if("/view/bkMng/user.do".equals(servletPath)) {
 				
 				String a = arg0.getParameter("sel1");
@@ -72,24 +73,24 @@ public class DispatcherServlet extends HttpServlet{
 
 				
 			}else if("/view/bkMng/notice.do".equals(servletPath)) {
-				
+				flag = "notice_list";
 			}else if("/view/bkMng/notice_update.do".equals(servletPath)) {
-					
+				
 					if(arg0.getParameter("notice_id")!=null) {
-						System.out.println("-------------7");
 						model.put("notice_modify", new NoticeVO()
 								.setNotice_id(arg0.getParameter("notice_id"))
 								.setNotice_title(arg0.getParameter("notice_title"))
 								.setNotice_content(arg0.getParameter("notice_content"))
 								);
+						flag = "notice_update";
 					}else {
-						System.out.println("-------------11");
 						model.put("notice_modify", new NoticeVO()
 								.setNotice_id(arg0.getParameter("notice_id"))
 								.setNotice_title(arg0.getParameter("notice_title"))
 								.setNotice_content(arg0.getParameter("notice_content"))
 								);					
 					}
+					flag = "notice_update";
 					
 			}else if("/view/bkMng/notice_register.do".equals(servletPath)){
 					
@@ -101,8 +102,9 @@ public class DispatcherServlet extends HttpServlet{
 								);		
 						System.out.println(arg0.getParameter("notice_title")+"**********************");
 					}
+					flag = "notice_register";
 				} 
-			
+				
 			
 			
 			
