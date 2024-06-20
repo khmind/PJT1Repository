@@ -122,7 +122,7 @@ public class DispatcherServlet extends HttpServlet {
 							);
 				}
 				flag = "cate_add";
-			}
+			} 
 			else if("/view/bkMng/cate_delete.do".equals(servletPath)) {
 				System.out.println("delete======1");
 				String[] del=arg0.getParameterValues("del_id");

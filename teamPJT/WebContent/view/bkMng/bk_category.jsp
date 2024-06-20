@@ -70,7 +70,7 @@ input {
 </style>
 
 
-
+ 
 <script type="text/javascript">
 	function move(cate_id) {
 	    document.frmgo.vv.value = cate_id;

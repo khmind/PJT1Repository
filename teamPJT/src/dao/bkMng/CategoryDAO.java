@@ -62,7 +62,7 @@ public class CategoryDAO {
 			System.out.println("add===========4");
 			conn=ds.getConnection();
 			pstmt=conn.prepareStatement(sql);
-			
+			 
 			pstmt.setString(1, vo.getCate_id());
 			pstmt.setString(2, vo.getCate_name());
 			pstmt.setString(3, vo.getCate_order());

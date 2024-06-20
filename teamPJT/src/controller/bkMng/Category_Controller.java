@@ -24,7 +24,7 @@ public class Category_Controller implements Controller{
 		}
 		else if(flag.equals("cate_edit")) {
 			returnValue = cate_update(flag, model);
-		}
+		} 
 		else if(flag.equals("cate_add")) {
 			returnValue = cate_add(flag,model);
 		}
