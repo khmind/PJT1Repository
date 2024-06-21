@@ -21,7 +21,7 @@ public class InfoDAO {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select user_name from user_info where user_email=? and user_pw=?";
+		String sql="select user_id, user_name from user_info where user_email=? and user_pw=?";
 		
 		try {
 			conn=ds.getConnection();
@@ -33,8 +33,8 @@ public class InfoDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				return new InfoVO()
-						.setUser_name(rs.getString("user_name"));
-				
+						.setUser_name(rs.getString("user_name"))
+						.setUser_id(rs.getString("user_id"));
 			}
 			else {
 				return null;
