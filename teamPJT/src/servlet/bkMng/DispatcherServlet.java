@@ -51,18 +51,25 @@ public class DispatcherServlet extends HttpServlet {
 				}
 				flag = "login";
 			} 
-			else if ("/view/bkMng/user.do".equals(servletPath)) {
+			else if ("/view/bkMng/user.do".equals(servletPath)) { 
 
 				String a = arg0.getParameter("sel1");
 				String b = arg0.getParameter("sel2");
 				String c = arg0.getParameter("searchText");
-
-				System.out.println(" a : " + a + ", b : " + b + ", c : " + c);
-
-				model.put("user", new UserVO().setSel1(arg0.getParameter("sel1")).setSel2(arg0.getParameter("sel2"))
-						.setSearchText(arg0.getParameter("searchText")));
-
-				flag = "list";
+				String page = arg0.getParameter("page");
+				
+				page = (page==null||page.equals("null")) ? "0" : page ;
+				
+				System.out.println( " a : " + a + ", b : "+ b +", c : " +c);	
+				
+				model.put("PageInfo", new UserVO()
+							.setSel1(arg0.getParameter("sel1"))
+							.setSel2(arg0.getParameter("sel2"))
+							.setSearchText(arg0.getParameter("searchText"))
+							.setPage(page)
+						);
+				
+				flag = "list";		
 
 			} 
 			else if ("/view/bkMng/notice.do".equals(servletPath)) {
