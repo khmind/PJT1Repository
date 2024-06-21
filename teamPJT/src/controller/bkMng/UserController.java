@@ -6,11 +6,11 @@ import controller.Controller;
 import dao.bkMng.UserDAO;
 import vo.bkMng.UserVO;
 
-public class User_Controller implements Controller{
+public class UserController implements Controller{
 	
 	UserDAO userDAO;
 	
-	public User_Controller setDAO(UserDAO userDAO) {
+	public UserController setDAO(UserDAO userDAO) {
 		this.userDAO = userDAO;
 		return this;
 	}

@@ -13,7 +13,7 @@ import controller.bkMng.LogOut_Controller;
 import controller.bkMng.Maneger_Controller;
 import controller.bkMng.Notice_Controller;
 import controller.bkMng.Recipe_list_Controller;
-import controller.bkMng.User_Controller;
+import controller.bkMng.UserController;
 import dao.bkMng.CategoryDAO;
 import dao.bkMng.InfoDAO;
 import dao.bkMng.ManegerDAO;
@@ -56,7 +56,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			
 			sc.setAttribute("/view/bkMng/login.do", new Info_controller().setInfoDAO(dao));
 			sc.setAttribute("/view/bkMng/logout.do", new LogOut_Controller());
-			sc.setAttribute("/view/bkMng/user.do", new User_Controller().setDAO(userDAO));
+			sc.setAttribute("/view/bkMng/user.do", new UserController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/maneger.do", new Maneger_Controller().setDAO(manegerDAO));
 			sc.setAttribute("/view/bkMng/notice.do", new Notice_Controller().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_update.do", new Notice_Controller().setDAO(noticeDAO));
