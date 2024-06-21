@@ -34,25 +34,27 @@ public class UserDAO {
 		List<UserVO> list = new ArrayList<UserVO>();
 		
 		String where = "" ;
-		String order = "";		
-		int total = 0, start = 0, endP = 0;		
-		int pageSize = 3;		// 페이징할 수
+		String order = "";
+		
+		int total = 0;		
+		//int total = 0, start = 0, endP = 0;
+		//int pageSize = 3;		// 페이징할 수
 		int pageSeperate = 10;	// 페이징할 단위
 		int pageTotal = 0;		// 전체페이지
-		int cpage = 0;		
+		//int cpage = 0;		
 				
-	  	int page=3;
+	  	int page= Integer.parseInt(userV.getPage());
 		int limit=3;
 		
 		int startrow=(page-1)*limit;
 				
 		
 		if ( userV.getSel2() != null &&  userV.getSel2() != "") {				
-			where = " and " +  userV.getSel2() + " like '%" + userV.getSearchText() +"%'";
+			where = " and " +  userV.getSel2() + " like '%" + userV.getSearchText() +"%' \n";
 		}
 		
 		if ( userV.getSel1() != null &&  userV.getSel1() != "") {
-			order = " order by " + userV.getSel1() + " desc " ;
+			order = " order by " + userV.getSel1() + " desc  \n" ;
 		}
 		
 		String sqlCnt =
@@ -78,7 +80,7 @@ public class UserDAO {
 				" on a.user_id = b.user_id \n" +
 				" where 1=1 \n" +
 				where +
-				order +
+				order + 
 				" limit ?, ?"
 				;
 		
@@ -95,29 +97,24 @@ public class UserDAO {
 				total = rs.getInt(1);
 			rs.close();
 			
-			cpage = 1;
 			
+			/*
 			pageTotal = (total-1)/pageSize;
-			if (cpage<0) cpage=0;
-			if (cpage>pageTotal) cpage=pageTotal;		
 			
-			start = cpage * pageSize + 1;
-			endP = start + pageSize - 1;
+			*/
+
 			
-			System.out.println(" total : " + total + ", start : " + start +", endP : " + endP);
-			System.out.println(" -------------0 ");
+			System.out.println(" total : " + total );			
 			System.out.println(" 0 startrow : "  + startrow + ", limit : " + limit);
 			
-			pstmt = conn.prepareStatement(sql); System.out.println(" -------------1 ");
-			pstmt.setInt(1,startrow); System.out.println(" -------------2 ");
-			pstmt.setInt(2, limit); System.out.println(" -------------3 ");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,startrow);
+			pstmt.setInt(2, limit);
 			rs = pstmt.executeQuery();
 			
 			System.out.println(" startrow : "  + startrow + ", limit : " + limit);
 			
 			while(rs.next()) {
-				
-				System.out.println(" -------------rs.next() ");
 				
 				UserVO user = new UserVO()
 						.setUser_id(rs.getString("user_id"))

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>         
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>      
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <head>
 
@@ -61,21 +62,27 @@
 		function move(){		
 			window.open('bk_user_detail.html', '_self');
 		}
-	
 		
 		function search(){
 			
 			frmGo.action = "user.do";
+			frmGo.page.value = 1;
 			frmGo.submit();			 
-		}		
+		}
 		
+		function gotoPage(page){
+			
+			frmGo.action = "user.do";
+			frmGo.page.value = page;
+			frmGo.submit();			 
+		}
 		
 		function setValue(){
 
 			 frmGo.sel1.value = frmGo.h_sel1.value;
 			 frmGo.sel2.value = frmGo.h_sel2.value;
 			 frmGo.searchText.value = frmGo.h_searchText.value;
-			
+			 
 		}
 			
  	</script>  
@@ -108,7 +115,7 @@
 						<input type="hidden" value="${PageInfo.sel1 }" name="h_sel1" >
 						<input type="hidden" value="${PageInfo.sel2 }" name="h_sel2" >
 						<input type="hidden" value="${PageInfo.searchText }" name="h_searchText">
-						<input type="hidden" value="${PageInfo.page }" name="h_page">
+						<input type="hidden" value="${PageInfo.page }" name="page">
 										                    
                     
                     <div class="card shadow mb-4">
@@ -174,24 +181,52 @@
 
 							</tbody>
 						</table>
+				
+				
+					    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>							
+						<fmt:parseNumber value = "${page}" var = "nowPage"/>							
+					  	<%--     [ ${nowPage} ]	 --%>						
+						 
 						
 						<nav aria-label="Page navigation example">  
 						  <ul class="pagination justify-content-center">
-						    <li class="page-item">
-						      <a class="page-link" href="#" aria-label="Previous">
-						        <span aria-hidden="true">&laquo;</span>
-						      </a>
+						    <li class="page-item">						  			    
+ 	 					    <c:choose>
+						    	<c:when test = "${nowPage<=1}">
+							      <a class="page-link" href="#" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+						    	</c:when>
+								<c:otherwise>
+							      <a class="page-link" href="javascript:gotoPage('${nowPage-1}')" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+								</c:otherwise>
+							</c:choose>
 						    </li>
-						    <li class="page-item"><a class="page-link" href="#">1</a></li>
-						    <li class="page-item"><a class="page-link" href="#">2</a></li>
-						    <li class="page-item"><a class="page-link" href="#">3</a></li>
+						     						    
+						    <li class="page-item"><a class="page-link" href="javascript:gotoPage('1')">1</a></li>
+						    <li class="page-item"><a class="page-link" href="javascript:gotoPage('2')">2</a></li>
+						    <li class="page-item"><a class="page-link" href="javascript:gotoPage('3')">3</a></li>
+						    
 						    <li class="page-item">
-						      <a class="page-link" href="#" aria-label="Next">
-						        <span aria-hidden="true">&raquo;</span>
-						      </a>
+ 	 					    <c:choose>
+						    	<c:when test = "${nowPage>=3}">
+							      <a class="page-link" href="#" aria-label="Next">
+							        <span aria-hidden="true">&raquo;</span>
+							      </a>
+							    </c:when>
+							    <c:otherwise>
+							      <a class="page-link" href="javascript:gotoPage('${nowPage+1}')" aria-label="Next">
+							        <span aria-hidden="true">&raquo;</span>
+							      </a>							    
+							    </c:otherwise>
+							 </c:choose>
 						    </li>
 						  </ul>
 						</nav> 
+						
+						
 					</div>		
 					</form>			
                 </div>
