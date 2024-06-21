@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 
 import controller.bkMng.Category_Controller;
 import controller.bkMng.Info_controller;
-import controller.bkMng.LogOut_Controller;
+import controller.bkMng.LogOutController;
 import controller.bkMng.ManegerController;
 import controller.bkMng.Notice_Controller;
 import controller.bkMng.Recipe_list_Controller;
@@ -55,7 +55,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			cateDAO.setDs(ds);
 			
 			sc.setAttribute("/view/bkMng/login.do", new Info_controller().setInfoDAO(dao));
-			sc.setAttribute("/view/bkMng/logout.do", new LogOut_Controller());
+			sc.setAttribute("/view/bkMng/logout.do", new LogOutController());
 			sc.setAttribute("/view/bkMng/user.do", new UserController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/maneger.do", new ManegerController().setDAO(manegerDAO));
 			sc.setAttribute("/view/bkMng/notice.do", new Notice_Controller().setDAO(noticeDAO));

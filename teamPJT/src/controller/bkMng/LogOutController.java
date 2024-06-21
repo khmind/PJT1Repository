@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 
-public class LogOut_Controller implements Controller{
+public class LogOutController implements Controller{
 
 	@Override
 	public String execute(String flag, Map<String, Object> model) throws Exception {
