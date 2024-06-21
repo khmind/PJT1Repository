@@ -45,7 +45,7 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
 
             <!-- Nav Item - 공지사항 -->
             <li class="nav-item">
-                <a class="nav-link" href="bk_announcement.html">
+                <a class="nav-link" href="javascript:goAction('notice.do')">
                     <i class="fas fa-fw fa-table"></i>
                     <span>공지사항</span></a>
             </li>
@@ -53,7 +53,7 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
             <hr class="sidebar-divider my-0"> 
             <!-- Nav Item - 문의사항 -->
             <li class="nav-item">
-                <a class="nav-link" href="bk_ask.html">
+                <a class="nav-link" href="javascript:goAction('ask.do')">
                     <i class="fas fa-fw fa-table"></i>
                     <span>문의사항</span></a> 
             </li>

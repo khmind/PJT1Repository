@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import vo.bkMng.CategoryVO;
@@ -84,17 +85,29 @@ public class DispatcherServlet extends HttpServlet {
 				flag = "notice_update";
 
 			}
-			else if ("/view/bkMng/notice_register.do".equals(servletPath)) {
+			else if("/view/bkMng/notice_register.do".equals(servletPath)){				
+				
+				HttpSession session = (HttpSession)model.get("session");	
+				InfoVO vo = (InfoVO)session.getAttribute("infoVO");				
+					
+					if(arg0.getParameter("notice_title")!=null) {
+						
+						model.put("notice_register", new NoticeVO()
+								.setUser_id(vo.getUser_id())
+								.setNotice_title(arg0.getParameter("notice_title"))
+								.setNotice_content(arg0.getParameter("notice_content"))
+								);		
 
-				if (arg0.getParameter("notice_title") != null) {
-					model.put("notice_register", new NoticeVO()
-							// .setNotice_id(arg0.getParameter("notice_id"))
-							.setNotice_title(arg0.getParameter("notice_title"))
-							.setNotice_content(arg0.getParameter("notice_content")));
-					System.out.println(arg0.getParameter("notice_title") + "**********************");
+					}
+					flag = "notice_register";
 				}
-				flag = "notice_register";
-			}
+				else if("/view/bkMng/notice_delete.do".equals(servletPath)){
+					System.out.println("---------------------------------555 " +arg0.getParameter("notice_id"));
+					model.put("notice_delete", arg0.getParameter("notice_id"));
+					flag = "notice_delete";
+				
+				}
+			
 			else if ("/view/bkMng/recipe.do".equals(servletPath)) {
 				flag = "recipe_list";
 				

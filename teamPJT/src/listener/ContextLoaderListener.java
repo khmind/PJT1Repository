@@ -46,16 +46,12 @@ public class ContextLoaderListener implements ServletContextListener{
 			UserDAO userDAO =  new UserDAO();
 			Recipe_listDAO listDAO = new Recipe_listDAO();
 			NoticeDAO noticeDAO = new NoticeDAO();
-			//Notice_UpdateDAO notice_updateDAO = new Notice_UpdateDAO();
-			//Notice_RegisterDAO notice_registerDAO = new Notice_RegisterDAO();
 			CategoryDAO cateDAO=new CategoryDAO();
 			
 			dao.setDataSource(ds);
 			userDAO.setDataSource(ds);
 			listDAO.setDs(ds); 
 			noticeDAO.setDataSource(ds);
-			//notice_updateDAO.setDataSource(ds);
-			//notice_registerDAO.setDataSource(ds);
 			cateDAO.setDs(ds);
 			
 			sc.setAttribute("/view/bkMng/login.do", new Info_controller().setInfoDAO(dao));
@@ -65,6 +61,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/notice.do", new Notice_Controller().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_update.do", new Notice_Controller().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_register.do", new Notice_Controller().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/notice_delete.do", new Notice_Controller().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/recipe.do", new Recipe_list_Controller().setRecipeListDAO(listDAO));
 			sc.setAttribute("/view/bkMng/category.do", new Category_Controller().setCateDAO(cateDAO));
 			sc.setAttribute("/view/bkMng/cate_add.do", new Category_Controller().setCateDAO(cateDAO));

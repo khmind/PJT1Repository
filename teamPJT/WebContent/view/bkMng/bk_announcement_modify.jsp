@@ -28,17 +28,17 @@
   	}
     </style>
 <script type="text/javascript">
-/* function confirmModal() {
-		 location = "notice_update.do";
-} */
+function confirmModal() {
+	 document.frmtt.notice_id.value = noticeId;
+     document.frmtt.action="notice_update.do"; 
+     document.frmtt.submit();
+} 
 
-function confirmModal3() {
-	if (window.confirm("삭제을 완료했습니다.")){
-		location = "notice.do";
-	}
-	else{
-		console.log("취소.변화없음");
-	}
+function confirmModal3(noticeID) {
+	 document.frmtt.notice_id2.value = noticeId;
+     document.frmtt.action="notice_delete.do"; 
+     document.frmtt.submit();
+	//location = "notice_delete.do";
 }
 </script>
 </head>
@@ -57,8 +57,9 @@ function confirmModal3() {
             <div id="content">
 
                 <!-- Begin Page Content -->
-                <form action="notice_update.do" method="post" name="frmtt">
-                <input type="hidden" name="notice_id" value="${notice.notice_id }">
+                <form action="" method="post" name="frmtt">
+                <input type="hidden" name="notice_id" value="">
+                <input type="hidden" name="notice_id2" value="">
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
@@ -77,8 +78,8 @@ function confirmModal3() {
                         </div>  
                     </div> 
                     <div class="btn" style="display: flex; justify-content: flex-end; ">
-      					<button type="submit" class="btn btn-outline-primary ml-3" style="width:75px">수정</button>
-      					<button type="button" class="btn btn-outline-danger ml-3" onclick="confirmModal3()"style="width:75px">삭제</button>
+      					<button type="submit" class="btn btn-outline-primary ml-3" onclick="confirmModal(${notice.notice_id})" style="width:75px">수정</button>
+      					<button type="submit" class="btn btn-outline-danger ml-3" onclick="confirmModal3(${notice.notice_id})"style="width:75px" name="btn">삭제</button>
 					</div>                      
                 </div>
                 </form>

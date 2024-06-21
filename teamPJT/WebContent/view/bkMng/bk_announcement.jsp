@@ -52,6 +52,8 @@
         document.frmtt.action="notice_update.do"; 
         document.frmtt.submit();
     }
+
+   
     </script>
 </head>
 
@@ -98,9 +100,12 @@
                                 <option value="1">제목</option>
                                 <option value="2">내용</option>
                             </select>    
-                            <a href="notice_delete.do">            
-                                <button type="button" class="btn btn-outline-danger float-right mr-1" >삭제</button>
-                            </a>
+                            <form action="notice_delete.do" name="frmt" method="post">
+                                <button type="button" value ="notice_id"class="btn btn-outline-danger float-right mr-1"  name="delete">
+                                	삭제
+                                </button>
+                            </form>            
+                            
                             <a href="notice_register.do">
                                 <button type="button" class="btn btn-outline-primary float-right mr-1">등록</button>
                             </a>
@@ -120,13 +125,13 @@
                                 </thead> 
                                 <tbody>
                                     <c:forEach var="notice" items="${noticelist}">                      
-                                        <tr onclick="move('${notice.notice_id}')">
-                                            <th class="th1"><input type="checkbox" name="chk" value="1"></th>
-                                            <th class="th1" scope="row">${notice.notice_id}</th>
-                                            <td class="th2">${notice.notice_title}</td>
-                                            <td class="th1">${notice.user_id}</td>
-                                            <td class="th3">${notice.notice_date}</td>
-                                            <td class="th3">${notice.notice_update}</td>
+                                        <tr >
+                                            <th class="th1"><input type="checkbox" name="user_id" class="chkGrp" value="${notice.user_id}"></th>
+                                            <th class="th1" scope="row" onclick="move('${notice.notice_id}')">${notice.notice_id}</th>
+                                            <td class="th2" onclick="move('${notice.notice_id}')">${notice.notice_title}</td>
+                                            <td class="th1" onclick="move('${notice.notice_id}')">${notice.user_id}</td>
+                                            <td class="th3" onclick="move('${notice.notice_id}')">${notice.notice_date}</td>
+                                            <td class="th3"onclick="move('${notice.notice_id}')">${notice.notice_update}</td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

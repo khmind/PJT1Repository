@@ -4,7 +4,6 @@ import java.util.Map;
 
 import controller.Controller;
 import dao.bkMng.NoticeDAO;
-import dao.bkMng.UserDAO;
 import vo.bkMng.NoticeVO;
 
 public class Notice_Controller implements Controller{
@@ -66,6 +65,10 @@ public class Notice_Controller implements Controller{
 				
 			
 				NoticeVO notice = (NoticeVO)model.get("notice_register"); 
+				
+				System.out.println(" notice :" + notice.getUser_id());
+				
+				
 				noticeDAO.insert(notice);
 				
 				System.out.println(" regi------------result  : ");
@@ -76,6 +79,13 @@ public class Notice_Controller implements Controller{
 		 
 		} 
 	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
+		
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
+		  String notice_id = (String) model.get("notice_id");
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
+		  noticeDAO.delete(notice_id);
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
+		
 		return "redirect:notice.do";
 	}
 	

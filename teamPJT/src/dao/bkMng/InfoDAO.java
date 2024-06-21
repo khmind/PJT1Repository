@@ -17,7 +17,7 @@ public class InfoDAO {
 	}
 	
 	public InfoVO exist(String email, String password) throws Exception{
-		
+		 
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;

@@ -38,6 +38,10 @@ public class Info_controller implements Controller{
 			InfoVO adLogin = (InfoVO)model.get("adLogin");
 			InfoVO vo = infoDAO.exist(adLogin.getUser_email(), adLogin.getUser_pw());
 			if(vo != null) {
+				
+				System.out.println(" id : " + vo.getUser_id());
+				System.out.println(" name : " + vo.getUser_name());
+				
 				HttpSession session = (HttpSession)model.get("session");
 				session.setAttribute("infoVO", vo);
 				return "notice.do";
