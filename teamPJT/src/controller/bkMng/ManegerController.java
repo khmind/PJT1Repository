@@ -5,11 +5,11 @@ import java.util.Map;
 import controller.Controller;
 import dao.bkMng.ManegerDAO;
 
-public class Maneger_Controller implements Controller{
+public class ManegerController implements Controller{
 	
 	ManegerDAO manegerDAO;
 	
-	public Maneger_Controller setDAO(ManegerDAO manegerDAO) {
+	public ManegerController setDAO(ManegerDAO manegerDAO) {
 		this.manegerDAO = manegerDAO;
 		return this;
 	}
