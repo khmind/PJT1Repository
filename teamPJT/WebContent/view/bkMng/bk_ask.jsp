@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>      
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,6 +51,13 @@
     	    checkbox.checked = selectAll.checked;
     	  })
     	}
+    function move(askId) {
+        document.frmt.ask_id.value = askId;
+        document.frmt.action="ask_register.do"; 
+        document.frmt.submit();
+    }
+	
+    
     </script>
 </head>
 
@@ -88,7 +96,9 @@
                                 </button>
                             </div>
                         </div>
-                    </form>                        
+                    </form>
+                    <form action="" method="post" name="frmt">          
+                    <input type="hidden" name="ask_id" value="">            
 					<select name="sel2" class="custom-select float-right"> 
 						<option selected>- 전체 -</option>
 						<option value="1">제목</option>
@@ -100,20 +110,11 @@
 						<option value="2">답변필요</option> 
 					</select>
 					<button type="button" class="btn btn-outline-danger float-right mr-1" onclick="confirmModal()">삭제</button>
-                    	<script type="text/javascript">
-                    		function confirmModal() {
-								if (window.confirm("삭제하시겠습니까?")){
-									
-								}
-								else{
-									console.log("취소.변화없음");
-								}
-							}
-                    	</script>
 					<button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button>
                     <!-- Topbar Search -->
-				                            
+                           
                         </div>
+ 
 					  <table class="table">
 					  <thead class="thead-dark">
 					    <tr>
@@ -127,36 +128,20 @@
 					    </tr>
 					  </thead> 
 					  <tbody>
-					    <tr >
-					      <th class="th1"><input type="checkbox" name="chk" value="1"></th>
-					      <th class="th1" scope="row" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">1</th>
-					      <td class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">nickname</td>
-					      <td class="th3" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Mark</td>
-					      <td class="th4" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-13</td>
-					      <th class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Y</th>
-					      <td class="th5" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-14</td>
-					    </tr>
+					  <c:forEach var="ask" items="${asklist}">
 					    <tr>
-					      <th class="th1" ><input type="checkbox" name="chk" value="2"></th>    
-					      <th class="th1" scope="row" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2</th>
-					      <td class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">nickname</td>
-					      <td class="th3" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Mark</td>
-					      <td class="th4" onClick="location.href='bk_ask_register.html'"style="cursor: pointer;">2024-05-13</td>
-					      <th class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">N</th>
-					      <td class="th5" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-14</td>
+					      <th class="th1"><input type="checkbox" name="chk" value="${ask.ask_id}"></th>
+					      <th class="th1" scope="row" onclick="move('${ask.ask_id}')">${ask.ask_id}</th>
+					      <td class="th2" onclick="move('${ask.ask_id}')">${ask.user_id}</td>
+					      <td class="th3" onclick="move('${ask.ask_id}')">${ask.ask_title}</td>
+					      <td class="th4" onclick="move('${ask.ask_id}')">${ask.ask_date}</td>
+					      <th class="th2" onclick="move('${ask.ask_id}')">Y</th>
+					      <td class="th5" onclick="move('${ask.ask_id}')">${ask.recomm_date}</td>
 					    </tr>
-					    <tr>
-					      <th class="th1" ><input type="checkbox" name="chk" value="3"></th>    
-					      <th class="th1" scope="row" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">3</th>
-					      <td class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">nickname</td>
-					      <td class="th3" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Mark</td>
-					      <td class="th4" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-13</td>
-					      <th class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">N</th>
-					      <td class="th5" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-14</td>
-					    </tr>
+					    </c:forEach>
 					  </tbody>
 					</table>
-
+					</form>  
 
 <nav aria-label="Page navigation example">  
   <ul class="pagination justify-content-center">

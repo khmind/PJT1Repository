@@ -14,7 +14,6 @@ public class NoticeDAO {
 	
 	UserVO vo;
 	DataSource ds;
-	NoticeVO notice;
 	
 	public void setDataSource(DataSource ds) {
 		this.ds=ds;
@@ -106,8 +105,7 @@ public class NoticeDAO {
 			pstmt.setString(1,notice.getNotice_title());
 			pstmt.setString(2,notice.getNotice_content());
 			pstmt.setString(3,notice.getNotice_id());
-			
-			System.out.println("notice================="+notice.getNotice_id());
+
 			return pstmt.executeUpdate(); 
 			
 		}catch (Exception e) {
@@ -173,29 +171,52 @@ public class NoticeDAO {
 		return res;
 	}
 	
-	//공지사항 삭제
-	public int delete(String notice_id) throws Exception {
+	//공지사항 전체삭제
+	public int delete1(String[] ids) throws Exception {
 		
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~16");
+		int res=0;
+		int[] cnt=null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String query = "delete from notice_info where notice_id=?"+notice_id;
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~17"+query);
+		String sql="delete from notice_info where notice_id=?";
+		
 		try {
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~18");
+			conn=ds.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			
+			for(int i=0; i<ids.length; i++) {
+				pstmt.setString(1, ids[i]);
+				
+				pstmt.addBatch();
+			}
+			cnt=pstmt.executeBatch();
+			
+			
+		}catch (Exception e) {
+			res = 0;
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	//공지사항 각자삭제
+	public int delete2(String notice_id) throws Exception {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String query = "delete from members where notice_id='"+notice_id+"'";
+		
+		try {
 			conn = ds.getConnection();
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~19");
 			pstmt = conn.prepareStatement(query);
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~20"+notice_id);
-			pstmt.setString(1, notice_id);
 			return pstmt.executeUpdate();
+			
 		}catch (Exception e) {
 			throw e;
 		}finally {
 			try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
 			try {if (conn != null) conn.close();} catch(Exception e) {}
-		}
+		}		
 	}
-
 	
 }

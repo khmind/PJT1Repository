@@ -40,19 +40,30 @@
         }
     </style>
     <script type="text/javascript">
-    function selectAll(selectAll) {
-        const checkboxes = document.getElementsByName('chk');
-        checkboxes.forEach((checkbox) => {
-            checkbox.checked = selectAll.checked;
-        });
-    }
 
     function move(noticeId) {
         document.frmtt.notice_id.value = noticeId;
         document.frmtt.action="notice_update.do"; 
         document.frmtt.submit();
     }
-
+	
+	$(function() {
+		$("#chkAll").click(function() {
+			$(".chkGrp").attr("checked", this.checked);
+		});
+	}); 
+	function deleteChk() {
+		let groupList = "";
+		
+		$(".chkGrp:checked").each(function(idx, item) {
+			if (idx == 0) {
+				groupList = item.value;
+			} else {
+				groupList += "," + item.value;
+			}
+		});
+	}
+	
    
     </script>
 </head>
@@ -83,7 +94,8 @@
                         <div class="card-header py-3">  
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
                     
-                            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
+                            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right"
+                            			id="search" action="">
                                 <div class="input-group">
                                     <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                         aria-label="Search" aria-describedby="basic-addon2">
@@ -100,22 +112,22 @@
                                 <option value="1">제목</option>
                                 <option value="2">내용</option>
                             </select>    
-                            <form action="notice_delete.do" name="frmt" method="post">
-                                <button type="button" value ="notice_id"class="btn btn-outline-danger float-right mr-1"  name="delete">
+                       	 <form action="notice_delete.do" method="post" name="frmtt">  
+                            <input type="hidden" name="notice_id" value="">
+                           
+                                <button type="submit" name="btn" value ="delete"class="btn btn-outline-danger float-right mr-1"  >
                                 	삭제
                                 </button>
-                            </form>            
+                                   
                             
                             <a href="notice_register.do">
                                 <button type="button" class="btn btn-outline-primary float-right mr-1">등록</button>
                             </a>
                         </div>
-                        <form action="" method="post" name="frmtt">  
-                            <input type="hidden" name="notice_id" value="">
                             <table class="table">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th class="th1"><input type="checkbox" name="chk" value="selectall" onclick="selectAll(this)"></th>
+                                        <th class="th1"><input type="checkbox" id="chkAll" ></th>
                                         <th class="th1" scope="col">no.</th>
                                         <th scope="col">제목</th>
                                         <th scope="col">작성자</th>
@@ -126,7 +138,7 @@
                                 <tbody>
                                     <c:forEach var="notice" items="${noticelist}">                      
                                         <tr >
-                                            <th class="th1"><input type="checkbox" name="user_id" class="chkGrp" value="${notice.user_id}"></th>
+                                            <th class="th1"><input type="checkbox" name="del_id" class="chkGrp" id="chk" value="${notice.notice_id}"></th>
                                             <th class="th1" scope="row" onclick="move('${notice.notice_id}')">${notice.notice_id}</th>
                                             <td class="th2" onclick="move('${notice.notice_id}')">${notice.notice_title}</td>
                                             <td class="th1" onclick="move('${notice.notice_id}')">${notice.user_id}</td>

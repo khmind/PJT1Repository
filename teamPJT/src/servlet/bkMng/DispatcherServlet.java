@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import vo.bkMng.AskVO;
 import vo.bkMng.CategoryVO;
 import vo.bkMng.InfoVO;
 import vo.bkMng.NoticeVO;
@@ -51,25 +52,18 @@ public class DispatcherServlet extends HttpServlet {
 				}
 				flag = "login";
 			} 
-			else if ("/view/bkMng/user.do".equals(servletPath)) { 
+			else if ("/view/bkMng/user.do".equals(servletPath)) {
 
 				String a = arg0.getParameter("sel1");
 				String b = arg0.getParameter("sel2");
 				String c = arg0.getParameter("searchText");
-				String page = arg0.getParameter("page");
-				
-				page = (page==null||page.equals("null")) ? "0" : page ;
-				
-				System.out.println( " a : " + a + ", b : "+ b +", c : " +c);	
-				
-				model.put("PageInfo", new UserVO()
-							.setSel1(arg0.getParameter("sel1"))
-							.setSel2(arg0.getParameter("sel2"))
-							.setSearchText(arg0.getParameter("searchText"))
-							.setPage(page)
-						);
-				
-				flag = "list";		
+
+				System.out.println(" a : " + a + ", b : " + b + ", c : " + c);
+
+				model.put("user", new UserVO().setSel1(arg0.getParameter("sel1")).setSel2(arg0.getParameter("sel2"))
+						.setSearchText(arg0.getParameter("searchText")));
+
+				flag = "list";
 
 			} 
 			else if ("/view/bkMng/notice.do".equals(servletPath)) {
@@ -109,10 +103,33 @@ public class DispatcherServlet extends HttpServlet {
 					flag = "notice_register";
 				}
 				else if("/view/bkMng/notice_delete.do".equals(servletPath)){
-					System.out.println("---------------------------------555 " +arg0.getParameter("notice_id"));
-					model.put("notice_delete", arg0.getParameter("notice_id"));
-					flag = "notice_delete";
-				
+					System.out.println("----------------------------4"+arg0.getParameter("notice_id"));
+					String[] del=arg0.getParameterValues("del_id");System.out.println("----------------------------4"+del);
+					for(int i=0; i<del.length; i++) {
+					}
+					String btn = arg0.getParameter("btn");System.out.println("----------------------------4"+btn);
+					if(btn.equals("delete")) {
+						String[] ids= new String[del.length];
+						for(int i=0; i<del.length; i++) {
+							ids[i]=del[i];
+						}
+						model.put("no", ids);
+						flag = "notice_delete";
+					}else {
+						System.out.println("----------------------------5");
+						model.put("notice_id", arg0.getParameter("notice_id"));
+						flag = "notice_delete";
+					}
+					
+					
+				}else if("/view/bkMng/ask.do".equals(servletPath)) {
+					flag = "ask_list";
+				}else if("/view/bkMng/ask_register.do".equals(servletPath)) {
+					
+					if(arg0.getParameter("ask_id")!=null) {
+						model.put("ask_register", new AskVO().setAsk_id("ask_id"));
+					}
+					flag="ask_register";
 				}
 			
 			else if ("/view/bkMng/recipe.do".equals(servletPath)) {

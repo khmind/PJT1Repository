@@ -6,12 +6,12 @@ import controller.Controller;
 import dao.bkMng.NoticeDAO;
 import vo.bkMng.NoticeVO;
 
-public class Notice_Controller implements Controller{
+public class NoticeController implements Controller{
 	
 	NoticeDAO noticeDAO;
 	
 	
-	public Notice_Controller setDAO(NoticeDAO noticeDAO) {
+	public NoticeController setDAO(NoticeDAO noticeDAO) {
 		this.noticeDAO = noticeDAO;
 		return this;
 	}
@@ -78,14 +78,16 @@ public class Notice_Controller implements Controller{
 			 	}
 		 
 		} 
+	
 	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
 		
-		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
-		  String notice_id = (String) model.get("notice_id");
-		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
-		  noticeDAO.delete(notice_id);
-		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
-		
+		String notice_id = (String)model.get("notice_id");
+		String[] no = (String[])model.get("no");
+		if(no!=null) {
+			noticeDAO.delete1(no);
+		}else {
+			noticeDAO.delete2(notice_id);
+		}
 		return "redirect:notice.do";
 	}
 	

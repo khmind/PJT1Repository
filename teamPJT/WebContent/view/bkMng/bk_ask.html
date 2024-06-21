@@ -48,6 +48,15 @@
     	    checkbox.checked = selectAll.checked;
     	  })
     	}
+	function confirmModal() {
+		if (window.confirm("삭제하시겠습니까?")){
+			
+		}
+		else{
+			console.log("취소.변화없음");
+		}
+	}
+    
     </script>
 </head>
 
@@ -98,25 +107,11 @@
 						<option value="2">답변필요</option> 
 					</select>
 					<button type="button" class="btn btn-outline-danger float-right mr-1" onclick="confirmModal()">삭제</button>
-                    	<script type="text/javascript">
-                    		function confirmModal() {
-								if (window.confirm("삭제하시겠습니까?")){
-									
-								}
-								else{
-									console.log("취소.변화없음");
-								}
-							}
-                    	</script>
 					<button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button>
                     <!-- Topbar Search -->
-  
-                    
-                        							
-							                            
+                           
                         </div>
-
-                          
+ 
 					  <table class="table">
 					  <thead class="thead-dark">
 					    <tr>
@@ -137,24 +132,6 @@
 					      <td class="th3" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Mark</td>
 					      <td class="th4" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-13</td>
 					      <th class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Y</th>
-					      <td class="th5" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-14</td>
-					    </tr>
-					    <tr>
-					      <th class="th1" ><input type="checkbox" name="chk" value="2"></th>    
-					      <th class="th1" scope="row" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2</th>
-					      <td class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">nickname</td>
-					      <td class="th3" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Mark</td>
-					      <td class="th4" onClick="location.href='bk_ask_register.html'"style="cursor: pointer;">2024-05-13</td>
-					      <th class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">N</th>
-					      <td class="th5" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-14</td>
-					    </tr>
-					    <tr>
-					      <th class="th1" ><input type="checkbox" name="chk" value="3"></th>    
-					      <th class="th1" scope="row" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">3</th>
-					      <td class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">nickname</td>
-					      <td class="th3" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">Mark</td>
-					      <td class="th4" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-13</td>
-					      <th class="th2" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">N</th>
 					      <td class="th5" onClick="location.href='bk_ask_register.html'" style="cursor: pointer;">2024-05-14</td>
 					    </tr>
 					  </tbody>

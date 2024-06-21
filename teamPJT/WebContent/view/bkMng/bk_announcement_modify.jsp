@@ -28,16 +28,11 @@
   	}
     </style>
 <script type="text/javascript">
-function confirmModal() {
-	 document.frmtt.notice_id.value = noticeId;
-     document.frmtt.action="notice_update.do"; 
-     document.frmtt.submit();
-} 
 
-function confirmModal3(noticeID) {
-	 document.frmtt.notice_id2.value = noticeId;
-     document.frmtt.action="notice_delete.do"; 
-     document.frmtt.submit();
+function confirmModal3(noticeId) {
+	document.frmtt.notice_id.value=noticeId;
+	document.frmtt.action="notice_delete.do";
+	document.frmtt.submit();
 	//location = "notice_delete.do";
 }
 </script>
@@ -57,9 +52,9 @@ function confirmModal3(noticeID) {
             <div id="content">
 
                 <!-- Begin Page Content -->
-                <form action="" method="post" name="frmtt">
-                <input type="hidden" name="notice_id" value="">
-                <input type="hidden" name="notice_id2" value="">
+                <form action="notice_update.do" method="post" name="frmtt">
+                <input type="hidden" name="notice_id" value="${notice.notice_id }">
+             
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
@@ -78,8 +73,8 @@ function confirmModal3(noticeID) {
                         </div>  
                     </div> 
                     <div class="btn" style="display: flex; justify-content: flex-end; ">
-      					<button type="submit" class="btn btn-outline-primary ml-3" onclick="confirmModal(${notice.notice_id})" style="width:75px">수정</button>
-      					<button type="submit" class="btn btn-outline-danger ml-3" onclick="confirmModal3(${notice.notice_id})"style="width:75px" name="btn">삭제</button>
+      					<button type="submit" class="btn btn-outline-primary ml-3" style="width:75px">수정</button>
+      					<button type="button" class="btn btn-outline-danger ml-3" onclick="confirmModal3('${notice.notice_id }')"style="width:75px" >삭제</button>
 					</div>                      
                 </div>
                 </form>

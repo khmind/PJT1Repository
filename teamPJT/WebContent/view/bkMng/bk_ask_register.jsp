@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,12 +29,9 @@
     </style>
     <script type="text/javascript">
 	function confirmModal1() {
-		if (window.confirm("등록을 완료했습니다.")){
-			location = "bk_ask.html";
-		}
-		else{
-			console.log("취소.변화없음");
-		}
+		
+			location = "ask.do";
+
 	}
 	function confirmModal2() {
 		if (window.confirm("삭제을 완료했습니다.")){
@@ -65,23 +64,24 @@
                     <h1 class="h3 mb-2 text-gray-800">문의답변등록</h1>
 
                     <!-- DataTales Example -->
+                    <form action="ask.do" method="get">
                     <div class="card mb-4">
                         <div class="card-body mb-4" style="display:flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
 							<span class="textfield">제목</span>
-	              			<textarea rows="2%" style=" margin-left: 69px; width:72%;"></textarea>	                            
+	              			<textarea rows="2%" style=" margin-left: 69px; width:72%;">${ask.ask_title}</textarea>	                            
                         </div>
                         <div style="display:flex;">
 							<span class="textfield" style="margin-left:20px;">내용</span>
-	      					<textarea rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"></textarea>
+	      					<textarea rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;">${ask.ask_conent}</textarea>
 	                   	</div>
 	                   	<div style="display:flex; disabled:true;">  
 	                   		<span class="textfield" style="margin-left:20px;">사용자</span>
-	                   		<textarea rows="2%" placeholder="닉네임" style="margin-left: 55px; margin-bottom :20px; width:70%;"></textarea> 
+	                   		<textarea rows="2%" placeholder="닉네임" style="margin-left: 55px; margin-bottom :20px; width:70%;">${ask.user_id}</textarea> 
 	                   	</div>
 	                   	<div style="display:flex;">  
 	                   		<span class="textfield" style="margin-left:20px;">등록일자</span>
-	                   		<p></p>
+	                   		<p>${ask.ask_date}</p>
 	                   	</div>
 						<div style="display:flex;">
 							<span class="textfield" style="margin-left:20px;">답변</span>
@@ -89,11 +89,12 @@
 						</div>
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">
-	                    	<button type="button" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal1()">등록</button>
+	                    	<button type="submit" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal1()">등록</button>
 	                    	<button type="button" class="btn btn-outline-secondary ml-3" style="width:75px" onclick="location.href='bk_ask_modify.html'">수정</button>
 	                    	<button type="button" class="btn btn-outline-danger ml-3" style="width:75px" onclick="confirmModal2()">삭제</button>
                     	</div>
                                              
+                </form>
                 </div>
                 <!-- /.container-fluid -->
 
