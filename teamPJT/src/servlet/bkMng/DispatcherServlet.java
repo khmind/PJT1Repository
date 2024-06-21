@@ -160,9 +160,12 @@ public class DispatcherServlet extends HttpServlet {
 				flag="cate_edit";
 			}
 
-			
+			//System.out.println("############# flag1 : " + flag);
 			
 			String viewUrl = contro.execute(flag, model);
+			
+			
+			//System.out.println("############# flag2 : " + flag);
 
 			for (String key : model.keySet()) {
 				arg0.setAttribute(key, model.get(key));
