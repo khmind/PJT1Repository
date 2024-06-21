@@ -68,7 +68,7 @@ public class DispatcherServlet extends HttpServlet {
 				flag = "notice_list";
 			} 
 			else if ("/view/bkMng/notice_update.do".equals(servletPath)) {
-
+ 
 				if (arg0.getParameter("notice_id") != null) {
 					model.put("notice_modify",
 							new NoticeVO().setNotice_id(arg0.getParameter("notice_id"))

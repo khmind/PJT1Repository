@@ -124,7 +124,7 @@ public class CategoryDAO {
 	}
 	//조회
 	public CategoryVO detail(String cate_id) throws Exception{
-		
+		 
 		String sql = "select cate_id, cate_name, cate_order, cate_place from category_info where cate_id='"+cate_id+"'";
 		
 		try {
