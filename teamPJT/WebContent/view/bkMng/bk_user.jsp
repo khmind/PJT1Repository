@@ -77,8 +77,8 @@
 			 frmGo.searchText.value = frmGo.h_searchText.value;
 			
 		}
-	
-	</script>  
+			
+ 	</script>  
 	
 </head>
 
@@ -105,6 +105,12 @@
 
                     <!-- DataTales Example -->
                     <form action="user.do" method="post" name="frmGo">
+						<input type="hidden" value="${PageInfo.sel1 }" name="h_sel1" >
+						<input type="hidden" value="${PageInfo.sel2 }" name="h_sel2" >
+						<input type="hidden" value="${PageInfo.searchText }" name="h_searchText">
+						<input type="hidden" value="${PageInfo.page }" name="h_page">
+										                    
+                    
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 float-right">  
                         
@@ -159,16 +165,10 @@
 									<td scope="row">${user.user_id }</td>
 									<td scope="row">${user.user_name }</td>
 									<td scope="row">${user.user_email }</td>
-									<td scope="row">${user.cnt }</td>
-									<td scope="row">${user.goodCnt }</td>
+									<td scope="row">${user.cnt }</td>									
 									<td scope="row">${user.rcmCnt }</td>
+									<td scope="row">${user.goodCnt }</td>
 									<td scope="row">${user.user_date }</td>
-									
-									<c:if test="${status.last}">
-										<input type="hidden" value="${user.sel1 }" name="h_sel1" >
-										<input type="hidden" value="${user.sel2 }" name="h_sel2" >
-										<input type="hidden" value="${user.searchText }" name="h_searchText">
-									</c:if>								
 								</tr>
 							</c:forEach>
 

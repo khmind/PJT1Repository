@@ -107,6 +107,7 @@ public class NoticeDAO {
 			pstmt.setString(2,notice.getNotice_content());
 			pstmt.setString(3,notice.getNotice_id());
 			
+			System.out.println("notice================="+notice.getNotice_id());
 			return pstmt.executeUpdate(); 
 			
 		}catch (Exception e) {

@@ -17,7 +17,7 @@ public class User_Controller implements Controller{
 	
 
 	@Override
-	public String execute(String flag, Map<String, Object> model) throws Exception {
+	public String execute(String flag, Map<String, Object> model) throws Exception {		
 		
 		String retrunValue = "";
 	
@@ -46,7 +46,7 @@ public class User_Controller implements Controller{
 	
 	public String list(String flag, Map<String, Object> model) throws Exception {
 		
-		UserVO user = (UserVO)model.get("user");	
+		UserVO user = (UserVO)model.get("PageInfo");	
 		model.put("userlist", userDAO.selectList(user));
 		
 		return "bk_user.jsp";

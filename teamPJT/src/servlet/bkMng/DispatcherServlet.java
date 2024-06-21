@@ -69,7 +69,7 @@ public class DispatcherServlet extends HttpServlet {
 				flag = "notice_list";
 			} 
 			else if ("/view/bkMng/notice_update.do".equals(servletPath)) {
-
+ 
 				if (arg0.getParameter("notice_id") != null) {
 					model.put("notice_modify",
 							new NoticeVO().setNotice_id(arg0.getParameter("notice_id"))
@@ -117,6 +117,7 @@ public class DispatcherServlet extends HttpServlet {
 			}
 			else if("/view/bkMng/cate_add.do".equals(servletPath)) {
 				System.out.println("add=========1");
+				
 				if(arg0.getParameter("cate_id") != null) {
 					System.out.println("add=========2");
 					model.put("add", new CategoryVO()
@@ -145,10 +146,39 @@ public class DispatcherServlet extends HttpServlet {
 				}
 				flag = "cate_delete";
 			}
+			else if("/view/bkMng/cate_edit.do".equals(servletPath)) {
+				
+				System.out.println("edit======1");
+				if(arg0.getParameter("cate_id") !=null) {
+					System.out.println(arg0.getParameter("cate_id")+"?????????????//");
+					model.put("cate_edit", new CategoryVO()
+							.setCate_id(arg0.getParameter("cate_id"))
+							.setCate_name(arg0.getParameter("cate_name"))
+							.setCate_order(arg0.getParameter("cate_order"))
+							.setCate_place(arg0.getParameter("cate_place")));
+				}
+//				else {
+//					System.out.println("edit===========99999999");
+//					model.put("cate_edit", new CategoryVO()
+//							.setCate_id(arg0.getParameter("cate_id"))
+//							.setCate_name(arg0.getParameter("cate_name"))
+//							.setCate_order(arg0.getParameter("cate_order"))
+//							.setCate_place(arg0.getParameter("cate_place")));
+//					
+//					System.out.println("=================1"+arg0.getParameter("cate_id"));
+//					System.out.println("=================1"+arg0.getParameter("cate_name"));
+//					System.out.println("=================1"+arg0.getParameter("cate_order"));
+//					System.out.println("=================1"+arg0.getParameter("cate_place"));
+//				}
+				flag="cate_edit";
+			}
 
-			
+			//System.out.println("############# flag1 : " + flag);
 			
 			String viewUrl = contro.execute(flag, model);
+			
+			
+			//System.out.println("############# flag2 : " + flag);
 
 			for (String key : model.keySet()) {
 				arg0.setAttribute(key, model.get(key));

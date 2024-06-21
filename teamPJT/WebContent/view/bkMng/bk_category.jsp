@@ -63,17 +63,16 @@
 #add_btn {
 	text-align: right;
 }
-input{
+
+input {
 	width: 50%;
 }
 </style>
 
-
-
 </head>
 
 <body id="page-top">
-
+ 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -101,12 +100,14 @@ input{
 							<button class="success btn btn-outline-secondary"
 								onclick="add_tr()">추가</button>
 							<form action="cate_delete.do" method="post">
-							<button type="submit" name="btn" value="delete" class="btn btn-outline-secondary">삭제</button>
+								<button type="submit" name="btn" value="delete"
+									class="btn btn-outline-secondary">삭제</button>
 						</div>
 						<table id="calculator_table" class="table">
 							<thead class="thead-dark">
 								<tr>
-									<th class="th1"><input type="checkbox" id="chkAll" class="chkGrp"></th>
+									<th class="th1"><input type="checkbox" id="chkAll"
+										class="chkGrp"></th>
 									<!-- <th class="th1" scope="col">no</th> -->
 									<th scope="col">메뉴코드</th>
 									<th scope="col">메뉴명</th>
@@ -120,10 +121,10 @@ input{
 								<c:forEach var="list" items="${cateList }">
 									<tr>
 										<th class="th1" scope="row">
-											<input type="checkbox" name="del_id" id="chk" class="chkGrp" value="${list.cate_id }"/>
+											<input type="checkbox" name="del_id" id="chk" class="chkGrp"
+											value="${list.cate_id }" />
 										</th>
-										<td class="th2" scope="row"><a href="cate_edit.do">${list.cate_id }
-										</a></td>
+										<td class="th2" scope="row"><a href="cate_edit.do?cate_id=${list.cate_id }">${list.cate_id }</a></td>
 										<td class="th3" scope="row">${list.cate_name }</td>
 										<td class="th4" scope="row">${list.cate_order }</td>
 										<td class="th5" scope="row">${list.cate_place }</td>
@@ -135,30 +136,27 @@ input{
 						</form>
 						<table id="calculator_table" class="table">
 							<tbody id="table_body">
-							<tr id="add_btn" style="display: none;" align="left">
-								<form action="cate_add.do" method="post">
-									<td class="th2" scope="row" align="center">
-										<input type="text" name="cate_id" placeholder="메뉴코드">
-									</td>
-									<td class="th3" scope="row" align="center">
-										<input type="text" name="cate_name" placeholder="메뉴명">
-									</td>
-									<td class="th4" scope="row" align="center">
-										<input type="text" name="cate_order" placeholder="메뉴순서">
-									</td>
-									<td class="th5" scope="row" align="left">
-										<select name="cate_place">
-											<option value="" disabled selected>=선택=</option>
-											<option value="F">F</option>
-											<option value="B">B</option>
-											<option value="B_F">BF</option>
-										</select>
-									</td>
-									<td class="th6" scope="row"  align="left">
-										<button	class="add_btn btn btn-outline-secondary" type="submit">등록</button>
-									</td>
-								</form>
-							</tr>
+								<tr id="add_btn" style="display: none;" align="left">
+									<form action="cate_add.do" method="post">
+										<td class="th2" scope="row" align="center"><input
+											type="text" name="cate_id" placeholder="메뉴코드"></td>
+										<td class="th3" scope="row" align="center"><input
+											type="text" name="cate_name" placeholder="메뉴명"></td>
+										<td class="th4" scope="row" align="center"><input
+											type="text" name="cate_order" placeholder="메뉴순서"></td>
+										<td class="th5" scope="row" align="left"><select
+											name="cate_place">
+												<option value="" disabled selected>=선택=</option>
+												<option value="F">F</option>
+												<option value="B">B</option>
+												<option value="B_F">BF</option>
+										</select></td>
+										<td class="th6" scope="row" align="left">
+											<button class="add_btn btn btn-outline-secondary"
+												type="submit">등록</button>
+										</td>
+									</form>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -202,51 +200,50 @@ input{
 	<script src="js/demo/datatables-demo.js"></script>
 	<script src="js/sb.js"></script>
 	<script type="text/javascript">
-	function add_tr(){
-	    $('#add_btn').hide();
-	    $('#add_btn').show();
-	}
-	$(function(){
-		$("#chkAll").click(function(){
-			$(".chkGrp").attr("checked",this.checked);
-		});
-	});
-	
-	function deleteChk(){
-		let groupList="";
-		
-		$(".chkGrp:checked").each(function(idx,item){
-			if(idx==0){
-				groupList=item.value;
-			}
-			else{
-				groupList+=","+item.value;
-			}
-		});
-	}
-	/* $(function() {
-		$(".add_btn").click( function() {
-			let input = $("input");
-			let tr = $("<tr></tr>");
-			let select=$("select");
-	*/		
-			/* input=키, function(i, item)=키값 */
-	/*		$.each(input, function(i, item) {
-				let td = $("<td class='th2' scope='row'></td>").html($(item).val());
-				$(tr).append(td);
+		function add_tr() {
+			$('#add_btn').hide();
+			$('#add_btn').show();
+		}
+		$(function() {
+			$("#chkAll").click(function() {
+				$(".chkGrp").attr("checked", this.checked);
 			});
-			$.each(select, function(i, item) {
-				let td = $("<td class='th5' scope='row'></td>").html($(item).val());
-				$(tr).append(td);
-			});
-			$("table").append(tr);
-			$(input).val();
-			$(select).val();
 		});
-	}); 
-	*/
-	
-</script>
+
+		function deleteChk() {
+			let groupList = "";
+			
+			/* 반복문 */
+			$(".chkGrp:checked").each(function(idx, item) {
+				if (idx == 0) {
+					groupList = item.value;
+				} else {
+					groupList += "," + item.value;
+				}
+			});
+		}
+		/* $(function() {
+			$(".add_btn").click( function() {
+				let input = $("input");
+				let tr = $("<tr></tr>");
+				let select=$("select");
+		 */
+		/* input=키, function(i, item)=키값 */
+		/*		$.each(input, function(i, item) {
+					let td = $("<td class='th2' scope='row'></td>").html($(item).val());
+					$(tr).append(td);
+				});
+				$.each(select, function(i, item) {
+					let td = $("<td class='th5' scope='row'></td>").html($(item).val());
+					$(tr).append(td);
+				});
+				$("table").append(tr);
+				$(input).val();
+				$(select).val();
+			});
+		}); 
+		 */
+	</script>
 </body>
 
 </html>
