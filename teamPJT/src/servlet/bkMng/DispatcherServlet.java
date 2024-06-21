@@ -58,9 +58,12 @@ public class DispatcherServlet extends HttpServlet {
 				String c = arg0.getParameter("searchText");
 				String page = arg0.getParameter("page");
 				
-				page = (page==null||page.equals("null")) ? "0" : page ;
+				System.out.println( "1page : " + page + ", a : " + a + ", b : "+ b +", c : " +c);	
 				
-				System.out.println( " a : " + a + ", b : "+ b +", c : " +c);	
+				page = (page==""||page==null||page.equals("null")) ? "1" : page ;
+				
+				System.out.println( "2page : " + page + ", a : " + a + ", b : "+ b +", c : " +c);
+				
 				
 				model.put("PageInfo", new UserVO()
 							.setSel1(arg0.getParameter("sel1"))
