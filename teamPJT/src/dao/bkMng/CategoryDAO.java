@@ -125,7 +125,7 @@ public class CategoryDAO {
 	//조회
 	public CategoryVO detail(String cate_id) throws Exception{
 		
-		String sql = "select cate_id, cate_name, cate_order, cate_place from category_info";
+		String sql = "select cate_id, cate_name, cate_order, cate_place from category_info where cate_id='"+cate_id+"'";
 		
 		try {
 			conn=ds.getConnection();
@@ -152,7 +152,7 @@ public class CategoryDAO {
 	}
 	//수정
 	public int update(CategoryVO cateVO) throws Exception{
-		
+		System.out.println("edit==========4");
 		String sql = "update category_info set cate_name=?, cate_order=?, cate_place=? where cate_id=?";
 		
 		try {
@@ -162,7 +162,10 @@ public class CategoryDAO {
 			pstmt.setString(2, cateVO.getCate_order());
 			pstmt.setString(3, cateVO.getCate_place());
 			pstmt.setString(4, cateVO.getCate_id());
-			
+			System.out.println("edit==========3"+cateVO.getCate_name());
+			System.out.println("edit==========3"+cateVO.getCate_order());
+			System.out.println("edit==========3"+cateVO.getCate_place());
+			System.out.println("edit==========3"+cateVO.getCate_id());
 			return pstmt.executeUpdate();
 			
 		}catch (Exception e) {

@@ -55,20 +55,13 @@ public class DispatcherServlet extends HttpServlet {
 				String a = arg0.getParameter("sel1");
 				String b = arg0.getParameter("sel2");
 				String c = arg0.getParameter("searchText");
-				String page = arg0.getParameter("page");
-				
-				page = (page==null||page.equals("null")) ? "0" : page ;
-				
-				System.out.println( " a : " + a + ", b : "+ b +", c : " +c);	
-				
-				model.put("PageInfo", new UserVO()
-							.setSel1(arg0.getParameter("sel1"))
-							.setSel2(arg0.getParameter("sel2"))
-							.setSearchText(arg0.getParameter("searchText"))
-							.setPage(page)
-						);
-				
-				flag = "list";		
+
+				System.out.println(" a : " + a + ", b : " + b + ", c : " + c);
+
+				model.put("user", new UserVO().setSel1(arg0.getParameter("sel1")).setSel2(arg0.getParameter("sel2"))
+						.setSearchText(arg0.getParameter("searchText")));
+
+				flag = "list";
 
 			} 
 			else if ("/view/bkMng/notice.do".equals(servletPath)) {
@@ -122,13 +115,13 @@ public class DispatcherServlet extends HttpServlet {
 							);
 				}
 				flag = "cate_add";
-			} 
+			}
 			else if("/view/bkMng/cate_delete.do".equals(servletPath)) {
 				System.out.println("delete======1");
 				String[] del=arg0.getParameterValues("del_id");
 				for(int i=0; i<del.length; i++) {
 					
-					System.out.println("delete======2"+del[i]);
+					System.out.println("delete======1"+del[i]);
 				}
 				String btn = arg0.getParameter("btn");
 				if(btn.equals("delete")) {
@@ -143,13 +136,27 @@ public class DispatcherServlet extends HttpServlet {
 			else if("/view/bkMng/cate_edit.do".equals(servletPath)) {
 				
 				System.out.println("edit======1");
-				if(arg0.getParameter("vv") !=null) {
+				if(arg0.getParameter("cate_id") !=null) {
+					System.out.println(arg0.getParameter("cate_id")+"?????????????//");
 					model.put("cate_edit", new CategoryVO()
-							.setCate_id("cate_id")
-							.setCate_name("cate_name")
-							.setCate_order("cate_order")
-							.setCate_place("cate_place"));
+							.setCate_id(arg0.getParameter("cate_id"))
+							.setCate_name(arg0.getParameter("cate_name"))
+							.setCate_order(arg0.getParameter("cate_order"))
+							.setCate_place(arg0.getParameter("cate_place")));
 				}
+//				else {
+//					System.out.println("edit===========99999999");
+//					model.put("cate_edit", new CategoryVO()
+//							.setCate_id(arg0.getParameter("cate_id"))
+//							.setCate_name(arg0.getParameter("cate_name"))
+//							.setCate_order(arg0.getParameter("cate_order"))
+//							.setCate_place(arg0.getParameter("cate_place")));
+//					
+//					System.out.println("=================1"+arg0.getParameter("cate_id"));
+//					System.out.println("=================1"+arg0.getParameter("cate_name"));
+//					System.out.println("=================1"+arg0.getParameter("cate_order"));
+//					System.out.println("=================1"+arg0.getParameter("cate_place"));
+//				}
 				flag="cate_edit";
 			}
 

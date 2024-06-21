@@ -69,16 +69,6 @@ input {
 }
 </style>
 
-
- 
-<script type="text/javascript">
-	function move(cate_id) {
-	    document.frmgo.vv.value = cate_id;
-	    document.frmgo.action="cate_edit.do"; 
-	    document.frmgo.submit();
-	}
-</script>
-
 </head>
 
 <body id="page-top">
@@ -109,8 +99,7 @@ input {
 
 							<button class="success btn btn-outline-secondary"
 								onclick="add_tr()">추가</button>
-							<form action="cate_delete.do" method="post" name="frmgo">
-							<input type="hidden" name="vv" value="">
+							<form action="cate_delete.do" method="post">
 								<button type="submit" name="btn" value="delete"
 									class="btn btn-outline-secondary">삭제</button>
 						</div>
@@ -131,13 +120,11 @@ input {
 
 								<c:forEach var="list" items="${cateList }">
 									<tr>
-										<th class="th1" scope="row"><input type="checkbox"
-											name="del_id" id="chk" class="chkGrp"
-											value="${list.cate_id }" /></th>
-										<%--<td class="th2" scope="row"><a href="cate_edit.do?cate_id=${list.cate_id }">${list.cate_id } --%>
-										<td class="th2" scope="row">
-											<a href="javascript:move('${list.cate_id }')">${list.cate_id }</a>
-										</td>
+										<th class="th1" scope="row">
+											<input type="checkbox" name="del_id" id="chk" class="chkGrp"
+											value="${list.cate_id }" />
+										</th>
+										<td class="th2" scope="row"><a href="cate_edit.do?cate_id=${list.cate_id }">${list.cate_id }</a></td>
 										<td class="th3" scope="row">${list.cate_name }</td>
 										<td class="th4" scope="row">${list.cate_order }</td>
 										<td class="th5" scope="row">${list.cate_place }</td>

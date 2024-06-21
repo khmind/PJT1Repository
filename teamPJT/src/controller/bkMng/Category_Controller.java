@@ -56,20 +56,28 @@ public class Category_Controller implements Controller{
 
 	private String cate_update(String flag, Map<String, Object> model) throws Exception{
 		
-		if(model.get("cate_edit") == null) {
+		CategoryVO vo = (CategoryVO)model.get("cate_edit");
+		
+		System.out.println("edit==========2");
+		System.out.println("edit==========2"+vo.getCate_id());
+		System.out.println("edit==========2"+vo.getCate_name());
+		
+		if(vo.getCate_name() == null) {
 			
-			String id = (String)model.get("cate_id");
+			String id = vo.getCate_id();
+			System.out.println(id+"8888888888888888888888");
 			CategoryVO cateVO=cateDAO.detail(id);
 			model.put("cateUp", cateVO);
 			
 			return "bk_category_edit.jsp";
 		}
-		else {
-			CategoryVO vo = (CategoryVO)model.get("cate_edit");
+		
+			System.out.println("edit==========5=====================");
+			//CategoryVO catevo = (CategoryVO)model.get("cate_edit2");
 			cateDAO.update(vo);
 			
 			return "redirect:category.do";
-		}
+		
 	}
 
 	private String cate_list(String flag, Map<String, Object> model) throws Exception{
