@@ -3,12 +3,13 @@ package controller.bkMng;
 import java.util.Map;
 
 import controller.Controller;
-import dao.bkMng.Recipe_listDAO;
+import dao.bkMng.RecipeDAO;
+import vo.bkMng.RecipeVO;
 
-public class Recipe_list_Controller implements Controller{
+public class RecipeController implements Controller{
 
-	Recipe_listDAO listDAO;
-	public Recipe_list_Controller setRecipeListDAO(Recipe_listDAO listDAO) {
+	RecipeDAO listDAO;
+	public RecipeController setRecipeListDAO(RecipeDAO listDAO) {
 		this.listDAO=listDAO;
 		return this;
 	}
@@ -39,9 +40,16 @@ public class Recipe_list_Controller implements Controller{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	private String recipe_update(String flag, Map<String, Object> model) {
+	private String recipe_update(String flag, Map<String, Object> model) throws Exception {
 		
-		return null;
+		RecipeVO vo=(RecipeVO)model.get("recipe_edit");
+		if(vo.getRecipe_title()==null) {
+			String id = vo.getRecipe_id();
+			model.put("recipe", listDAO.detail(id));
+			return "fr_recipe_edit.jsp";
+		}
+		
+		return "redirect:recipe.do";
 	}
 	private String recipe_list(String flag, Map<String, Object> model) throws Exception {
 		model.put("recipe_list", listDAO.recipeList());

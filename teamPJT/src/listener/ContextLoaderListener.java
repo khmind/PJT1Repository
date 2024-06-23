@@ -7,19 +7,19 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
 
-import controller.bkMng.Category_Controller;
-import controller.bkMng.Info_controller;
+import controller.bkMng.CategoryController;
+import controller.bkMng.InfoController;
 import controller.bkMng.LogOutController;
 import controller.bkMng.ManegerController;
-import controller.bkMng.Notice_Controller;
-import controller.bkMng.Recipe_list_Controller;
+import controller.bkMng.NoticeController;
+import controller.bkMng.RecipeController;
 import controller.bkMng.UserController;
 import dao.bkMng.CategoryDAO;
 import dao.bkMng.InfoDAO;
 import dao.bkMng.ManegerDAO;
 import dao.bkMng.NoticeDAO;
 
-import dao.bkMng.Recipe_listDAO;
+import dao.bkMng.RecipeDAO;
 import dao.bkMng.UserDAO;
 
 @WebListener
@@ -44,7 +44,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			InfoDAO dao =  new InfoDAO();
 			ManegerDAO manegerDAO =  new ManegerDAO();
 			UserDAO userDAO =  new UserDAO();
-			Recipe_listDAO listDAO = new Recipe_listDAO();
+			RecipeDAO listDAO = new RecipeDAO();
 			NoticeDAO noticeDAO = new NoticeDAO();
 			CategoryDAO cateDAO=new CategoryDAO();
 			
@@ -54,22 +54,22 @@ public class ContextLoaderListener implements ServletContextListener{
 			noticeDAO.setDataSource(ds);
 			cateDAO.setDs(ds);
 			
-			sc.setAttribute("/view/bkMng/login.do", new Info_controller().setInfoDAO(dao));
+			sc.setAttribute("/view/bkMng/login.do", new InfoController().setInfoDAO(dao));
 			sc.setAttribute("/view/bkMng/logout.do", new LogOutController());
 			sc.setAttribute("/view/bkMng/user.do", new UserController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/maneger.do", new ManegerController().setDAO(manegerDAO));
-			sc.setAttribute("/view/bkMng/notice.do", new Notice_Controller().setDAO(noticeDAO));
-			sc.setAttribute("/view/bkMng/notice_update.do", new Notice_Controller().setDAO(noticeDAO));
-			sc.setAttribute("/view/bkMng/notice_register.do", new Notice_Controller().setDAO(noticeDAO));
-			sc.setAttribute("/view/bkMng/notice_delete.do", new Notice_Controller().setDAO(noticeDAO));
-			sc.setAttribute("/view/bkMng/recipe.do", new Recipe_list_Controller().setRecipeListDAO(listDAO));
-			sc.setAttribute("/view/bkMng/category.do", new Category_Controller().setCateDAO(cateDAO));
-			sc.setAttribute("/view/bkMng/cate_add.do", new Category_Controller().setCateDAO(cateDAO));
-			sc.setAttribute("/view/bkMng/cate_delete.do", new Category_Controller().setCateDAO(cateDAO));
-			sc.setAttribute("/view/bkMng/cate_edit.do", new Category_Controller().setCateDAO(cateDAO));
+			sc.setAttribute("/view/bkMng/notice.do", new NoticeController().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/notice_update.do", new NoticeController().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/notice_register.do", new NoticeController().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/notice_delete.do", new NoticeController().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/recipe.do", new RecipeController().setRecipeListDAO(listDAO));
+			sc.setAttribute("/view/bkMng/category.do", new CategoryController().setCateDAO(cateDAO));
+			sc.setAttribute("/view/bkMng/cate_add.do", new CategoryController().setCateDAO(cateDAO));
+			sc.setAttribute("/view/bkMng/cate_delete.do", new CategoryController().setCateDAO(cateDAO));
+			sc.setAttribute("/view/bkMng/cate_edit.do", new CategoryController().setCateDAO(cateDAO));
 			
-			sc.setAttribute("/view/bkMng/recipe.do", new Recipe_list_Controller().setRecipeListDAO(listDAO));
-			sc.setAttribute("/view/frMng/recipe_edit.do", new Recipe_list_Controller().setRecipeListDAO(listDAO));
+			sc.setAttribute("/view/bkMng/recipe.do", new RecipeController().setRecipeListDAO(listDAO));
+			sc.setAttribute("/view/frMng/recipe_edit.do", new RecipeController().setRecipeListDAO(listDAO));
 			
 		}catch (Exception e) {
 			e.printStackTrace(); 

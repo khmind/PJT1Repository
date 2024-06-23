@@ -6,12 +6,12 @@ import controller.Controller;
 import dao.bkMng.NoticeDAO;
 import vo.bkMng.NoticeVO;
 
-public class Notice_Controller implements Controller{
+public class NoticeController implements Controller{
 	
 	NoticeDAO noticeDAO;
 	
 	
-	public Notice_Controller setDAO(NoticeDAO noticeDAO) {
+	public NoticeController setDAO(NoticeDAO noticeDAO) {
 		this.noticeDAO = noticeDAO;
 		return this;
 	}
