@@ -38,7 +38,14 @@
     		height: 50px;
     	}
     </style>
-    
+	<script type="text/javascript">
+    function move(id) {
+        document.frmtt.recipe_id.value = id;
+        document.frmtt.action="recipe_edit.do"; 
+        document.frmtt.submit();
+    }
+
+	</script>   
     
 
 </head>
@@ -110,7 +117,9 @@
 
 						</div>
 
-
+						<form action="" method="post" name="frmtt">
+							<input type="hidden" name="recipe_id">
+						</form>
 						<table class="table">
 							<thead class="thead-dark">
 								<tr>
@@ -124,7 +133,6 @@
 									<th scope="col">관심수</th>
 									<th scope="col">활성화</th>
 									<th scope="col">등록일자</th>
-									<th scope="col">수정일자</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -136,13 +144,14 @@
 									<td class="th2 thn" scope="row">${list.class_name} </td>
 									<td class="th3 thn" scope="row"><img alt=""
 										src="${list.img_main }"></td>
-									<td class="th4 thn" scope="row"><a href="/teamPJT/view/frMng/fr_recipe_edit.jsp">${list.recipe_title}</a></td>
+									<td class="th4 thn" scope="row">
+										<a href="#" onclick="move('${list.recipe_id }')">${list.recipe_title}</a>
+									</td>
 									<td class="th5 thn" scope="row">${list.user_name}</td>
 									<td class="th6 thn" scope="row">${list.recipe_rcm}</td>
 									<td class="th7 thn" scope="row">${list.recipe_good}</td>
 									<td class="th8 thn" scope="row">${list.recipe_show}</td>
 									<td class="th9 thn" scope="row">${list.recipe_date}</td>
-									<td class="th10 thn" scope="row">2024-05-14</td>
 								</tr>
 								</c:forEach>
 								

@@ -16,6 +16,7 @@ import controller.Controller;
 import vo.bkMng.CategoryVO;
 import vo.bkMng.InfoVO;
 import vo.bkMng.NoticeVO;
+import vo.bkMng.Recipe_listVO;
 import vo.bkMng.UserVO;
 
 @WebServlet("*.do")
@@ -182,7 +183,18 @@ public class DispatcherServlet extends HttpServlet {
 //				}
 				flag="cate_edit";
 			}
-
+			else if ("/view/bkMng/recipe.do".equals(servletPath)) {
+				flag = "recipe_list";
+			}
+			else if("/view/bkMng/recipe_edit.do".equals(servletPath)) {
+				if(arg0.getParameter("recipe_id") !=null) {
+					System.out.println(arg0.getParameter("recipe_id")+"?????????????//");
+					model.put("recipe_edit", new Recipe_listVO()
+							.setRecipe_id(arg0.getParameter("recipe_id")));
+					
+					flag="recipe_edit";
+				}
+			}
 			//System.out.println("############# flag1 : " + flag);
 			
 			String viewUrl = contro.execute(flag, model);

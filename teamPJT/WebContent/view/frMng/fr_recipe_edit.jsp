@@ -87,8 +87,6 @@
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 								<input type="submit" value="비활성화"
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
-								<input type="reset" value="삭제"
-									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 							</div>
 							<div style="margin-top: 20px;">
 								<p>

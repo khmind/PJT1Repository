@@ -68,6 +68,9 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/cate_delete.do", new Category_Controller().setCateDAO(cateDAO));
 			sc.setAttribute("/view/bkMng/cate_edit.do", new Category_Controller().setCateDAO(cateDAO));
 			
+			sc.setAttribute("/view/bkMng/recipe.do", new Recipe_list_Controller().setRecipeListDAO(listDAO));
+			sc.setAttribute("/view/frMng/recipe_edit.do", new Recipe_list_Controller().setRecipeListDAO(listDAO));
+			
 		}catch (Exception e) {
 			e.printStackTrace(); 
 		}

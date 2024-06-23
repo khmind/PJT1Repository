@@ -22,6 +22,13 @@ public class Recipe_listVO {
 	private String class_name;
 	private String user_name;
 	
+	private String img_path_01;
+	private String img_path_02;
+	private String img_path_03;
+	
+	private String commnet_id;
+	private String comment_content;
+	private Date comment_date;
 	
 	public String getRecipe_id() {
 		return recipe_id;
@@ -127,6 +134,27 @@ public class Recipe_listVO {
 	}
 	public Recipe_listVO setUser_name(String user_name) {
 		this.user_name = user_name;
+		return this;
+	}
+	public String getImg_path_01() {
+		return img_path_01;
+	}
+	public Recipe_listVO setImg_path_01(String img_path_01) {
+		this.img_path_01 = img_path_01;
+		return this;
+	}
+	public String getImg_path_02() {
+		return img_path_02;
+	}
+	public Recipe_listVO setImg_path_02(String img_path_02) {
+		this.img_path_02 = img_path_02;
+		return this;
+	}
+	public String getImg_path_03() {
+		return img_path_03;
+	}
+	public Recipe_listVO setImg_path_03(String img_path_03) {
+		this.img_path_03 = img_path_03;
 		return this;
 	}
 	
