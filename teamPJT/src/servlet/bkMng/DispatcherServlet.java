@@ -227,10 +227,14 @@ public class DispatcherServlet extends HttpServlet {
 					System.out.println(arg0.getParameter("recipe_id")+"?????????????//");
 					model.put("recipe_edit", new RecipeVO()
 							.setRecipe_id(arg0.getParameter("recipe_id")));
-					
+					 
 					flag="recipe_edit";
 				}
 			}
+			
+			
+			
+			
 			//System.out.println("############# flag1 : " + flag);
 			
 			String viewUrl = contro.execute(flag, model);
