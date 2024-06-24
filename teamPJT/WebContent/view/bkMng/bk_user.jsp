@@ -59,8 +59,12 @@
 	<script type="text/javascript">
 	
 	
-		function move(){		
-			window.open('bk_user_detail.html', '_self');
+		function move(args){	
+			
+ 			frmGo.action = "modify.do";
+			frmGo.user_id.value = args
+			frmGo.submit();
+			//window.open('bk_user_detail.html', '_self');
 		}
 		
 		function search(){
@@ -111,12 +115,12 @@
                     <h1 class="h3 mb-2 text-gray-800">사용자관리</h1>
 
                     <!-- DataTales Example -->
-                    <form action="user.do" method="post" name="frmGo">
+                    <form action="" method="post" name="frmGo">
 						<input type="hidden" value="${PageInfo.sel1 }" name="h_sel1" >
 						<input type="hidden" value="${PageInfo.sel2 }" name="h_sel2" >
 						<input type="hidden" value="${PageInfo.searchText }" name="h_searchText">
 						<input type="hidden" value="${PageInfo.page }" name="page">
-										                    
+						<input type="hidden" value="" name="user_id">
                     
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 float-right">  
@@ -166,7 +170,7 @@
 							<tbody>
 
 							<c:forEach var="user" items="${userlist}" varStatus="status">  
-								<tr onClick="move()">			
+								<tr onClick="move('${user.user_id }')">			
 									<td scope="row"></td>      
 									<td scope="row">${status.count}</td>
 									<td scope="row">${user.user_id }</td>
@@ -183,8 +187,10 @@
 						</table>
 				
 				
-					    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>							
+					    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
+					    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
 						<fmt:parseNumber value = "${page}" var = "nowPage"/>							
+						<fmt:parseNumber value = "${endPage}" var = "endPage"/>
 					  	<%--     [ ${nowPage} ]	 --%>						
 						 
 						
@@ -204,14 +210,23 @@
 								</c:otherwise>
 							</c:choose>
 						    </li>
-						     						    
-						    <li class="page-item"><a class="page-link" href="javascript:gotoPage('1')">1</a></li>
-						    <li class="page-item"><a class="page-link" href="javascript:gotoPage('2')">2</a></li>
-						    <li class="page-item"><a class="page-link" href="javascript:gotoPage('3')">3</a></li>
+						     		
+							<c:forEach var="i" begin="${PageInfo.startPage }" end="${PageInfo.endPage }">
+						    	<li class="page-item"><a class="page-link" href="javascript:gotoPage('${i }')">
+						    	<c:choose>
+						    		<c:when test = "${i==nowPage}">	
+						    			<font color="#F29661"><b>${i }</b></font>
+									</c:when>
+									<c:otherwise>
+										${i }
+									</c:otherwise>
+								</c:choose>						    	
+						    	</a></li>
+						    </c:forEach>
 						    
 						    <li class="page-item">
  	 					    <c:choose>
-						    	<c:when test = "${nowPage>=3}">
+						    	<c:when test = "${nowPage>=endPage}">
 							      <a class="page-link" href="#" aria-label="Next">
 							        <span aria-hidden="true">&raquo;</span>
 							      </a>

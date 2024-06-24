@@ -20,57 +20,53 @@ public class UserController implements Controller{
 	public String execute(String flag, Map<String, Object> model) throws Exception {		
 		
 		String retrunValue = "";
+		
+		System.out.println("## flag : " + flag);
 	
 		if (flag.equals("list")) {
 		
 			retrunValue = list(flag, model);
 			
-		}else if (flag.equals("getOne")) {
-			
-			retrunValue = getOne(flag, model);
-			
 		}else if (flag.equals("modify")) {
 			
 			retrunValue = modify(flag, model);
-			
-		}else if (flag.equals("del")) {
-			
-			retrunValue = del(flag, model);
 		}
 		
 		return retrunValue;
 		
 	}
 	
-	
-	
 	public String list(String flag, Map<String, Object> model) throws Exception {
 		
-		UserVO user = (UserVO)model.get("PageInfo");	
-		model.put("userlist", userDAO.selectList(user));
+		UserVO user = (UserVO)model.get("PageInfo");
+		UserVO user1 = userDAO.selectListCnt(user);	
+		
+		model.put("PageInfo", user1);
+		model.put("userlist", userDAO.selectList(user1));
+		
+		//System.out.println("userlistcount a: " + user1.getSel1() + ", b : " + user1.getSel2() + ", c : " + user1.getSearchText());		
+		//System.out.println( "userlistcount startP : " + user1.getStartPage()+ ", endP :" + user1.getEndPage());
 		
 		return "bk_user.jsp";
 		
 	}
-	
-	public String getOne(String flag, Map<String, Object> model) throws Exception {
 		
-		return null;
-		
-	}
-	
-	
 	public String modify(String flag, Map<String, Object> model) throws Exception {
 		
-		return null;
+		UserVO user = (UserVO)model.get("modify");
+				
+		if ( user.getUser_email() == null) {
+			
+			model.put("getUser", userDAO.getUser(user.getUser_id()));		
+			return "bk_user_modify.jsp";
+			
+		}else {
+			
+			userDAO.update(user);
+			return "user.do";
+			
+		}
 		
 	}	
-	
-	public String del(String flag, Map<String, Object> model) throws Exception {
 		
-		return null;
-		
-	}		
-
-	
 }
