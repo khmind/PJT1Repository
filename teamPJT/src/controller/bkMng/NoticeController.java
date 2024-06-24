@@ -78,6 +78,31 @@ public class NoticeController implements Controller{
 			 	}
 		 
 		} 
-
 	
+	/*
+<<<<<<< HEAD
+	
+	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
+		
+		String notice_id = (String)model.get("notice_id");
+		String[] no = (String[])model.get("no");
+		if(no!=null) {
+			noticeDAO.delete1(no);
+		}else {
+			noticeDAO.delete2(notice_id);
+		}
+=======
+	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
+		
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
+		  String notice_id = (String) model.get("notice_id");
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
+		  noticeDAO.delete(notice_id);
+		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
+		
+>>>>>>> branch 'main' of https://github.com/khmind/PJT1Repository
+		return "redirect:notice.do";
+	}
+	
+	*/
 }
