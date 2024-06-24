@@ -42,7 +42,6 @@ public class ContextLoaderListener implements ServletContextListener{
 			DataSource ds=(DataSource)ic.lookup("java:comp/env/jdbc/myDB");
 		
 			InfoDAO dao =  new InfoDAO();
-			ManegerDAO manegerDAO =  new ManegerDAO();
 			UserDAO userDAO =  new UserDAO();
 			RecipeDAO listDAO = new RecipeDAO();
 			NoticeDAO noticeDAO = new NoticeDAO();
@@ -58,8 +57,8 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/logout.do", new LogOutController());
 			sc.setAttribute("/view/bkMng/user.do", new UserController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/userModify.do", new UserController().setDAO(userDAO));
-			sc.setAttribute("/view/bkMng/maneger.do", new ManegerController().setDAO(manegerDAO));
-			sc.setAttribute("/view/bkMng/manegerModify.do", new ManegerController().setDAO(manegerDAO));
+			//sc.setAttribute("/view/bkMng/maneger.do", new ManegerController().setDAO(userDAO));
+			//sc.setAttribute("/view/bkMng/manegerModify.do", new ManegerController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/notice.do", new NoticeController().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_update.do", new NoticeController().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_register.do", new NoticeController().setDAO(noticeDAO));
