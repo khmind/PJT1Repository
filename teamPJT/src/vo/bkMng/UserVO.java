@@ -20,6 +20,7 @@ public class UserVO {
 	private int page;
 	private int startPage;
 	private int endPage;
+	private int limit;
 	
 	public String getUser_id() {
 		return user_id;
@@ -124,6 +125,13 @@ public class UserVO {
 	}
 	public UserVO setEndPage(int endPage) {
 		this.endPage = endPage;
+		return this;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public UserVO setLimit(int limit) {
+		this.limit = limit;
 		return this;
 	}
 	

@@ -61,7 +61,7 @@
 	
 		function move(args){	
 			
- 			frmGo.action = "modify.do";
+ 			frmGo.action = "userModify.do";
 			frmGo.user_id.value = args
 			frmGo.submit();
 			//window.open('bk_user_detail.html', '_self');
@@ -168,11 +168,19 @@
 								</tr>								
 							</thead>
 							<tbody>
+							
+						    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
+						    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
+						    <c:set var = "limit" scope = "page" value = "${PageInfo.limit  } "/>
+							<fmt:parseNumber var = "nowPage" value = "${page}"/>							
+							<fmt:parseNumber var = "endPage1" value = "${endPage}"/>							
+							<fmt:parseNumber var = "limit1" value = "${limit}"/>
 
 							<c:forEach var="user" items="${userlist}" varStatus="status">  
 								<tr onClick="move('${user.user_id }')">			
 									<td scope="row"></td>      
-									<td scope="row">${status.count}</td>
+									<%-- <td scope="row">${(page-1)+status.count}</td> --%>
+									<td scope="row">${( (nowPage-1)*limit1 ) + status.count}</td>
 									<td scope="row">${user.user_id }</td>
 									<td scope="row">${user.user_name }</td>
 									<td scope="row">${user.user_email }</td>
@@ -185,15 +193,8 @@
 
 							</tbody>
 						</table>
-				
-				
-					    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
-					    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
-						<fmt:parseNumber value = "${page}" var = "nowPage"/>							
-						<fmt:parseNumber value = "${endPage}" var = "endPage"/>
+
 					  	<%--     [ ${nowPage} ]	 --%>						
-						 
-						
 						<nav aria-label="Page navigation example">  
 						  <ul class="pagination justify-content-center">
 						    <li class="page-item">						  			    
@@ -226,7 +227,7 @@
 						    
 						    <li class="page-item">
  	 					    <c:choose>
-						    	<c:when test = "${nowPage>=endPage}">
+						    	<c:when test = "${nowPage>=endPage1}">
 							      <a class="page-link" href="#" aria-label="Next">
 							        <span aria-hidden="true">&raquo;</span>
 							      </a>

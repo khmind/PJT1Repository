@@ -64,8 +64,7 @@
 		function modify(){	
 			frmGo.submit();			 
 		}
-		
-		
+				
 		function random(){
 			
 			let ranValue1 = ['1','2','3','4','5','6','7','8','9','0'];
@@ -83,9 +82,8 @@
 				temp_pw = temp_pw + ranValue1[ranPick1] + ranValue2[ranPick2] + ranValue3[ranPick3] + ranValue4[ranPick4];
 			}
 			
-			//alert("임시 비밀번호는 " + temp_pw + " 입니다.");
-			frmGo.user_pw.value = temp_pw;		
-			
+			frmGo.user_pw.value = temp_pw;	
+			s
 		}
 	
 	</script>  
@@ -153,7 +151,10 @@
 								<td name="user_date" value="${getUser.user_date }">${getUser.user_date }</td></tr>
 							<tr>															
  							<tr>
-								<td colspan="2" ><hr><p><button type="submit" class="btn btn-outline-secondary" onclick="modify()">수정</button></p></td>
+								<td colspan="2" ><hr><p>
+									<button type="submit" class="btn btn-outline-primary" onclick="modify()">수정</button>
+									<button class="btn btn-outline-secondary" onclick="javascript:history_bak()">목록</button>
+								</p></td>
 							</tr>												
 						</table>
 						</form>

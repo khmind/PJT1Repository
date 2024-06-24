@@ -70,7 +70,7 @@ public class DispatcherServlet extends HttpServlet {
 				flag = "list";		
 
 			} 
-			else if ("/view/bkMng/modify.do".equals(servletPath)) {
+			else if ("/view/bkMng/userModify.do".equals(servletPath)) {
 				
 				model.put("modify", new UserVO()
 						.setUser_id(arg0.getParameter("user_id"))						
@@ -82,6 +82,36 @@ public class DispatcherServlet extends HttpServlet {
 				flag = "modify";	
 				
 			}
+			else if ("/view/bkMng/maneger.do".equals(servletPath)) { 
+
+				String pg = arg0.getParameter("page");
+				
+				pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
+				
+				int page = Integer.parseInt(pg);
+				
+				model.put("PageInfo", new UserVO()
+							.setSel1(arg0.getParameter("sel1"))
+							.setSel2(arg0.getParameter("sel2"))
+							.setSearchText(arg0.getParameter("searchText"))
+							.setPage(page)
+						);
+				
+				flag = "list";		
+
+			} 
+			else if ("/view/bkMng/manegerModify.do".equals(servletPath)) {
+				
+				model.put("modify", new UserVO()
+						.setUser_id(arg0.getParameter("user_id"))						
+						.setUser_email(arg0.getParameter("user_email"))
+						.setUser_pw(arg0.getParameter("user_pw"))
+						.setUser_role(arg0.getParameter("user_role"))
+					);				
+				
+				flag = "modify";	
+				
+			}			
 			else if ("/view/bkMng/notice.do".equals(servletPath)) {
 				flag = "notice_list";
 			} 

@@ -82,8 +82,9 @@ public class UserDAO {
 					.setSearchText(userV.getSearchText())
 					.setPage(page)					
 					.setStartPage(startPage)
-					.setEndPage(endPage);
-			
+					.setEndPage(endPage)
+					.setLimit(limit);
+						
 		} catch (Exception e) {
 			throw e;
 		}finally {
