@@ -8,12 +8,12 @@ import controller.Controller;
 import dao.bkMng.InfoDAO;
 import vo.bkMng.InfoVO;
 
-public class Info_controller implements Controller{
+public class InfoController implements Controller{
 
 	InfoDAO infoDAO;
 	
 	
-	public Info_controller setInfoDAO(InfoDAO infoDAO) {
+	public InfoController setInfoDAO(InfoDAO infoDAO) {
 		this.infoDAO = infoDAO;
 		return this;
 	}

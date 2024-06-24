@@ -16,7 +16,7 @@
 	<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq">
 		<div class="container">
 			<div class="row justify-content-center" style="flex-direction: row;">
-				<div class="col-12 col-md-12 col-lg-6 image-wrapper">
+				<div class="col-12 col-md-12 col-lg-6">
 					<h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
 						<strong>양배추달걀밥</strong>
 					</h1>
@@ -55,8 +55,14 @@
 						<!-- </textarea> -->
 					</div>
 				</div>
-				<div class="col-12 col-md-12 col-lg">
-					<div class="text-wrapper align-left">
+				<div class="col-12 col-md-12 col-lg-6">
+					<div class="text-wrapper align-left" style="padding-bottom: 115px">
+						<div style="text-align: right;" >
+							<input type="submit" value="수정"
+								style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
+							<input type="reset" value="삭제"
+								style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
+						</div>
 						<div style="margin-top: 33px;">
 							<p><strong style="color: orange; font-size: 20px;">레시피</strong></p>
 						</div>

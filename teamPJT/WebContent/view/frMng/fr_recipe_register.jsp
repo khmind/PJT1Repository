@@ -9,15 +9,15 @@
 
 </head>
 <body>
-	<form action="">
+	<form action="recipe_add.do" method="post">
 		<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq "
 			id="features-66-ubxwyl9azq">
-			<div class="container">
+			<div class="container"> 
 				<div class="row justify-content-center" style="flex-direction: row;">
 					<div class="col-12 col-md-12 col-lg-6 image-wrapper">
 						<h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
 							<strong style="color: orange; font-size: 20px;">레시피 제목 :
-								<input type="text" name="title"
+								<input type="text" name="recipe_title"
 								style="width: 400px; border-radius: 20px;">
 							</strong>
 						</h1>
@@ -27,14 +27,14 @@
 								<div class="card" style="width: 18rem;">
 									<div class="image_container1"
 										style="width: 210px; height: 200px; border-right: 1px solid pink; border-left: 1px solid pink">
-									<input type="file" name="upload" id="upload1" class="image" accept="image/*" />
+									<input type="file" name="upload1" id="upload1" class="image" accept="image/*" />
 									<img id="preview1" style="width: 100%; height: 100%">
 									</div>
 								</div>
 								<div class="card" style="width: 18rem;">
 									<div class="image_container2"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
-									<input type="file" name="upload" id="upload2" class="image" accept="image/*" />
+									<input type="file" name="upload2" id="upload2" class="image" accept="image/*" />
 									<img id="preview2" style="width: 100%; height: 100%">
 									
 									</div>
@@ -42,7 +42,7 @@
 								<div class="card" style="width: 18rem;">
 									<div class="image_container3"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
-										<input type="file" name="upload" id="upload3" class="image" accept="image/*" />
+										<input type="file" name="upload3" id="upload3" class="image" accept="image/*" />
 									<img id="preview3" style="width: 100%; height: 100%">
 										
 									</div>
@@ -50,12 +50,16 @@
 							</div>
 						</div>
 						<p style="display: flex; justify-content: space-around; margin-top: 20px;">
-							<strong style="color: orange; font-size: 20px;">난이도</strong> <strong
-								style="font-size: 20px;">상<input type="radio"
-								name="level"></strong> <strong style="font-size: 20px;">중<input
-								type="radio" name="level"></strong> <strong
-								style="font-size: 20px;">하<input type="radio"
-								name="level"></strong>
+							<strong style="color: orange; font-size: 20px;">난이도</strong> 
+							<strong	style="font-size: 20px;">상
+								<input type="radio"	name="level">
+							</strong> 
+							<strong style="font-size: 20px;">중
+								<input type="radio" name="level">
+							</strong> 
+							<strong	style="font-size: 20px;">하
+								<input type="radio"	name="level">
+							</strong>
 						</p>
 						<div style="margin-top: 30px;">
 							<p>

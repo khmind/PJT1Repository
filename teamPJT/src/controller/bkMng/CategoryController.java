@@ -6,11 +6,11 @@ import controller.Controller;
 import dao.bkMng.CategoryDAO;
 import vo.bkMng.CategoryVO;
 
-public class Category_Controller implements Controller{
+public class CategoryController implements Controller{
 
 	CategoryDAO cateDAO;
 	
-	public Category_Controller setCateDAO(CategoryDAO cateDAO) {
+	public CategoryController setCateDAO(CategoryDAO cateDAO) {
 		this.cateDAO = cateDAO;
 		return this;
 	}

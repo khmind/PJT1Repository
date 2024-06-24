@@ -1,12 +1,7 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<%
-	Date c_time=new Date();
-	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -28,7 +23,7 @@
 					<div class="col-12 col-md-12 col-lg-6 image-wrapper">
 						<h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
 							<strong style="color: orange; font-size: 20px;">레시피 제목 :
-								<input type="text" name="title" value="양배추계란밥"
+								<input type="text" name="title" value="${recipe.recipe_title }"
 								style="width: 400px; border-radius: 20px; text-align: center;">
 							</strong>
 						</h1>
@@ -39,14 +34,14 @@
 									<div class="image_container1"
 										style="width: 210px; height: 200px; border-right: 1px solid pink; border-left: 1px solid pink">
 									<input type="file" name="upload" id="upload1" class="image" accept="image/*" />
-									<img id="preview1" src="../img/frMng/recipe01.png" style="width: 100%; height: 100%">
+									<img id="preview1" src="${recipe.img_path_01 }" style="width: 100%; height: 100%">
 									</div>
 								</div>
 								<div class="card" style="width: 18rem;">
 									<div class="image_container2"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
 									<input type="file" name="upload" id="upload2" class="image" accept="image/*" />
-									<img id="preview2" src="../img/frMng/recipe02.png" style="width: 100%; height: 100%">
+									<img id="preview2" src="${recipe.img_path_02 }" style="width: 100%; height: 100%">
 									
 									</div>
 								</div>
@@ -54,7 +49,7 @@
 									<div class="image_container3"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
 										<input type="file" name="upload" id="upload3" class="image" accept="image/*" />
-									<img id="preview3" src="../img/frMng/recipe03.png" style="width: 100%; height: 100%">
+									<img id="preview3" src="${recipe.img_path_03 }" style="width: 100%; height: 100%">
 										
 									</div>
 								</div>
@@ -62,9 +57,16 @@
 						</div>
 						<p style="display: flex; justify-content: space-around; margin-top: 20px;">
 							<strong style="color: orange; font-size: 20px;">난이도</strong> 
-							<strong style="font-size: 20px;">상<input type="radio" name="level"></strong> 
-							<strong style="font-size: 20px;">중<input type="radio" name="level"></strong> 
-							<strong	style="font-size: 20px;">하<input type="radio" name="level" checked></strong>
+							<strong style="font-size: 20px;">상
+								<!-- ${불러온값  eq '비교value값' ? 'checked' : ''} -->
+								<input type="radio" name="level" value="A" ${recipe.recipe_level() eq 'A' ? 'checked':'' }>
+							</strong> 
+							<strong style="font-size: 20px;">중
+								<input type="radio" name="level" value="B" ${recipe.recipe_level() eq 'B' ? 'checked':'' }>
+							</strong> 
+							<strong	style="font-size: 20px;">하
+								<input type="radio" name="level" value="C" ${recipe.recipe_level() eq 'C' ? 'checked':'' }>
+							</strong>
 						</p>
 						<div style="margin-top: 30px;">
 							<p>
@@ -72,11 +74,8 @@
 							</p>
 						</div>
 						<div style="text-align: center; padding-bottom: 30px;">
-							<textarea rows="10" cols="60" >양배추 2줌,
-																 간장 2T,
-																 밥 1공기,
-																 계란 1개,
-																 참기름 (있어도 되고 없어도 됨)
+							<textarea rows="10" cols="60" >
+															${recipe.recipe_stuff }	
 							</textarea>
 						</div>
 					</div>
@@ -87,8 +86,6 @@
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 								<input type="submit" value="비활성화"
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
-								<input type="reset" value="삭제"
-									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 							</div>
 							<div style="margin-top: 20px;">
 								<p>
@@ -96,13 +93,8 @@
 								</p>
 							</div>
 							<div style="text-align: center;">
-								<textarea rows="26" cols="60">1. 계란과 양배추를 준비
-																 2. 적당한 크기로 양배추를 썰기
-																 3. 오목한 그릇에 밥 1공기 넣기
-																 4. 썬 양배추를 위에 올리고 가운데에 자리를 만들어 날계란 넣기
-																 5. 전자레인지에 넣을 수 있는 그릇이나 랩을 씌움
-																 6. 전자레인지 3분 돌린후 간장과 참기름 넣어주기(입맛에 맞게 조절)
-																 7. 맛있게 비비기
+								<textarea rows="26" cols="60">
+																${recipe.recipe_content }
 								</textarea>
 							</div>
 						</div>
@@ -117,16 +109,13 @@
 						<td><input type="submit" value="등록" 
 								style="width:70px; height:40px; background-color:skyblue;"></td>
 					</tr>
+					<c:forEach var="re" items="${recipe }">
 					<tr style="display: flex; justify-content: space-around">
-						<td>사용자1</td>
-						<td>맛있어요</td>
-						<td><%=formatter.format(c_time) %></td>
+						<td>${re.user_id }</td>
+						<td>${re.comment_content }</td>
+						<td>${re.comment_date }</td>
 					</tr>
-					<tr style="display: flex; justify-content: space-around">
-						<td>사용자2</td>
-						<td>완전 쉬움</td>
-						<td><%=formatter.format(c_time) %></td>
-					</tr>
+					</c:forEach>
 				</table>
 				</div>
 			</div>
