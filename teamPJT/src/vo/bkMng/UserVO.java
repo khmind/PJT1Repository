@@ -17,7 +17,10 @@ public class UserVO {
 	private String sel1;
 	private String sel2;
 	private String searchText;
-	private String page;
+	private int page;
+	private int startPage;
+	private int endPage;
+	private int limit;
 	
 	public String getUser_id() {
 		return user_id;
@@ -103,12 +106,33 @@ public class UserVO {
 		this.searchText = searchText;
 		return this;
 	}
-	public String getPage() {
+	public int getPage() {
 		return page;
 	}
-	public UserVO setPage(String page) {
+	public UserVO setPage(int page) {
 		this.page = page;
 		return this;
-	} 	
+	}
+	public int getStartPage() {
+		return startPage;
+	}
+	public UserVO setStartPage(int startPage) {
+		this.startPage = startPage;
+		return this;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public UserVO setEndPage(int endPage) {
+		this.endPage = endPage;
+		return this;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public UserVO setLimit(int limit) {
+		this.limit = limit;
+		return this;
+	}
 	
 }
