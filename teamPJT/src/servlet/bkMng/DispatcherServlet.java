@@ -65,6 +65,7 @@ public class DispatcherServlet extends HttpServlet {
 							.setSel2(arg0.getParameter("sel2"))
 							.setSearchText(arg0.getParameter("searchText"))
 							.setPage(page)
+							.setMethodFlag("G")
 						);
 				
 				flag = "list";		
@@ -77,11 +78,12 @@ public class DispatcherServlet extends HttpServlet {
 						.setUser_email(arg0.getParameter("user_email"))
 						.setUser_pw(arg0.getParameter("user_pw"))
 						.setUser_role(arg0.getParameter("user_role"))
+						.setMethodFlag("G")
 					);				
 				
 				flag = "modify";	
 				
-			}/*
+			}
 			else if ("/view/bkMng/maneger.do".equals(servletPath)) { 
 
 				String pg = arg0.getParameter("page");
@@ -95,6 +97,7 @@ public class DispatcherServlet extends HttpServlet {
 							.setSel2(arg0.getParameter("sel2"))
 							.setSearchText(arg0.getParameter("searchText"))
 							.setPage(page)
+							.setMethodFlag("A")
 						);
 				
 				flag = "list";		
@@ -107,11 +110,12 @@ public class DispatcherServlet extends HttpServlet {
 						.setUser_email(arg0.getParameter("user_email"))
 						.setUser_pw(arg0.getParameter("user_pw"))
 						.setUser_role(arg0.getParameter("user_role"))
+						.setMethodFlag("A")
 					);				
 				
 				flag = "modify";	
 				
-			}	 */		
+			}
 			else if ("/view/bkMng/notice.do".equals(servletPath)) {
 				flag = "notice_list";
 			} 

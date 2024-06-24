@@ -21,6 +21,7 @@ public class UserVO {
 	private int startPage;
 	private int endPage;
 	private int limit;
+	private String methodFlag;
 	
 	public String getUser_id() {
 		return user_id;
@@ -132,6 +133,13 @@ public class UserVO {
 	}
 	public UserVO setLimit(int limit) {
 		this.limit = limit;
+		return this;
+	}
+	public String getMethodFlag() {
+		return methodFlag;
+	}
+	public UserVO setMethodFlag(String methodFlag) {
+		this.methodFlag = methodFlag;
 		return this;
 	}
 	

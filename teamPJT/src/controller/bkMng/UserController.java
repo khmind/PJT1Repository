@@ -14,14 +14,11 @@ public class UserController implements Controller{
 		this.userDAO = userDAO;
 		return this;
 	}
-	
 
 	@Override
 	public String execute(String flag, Map<String, Object> model) throws Exception {		
 		
 		String retrunValue = "";
-		
-		System.out.println("## flag : " + flag);
 	
 		if (flag.equals("list")) {
 		
@@ -38,16 +35,17 @@ public class UserController implements Controller{
 	
 	public String list(String flag, Map<String, Object> model) throws Exception {
 		
-		UserVO user = (UserVO)model.get("PageInfo");
-		UserVO user1 = userDAO.selectListCnt(user);	
+		UserVO user = (UserVO)model.get("PageInfo");		
+		UserVO user1 = userDAO.selectListCnt(user);
 		
 		model.put("PageInfo", user1);
 		model.put("userlist", userDAO.selectList(user1));
 		
-		//System.out.println("userlistcount a: " + user1.getSel1() + ", b : " + user1.getSel2() + ", c : " + user1.getSearchText());		
-		//System.out.println( "userlistcount startP : " + user1.getStartPage()+ ", endP :" + user1.getEndPage());
-		
-		return "bk_user.jsp";
+		if (user.getMethodFlag().equals("G")) {		
+			return "bk_user.jsp";
+		}else {
+			return "bk_maneger.jsp";
+		}
 		
 	}
 		
@@ -58,12 +56,22 @@ public class UserController implements Controller{
 		if ( user.getUser_email() == null) {
 			
 			model.put("getUser", userDAO.getUser(user.getUser_id()));		
-			return "bk_user_modify.jsp";
+			
+			if (user.getMethodFlag().equals("G")) {		
+				return "bk_user_modify.jsp";
+			}else {
+				return "bk_maneger_modify.jsp";
+			}			
 			
 		}else {
 			
 			userDAO.update(user);
-			return "user.do";
+			
+			if (user.getMethodFlag().equals("G")) {
+				return "user.do";
+			}else {
+				return "maneger.do";
+			}
 			
 		}
 		

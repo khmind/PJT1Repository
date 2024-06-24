@@ -13,7 +13,7 @@
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>        
 
-    <title>사용자정보</title>
+    <title>관리자정보</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -109,11 +109,11 @@
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">사용자정보</h1>
+                    <h1 class="h3 mb-2 text-gray-800">관리자정보</h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">	
-						<form action="userModify.do" method="post" name="frmGo">    
+						<form action="manegerModify.do" method="post" name="frmGo">    
 						<table>
 							<tr>
 								<td class="td0">사용자번호</td>

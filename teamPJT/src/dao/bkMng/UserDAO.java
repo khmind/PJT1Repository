@@ -24,23 +24,23 @@ public class UserDAO {
 	
 	public UserVO selectListCnt(UserVO userV) throws Exception {
 		
-		System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText()  + " startP : " + userV.getStartPage()+ ", endP :" + userV.getEndPage());
+		//System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText()  + " startP : " + userV.getStartPage()+ ", endP :" + userV.getEndPage());
 		
 		Connection conn = null;				
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String where = "" ;		
+		String where = "" ;	
+		String methodFlag = userV.getMethodFlag();
 		
 		int page= userV.getPage();
 		int total = 0;	  
 		int limit=3;
-		
-		//int startPage = (page/limit) * limit + 1 ;  
+  
 		int startPage = (((int) ((double)page / limit + 0.9)) - 1) * limit + 1;
 		int endPage = startPage+limit; 
 		
-		System.out.println("********** startPage : " + startPage + ", (page/limit) : " + (page/limit) +",  (page/limit) * limit :" + (page/limit) * limit   + ", endPage : " + endPage );
+		//System.out.println("********** startPage : " + startPage + ", (page/limit) : " + (page/limit) +",  (page/limit) * limit :" + (page/limit) * limit   + ", endPage : " + endPage );
 		
 		
 		if ( userV.getSel2() != null &&  userV.getSel2() != "") {		
@@ -57,24 +57,27 @@ public class UserDAO {
 				" ) as b \n" + 
 				" on a.user_id = b.user_id \n" +
 				" where 1=1 \n" +
+				" and user_role = ? \n" +
 				where ;	
 		
-		//System.out.println("sqlCnt : " + sqlCnt);
+		System.out.println("sqlCnt : " + sqlCnt);
 					
 		try {		
 			
-			conn = ds.getConnection();			
-			stmt = conn.createStatement();			
-
-			rs = stmt.executeQuery(sqlCnt);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sqlCnt);
+			pstmt.setString(1,methodFlag);
+			rs = pstmt.executeQuery();			
+			
 			if (rs.next())
 				total = rs.getInt(1);
 			
-			int maxPage=  (total-1)/limit; 
+			int maxPage=(int)((double)total/limit+0.95);
+			
 			if (endPage> maxPage) endPage= maxPage;
 			if (startPage == endPage )startPage = 1;
 			
-			System.out.println(" +++++++++++  total : " + total +",  maxPage : " + maxPage +", startPage : " + startPage  + ", endPage : " + endPage );
+			//System.out.println(" +++++++++++  total : " + total +",  maxPage : " + maxPage +", startPage : " + startPage  + ", endPage : " + endPage );
 			
 			return new UserVO()
 					.setSel1(userV.getSel1())
@@ -83,13 +86,14 @@ public class UserDAO {
 					.setPage(page)					
 					.setStartPage(startPage)
 					.setEndPage(endPage)
-					.setLimit(limit);
+					.setLimit(limit)
+					.setMethodFlag(methodFlag);
 						
 		} catch (Exception e) {
 			throw e;
 		}finally {
 			try {if (rs != null) rs.close();} catch(Exception e) {}
-		    try {if (stmt != null) stmt.close();} catch(Exception e) {}
+		    try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
 		    try {if (conn != null) conn.close();} catch(Exception e) {}		    
 		}
 		
@@ -97,7 +101,7 @@ public class UserDAO {
 	
 	public List<UserVO> selectList(UserVO userV) throws Exception {
 		
-		System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText()  + " startP : " + userV.getStartPage()+ ", endP :" + userV.getEndPage());
+		//System.out.println("selectList a: " + userV.getSel1() + ", b : " + userV.getSel2() + ", c : " + userV.getSearchText()  + " startP : " + userV.getStartPage()+ ", endP :" + userV.getEndPage());
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -105,8 +109,9 @@ public class UserDAO {
 		
 		List<UserVO> list = new ArrayList<UserVO>();
 		
-		String where = "" ;
+		String where = "" ;		
 		String order = "";
+		String methodFlag = userV.getMethodFlag();
 
 	  	int page= userV.getPage();
 		int limit=3;		
@@ -130,6 +135,7 @@ public class UserDAO {
 				" ) as b \n" + 
 				" on a.user_id = b.user_id \n" +
 				" where 1=1 \n" +
+				" and user_role = ? \n" +
 				where +
 				order + 
 				" limit ?, ?"
@@ -139,11 +145,11 @@ public class UserDAO {
 					
 		try {		
 			
-			conn = ds.getConnection();			
-						
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,startrow);
-			pstmt.setInt(2, limit);
+			pstmt.setString(1,methodFlag);
+			pstmt.setInt(2,startrow);
+			pstmt.setInt(3, limit);
 			rs = pstmt.executeQuery();
 			
 			System.out.println(" startrow : "  + startrow + ", limit : " + limit);
@@ -241,148 +247,5 @@ public class UserDAO {
 			try {if (conn != null) conn.close();} catch(Exception e) {}
 		}
 	}	
-	
-	
-/*	
-	//등록
-	public int insert(UserVO UserVO) throws Exception{
-		
-		Connection conn = null;		
-		PreparedStatement pstmt = null;
-		String query ="insert into UserVOs(email,pwd,mname,cre_date,mod_date)"
-				+ "values(?,?,?,now(),now())";
-		int res ;
-		
-		try {
-			
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,UserVO.getEmail());
-			pstmt.setString(2, UserVO.getPassword());
-			pstmt.setString(3,UserVO.getName());
-			
-			res = pstmt.executeUpdate();
-			
-		}catch (Exception e) {
-			throw e;
-			
-		}finally {			
-			try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
-			try {if (conn != null) conn.close();} catch(Exception e) {}
-		}
-		
-		return res;
-	}
-	
-	//삭제
-	public int delete(int no) throws Exception {
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String query = "delete from UserVOs where mno=?";
-		
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1,no);
-			
-			return pstmt.executeUpdate();
-			
-		}catch (Exception e) {
-			throw e;
-		}finally {
-			try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
-			try {if (conn != null) conn.close();} catch(Exception e) {}
-		}		
-	}
-	
-	//상세검색
-	public UserVO selectOne(int no) throws Exception {
-		
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		String query = "select mno,email,mname,cre_date from UserVOs where mno="+no;
-		
-		try {
-			conn = ds.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(query);
-			if(rs.next()) {
-				return new UserVO()
-						.setNo(rs.getInt("mno"))
-						.setEmail(rs.getString("email"))
-						.setName(rs.getString("mname"))
-						.setCreatedDate(rs.getDate("cre_date"));
-			}else {
-				throw new Exception("해당 번호의 회원을 찾을수 없습니다.");
-			}
-		}catch (Exception e) {
-			throw e;
-		}finally {
-			try {if (rs != null) rs.close();} catch(Exception e) {}
-		    try {if (stmt != null) stmt.close();} catch(Exception e) {}
-		    try {if (conn != null) conn.close();} catch(Exception e) {}
-		} 
-	}
-	
-	//수정
-	public int update(UserVO UserVO) throws Exception{
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String query = "update UserVOs set email=?,mname=?,mod_date=now() where mno=?";
-		
-		try {
-			
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,UserVO.getEmail());
-			pstmt.setString(2,UserVO.getName());
-			pstmt.setInt(3,UserVO.getNo());
-			
-			return pstmt.executeUpdate();
-			
-		}catch (Exception e) {
-			throw e;
-		}finally {
-			try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
-			try {if (conn != null) conn.close();} catch(Exception e) {}
-		}
-	}
-	
-	//회원확인
-	public UserVO exist(String email, String password) throws Exception {
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String query = "select mname,email from UserVOs where email=? and pwd=?";
-		ResultSet rs = null;
-		
-		try {
-		
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1,email);
-			pstmt.setString(2, password);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return new UserVO()
-						.setName(rs.getString("mname"))
-						.setEmail(rs.getString("email"));
-			}else {
-				return null;
-			}
-			
-		}catch (Exception e) {
-			throw e;
-		}finally {
-			 try {if (rs != null) rs.close();} catch (Exception e) {}
-		     try {if (pstmt != null) pstmt.close();} catch (Exception e) {}
-		     try {if (conn != null) conn.close();} catch(Exception e) {}
-		}
-		
-	}
-	*/
 	
 }
