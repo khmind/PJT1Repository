@@ -149,7 +149,7 @@ input {
 												<option value="" disabled selected>=선택=</option>
 												<option value="F">F</option>
 												<option value="B">B</option>
-												<option value="B_F">BF</option>
+												<option value="BF">BF</option>
 										</select></td>
 										<td class="th6" scope="row" align="left">
 											<button class="add_btn btn btn-outline-secondary"
