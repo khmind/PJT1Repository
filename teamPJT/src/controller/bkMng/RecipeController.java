@@ -8,9 +8,9 @@ import vo.bkMng.RecipeVO;
 
 public class RecipeController implements Controller{
 
-	RecipeDAO listDAO;
-	public RecipeController setRecipeListDAO(RecipeDAO listDAO) {
-		this.listDAO=listDAO;
+	RecipeDAO recipeDAO;
+	public RecipeController setRecipeDAO(RecipeDAO recipeDAO) {
+		this.recipeDAO=recipeDAO;
 		return this;
 	}
 	@Override 
@@ -42,17 +42,22 @@ public class RecipeController implements Controller{
 	}
 	private String recipe_update(String flag, Map<String, Object> model) throws Exception {
 		
+		System.out.println("recipe=============1");
+		
 		RecipeVO vo=(RecipeVO)model.get("recipe_edit");
 		if(vo.getRecipe_title()==null) {
+			System.out.println("recipe=============1"+vo.getRecipe_title());
+			
 			String id = vo.getRecipe_id();
-			model.put("recipe", listDAO.detail(id));
+			System.out.println("recipe=============1"+vo.getRecipe_id());
+			model.put("recipe", recipeDAO.detail(id));
 			return "fr_recipe_edit.jsp";
 		}
 		
 		return "redirect:recipe.do";
 	}
 	private String recipe_list(String flag, Map<String, Object> model) throws Exception {
-		model.put("recipe_list", listDAO.recipeList());
+		model.put("recipe_list", recipeDAO.recipeList());
 		return "bk_recipe.jsp";
 	}
 

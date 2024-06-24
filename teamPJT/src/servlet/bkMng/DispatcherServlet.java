@@ -186,7 +186,7 @@ public class DispatcherServlet extends HttpServlet {
 			else if ("/view/bkMng/recipe.do".equals(servletPath)) {
 				flag = "recipe_list";
 			}
-			else if("/view/frMng/recipe_edit.do".equals(servletPath)) {
+			else if("/view/bkMng/recipe_edit.do".equals(servletPath)) {
 				if(arg0.getParameter("recipe_id") !=null) {
 					System.out.println(arg0.getParameter("recipe_id")+"?????????????//");
 					model.put("recipe_edit", new RecipeVO()
