@@ -9,7 +9,7 @@ public class CategoryVO {
 	private String cate_order;
 	private String cate_place;
 	private Date cate_date;
-	
+	private String action;	
 	
 	public String getCate_id() {
 		return cate_id;
@@ -46,7 +46,12 @@ public class CategoryVO {
 		this.cate_date = cate_date;
 		return this;
 	}
-	
-	
+	public String getAction() {
+		return action;
+	}
+	public CategoryVO setAction(String action) {
+		this.action = action;
+		return this;
+	}
 	
 }

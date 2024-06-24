@@ -175,4 +175,40 @@ public class CategoryDAO {
 			try {if (conn != null) conn.close();} catch(Exception e) {}
 		}
 	}
+	
+	//관리자 사이트 카테고리 
+	public List<CategoryVO> bkCateList() throws Exception{
+		
+		List<CategoryVO> cateList = new ArrayList<CategoryVO>();
+		String sql = "select * from category_info2 where cate_place = 'B' order by cate_id asc";		
+		
+		try {
+			
+			conn=ds.getConnection();		
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+
+				CategoryVO cateVO=new CategoryVO()
+						.setCate_id(rs.getString("cate_id"))
+						.setCate_name(rs.getString("cate_name"))
+						.setCate_order(rs.getString("cate_order"))
+						.setCate_place(rs.getString("cate_place"))
+						.setCate_date(rs.getDate("cate_date"))
+						.setAction(rs.getString("action"));
+				
+				cateList.add(cateVO);
+				
+			}
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+		    try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
+		    try {if (conn != null) conn.close();} catch(Exception e) {}
+		}
+		return cateList;
+	}	
+	
 }

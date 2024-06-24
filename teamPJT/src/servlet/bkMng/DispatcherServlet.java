@@ -45,13 +45,15 @@ public class DispatcherServlet extends HttpServlet {
 			Controller contro = (Controller) sc.getAttribute(servletPath);
 
 			if ("/view/bkMng/login.do".equals(servletPath)) {
+				
 				flag = "login";
 				if (arg0.getParameter("email") != null) {
 					model.put("adLogin", new InfoVO().setUser_email(arg0.getParameter("email"))
 							.setUser_pw(arg0.getParameter("password")));
 				}
 				flag = "login";
-			} 
+				
+			}
 			else if ("/view/bkMng/user.do".equals(servletPath)) { 
 
 				String pg = arg0.getParameter("page");
@@ -172,10 +174,10 @@ public class DispatcherServlet extends HttpServlet {
 				if(arg0.getParameter("cate_id") != null) {
 					System.out.println("add=========2");
 					model.put("add", new CategoryVO()
-							.setCate_id(arg0.getParameter("cate_id"))
-							.setCate_name(arg0.getParameter("cate_name"))
-							.setCate_order(arg0.getParameter("cate_order"))
-							.setCate_place(arg0.getParameter("cate_place"))
+							.setCate_id(arg0.getParameter("cate_id").trim())
+							.setCate_name(arg0.getParameter("cate_name").trim())
+							.setCate_order(arg0.getParameter("cate_order").trim())
+							.setCate_place(arg0.getParameter("cate_place").trim())
 							);
 				}
 				flag = "cate_add";

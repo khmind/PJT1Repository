@@ -1,3 +1,8 @@
+<%@page import="vo.bkMng.CategoryVO"%>
+<%@page import="java.util.List"%>
+<%@page import="controller.Controller"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="controller.bkMng.BkCategoryController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
 <%@ page import="vo.bkMng.InfoVO" %>      
@@ -15,10 +20,10 @@
 </style>
 <script type="text/javascript">
 
-	function goAction(arg){		
+	function goAction(arg){
 		
-		frm.action = arg;
-		frm.submit();	
+		frmSidebar.action = arg;
+		frmSidebar.submit();
 		
 	}
 
@@ -28,10 +33,10 @@
 
 <%
 
-InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
+	InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
+	List<CategoryVO> cvoList = (List<CategoryVO>)session.getAttribute("bkCateList");
 
-%>
-
+%>		
        <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -41,56 +46,22 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
             </a>
 <%  if ( infoVO != null ) { %>
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - 공지사항 -->
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:goAction('notice.do')">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>공지사항</span></a>
-            </li>
             
-            <hr class="sidebar-divider my-0"> 
-            <!-- Nav Item - 문의사항 -->
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:goAction('ask.do')">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>문의사항</span></a> 
-            </li>
-            <hr class="sidebar-divider my-0">            
-
-            <!-- Nav Item - 사용자관리 -->
-            <li class="nav-item">            	
-                 <a class="nav-link" href="javascript:goAction('user.do')">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>사용자관리</span></a>
-            </li>
-            <hr class="sidebar-divider my-0">            
+	<%  for (CategoryVO cvo : cvoList ) { %>            
             
-            <!-- Nav Item - 레시피관리 -->
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:goAction('recipe.do')">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>레시피관리</span></a>
-            </li> 
-			<hr class="sidebar-divider my-0">            
+	            <hr class="sidebar-divider my-0">
+	
+	            <!-- Nav Item - 공지사항 -->
+	            <li class="nav-item">
+	                <a class="nav-link" href="javascript:goAction('<%=cvo.getAction() %>')">	                
+	                    <i class="fas fa-fw fa-table"></i>
+	                    <span><%= cvo.getCate_name() %></span>
+	                </a>
+	            </li>            
             
-            <!-- Nav Item - 메뉴관리 -->
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:goAction('category.do')">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>메뉴관리</span></a>
-            </li>            
-            <hr class="sidebar-divider my-0">    
+	<% } %>
             
-            <!-- Nav Item - 관리자정보 -->
-            <li class="nav-item">             	
-                <a class="nav-link" href="javascript:goAction('maneger.do')">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>관리자정보</span></a>
-            </li>            
-            <hr class="sidebar-divider my-0">       
-            
+            <hr class="sidebar-divider my-0">     
             <!-- Nav Item - 로그아웃 -->
             <li class="nav-item">
                 <a class="nav-link" href="javascript:goAction('logout.do')">                
@@ -114,7 +85,7 @@ InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
         </ul>
         <!-- End of Sidebar -->
         
-    <form action="" method="post" name="frm"></form>
+   		<form action="" method="post" name="frmSidebar"></form>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>   
