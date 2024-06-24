@@ -70,7 +70,7 @@ public class DispatcherServlet extends HttpServlet {
 				flag = "list";		
 
 			} 
-			else if ("/view/bkMng/userModify.do".equals(servletPath)) {
+			/*else if ("/view/bkMng/userModify.do".equals(servletPath)) {
 				
 				model.put("modify", new UserVO()
 						.setUser_id(arg0.getParameter("user_id"))						
@@ -99,7 +99,7 @@ public class DispatcherServlet extends HttpServlet {
 				
 				flag = "list";		
 
-			} 
+			} */
 			else if ("/view/bkMng/manegerModify.do".equals(servletPath)) {
 				
 				model.put("modify", new UserVO()
