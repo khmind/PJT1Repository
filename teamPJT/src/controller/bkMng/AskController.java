@@ -1,13 +1,11 @@
 package controller.bkMng;
 
-import java.util.List;
 import java.util.Map;
 
 import controller.Controller;
 import dao.bkMng.AskDAO;
 
 import vo.bkMng.AskVO;
-import vo.bkMng.NoticeVO;
 
 public class AskController implements Controller{
 	
@@ -23,8 +21,8 @@ public class AskController implements Controller{
 		String returnValue="";
 		if(flag.equals("ask_list")) {
 			returnValue = ask_list(flag, model);
-		}else if(flag.equals("notice_update")) {
-			//returnValue = notice_update(flag, model);
+		}else if(flag.equals("ask_update")) {
+			returnValue = ask_update(flag, model);
 		}else if(flag.equals("ask_register")) {
 			returnValue = ask_register(flag,model);
 		}else if(flag.equals("notice_delete")){
@@ -40,28 +38,46 @@ public class AskController implements Controller{
 		return "bk_ask.jsp";
 	}
 	public String ask_register(String flag, Map<String, Object> model)throws Exception{
-		
-		if(model.get("aks_register")==null) {
+		System.out.println("-------------------12");
+		if(model.get("ask_id")==null) {
 			
 			return "bk_ask_register.jsp";
 			 
 			 }else {
-				 System.out.println("-------------------12");
+				 System.out.println("-------------------13");
 				
 			
-				NoticeVO notice = (NoticeVO)model.get("notice_register"); 
+				AskVO ask = (AskVO)model.get("ask_register"); 
 				
-				System.out.println(" notice :" + notice.getUser_id());
+				System.out.println(" ask :" + ask.getUser_id());
 				
 				
 				//AskDAO.insert(notice);
 				
 				System.out.println(" regi------------result  : ");
 				
-				return "redirect:notice.do";
+				return "redirect:ask.do";
 		 
 			 	}
 		
-		//return "bk_ask.jsp";
+	}
+	
+	public String ask_update(String flag, Map<String, Object> model) throws Exception{
+		System.out.println("----------------------------3");
+		AskVO vo = (AskVO)model.get("ask_update");
+		System.out.println("----------------------------4");
+		if(vo.getRecomm_content() == null) {
+			System.out.println("----------------------------5");
+			String ask_id =  vo.getAsk_id();System.out.println("----------------------------5-1");
+			AskVO ask = askDAO.selectOne(ask_id);
+			model.put("ask", ask);
+			System.out.println("----------------------------6");
+			return "bk_ask_modify.jsp";
+		}
+		System.out.println("----------------------------9");
+		AskVO ask = (AskVO)model.get("ask_update");
+		askDAO.update(ask);
+		System.out.println("----------------------------17");
+		return "redirect:ask.do";
 	}
 }

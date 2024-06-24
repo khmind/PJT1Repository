@@ -11,7 +11,7 @@
 	<meta http-equiv="Pragma" content="no-cache"/>
 	<meta http-equiv="Expires" content="0"/>
 	<meta http-equiv="Cache-Control" content="no-cache"/>      
-<title>문의답변등록</title>
+<title>문의사항수정</title>
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -28,27 +28,20 @@
   	}
     </style>
     <script type="text/javascript">
-	function confirmModal1() {
-		
-			location = "ask.do";
-
-	}
-	function confirmModal2() {
-		if (window.confirm("삭제을 완료했습니다.")){
-			location = "bk_ask.html";
-		}
-		else{
-			console.log("취소.변화없음");
-		}
-	}
+   /*  function confirmModal2(askId) {
+    	document.frm.ask_id.value=askId;
+    	document.frm.action="ask_delete.do";
+    	document.frm.submit();
+    	//location = "notice_delete.do";
+    } */
     </script>
 </head>
 <body>
 	<!-- Page Wrapper -->
     <div id="wrapper">
- 
+
   		<!-- Sidebar -->
-		<div id="sidebar"></div>  
+		<div id="sidebar"></div>
 		<!-- End of Sidebar -->        
 
         <!-- Content Wrapper -->
@@ -58,44 +51,48 @@
             <div id="content">
 
                 <!-- Begin Page Content -->
+             <form action="ask.do" method="post" name="frm">
+              <input type="hidden" name="notice_id" value="">
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">문의답변등록</h1>
+                    <h1 class="h3 mb-2 text-gray-800">문의사항수정/삭제</h1>
 
                     <!-- DataTales Example -->
-                    <form action="ask.do" method="post">
                     <div class="card mb-4">
                         <div class="card-body mb-4" style="display:flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
 							<span class="textfield">제목</span>
-	              			<textarea rows="2%" style=" margin-left: 69px; width:72%;">${ask.ask_title}</textarea>	                            
-                        </div>
-                        <div style="display:flex;">
+	              			<textarea  rows="2%" style=" margin-left: 70px; width:72%;" disabled>${ask.ask_title}</textarea>	                            
+                        </div> 
+                        <div style="display:flex;">  
 							<span class="textfield" style="margin-left:20px;">내용</span>
-	      					<textarea rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;">${ask.ask_conent}</textarea>
+	      					<textarea  rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"disabled>${ask.ask_content }</textarea>
 	                   	</div>
 	                   	<div style="display:flex; disabled:true;">  
 	                   		<span class="textfield" style="margin-left:20px;">사용자</span>
-	                   		<textarea rows="2%"  style="margin-left: 55px; margin-bottom :20px; width:70%;">${ask.user_id}</textarea> 
+	                   		<textarea rows="2%"  style="margin-left: 55px; margin-bottom :20px; width:70%;" disabled>${ask.user_id }</textarea> 
 	                   	</div>
 	                   	<div style="display:flex;">  
 	                   		<span class="textfield" style="margin-left:20px;">등록일자</span>
-	                   		<p>${ask.ask_date}</p>
+	                   		<textarea rows="2%"  style="margin-left: 40px; margin-bottom :20px; width:70%;" disabled>${ask.ask_date }</textarea> 
 	                   	</div>
-						<div style="display:flex;">
+						<div style="display:flex; ">
 							<span class="textfield" style="margin-left:20px;">답변</span>
-							<textarea rows="5%" style="margin-left: 70px; width:70%;"></textarea>
+							<textarea rows="5%"  style="margin-left: 70px; width:70%;"${ask.recomm_content }></textarea>
+						</div>
+						<div style="display:flex; margin-top: 20px;">
+							<span class="textfield" style="margin-left:20px;">답변일자</span>
+							<textarea rows="2%" style="margin-left: 40px; width:70%;" disabled>${ask.recomm_date }</textarea>
 						</div>
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">
-	                    	<button type="submit" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal1()">등록</button>
-	                    	<button type="button" class="btn btn-outline-secondary ml-3" style="width:75px" onclick="location.href='ask_modify.do'">수정</button>
+	                    	<button type="submit" class="btn btn-outline-primary ml-3" style="width:75px" >수정</button>
 	                    	<button type="button" class="btn btn-outline-danger ml-3" style="width:75px" onclick="confirmModal2()">삭제</button>
                     	</div>
                                              
-                </form>
                 </div>
+             </form>
                 <!-- /.container-fluid -->
 
             </div>

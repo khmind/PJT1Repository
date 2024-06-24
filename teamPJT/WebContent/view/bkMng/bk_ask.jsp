@@ -53,7 +53,7 @@
     	}
     function move(askId) {
         document.frmt.ask_id.value = askId;
-        document.frmt.action="ask_register.do"; 
+        document.frmt.action="ask_update.do"; 
         document.frmt.submit();
     }
 	
