@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -17,10 +19,19 @@
 					<div class="col-12 col-md-12 col-lg-6 image-wrapper">
 						<h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
 							<strong style="color: orange; font-size: 20px;">레시피 제목 :
-								<input type="text" name="recipe_title"
-								style="width: 400px; border-radius: 20px;">
+								<input type="text" name="reci_title"
+								style="width: 400px; border-radius: 20px; text-align: center;">
 							</strong>
 						</h1>
+						<div>
+							<strong style="color: orange; font-size: 20px;">분류 : </strong> 
+								<select	name="class_name" style="width: 20%; border-radius: 20px; text-align: center;">
+								<option value="" disabled selected>=선택=</option>
+								<c:forEach var="c" items="${class_name}">
+									<option value="${c.class_id}">${c.class_name}</option>
+								</c:forEach>
+							</select>
+						</div>
 						<div class="row">
 							<strong style="color: orange; font-size: 20px;">사진 등록</strong>
 							<div style="display: flex; justify-content: space-around">
@@ -52,13 +63,13 @@
 						<p style="display: flex; justify-content: space-around; margin-top: 20px;">
 							<strong style="color: orange; font-size: 20px;">난이도</strong> 
 							<strong	style="font-size: 20px;">상
-								<input type="radio"	name="level">
+								<input type="radio"	name="level" value="A">
 							</strong> 
 							<strong style="font-size: 20px;">중
-								<input type="radio" name="level">
+								<input type="radio" name="level" value="B">
 							</strong> 
 							<strong	style="font-size: 20px;">하
-								<input type="radio"	name="level">
+								<input type="radio"	name="level" value="C">
 							</strong>
 						</p>
 						<div style="margin-top: 30px;">
@@ -67,7 +78,7 @@
 							</p>
 						</div>
 						<div style="text-align: center; padding-bottom: 30px;">
-							<textarea rows="10" cols="60"></textarea>
+							<textarea rows="10" cols="60" name="reci_stuff"></textarea>
 						</div>
 					</div>
 					<div class="col-12 col-md-12 col-lg">
@@ -82,7 +93,7 @@
 								</p>
 							</div>
 							<div style="text-align: center;">
-								<textarea rows="26" cols="60"></textarea>
+								<textarea rows="26" cols="60" name="reci_content"></textarea>
 							</div>
 						</div>
 					</div>

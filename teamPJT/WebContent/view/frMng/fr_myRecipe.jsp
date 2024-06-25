@@ -71,7 +71,9 @@
 			<main class="col-md-9 col-xl-8 py-md-3 pl-md-2 bd-content " role="main">
 			
 			    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">			      
-		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="#" ></a>
+		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="fr_recipe_register.jsp" >
+		       	  	<input type="submit" value="레시피등록"
+						style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;"></a>
 			      <h4 class="bd-title" id="content">나의레시피</h4>
 			    </div>
 			    
