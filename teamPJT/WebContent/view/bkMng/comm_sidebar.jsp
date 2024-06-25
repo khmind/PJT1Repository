@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@page import="controller.Controller"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="controller.bkMng.BkCategoryController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
 <%@ page import="vo.bkMng.InfoVO" %>      
