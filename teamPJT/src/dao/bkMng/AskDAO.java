@@ -72,6 +72,7 @@ public class AskDAO {
 			
 			if(rs.next()) {
 				System.out.println("----------------------------5-5");
+				System.out.println("----------------------------5-5-1"+ask_id);
 				return new AskVO()
 						.setAsk_title(rs.getString("ask_title"))
 						.setAsk_content(rs.getString("ask_content"))
@@ -97,13 +98,14 @@ public class AskDAO {
 		System.out.println("----------------------------10");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "update ask_info set recomm_content, recomm_update where ask_id=?";
-		System.out.println("----------------------------11");
+		String sql = "update ask_info set recomm_content=?, recomm_date=now() where ask_id=?";
+		System.out.println("----------------------------11"+ask.getAsk_id());
 		try {
 			System.out.println("----------------------------12");
 			conn = ds.getConnection();System.out.println("----------------------------13");
-			pstmt = conn.prepareStatement(sql);System.out.println("----------------------------14");
-			pstmt.setString(1,ask.getRecomm_content());System.out.println("----------------------------15");
+			pstmt = conn.prepareStatement(sql);System.out.println("----------------------------14"+sql);
+			pstmt.setString(1,ask.getRecomm_content());System.out.println("----------------------------15-1"+ask.getRecomm_content());
+			pstmt.setString(2, ask.getAsk_id());System.out.println("----------------------------15-2"+ask.getAsk_id());
 			System.out.println("----------------------------16");
 			return pstmt.executeUpdate(); 
 			
@@ -123,7 +125,7 @@ public class AskDAO {
 		int res;
 		
 		String maxId ="select max(ask_id)as maxId from ask_info";
-		String sql1 = "insert into ask_info(ask_id, user_id, recomm_content,recomm_user_id recomm_date) values(?,?, ?, ?,?,now());";
+		String sql1 = "update ask_info set recomm_content=?, recomm_date=now() where ask_id=?";
 		
 		try {
 			conn = ds.getConnection();

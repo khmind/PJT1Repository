@@ -38,7 +38,7 @@ public class AskController implements Controller{
 		return "bk_ask.jsp";
 	}
 	public String ask_register(String flag, Map<String, Object> model)throws Exception{
-		System.out.println("-------------------12");
+		System.out.println("-------------------12"+model.get("ask_id"));
 		if(model.get("ask_id")==null) {
 			
 			return "bk_ask_register.jsp";
@@ -52,7 +52,7 @@ public class AskController implements Controller{
 				System.out.println(" ask :" + ask.getUser_id());
 				
 				
-				//AskDAO.insert(notice);
+				askDAO.insert(ask);
 				
 				System.out.println(" regi------------result  : ");
 				
@@ -71,10 +71,10 @@ public class AskController implements Controller{
 			String ask_id =  vo.getAsk_id();System.out.println("----------------------------5-1");
 			AskVO ask = askDAO.selectOne(ask_id);
 			model.put("ask", ask);
-			System.out.println("----------------------------6");
+			System.out.println("----------------------------6"+ask.getAsk_id());
 			return "bk_ask_modify.jsp";
 		}
-		System.out.println("----------------------------9");
+		System.out.println("----------------------------9"+vo.getRecomm_content());
 		AskVO ask = (AskVO)model.get("ask_update");
 		askDAO.update(ask);
 		System.out.println("----------------------------17");

@@ -51,8 +51,9 @@
             <div id="content">
 
                 <!-- Begin Page Content -->
-             <form action="ask.do" method="post" name="frm">
-              <input type="hidden" name="notice_id" value="">
+             <form action="ask_update.do" method="post" name="frm">
+              <input type="hidden" name="ask_title" value="${ask.ask_title}">
+              <input type="hidden" name="ask_id" value="${ask.ask_id}">
                 <div class="container-fluid">
 					<br>
                     <!-- Page Heading -->
@@ -79,11 +80,11 @@
 	                   	</div>
 						<div style="display:flex; ">
 							<span class="textfield" style="margin-left:20px;">답변</span>
-							<textarea rows="5%"  style="margin-left: 70px; width:70%;"${ask.recomm_content }></textarea>
+							<textarea rows="5%"  style="margin-left: 70px; width:70%;" name="recomm_content">${ask.recomm_content }</textarea>
 						</div>
 						<div style="display:flex; margin-top: 20px;">
 							<span class="textfield" style="margin-left:20px;">답변일자</span>
-							<textarea rows="2%" style="margin-left: 40px; width:70%;" disabled>${ask.recomm_date }</textarea>
+							<textarea rows="2%" style="margin-left: 40px; width:70%;" name="recomm_date"disabled>${ask.recomm_date }</textarea>
 						</div>
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">

@@ -28,9 +28,15 @@
   	}
     </style>
     <script type="text/javascript">
-	function confirmModal1() {
-		
-			location = "ask.do";
+	function setRegisterAction(askId) {
+		document.frmt.ask_id.value = askId;
+	    document.frmt.action = "ask_register.do"; 
+	    document.frmt.submit();
+	}
+	function confirmModal1(askId) {
+		document.frmt.ask_id.value = askId;
+		document.frmt.ask_id.action="ask_update.do";
+		document.frmt.submit();
 
 	}
 	function confirmModal2() {
@@ -64,20 +70,21 @@
                     <h1 class="h3 mb-2 text-gray-800">문의답변등록</h1>
 
                     <!-- DataTales Example -->
-                    <form action="ask.do" method="post">
+                    <form action="" method="post" name="frmt">
+                    <input type="hidden" name="ask_id" value="">
                     <div class="card mb-4">
                         <div class="card-body mb-4" style="display:flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
 							<span class="textfield">제목</span>
-	              			<textarea rows="2%" style=" margin-left: 69px; width:72%;">${ask.ask_title}</textarea>	                            
+	              			<textarea rows="2%" style=" margin-left: 69px; width:72%;" name="ask_title" disabled>${ask.ask_title}</textarea>	                            
                         </div>
                         <div style="display:flex;">
 							<span class="textfield" style="margin-left:20px;">내용</span>
-	      					<textarea rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;">${ask.ask_conent}</textarea>
+	      					<textarea rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;" name="ask_content"  disabled>${ask.ask_conent}</textarea>
 	                   	</div>
 	                   	<div style="display:flex; disabled:true;">  
 	                   		<span class="textfield" style="margin-left:20px;">사용자</span>
-	                   		<textarea rows="2%"  style="margin-left: 55px; margin-bottom :20px; width:70%;">${ask.user_id}</textarea> 
+	                   		<textarea rows="2%"  style="margin-left: 55px; margin-bottom :20px; width:70%;" name="ask_user_id" disabled>${ask.user_id}</textarea> 
 	                   	</div>
 	                   	<div style="display:flex;">  
 	                   		<span class="textfield" style="margin-left:20px;">등록일자</span>
@@ -85,12 +92,12 @@
 	                   	</div>
 						<div style="display:flex;">
 							<span class="textfield" style="margin-left:20px;">답변</span>
-							<textarea rows="5%" style="margin-left: 70px; width:70%;"></textarea>
+							<textarea rows="5%" style="margin-left: 70px; width:70%;" name="recomm_content" ></textarea>
 						</div>
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">
-	                    	<button type="submit" class="btn btn-outline-primary" style="width:75px" onclick="confirmModal1()">등록</button>
-	                    	<button type="button" class="btn btn-outline-secondary ml-3" style="width:75px" onclick="location.href='ask_modify.do'">수정</button>
+	                    	<button type="submit" class="btn btn-outline-primary" style="width:75px" onclick="setRegisterAction()">등록</button>
+	                    	<button type="button" class="btn btn-outline-secondary ml-3" style="width:75px" onclick="confirmModal1()">수정</button>
 	                    	<button type="button" class="btn btn-outline-danger ml-3" style="width:75px" onclick="confirmModal2()">삭제</button>
                     	</div>
                                              
