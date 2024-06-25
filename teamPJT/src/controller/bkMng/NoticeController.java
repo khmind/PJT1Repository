@@ -79,7 +79,7 @@ public class NoticeController implements Controller{
 		 
 		} 
 	
-	/*
+	/* 
 <<<<<<< HEAD
 	
 	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
