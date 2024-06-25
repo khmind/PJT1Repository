@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import vo.bkMng.AskVO;
 import vo.bkMng.CategoryVO;
 import vo.bkMng.InfoVO;
 import vo.bkMng.NoticeVO;
@@ -159,6 +160,50 @@ public class DispatcherServlet extends HttpServlet {
 					model.put("notice_delete", arg0.getParameter("notice_id"));
 					flag = "notice_delete";
 				
+				}
+			
+				else if("/view/bkMng/ask.do".equals(servletPath)) {
+					flag = "ask_list";
+				}else if("/view/bkMng/ask_register.do".equals(servletPath)) {
+					HttpSession session = (HttpSession)model.get("session");	
+					InfoVO vo = (InfoVO)session.getAttribute("infoVO");				
+						//update랑 비슷하게 해보자
+					System.out.println("----------------------------"+arg0.getParameter("ask_id"));
+					System.out.println("----------------------------5"+vo.getUser_id());
+					System.out.println("----------------------------"+arg0.getParameter("ask_title"));
+					System.out.println("----------------------------"+arg0.getParameter("ask_content"));
+					if(arg0.getParameter("recomm_content")==null) {
+							
+						model.put("ask_register", new AskVO().setAsk_id(arg0.getParameter("ask_id")));	
+						System.out.println("----------------------------5");
+						flag="ask_register";
+					}else {
+						System.out.println("----------------------------6");
+						model.put("ask_register", new AskVO().setUser_id(arg0.getParameter("user_id"))
+																.setAsk_id(arg0.getParameter("ask_id"))
+																.setRecomm_content("recomm_content")
+																.setRecomm_user_id(arg0.getParameter("recomm_user_id"))
+								);	
+						flag="ask_register";
+					}
+				}else if("/view/bkMng/ask_update.do".equals(servletPath)) {
+					
+					if (arg0.getParameter("ask_title") == null) {
+						model.put("ask_update",new AskVO().setAsk_id(arg0.getParameter("ask_id")));
+						System.out.println("----------------------------2");
+						flag = "ask_update";
+					} else {
+						
+						System.out.println("----------------------------7"+arg0.getParameter("ask_id"));
+						model.put("ask_update",
+								new AskVO().setAsk_id(arg0.getParameter("ask_id"))
+											.setRecomm_content(arg0.getParameter("recomm_content"))
+											//.setRecomm_user_id(arg0.getParameter("recomm_user_id"))
+								);
+						
+						System.out.println("----------------------------8");
+						flag = "ask_update";
+					}
 				}
 			
 			else if ("/view/bkMng/recipe.do".equals(servletPath)) {

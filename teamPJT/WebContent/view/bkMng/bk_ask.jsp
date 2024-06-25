@@ -43,17 +43,18 @@
     	}
     </style>
     <script type="text/javascript">
-    function selectAll(selectAll)  {
+/*     function selectAll(selectAll)  {
     	  const checkboxes 
     	       = document.getElementsByName('chk');
     	  
     	  checkboxes.forEach((checkbox) => {
     	    checkbox.checked = selectAll.checked;
     	  })
-    	}
+    	} */
+    	
     function move(askId) {
         document.frmt.ask_id.value = askId;
-        document.frmt.action="ask_update.do"; 
+        document.frmt.action="ask_register.do"; 
         document.frmt.submit();
     }
 	

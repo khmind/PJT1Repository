@@ -26,7 +26,7 @@ public class NoticeController implements Controller{
 		}else if(flag.equals("notice_register")) {
 			returnValue = notice_register(flag,model);
 		}else if(flag.equals("notice_delete")){
-			//returnValue = notice_delete(flag,model);
+			returnValue = notice_delete1(flag,model);
 		}
 	 	return returnValue;
 		
@@ -79,10 +79,7 @@ public class NoticeController implements Controller{
 		 
 		} 
 	
-	/* 
-<<<<<<< HEAD
-	
-	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
+	public String notice_delete1(String flag, Map<String, Object> model) throws Exception{
 		
 		String notice_id = (String)model.get("notice_id");
 		String[] no = (String[])model.get("no");
@@ -91,18 +88,17 @@ public class NoticeController implements Controller{
 		}else {
 			noticeDAO.delete2(notice_id);
 		}
-=======
-	public String notice_delete(String flag, Map<String, Object> model) throws Exception{
+		return "redirect:notice.do";
+	}
+	public String notice_delete2(String flag, Map<String, Object> model) throws Exception{
 		
 		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
 		  String notice_id = (String) model.get("notice_id");
 		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
-		  noticeDAO.delete(notice_id);
+		  noticeDAO.delete2(notice_id);
 		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
 		
->>>>>>> branch 'main' of https://github.com/khmind/PJT1Repository
 		return "redirect:notice.do";
 	}
 	
-	*/
 }
