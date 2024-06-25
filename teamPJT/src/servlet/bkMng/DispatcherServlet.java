@@ -178,6 +178,7 @@ public class DispatcherServlet extends HttpServlet {
 							.setCate_name(arg0.getParameter("cate_name").trim())
 							.setCate_order(arg0.getParameter("cate_order").trim())
 							.setCate_place(arg0.getParameter("cate_place").trim())
+							.setAction(arg0.getParameter("action"))
 							);
 				}
 				flag = "cate_add";
@@ -206,9 +207,11 @@ public class DispatcherServlet extends HttpServlet {
 					System.out.println(arg0.getParameter("cate_id")+"?????????????//");
 					model.put("cate_edit", new CategoryVO()
 							.setCate_id(arg0.getParameter("cate_id"))
-							.setCate_name(arg0.getParameter("cate_name"))
+							.setCate_name(arg0.getParameter("cate_name"))							
 							.setCate_order(arg0.getParameter("cate_order"))
-							.setCate_place(arg0.getParameter("cate_place")));
+							.setCate_place(arg0.getParameter("cate_place"))
+							.setAction(arg0.getParameter("action"))
+							);
 				}
 //				else {
 //					System.out.println("edit===========99999999");

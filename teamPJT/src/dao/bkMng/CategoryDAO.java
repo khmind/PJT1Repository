@@ -37,10 +37,11 @@ public class CategoryDAO {
 			while(rs.next()) {
 				CategoryVO cateVO=new CategoryVO()
 						.setCate_id(rs.getString("cate_id"))
-						.setCate_name(rs.getString("cate_name"))
+						.setCate_name(rs.getString("cate_name"))						
 						.setCate_order(rs.getString("cate_order"))
 						.setCate_place(rs.getString("cate_place"))
-						.setCate_date(rs.getDate("cate_date"));
+						.setCate_date(rs.getDate("cate_date"))
+						.setAction(rs.getString("action"));
 				cateList.add(cateVO);
 			}
 		}catch (Exception e) {
@@ -55,7 +56,7 @@ public class CategoryDAO {
 	//등록
 	public int insert(CategoryVO vo) throws Exception{
 		System.out.println("add===========3");
-		String sql = "insert into category_info values(?,?,?,?,now())";
+		String sql = "insert into category_info values(?,?,?,?,?,now())";
 		int res=0;
 		
 		try {
@@ -67,12 +68,14 @@ public class CategoryDAO {
 			pstmt.setString(2, vo.getCate_name());
 			pstmt.setString(3, vo.getCate_order());
 			pstmt.setString(4, vo.getCate_place());
+			pstmt.setString(5, vo.getAction());
 			
 			System.out.println("add===========5");
 			System.out.println(vo.getCate_id());
 			System.out.println(vo.getCate_name());
 			System.out.println(vo.getCate_order());
 			System.out.println(vo.getCate_place());
+			System.out.println(vo.getAction());
 			res=pstmt.executeUpdate();
 			System.out.println("add===========6"+res);
 		}catch (Exception e) {
@@ -125,7 +128,7 @@ public class CategoryDAO {
 	//조회
 	public CategoryVO detail(String cate_id) throws Exception{
 		 
-		String sql = "select cate_id, cate_name, cate_order, cate_place from category_info where cate_id='"+cate_id+"'";
+		String sql = "select cate_id, cate_name, cate_order, cate_place, action from category_info where cate_id='"+cate_id+"'";
 		
 		try {
 			conn=ds.getConnection();
@@ -137,7 +140,8 @@ public class CategoryDAO {
 						.setCate_id(rs.getString("cate_id"))
 						.setCate_name(rs.getString("cate_name"))
 						.setCate_order(rs.getString("cate_order"))
-						.setCate_place(rs.getString("cate_place"));
+						.setCate_place(rs.getString("cate_place"))
+						.setAction(rs.getString("action"));
 				
 			}else {
 				throw new Exception("해당 번호의 회원을 찾을수 없습니다.");
@@ -153,7 +157,7 @@ public class CategoryDAO {
 	//수정
 	public int update(CategoryVO cateVO) throws Exception{
 		System.out.println("edit==========4");
-		String sql = "update category_info set cate_name=?, cate_order=?, cate_place=? where cate_id=?";
+		String sql = "update category_info set cate_name=?, cate_order=?, cate_place=?, action=? where cate_id=?";
 		
 		try {
 			conn=ds.getConnection();
@@ -161,10 +165,12 @@ public class CategoryDAO {
 			pstmt.setString(1, cateVO.getCate_name());
 			pstmt.setString(2, cateVO.getCate_order());
 			pstmt.setString(3, cateVO.getCate_place());
-			pstmt.setString(4, cateVO.getCate_id());
+			pstmt.setString(4, cateVO.getAction());
+			pstmt.setString(5, cateVO.getCate_id());
 			System.out.println("edit==========3"+cateVO.getCate_name());
 			System.out.println("edit==========3"+cateVO.getCate_order());
 			System.out.println("edit==========3"+cateVO.getCate_place());
+			System.out.println("edit==========3"+cateVO.getAction());
 			System.out.println("edit==========3"+cateVO.getCate_id());
 			return pstmt.executeUpdate();
 			
@@ -180,10 +186,10 @@ public class CategoryDAO {
 	public List<CategoryVO> bkCateList() throws Exception{
 		
 		List<CategoryVO> cateList = new ArrayList<CategoryVO>();
-		String sql = "select * from category_info2 where cate_place = 'B' order by cate_id asc";		
+		String sql = "select * from category_info where cate_place = 'B' order by cate_order asc";		
 		
 		try {
-			
+			 
 			conn=ds.getConnection();		
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();

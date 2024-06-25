@@ -111,6 +111,7 @@ input {
 									<!-- <th class="th1" scope="col">no</th> -->
 									<th scope="col">메뉴코드</th>
 									<th scope="col">메뉴명</th>
+									<th scope="col">ACTION</th>
 									<th scope="col">메뉴순서</th>
 									<th scope="col">위치</th>
 									<th scope="col">생성날짜</th>
@@ -126,6 +127,7 @@ input {
 										</th>
 										<td class="th2" scope="row"><a href="cate_edit.do?cate_id=${list.cate_id }">${list.cate_id }</a></td>
 										<td class="th3" scope="row">${list.cate_name }</td>
+										<td class="th3" scope="row">${list.action }</td>
 										<td class="th4" scope="row">${list.cate_order }</td>
 										<td class="th5" scope="row">${list.cate_place }</td>
 										<td class="th6" scope="row">${list.cate_date }</td>
@@ -142,6 +144,8 @@ input {
 											type="text" name="cate_id" placeholder="메뉴코드"></td>
 										<td class="th3" scope="row" align="center"><input
 											type="text" name="cate_name" placeholder="메뉴명"></td>
+										<td class="th3" scope="row" align="center"><input
+											type="text" name="action" placeholder="action.do"></td>											
 										<td class="th4" scope="row" align="center"><input
 											type="text" name="cate_order" placeholder="메뉴순서"></td>
 										<td class="th5" scope="row" align="left"><select

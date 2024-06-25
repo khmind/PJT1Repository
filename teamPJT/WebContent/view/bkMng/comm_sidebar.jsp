@@ -33,7 +33,11 @@
 <%
 
 	InfoVO infoVO = (InfoVO)session.getAttribute("infoVO");
-	List<CategoryVO> cvoList = (List<CategoryVO>)session.getAttribute("bkCateList");
+	List<CategoryVO> cvoList = null;
+	
+	if ( infoVO != null ) { 		
+		cvoList = (List<CategoryVO>)session.getAttribute("bkCateList");
+	}
 
 %>		
        <!-- Sidebar -->

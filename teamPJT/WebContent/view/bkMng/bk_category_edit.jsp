@@ -105,6 +105,10 @@ function confirmModal3() {
 									name="cate_name" type="text" value="${cateUp.cate_name }">
 							</div>
 							<div class="row">
+								<span class="title_content">ACTION </span> <input class="textfield"
+									name="action" type="text" value="${cateUp.action }">
+							</div>							
+							<div class="row">
 								<span class="title_content">메뉴순서 </span> <input
 									class="textfield" name="cate_order" type="text"
 									value="${cateUp.cate_order }">
