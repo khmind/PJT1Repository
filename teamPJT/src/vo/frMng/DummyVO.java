@@ -9,9 +9,8 @@ public class DummyVO {
 	private String user_email;
 	private String user_pw;
 	private String user_role;
-	private Timestamp user_date;
-	
-	
+	private Timestamp user_date; 
+		
 	public String getUser_id() {
 		return user_id;
 	}

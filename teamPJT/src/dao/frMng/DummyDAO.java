@@ -14,7 +14,7 @@ public class DummyDAO {
 	
 	public void setDataSource(DataSource ds) {
 		this.ds=ds;
-	}
+	} 
 	
 	public InfoVO exist(String email, String password) throws Exception{
 		 

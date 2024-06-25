@@ -15,8 +15,7 @@ public class DummyController implements Controller{
 
 	InfoDAO infoDAO;
 	CategoryDAO cateDAO;
-	
-	
+		
 	public DummyController setInfoDAO(InfoDAO infoDAO, CategoryDAO cateDAO) {
 		this.infoDAO = infoDAO;
 		this.cateDAO = cateDAO;
@@ -30,8 +29,7 @@ public class DummyController implements Controller{
 		if(flag.equals("login")) {
 			returnValue = login(flag, model);
 		}
-		return returnValue;
-		
+		return returnValue;		
 	}
 	
 	public String login(String flag, Map<String, Object> model) throws Exception{
