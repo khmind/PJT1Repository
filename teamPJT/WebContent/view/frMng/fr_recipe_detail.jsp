@@ -1,12 +1,6 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%
-	Date c_time=new Date();
-	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -92,12 +86,12 @@
 					<tr style="display: flex; justify-content: space-around">
 						<td>사용자1</td>
 						<td>맛있어요</td>
-						<td><%=formatter.format(c_time) %></td>
+						<td></td>
 					</tr>
 					<tr style="display: flex; justify-content: space-around">
 						<td>사용자2</td>
 						<td>완전 쉬움</td>
-						<td><%=formatter.format(c_time) %></td>
+						<td></td>
 					</tr>
 				</table>
 			</div>

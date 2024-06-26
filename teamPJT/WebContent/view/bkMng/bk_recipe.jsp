@@ -83,7 +83,8 @@
 								<option value="2">중식</option>
 								<option value="2">일식</option>
 								<option value="2">베이킹</option>
-							</select> <select name="sel1" class="custom-select">
+							</select> 
+							<select name="sel1" class="custom-select">
 								<option selected>- 정렬 -</option>
 								<option value="1">등록순</option>
 								<option value="2">추천순</option>
@@ -171,6 +172,14 @@
 									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 								</a></li>
 							</ul>
+							<form action="recipe_add.do" method="get">
+							<ul class="pagination justify-content-center">
+								<li>
+									<input type="submit" value="레시피등록"	
+									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
+								</li>
+							</ul>
+							</form>
 						</nav>
 
 

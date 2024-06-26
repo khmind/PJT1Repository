@@ -15,7 +15,7 @@ public class RecipeController implements Controller{
 	}
 	@Override  
 	public String execute(String flag, Map<String, Object> model) throws Exception {
-		
+		System.out.println("add=================1=====1");
 		String returnValue="";
 		if(flag.equals("recipe_list")) {
 			returnValue = recipe_list(flag, model);
@@ -31,15 +31,28 @@ public class RecipeController implements Controller{
 		}
 	 	return returnValue;
 		
-	}
+	} 
+	//삭제
 	private String recipe_delete(String flag, Map<String, Object> model) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	private String recipe_add(String flag, Map<String, Object> model) {
-		// TODO Auto-generated method stub
-		return null;
+	//등록
+	private String recipe_add(String flag, Map<String, Object> model) throws Exception {
+		System.out.println("add=============3");
+		if(model.get("recipe_new") == null) {
+			model.put("class_name", recipeDAO.classList());
+			return "/view/frMng/fr_recipe_register.jsp";
+			
+		}
+		else {
+			System.out.println("add=============4");
+			RecipeVO vo=(RecipeVO)model.get("recipe_new");
+			recipeDAO.insert(vo);
+			return "redirect:recipe.do";
+		}
 	}
+	
 	private String recipe_update(String flag, Map<String, Object> model) throws Exception {
 		
 		System.out.println("recipe=============1");
@@ -51,7 +64,7 @@ public class RecipeController implements Controller{
 			String id = vo.getRecipe_id();
 			System.out.println("recipe=============1"+vo.getRecipe_id());
 			model.put("recipe", recipeDAO.detail(id));
-			return "fr_recipe_edit.jsp";
+			return "/view/frMng/fr_recipe_edit.jsp";
 		}
 		
 		return "redirect:recipe.do";

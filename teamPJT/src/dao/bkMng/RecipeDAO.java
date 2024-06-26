@@ -3,6 +3,7 @@ package dao.bkMng;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,123 @@ public class RecipeDAO {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs =null;
+	Statement stmt = null;
 	
 	public void setDs(DataSource ds) {
 		this.ds = ds;
 	}
-	
+	//분류조회
+	public List<RecipeVO> classList() throws Exception{
+
+		List<RecipeVO> classList = new ArrayList<RecipeVO>();
+		String sql = "select * from recipe_class_info";
+		
+		try {
+			conn=ds.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				RecipeVO vo = new RecipeVO()
+						.setClass_id(rs.getString("class_id"))
+						.setClass_name(rs.getString("class_name"));
+				
+				classList.add(vo);
+			}
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+		    try {if (stmt != null) stmt.close();} catch(Exception e) {}
+		    try {if (conn != null) conn.close();} catch(Exception e) {}
+		}
+		return classList;
+	}
 	//등록 ->dao.bkMng
+	public int insert(RecipeVO vo) throws Exception{
+		
+		System.out.println("addDAO=============1");
+		int res;
+		int res1;
+		String imgPath = "../img/frMng/";
+		String maxId ="select max(recipe_id)as maxId from recipe_info";
+		String sql1 = "insert into recipe_info \r\n" + 
+				"	(recipe_id, recipe_title, class_id, recipe_level,\r\n" + 
+				"    recipe_stuff, recipe_content, user_id, recipe_date) \r\n" + 
+				"	values(?,?,?,?,?,?,?,now())";
+		String sql3="insert into recipe_image_info \r\n" + 
+				"	(recipe_id,img_path_01,img_path_02,img_path_03,img_main)\r\n" + 
+				"	values(?,?,?,?,img_path_03)";
+		
+		try {
+			conn = ds.getConnection();
+			stmt = conn.createStatement(); 
+			rs = stmt.executeQuery(maxId);
+			//String sql2=null;
+			PreparedStatement pstmt2=null;
+			
+			System.out.println("addDAO=============2");
+			
+			if(rs.next()) {
+			
+				System.out.println("////////////////////");
+				maxId = rs.getString("maxId") ;
+				System.out.println("////////////////////"+maxId);
+				int a = Integer.parseInt(maxId.substring(2));
+				System.out.println("////////////////////"+a);
+				a++;
+				String sql2 = maxId.substring(0, 2) + a; 
+				System.out.println("addDAO=============3"+sql2);
+			}		
+			int a = Integer.parseInt(maxId.substring(2));
+			a++;
+			String sql2 = maxId.substring(0, 2) + a;
+			System.out.println("addDAO=============3"+sql2);
+			
+			pstmt=conn.prepareStatement(sql1);
+			pstmt.setString(1, sql2);
+			pstmt.setString(2, vo.getRecipe_title());
+			pstmt.setString(3, vo.getClass_id());
+			pstmt.setString(4, vo.getRecipe_level());
+			pstmt.setString(5, vo.getRecipe_stuff());
+			pstmt.setString(6, vo.getRecipe_content());
+			pstmt.setString(7, vo.getUser_id());
+
+			System.out.println("addDAO=============1"+vo.getRecipe_title());
+			System.out.println("addDAO=============1"+vo.getClass_id());
+			System.out.println("addDAO=============1"+vo.getRecipe_level());
+			System.out.println("addDAO=============1"+vo.getRecipe_stuff());
+			System.out.println("addDAO=============1"+vo.getRecipe_content());
+			System.out.println("addDAO=============1"+vo.getUser_id());
+			
+			res=pstmt.executeUpdate();
+			
+			pstmt2=conn.prepareStatement(sql3);
+			pstmt2.setString(1, sql2);
+			pstmt2.setString(2, imgPath+vo.getImg_path_01());
+			pstmt2.setString(3, imgPath+vo.getImg_path_02());
+			pstmt2.setString(4, imgPath+vo.getImg_path_03());
+			
+			System.out.println("addDAO=============2 "+sql2);
+			System.out.println("addDAO=============2"+vo.getImg_path_01());
+			System.out.println("addDAO=============2"+vo.getImg_path_02());
+			System.out.println("addDAO=============2"+vo.getImg_path_03());
+			
+			res1=pstmt2.executeUpdate();
+			
+
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+		    try {if (stmt != null) stmt.close();} catch(Exception e) {}
+		    try {if (conn != null) conn.close();} catch(Exception e) {}
+		} 
+		
+		return res1;
+	}
+
 	//수정 ->dao.bkMng
 	//삭제  ->dao.bkMng
 	//상세조회 

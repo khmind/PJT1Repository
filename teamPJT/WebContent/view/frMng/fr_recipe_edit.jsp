@@ -15,7 +15,7 @@
 </script>
 </head>
 <body>
-	<form action="">
+	<form action="recipe_edit.do" method="post">
 		<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq"
 			id="features-66-ubxwyl9azq">
 			<div class="container">
@@ -84,7 +84,7 @@
 							<div style="text-align: right">
 								<input type="submit" value="수정"
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
-								<input type="submit" value="비활성화"
+								<input type="button" value="비활성화"
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 							</div>
 							<div style="margin-top: 20px;">

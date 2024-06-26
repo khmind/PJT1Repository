@@ -308,14 +308,40 @@ public class DispatcherServlet extends HttpServlet {
 					flag="recipe_edit";
 				}
 			}
+			else if("/view/bkMng/recipe_add.do".equals(servletPath)) {
+				System.out.println("add===============1");
+				HttpSession session = (HttpSession)model.get("session");	
+				InfoVO vo = (InfoVO)session.getAttribute("infoVO");				
+					
+				System.out.println("add===============2");
+				System.out.println("add===============2"+arg0.getParameter("recipe_id"));
+				if(arg0.getParameter("reci_title") != null) {	
+					System.out.println("????????????????????????????/ "+arg0.getParameter("reci_title"));
+						model.put("recipe_new", new RecipeVO()
+								.setUser_id(vo.getUser_id())
+								.setRecipe_title(arg0.getParameter("reci_title"))
+								.setClass_id(arg0.getParameter("class_name"))
+								.setImg_path_01(arg0.getParameter("upload1"))
+								.setImg_path_02(arg0.getParameter("upload2"))
+								.setImg_path_03(arg0.getParameter("upload3"))
+								.setRecipe_level(arg0.getParameter("level"))
+								.setRecipe_stuff(arg0.getParameter("reci_stuff"))
+								.setRecipe_content(arg0.getParameter("reci_content"))
+								);	
+						
+						flag="recipe_add";
+					}
+				flag="recipe_add";
+				System.out.println("add============2-2");
+				}
 			
 			
 			
 			
 			//System.out.println("############# flag1 : " + flag);
-			
+			System.out.println("add============2-3"+flag);
 			String viewUrl = contro.execute(flag, model);
-			
+			System.out.println("add============2-4");
 			
 			//System.out.println("############# flag2 : " + flag);
 

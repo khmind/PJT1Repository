@@ -1,10 +1,13 @@
 package listener;
 
+import java.util.List;
+
 import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import controller.bkMng.AskController;
@@ -14,6 +17,7 @@ import controller.bkMng.LogOutController;
 import controller.bkMng.NoticeController;
 import controller.bkMng.RecipeController;
 import controller.bkMng.UserController;
+import controller.frMng.HeaderController;
 import dao.bkMng.AskDAO;
 import dao.bkMng.CategoryDAO;
 import dao.bkMng.InfoDAO;
@@ -22,6 +26,7 @@ import dao.bkMng.NoticeDAO;
 
 import dao.bkMng.RecipeDAO;
 import dao.bkMng.UserDAO;
+import vo.bkMng.CategoryVO;
 
 @WebListener
 public class ContextLoaderListener implements ServletContextListener{
@@ -55,11 +60,13 @@ public class ContextLoaderListener implements ServletContextListener{
 			cateDAO.setDs(ds);
 			askDAO.setDataSource(ds);
 
+			/*###  bkMng  ###*/
 			sc.setAttribute("/view/bkMng/login.do", new InfoController().setInfoDAO(dao, cateDAO));
 			sc.setAttribute("/view/bkMng/logout.do", new LogOutController());
 			
 			sc.setAttribute("/view/bkMng/user.do", new UserController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/userModify.do", new UserController().setDAO(userDAO));
+			
 			sc.setAttribute("/view/bkMng/maneger.do", new UserController().setDAO(userDAO));
 			sc.setAttribute("/view/bkMng/manegerModify.do", new UserController().setDAO(userDAO));  
 			
@@ -76,12 +83,16 @@ public class ContextLoaderListener implements ServletContextListener{
 			
 			sc.setAttribute("/view/bkMng/recipe.do", new RecipeController().setRecipeDAO(recipeDAO));
 			sc.setAttribute("/view/bkMng/recipe_edit.do", new RecipeController().setRecipeDAO(recipeDAO));
-			sc.setAttribute("/view/frMng/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO));
+			sc.setAttribute("/view/bkMng/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO));
 			
 			sc.setAttribute("/view/bkMng/ask.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_delete1.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_delete2.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_update.do", new AskController().setDAO(askDAO));
+						
+			/*###  fkMng  ###*/
+			sc.setAttribute("/view/frMng/header.do", new HeaderController().setInfoDAO(cateDAO));
+			
 			
 		}catch (Exception e) {
 			e.printStackTrace(); 
