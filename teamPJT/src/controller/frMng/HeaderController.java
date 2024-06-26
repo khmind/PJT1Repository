@@ -21,10 +21,11 @@ public class HeaderController implements Controller{
 
 	@Override
 	public String execute(String flag, Map<String, Object> model) throws Exception {
-
+		//System.out.println("-------------2");
 		String returnValue="";
-		
-		if(flag.equals("navbar")) {
+				
+		if(flag.equals("navbar")) {		
+			System.out.println("-------------3");
 			returnValue = navbar(flag, model);
 		}
 		
@@ -36,11 +37,19 @@ public class HeaderController implements Controller{
 	public String navbar(String flag, Map<String, Object> model) throws Exception{
 		
 		List<CategoryVO> cvo  = cateDAO.frCateList();
-		System.out.println("-------------2");				
-		HttpSession session = (HttpSession)model.get("session");			
+						
+		HttpSession session = (HttpSession)model.get("session");
+		
+		//System.out.println("-------------4");
+		
 		session.setAttribute("frCateList", cvo);
-		System.out.println("-------------3");			
-		return "main.jsp";
+		
+		System.out.println("-------------5");
+		
+		//http://localhost:8080/teamPJT/view/index.jsp
+	    //return "/view/frMng/main2.jsp";
+	    return "frMng/main2.jsp";
+	    //return "/view/frMng/main2.jsp";
 		//return null;
 		
 	}
