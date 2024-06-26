@@ -50,15 +50,40 @@
     	  checkboxes.forEach((checkbox) => {
     	    checkbox.checked = selectAll.checked;
     	  })
-    	} */
-    	
+    	} */ 	
     function move(askId) {
+    	
         document.frmt.ask_id.value = askId;
-        document.frmt.action="ask_register.do"; 
+        document.frmt.action="ask_update.do"; 
         document.frmt.submit();
     }
-	
+    function deleteAction() {
+        	
+        document.frmt.ask_id.value = askId;
+        document.frmt.action="ask_delete.do"; 
+        document.frmt.submit();
+    }
     
+    $(function() {
+		$("#chkAll").click(function() {
+			$(".chkGrp").attr("checked", this.checked);
+		});
+	});
+
+	function deleteChk() {
+		let groupList = "";
+		
+
+		$(".chkGrp:checked").each(function(idx, item) {
+			if (idx == 0) {
+				groupList = item.value;
+			} else {
+				groupList += "," + item.value;
+			}
+		});
+	}
+	 
+	 
     </script>
 </head>
 
@@ -98,8 +123,9 @@
                             </div>
                         </div>
                     </form>
-                    <form action="" method="post" name="frmt">          
-                    <input type="hidden" name="ask_id" value="">            
+                    <form action="ask_delete2.do" method="post" name="frmt">          
+                    <input type="hidden" name="ask_id" >  
+                    <input type="hidden" name="recomm_date" value="${ask.recomm_date}" >   
 					<select name="sel2" class="custom-select float-right"> 
 						<option selected>- 전체 -</option>
 						<option value="1">제목</option>
@@ -110,7 +136,8 @@
 						<option value="1">답변완료</option>
 						<option value="2">답변필요</option> 
 					</select>
-					<button type="button" class="btn btn-outline-danger float-right mr-1" onclick="confirmModal()">삭제</button>
+					<button type="submit" class="btn btn-outline-danger float-right mr-1" 
+					onclick="deleteAction()" value="delete" name="btn">삭제</button>
 					<button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button>
                     <!-- Topbar Search -->
                            
@@ -119,7 +146,7 @@
 					  <table class="table">
 					  <thead class="thead-dark">
 					    <tr>
-					      <th class="th1"><input type="checkbox" name="chk" value="selectall" onclick="selectAll(this)"></th>
+					      <th class="th1"><input type="checkbox" id="chkAll"class="chkGrp"></th>
 					      <th class="th1" scope="col">no.</th>
 					      <th scope="col">작성자</th>
 					      <th scope="col">제목</th>
@@ -131,13 +158,13 @@
 					  <tbody>
 					  <c:forEach var="ask" items="${asklist}">
 					    <tr>
-					      <th class="th1"><input type="checkbox" name="chk" value="${ask.ask_id}"></th>
+					      <th class="th1"><input type="checkbox" name="del_id" id="chk" class="chkGrp" value="${ask.ask_id}"></th>
 					      <th class="th1" scope="row" onclick="move('${ask.ask_id}')">${ask.ask_id}</th>
 					      <td class="th2" onclick="move('${ask.ask_id}')">${ask.user_id}</td>
 					      <td class="th3" onclick="move('${ask.ask_id}')">${ask.ask_title}</td>
 					      <td class="th4" onclick="move('${ask.ask_id}')">${ask.ask_date}</td>
 					      <th class="th2" onclick="move('${ask.ask_id}')">Y</th>
-					      <td class="th5" onclick="move('${ask.ask_id}')">${ask.recomm_date}</td>
+					      <td class="th5" onclick="move('${ask.ask_id}')" >${ask.recomm_date}</td>
 					    </tr>
 					    </c:forEach>
 					  </tbody>

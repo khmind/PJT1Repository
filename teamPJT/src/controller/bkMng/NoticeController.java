@@ -25,8 +25,10 @@ public class NoticeController implements Controller{
 			returnValue = notice_update(flag, model);
 		}else if(flag.equals("notice_register")) {
 			returnValue = notice_register(flag,model);
-		}else if(flag.equals("notice_delete")){
+		}else if(flag.equals("notice_delete1")){
 			returnValue = notice_delete1(flag,model);
+		}else if(flag.equals("notice_delete2")){
+			returnValue = notice_delete2(flag,model);
 		}
 	 	return returnValue;
 		
@@ -81,23 +83,20 @@ public class NoticeController implements Controller{
 	
 	public String notice_delete1(String flag, Map<String, Object> model) throws Exception{
 		
-		String notice_id = (String)model.get("notice_id");
-		String[] no = (String[])model.get("no");
-		if(no!=null) {
-			noticeDAO.delete1(no);
-		}else {
-			noticeDAO.delete2(notice_id);
-		}
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
+		String notice_id = (String) model.get("notice_delete");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
+		noticeDAO.delete1(notice_id);
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
+		
 		return "redirect:notice.do";
 	}
 	public String notice_delete2(String flag, Map<String, Object> model) throws Exception{
 		
-		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
-		  String notice_id = (String) model.get("notice_id");
-		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
-		  noticeDAO.delete2(notice_id);
-		  System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
-		
+		String[] no = (String[])model.get("no");
+		//cateDAO.delete(no);
+		int res = noticeDAO.delete2(no);
+		System.out.println("?????????????????????"+res);
 		return "redirect:notice.do";
 	}
 	

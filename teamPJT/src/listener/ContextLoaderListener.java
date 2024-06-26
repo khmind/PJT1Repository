@@ -66,7 +66,8 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/notice.do", new NoticeController().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_update.do", new NoticeController().setDAO(noticeDAO));
 			sc.setAttribute("/view/bkMng/notice_register.do", new NoticeController().setDAO(noticeDAO));
-			sc.setAttribute("/view/bkMng/notice_delete.do", new NoticeController().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/notice_delete1.do", new NoticeController().setDAO(noticeDAO));
+			sc.setAttribute("/view/bkMng/notice_delete2.do", new NoticeController().setDAO(noticeDAO));
 			
 			sc.setAttribute("/view/bkMng/category.do", new CategoryController().setCateDAO(cateDAO));
 			sc.setAttribute("/view/bkMng/cate_add.do", new CategoryController().setCateDAO(cateDAO));
@@ -78,7 +79,8 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/frMng/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO));
 			
 			sc.setAttribute("/view/bkMng/ask.do", new AskController().setDAO(askDAO));
-			sc.setAttribute("/view/bkMng/ask_register.do", new AskController().setDAO(askDAO));
+			sc.setAttribute("/view/bkMng/ask_delete1.do", new AskController().setDAO(askDAO));
+			sc.setAttribute("/view/bkMng/ask_delete2.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_update.do", new AskController().setDAO(askDAO));
 			
 		}catch (Exception e) {

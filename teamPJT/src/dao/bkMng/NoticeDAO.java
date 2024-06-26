@@ -172,7 +172,7 @@ public class NoticeDAO {
 	}
 	
 	//공지사항 전체삭제
-	public int delete1(String[] ids) throws Exception {
+	public int delete2(String[] ids) throws Exception {
 		
 		int res=0;
 		int[] cnt=null;
@@ -200,11 +200,11 @@ public class NoticeDAO {
 		return res;
 	}
 	//공지사항 각자삭제
-	public int delete2(String notice_id) throws Exception {
+	public int delete1(String notice_id) throws Exception {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String query = "delete from members where notice_id='"+notice_id+"'";
+		String query = "delete from notice_info where notice_id='"+notice_id+"'";
 		
 		try {
 			conn = ds.getConnection();

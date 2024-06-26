@@ -28,12 +28,10 @@
   	}
     </style>
     <script type="text/javascript">
-   /*  function confirmModal2(askId) {
-    	document.frm.ask_id.value=askId;
-    	document.frm.action="ask_delete.do";
+    function deleteAction() {
+    	document.frm.action="ask_delete1.do";
     	document.frm.submit();
-    	//location = "notice_delete.do";
-    } */
+    } 
     </script>
 </head>
 <body>
@@ -52,7 +50,7 @@
 
                 <!-- Begin Page Content -->
              <form action="ask_update.do" method="post" name="frm">
-              <input type="hidden" name="ask_title" value="${ask.ask_title}">
+              <input type="hidden" name="user_id" value="${ask.user_id}">
               <input type="hidden" name="ask_id" value="${ask.ask_id}">
                 <div class="container-fluid">
 					<br>
@@ -64,15 +62,15 @@
                         <div class="card-body mb-4" style="display:flex;"> 
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
 							<span class="textfield">제목</span>
-	              			<textarea  rows="2%" style=" margin-left: 70px; width:72%;" disabled>${ask.ask_title}</textarea>	                            
+	              			<textarea  rows="2%" style=" margin-left: 70px; width:72%;" name="ask_title"value="${ask.ask_title }" disabled>${ask.ask_title}</textarea>	                            
                         </div> 
                         <div style="display:flex;">  
 							<span class="textfield" style="margin-left:20px;">내용</span>
-	      					<textarea  rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"disabled>${ask.ask_content }</textarea>
+	      					<textarea  rows="10%" style="margin-left: 70px; margin-bottom :20px; width:70%;"name="ask_content" value="${ask.ask_content }"disabled>${ask.ask_content }</textarea>
 	                   	</div>
 	                   	<div style="display:flex; disabled:true;">  
 	                   		<span class="textfield" style="margin-left:20px;">사용자</span>
-	                   		<textarea rows="2%"  style="margin-left: 55px; margin-bottom :20px; width:70%;" disabled>${ask.user_id }</textarea> 
+	                   		<textarea rows="2%"  style="margin-left: 55px; margin-bottom :20px; width:70%; background-color: #efefef4d" name="user_id" value="${ask.user_id }" readonly>${ask.user_id }</textarea> 
 	                   	</div>
 	                   	<div style="display:flex;">  
 	                   		<span class="textfield" style="margin-left:20px;">등록일자</span>
@@ -80,7 +78,7 @@
 	                   	</div>
 						<div style="display:flex; ">
 							<span class="textfield" style="margin-left:20px;">답변</span>
-							<textarea rows="5%"  style="margin-left: 70px; width:70%;" name="recomm_content">${ask.recomm_content }</textarea>
+							<textarea rows="5%"  style="margin-left: 70px; width:70%;" name="recomm_content" value="${ask.recomm_content }">${ask.recomm_content }</textarea>
 						</div>
 						<div style="display:flex; margin-top: 20px;">
 							<span class="textfield" style="margin-left:20px;">답변일자</span>
@@ -89,7 +87,7 @@
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">
 	                    	<button type="submit" class="btn btn-outline-primary ml-3" style="width:75px" >수정</button>
-	                    	<button type="button" class="btn btn-outline-danger ml-3" style="width:75px" onclick="confirmModal2()">삭제</button>
+	                    	<button type="button" class="btn btn-outline-danger ml-3" style="width:75px" onclick="deleteAction()">삭제</button>
                     	</div>
                                              
                 </div>

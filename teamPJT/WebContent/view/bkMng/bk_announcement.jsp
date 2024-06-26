@@ -112,7 +112,7 @@
                                 <option value="1">제목</option>
                                 <option value="2">내용</option>
                             </select>    
-                       	 <form action="notice_delete.do" method="post" name="frmtt">  
+                       	 <form action="notice_delete2.do" method="post" name="frmtt">  
                             <input type="hidden" name="notice_id" value="">
                            
                                 <button type="submit" name="btn" value ="delete"class="btn btn-outline-danger float-right mr-1"  >

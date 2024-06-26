@@ -31,7 +31,7 @@
 
 function confirmModal3(noticeId) {
 	document.frmtt.notice_id.value=noticeId;
-	document.frmtt.action="notice_delete.do";
+	document.frmtt.action="notice_delete1.do";
 	document.frmtt.submit();
 	//location = "notice_delete.do";
 }
