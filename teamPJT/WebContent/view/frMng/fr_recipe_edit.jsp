@@ -12,10 +12,19 @@
 		$("#d_file").append("<br>"+"<input type='file' name='file"+imgFile+"'/>");
 		imgFile++;
 	}
+
+	function confirmModal3() {
+		
+		location = "recipe.do";
+	
+	
+}
 </script>
 </head>
 <body>
-	<form action="recipe_edit.do" method="post">
+	<form action="recipe_edit.do" method="post" name="frmtt">
+		<input type="hidden" name="recipe_id" value="${recipe.recipe_id }">
+	
 		<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq"
 			id="features-66-ubxwyl9azq">
 			<div class="container">
@@ -23,24 +32,33 @@
 					<div class="col-12 col-md-12 col-lg-6 image-wrapper">
 						<h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
 							<strong style="color: orange; font-size: 20px;">레시피 제목 :
-								<input type="text" name="title" value="${recipe.recipe_title }"
+								<input type="text" name="reci_title" value="${recipe.recipe_title }"
 								style="width: 400px; border-radius: 20px; text-align: center;">
 							</strong>
 						</h1>
+						<div>
+							<strong style="color: orange; font-size: 20px;">분류 : </strong> 
+								<select	name="class_name" style="width: 20%; border-radius: 20px; text-align: center;">
+								<option value="${recipe.class_id}" disabled selected>${recipe.class_name }</option>
+								<c:forEach var="c" items="${class_name}">
+									<option value="${c.class_id}">${c.class_name}</option>
+								</c:forEach>
+							</select>
+						</div>
 						<div class="row">
 							<strong style="color: orange; font-size: 20px;">사진 등록</strong>
 							<div style="display: flex; justify-content: space-around">
 								<div class="card" style="width: 18rem;">
 									<div class="image_container1"
 										style="width: 210px; height: 200px; border-right: 1px solid pink; border-left: 1px solid pink">
-									<input type="file" name="upload" id="upload1" class="image" accept="image/*" />
+									<input type="file" name="upload1" id="upload1" class="image" accept="image/*" />
 									<img id="preview1" src="${recipe.img_path_01 }" style="width: 100%; height: 100%">
 									</div>
 								</div>
 								<div class="card" style="width: 18rem;">
 									<div class="image_container2"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
-									<input type="file" name="upload" id="upload2" class="image" accept="image/*" />
+									<input type="file" name="upload2" id="upload2" class="image" accept="image/*" />
 									<img id="preview2" src="${recipe.img_path_02 }" style="width: 100%; height: 100%">
 									
 									</div>
@@ -48,7 +66,7 @@
 								<div class="card" style="width: 18rem;">
 									<div class="image_container3"
 										style="width: 210px; height: 200px; border-right: 1px solid pink">
-										<input type="file" name="upload" id="upload3" class="image" accept="image/*" />
+										<input type="file" name="upload3" id="upload3" class="image" accept="image/*" />
 									<img id="preview3" src="${recipe.img_path_03 }" style="width: 100%; height: 100%">
 										
 									</div>
@@ -58,14 +76,13 @@
 						<p style="display: flex; justify-content: space-around; margin-top: 20px;">
 							<strong style="color: orange; font-size: 20px;">난이도</strong> 
 							<strong style="font-size: 20px;">상
-								<!-- ${불러온값  eq '비교value값' ? 'checked' : ''} -->
-								<input type="radio" name="level" value="A" ${recipe.recipe_level() eq 'A' ? 'checked':'' }>
+								<input type="radio" name="level" value="A" <c:if test="${recipe.recipe_level eq 'A' }"> checked </c:if>>
 							</strong> 
 							<strong style="font-size: 20px;">중
-								<input type="radio" name="level" value="B" ${recipe.recipe_level() eq 'B' ? 'checked':'' }>
+								<input type="radio" name="level" value="B" <c:if test="${recipe.recipe_level eq 'B' }">checked</c:if>>
 							</strong> 
 							<strong	style="font-size: 20px;">하
-								<input type="radio" name="level" value="C" ${recipe.recipe_level() eq 'C' ? 'checked':'' }>
+								<input type="radio" name="level" value="C" <c:if test="${recipe.recipe_level eq 'C' }">checked</c:if>>
 							</strong>
 						</p>
 						<div style="margin-top: 30px;">
@@ -74,9 +91,7 @@
 							</p>
 						</div>
 						<div style="text-align: center; padding-bottom: 30px;">
-							<textarea rows="10" cols="60" >
-															${recipe.recipe_stuff }	
-							</textarea>
+							<textarea rows="10" name="stuff" cols="60" >${recipe.recipe_stuff }</textarea>
 						</div>
 					</div>
 					<div class="col-12 col-md-12 col-lg">
@@ -84,7 +99,7 @@
 							<div style="text-align: right">
 								<input type="submit" value="수정"
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
-								<input type="button" value="비활성화"
+								<input type="button" value="목록" onclick="confirmModal3()"
 									style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 							</div>
 							<div style="margin-top: 20px;">
@@ -93,12 +108,11 @@
 								</p>
 							</div>
 							<div style="text-align: center;">
-								<textarea rows="26" cols="60">
-																${recipe.recipe_content }
-								</textarea>
+								<textarea name="content" rows="26" cols="60">${recipe.recipe_content }</textarea>
 							</div>
 						</div>
 					</div>
+				
 					<hr>
 					<table style="display: flex; justify-content: space-around; margin-bottom: 80px;">
 					<tr>
@@ -109,13 +123,13 @@
 						<td><input type="submit" value="등록" 
 								style="width:70px; height:40px; background-color:skyblue;"></td>
 					</tr>
-					<c:forEach var="re" items="${recipe }">
+					<%-- <c:forEach var="re" items="${recipe }"> --%>
 					<tr style="display: flex; justify-content: space-around">
-						<td>${re.user_id }</td>
-						<td>${re.comment_content }</td>
-						<td>${re.comment_date }</td>
+						<td>${recipe.user_name }</td>
+						<td>${recipe.comment_content }</td>
+						<td>${recipe.comment_date }</td>
 					</tr>
-					</c:forEach>
+					<%-- </c:forEach> --%>
 				</table>
 				</div>
 			</div>

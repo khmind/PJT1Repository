@@ -9,10 +9,12 @@ import vo.bkMng.RecipeVO;
 public class RecipeController implements Controller{
 
 	RecipeDAO recipeDAO;
+	
 	public RecipeController setRecipeDAO(RecipeDAO recipeDAO) {
 		this.recipeDAO=recipeDAO;
 		return this;
 	}
+	
 	@Override  
 	public String execute(String flag, Map<String, Object> model) throws Exception {
 		System.out.println("add=================1=====1");
@@ -29,13 +31,21 @@ public class RecipeController implements Controller{
 		else if(flag.equals("recipe_delete")){
 			returnValue = recipe_delete(flag,model);
 		}
+		else if(flag.equals("recipe_commnet")){
+			returnValue = recipe_commnet(flag,model);
+		}
 	 	return returnValue;
 		
 	} 
-	//삭제
-	private String recipe_delete(String flag, Map<String, Object> model) {
-		// TODO Auto-generated method stub
+	private String recipe_commnet(String flag, Map<String, Object> model) {
+		model.put("recipe_comment", model);
 		return null;
+	}
+	//삭제
+	private String recipe_delete(String flag, Map<String, Object> model) throws Exception {
+		String [] no = (String[])model.get("reci");
+		recipeDAO.delete(no);
+		return "redirect:recipe.do";
 	}
 	//등록
 	private String recipe_add(String flag, Map<String, Object> model) throws Exception {
@@ -62,12 +72,21 @@ public class RecipeController implements Controller{
 			System.out.println("recipe=============1"+vo.getRecipe_title());
 			
 			String id = vo.getRecipe_id();
-			System.out.println("recipe=============1"+vo.getRecipe_id());
-			model.put("recipe", recipeDAO.detail(id));
+			//System.out.println("recipe=============1"+vo.getRecipe_id());
+			RecipeVO recipeVO = recipeDAO.detail(id);
+			
+			//System.out.println("----------------------------");
+			model.put("recipe", recipeVO);
+			model.put("class_name", recipeDAO.classList());
 			return "/view/frMng/fr_recipe_edit.jsp";
 		}
+		else {
+			System.out.println("eeeeeeeeeeeeeeeee");
+			System.out.println("eeeeeeeeeeeeeeeee"+vo.getRecipe_title());
+			recipeDAO.update(vo);
+			return "redirect:recipe.do";
+		}
 		
-		return "redirect:recipe.do";
 	}
 	private String recipe_list(String flag, Map<String, Object> model) throws Exception {
 		model.put("recipe_list", recipeDAO.recipeList());

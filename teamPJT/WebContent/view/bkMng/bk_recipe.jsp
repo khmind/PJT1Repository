@@ -52,6 +52,10 @@
 
 <body id="page-top">
 
+<form action="" method="post" name="frmtt">
+	<input type="hidden" name="recipe_id">
+</form>
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -97,7 +101,8 @@
 								<option value="1">제목</option>
 								<option value="2">내용</option>
 							</select>
-							<form
+							
+							<form 
 								class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 
 								<div class="input-group">
@@ -114,17 +119,18 @@
 								</div>
 							</form>
 							<button type="button" class="btn btn-outline-secondary">비활성화</button>
-							<button type="button" class="btn btn-outline-secondary">삭제</button>
-
+					<form action="recipe_delete.do" method="post">
+							<button type="submit" name="btn" value="delete"
+									class="btn btn-outline-secondary">삭제</button>
+							
 						</div>
 
-						<form action="" method="post" name="frmtt">
-							<input type="hidden" name="recipe_id">
-						</form>
+
 						<table class="table">
 							<thead class="thead-dark">
 								<tr>
-									<th class="th1"><input type="checkbox"></th>
+									<th class="th1"><input type="checkbox" id="chkAll"
+										class="chkGrp"></th>
 									<th class="th1" scope="col">순번</th>
 									<th scope="col">분류</th>
 									<th scope="col">사진</th>
@@ -140,7 +146,8 @@
 							
 							<c:forEach var="list" items="${recipe_list}">
 								<tr>
-									<th class="th1"><input type="checkbox"></th>
+									<th class="th1"><input type="checkbox" name="del_id" id="chk" class="chkGrp"
+											value="${list.recipe_id }" /></th>
 									<th class="th1" scope="row">${list.recipe_id }</th>
 									<td class="th2 thn" scope="row">${list.class_name} </td>
 									<td class="th3 thn" scope="row"><img alt=""
@@ -155,11 +162,10 @@
 									<td class="th9 thn" scope="row">${list.recipe_date}</td>
 								</tr>
 								</c:forEach>
+						</form>
 								
 							</tbody>
 						</table>
-
-
 						<nav aria-label="Page navigation example">
 							<ul class="pagination justify-content-center">
 								<li class="page-item"><a class="page-link" href="#"
@@ -227,7 +233,26 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/sb.js"></script>    
+	<script type="text/javascript">
+		$(function() {
+			$("#chkAll").click(function() {
+				$(".chkGrp").attr("checked", this.checked);
+			});
+		});
 
+		function deleteChk() {
+			let groupList = "";
+			
+			/* 반복문 */
+			$(".chkGrp:checked").each(function(idx, item) {
+				if (idx == 0) {
+					groupList = item.value;
+				} else {
+					groupList += "," + item.value;
+				}
+			});
+		}
+	</script>
 </body>
 
 </html>

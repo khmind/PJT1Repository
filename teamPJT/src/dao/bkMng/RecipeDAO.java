@@ -100,13 +100,7 @@ public class RecipeDAO {
 			pstmt.setString(6, vo.getRecipe_content());
 			pstmt.setString(7, vo.getUser_id());
 
-			System.out.println("addDAO=============1"+vo.getRecipe_title());
-			System.out.println("addDAO=============1"+vo.getClass_id());
-			System.out.println("addDAO=============1"+vo.getRecipe_level());
-			System.out.println("addDAO=============1"+vo.getRecipe_stuff());
-			System.out.println("addDAO=============1"+vo.getRecipe_content());
-			System.out.println("addDAO=============1"+vo.getUser_id());
-			
+
 			res=pstmt.executeUpdate();
 			
 			pstmt2=conn.prepareStatement(sql3);
@@ -115,10 +109,7 @@ public class RecipeDAO {
 			pstmt2.setString(3, imgPath+vo.getImg_path_02());
 			pstmt2.setString(4, imgPath+vo.getImg_path_03());
 			
-			System.out.println("addDAO=============2 "+sql2);
-			System.out.println("addDAO=============2"+vo.getImg_path_01());
-			System.out.println("addDAO=============2"+vo.getImg_path_02());
-			System.out.println("addDAO=============2"+vo.getImg_path_03());
+
 			
 			res1=pstmt2.executeUpdate();
 			
@@ -135,38 +126,137 @@ public class RecipeDAO {
 	}
 
 	//수정 ->dao.bkMng
+	public int update(RecipeVO vo) throws Exception{
+		
+		System.out.println("update===================1");
+		String imgPath = "../img/frMng/";
+		int res;
+		String sql01="update recipe_info \r\n" + 
+				"	set recipe_title=?,recipe_level=?,recipe_stuff=?,\r\n" + 
+				"		recipe_content=? where recipe_id=?";
+		String sql02="update recipe_image_info\r\n" + 
+				"	set img_path_01=?,img_path_02=?,img_path_03=? where recipe_id=?";
+		String sql03="update recipe_class_info\r\n" + 
+				"	set class_name=? where class_id=?";
+		
+		try {
+			conn=ds.getConnection();
+			pstmt=conn.prepareStatement(sql01);
+			pstmt.setString(1, vo.getRecipe_title());
+			pstmt.setString(2, vo.getRecipe_level());
+			pstmt.setString(3, vo.getRecipe_stuff());
+			pstmt.setString(4, vo.getRecipe_content());
+			pstmt.setString(5, vo.getRecipe_id());
+			res=pstmt.executeUpdate();
+			
+			pstmt=conn.prepareStatement(sql02);
+			pstmt.setString(1, imgPath+vo.getImg_path_01());
+			pstmt.setString(2, imgPath+vo.getImg_path_02());
+			pstmt.setString(3, imgPath+vo.getImg_path_03());
+			pstmt.setString(4, vo.getRecipe_id());
+			res=pstmt.executeUpdate();
+			
+			pstmt=conn.prepareStatement(sql03);
+			pstmt.setString(1, vo.getClass_name());
+			pstmt.setString(2, vo.getClass_id());
+			res=pstmt.executeUpdate();
+			
+			return res;
+			
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			
+		}
+		
+	}
 	//삭제  ->dao.bkMng
+	public int delete(String[] ids) throws Exception {
+		int res=0;
+		int[] cnt=null;
+		String sql01 = "delete from recipe_image_info where recipe_id=?";
+		String sql02 = "delete from recipe_info where recipe_id=?";
+		try {
+			conn=ds.getConnection();
+			//pstmt=conn.prepareStatement(sql01);
+			
+			for(int i=0; i<ids.length; i++) {
+				
+				pstmt=conn.prepareStatement(sql01);
+				pstmt.setString(1, ids[i]);				
+				pstmt.addBatch();
+				cnt=pstmt.executeBatch();
+				
+				pstmt=conn.prepareStatement(sql02);
+				pstmt.setString(1, ids[i]);				
+				pstmt.addBatch();				
+				cnt=pstmt.executeBatch();
+				
+			}
+			//cnt=pstmt.executeBatch();			
+			
+			
+			
+/*			
+			for(int i=0; i<ids.length; i++) {
+				pstmt.setString(1, ids[i]);
+				
+				pstmt.addBatch();
+			}
+			cnt=pstmt.executeBatch();
+			
+			pstmt=conn.prepareStatement(sql02);
+			
+			for(int i=0; i<ids.length; i++) {
+				pstmt.setString(1, ids[i]);
+				
+				pstmt.addBatch();
+			}
+			cnt=pstmt.executeBatch();
+			
+			*/
+			
+		}catch (Exception e) {
+			res = 0;
+			e.printStackTrace();
+		}
+		
+		return res;	
+	}
 	//상세조회 
 	public RecipeVO detail(String recipe_id) throws Exception{
 		
-		String sql = "select a.recipe_title, b.img_path_01, b.img_path_02, b.img_path_03, a.recipe_level, \r\n" + 
-				"	a.recipe_stuff,	a.recipe_content, d.user_id, c.comment_content, c.comment_date \r\n" + 
+		System.out.println("detailDAO==============1");
+		String sql = "select a.recipe_id, a.recipe_title, b.class_name, c.img_path_01, c.img_path_02, c.img_path_03,\r\n" + 
+				"	a.recipe_level, a.recipe_stuff, a.recipe_content, d.user_name, e.comment_content, e.comment_date\r\n" + 
 				"    from recipe_info a\r\n" + 
-				"    inner join recipe_image_info b on a.recipe_id=b.recipe_id\r\n" + 
-				"    inner join RECIPE_REPLY c on a.recipe_id=c.recipe_id\r\n" + 
-				"    inner join user_info d on d.user_id=a.user_id\r\n" + 
-				"    where a.recipe_id='"+recipe_id+"'";
+				"    inner join recipe_class_info b on a.class_id=b.class_id\r\n" + 
+				"    inner join recipe_image_info c on a.recipe_id=c.recipe_id\r\n" + 
+				"    inner join user_info d on a.user_id=d.user_id\r\n" + 
+				"    inner join recipe_reply e on a.recipe_id= e.recipe_id\r\n" + 
+				"	where a.recipe_id='"+recipe_id+"'";
 		
 		try {
 			conn=ds.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			
-			if(rs.next()) {
+			if(rs.next()) {			
 				return new RecipeVO()
 						.setRecipe_id(rs.getString("recipe_id"))
 						.setRecipe_title(rs.getString("recipe_title"))
+						.setClass_name(rs.getString("class_name"))
 						.setImg_path_01(rs.getString("img_path_01"))
 						.setImg_path_02(rs.getString("img_path_02"))
 						.setImg_path_03(rs.getString("img_path_03"))
 						.setRecipe_level(rs.getString("recipe_level"))
 						.setRecipe_stuff(rs.getString("recipe_stuff"))
 						.setRecipe_content(rs.getString("recipe_content"))
-						.setUser_id(rs.getString("user_id"))
-						.setCommnet_id(rs.getString("comment_id"))
+						.setUser_name(rs.getString("user_name"))
+						//.setComment_id(rs.getString("comment_id"))
 						.setComment_content(rs.getString("comment_content"))
 						.setComment_date(rs.getDate("comment_date"));
-						
+					
 			}
 			else {
 				throw new Exception("해당 번호의 회원을 찾을수 없습니다.");
@@ -221,4 +311,48 @@ public class RecipeDAO {
 		}
 		return recipelist;
 	}
+	//레시피 댓글조회
+	public List<RecipeVO> commentList() throws Exception{
+		
+		List<RecipeVO> reci_comment = new ArrayList<RecipeVO>();
+		String sql = "select b.user_name, a.comment_content, a.COMMENT_DATE \r\n" + 
+				"	from recipe_reply a\r\n" + 
+				"    inner join user_info b on a.USER_ID=b.USER_ID;";
+		
+		try {
+			conn=ds.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				RecipeVO vo = new RecipeVO()
+						.setUser_name(rs.getString("user_name"))
+						.setComment_content(rs.getString("comment_content"))
+						.setComment_date(rs.getDate("comment_date"));
+				reci_comment.add(vo);
+			}
+		}catch (Exception e) {
+			throw e;
+		}finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+		    try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
+		    try {if (conn != null) conn.close();} catch(Exception e) {}
+		}
+		return reci_comment;
+	}
+	//레시피 댓글 등록
+//	public int commentInsert(RecipeVO vo) throws Exception{
+//		int res;
+//		String maxId ="select max(recipe_id)as maxId from recipe_info";
+//		String sql = "insert into ";
+//		try {
+//			conn=ds.getConnection();
+//			pstmt=conn.prepareStatement(sql);
+//		}catch (Exception e) {
+//			throw e;
+//		}finally {
+//			
+//		}
+//		return null;
+//	}
 }

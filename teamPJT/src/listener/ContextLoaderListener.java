@@ -53,6 +53,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			NoticeDAO noticeDAO = new NoticeDAO();
 			CategoryDAO cateDAO=new CategoryDAO();
 			AskDAO askDAO = new AskDAO();
+			
 			dao.setDataSource(ds);
 			userDAO.setDataSource(ds);
 			recipeDAO.setDs(ds); 
@@ -84,6 +85,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/recipe.do", new RecipeController().setRecipeDAO(recipeDAO));
 			sc.setAttribute("/view/bkMng/recipe_edit.do", new RecipeController().setRecipeDAO(recipeDAO));
 			sc.setAttribute("/view/bkMng/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO));
+			sc.setAttribute("/view/bkMng/recipe_delete.do", new RecipeController().setRecipeDAO(recipeDAO));
 			
 			sc.setAttribute("/view/bkMng/ask.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_delete1.do", new AskController().setDAO(askDAO));

@@ -296,29 +296,28 @@ public class DispatcherServlet extends HttpServlet {
 							.setAction(arg0.getParameter("action"))
 							);
 				}
-//				else {
-//					System.out.println("edit===========99999999");
-//					model.put("cate_edit", new CategoryVO()
-//							.setCate_id(arg0.getParameter("cate_id"))
-//							.setCate_name(arg0.getParameter("cate_name"))
-//							.setCate_order(arg0.getParameter("cate_order"))
-//							.setCate_place(arg0.getParameter("cate_place")));
-//					
-//					System.out.println("=================1"+arg0.getParameter("cate_id"));
-//					System.out.println("=================1"+arg0.getParameter("cate_name"));
-//					System.out.println("=================1"+arg0.getParameter("cate_order"));
-//					System.out.println("=================1"+arg0.getParameter("cate_place"));
-//				}
+
 				flag="cate_edit";
 			}
 			else if ("/view/bkMng/recipe.do".equals(servletPath)) {
 				flag = "recipe_list";
 			}
 			else if("/view/bkMng/recipe_edit.do".equals(servletPath)) {
+				System.out.println("servletPath"+servletPath);	
 				if(arg0.getParameter("recipe_id") !=null) {
 					System.out.println(arg0.getParameter("recipe_id")+"?????????????//");
 					model.put("recipe_edit", new RecipeVO()
-							.setRecipe_id(arg0.getParameter("recipe_id")));
+							.setRecipe_id(arg0.getParameter("recipe_id"))
+							.setRecipe_title(arg0.getParameter("reci_title"))
+							.setClass_name(arg0.getParameter("class_name"))
+							.setImg_path_01(arg0.getParameter("upload1"))
+							.setImg_path_02(arg0.getParameter("upload2"))
+							.setImg_path_03(arg0.getParameter("upload3"))
+							.setRecipe_level(arg0.getParameter("level"))
+							.setRecipe_stuff(arg0.getParameter("stuff"))
+							.setRecipe_content(arg0.getParameter("content"))
+							);
+					System.out.println(arg0.getParameter("reci_title")+"wwwwwwwwwwwwwwwwwww");
 					 
 					flag="recipe_edit";
 				}
@@ -349,6 +348,34 @@ public class DispatcherServlet extends HttpServlet {
 				flag="recipe_add";
 				System.out.println("add============2-2");
 				}
+			else if("/view/bkMng/recipe_delete.do".equals(servletPath)) {
+				System.out.println("delete======1");
+				String[] del=arg0.getParameterValues("del_id");
+				
+				for(int i=0; i<del.length; i++) {
+					
+					System.out.println("delete======1"+del[i]);
+				}
+				String btn = arg0.getParameter("btn");
+				if(btn.equals("delete")) {
+					String[] ids= new String[del.length];
+					for(int i=0; i<del.length; i++) {
+						ids[i]=del[i];
+					}
+					model.put("reci", ids);
+				}
+				flag = "recipe_delete";
+			}
+			else if("/view/frMng/recipe_comment.to".equals(servletPath)) {
+				HttpSession session = (HttpSession)model.get("session");	
+				InfoVO vo = (InfoVO)session.getAttribute("infoVO");	
+				if(arg0.getParameter("recipe_reply") != null) {
+					model.put("recipe_comment", new RecipeVO()
+							.setUser_id(vo.getUser_id())
+							.setComment_content(arg0.getParameter("recipe_reply")));
+					flag="recipe_comment";
+				}
+			}
 			
 			
 			

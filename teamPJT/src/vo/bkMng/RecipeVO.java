@@ -26,7 +26,7 @@ public class RecipeVO {
 	private String img_path_02;
 	private String img_path_03;
 	
-	private String commnet_id;
+	private String comment_id;
 	private String comment_content;
 	private Date comment_date;
 	
@@ -158,10 +158,10 @@ public class RecipeVO {
 		return this;
 	}
 	public String getCommnet_id() {
-		return commnet_id;
+		return comment_id;
 	}
-	public RecipeVO setCommnet_id(String commnet_id) {
-		this.commnet_id = commnet_id;
+	public RecipeVO setComment_id(String comment_id) {
+		this.comment_id = comment_id;
 		return this;
 	}
 	public String getComment_content() {

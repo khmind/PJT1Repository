@@ -75,14 +75,18 @@
 				</div>
 				<hr>
 				<table style="display: flex; justify-content: space-around; margin-bottom: 80px;">
-					<tr>
-						<td colspan="3">
-							<textarea rows="1" cols="80" placeholder="마음에 드셨나요? 댓글남겨주세요." 
-							style="border-radius: 30px; text-align: center; font-size: 20px;"></textarea>
-						</td>
-						<td><input type="submit" value="등록" 
-								style="width:70px; height:40px; background-color:skyblue;"></td>
-					</tr>
+					<form action="recipe_comment.to" method="post">
+						<tr>
+							<td colspan="3">
+								<textarea rows="1" cols="80" placeholder="마음에 드셨나요? 댓글남겨주세요." name="recipe_reply"
+								style="border-radius: 30px; text-align: center; font-size: 20px;"></textarea>
+							</td>
+							<td>
+								<input type="submit" value="등록" 
+									style="width:70px; height:40px; background-color:skyblue;">
+							</td>
+						</tr>
+					</form>
 					<tr style="display: flex; justify-content: space-around">
 						<td>사용자1</td>
 						<td>맛있어요</td>
