@@ -11,6 +11,16 @@ public class NoticeVO {
 	private Date notice_date; // 작성일자
 	private Date notice_update; // 수정일자
 	
+	private String title;
+	private String content;
+	
+	private String sel1;
+	private String searchText;
+	private int page;
+	private int startPage;
+	private int endPage;
+	private int limit;
+	
 	public String getNotice_id() {
 		return notice_id;
 	}
@@ -51,6 +61,63 @@ public class NoticeVO {
 	}
 	public  NoticeVO setNotice_update(Date notice_update) {
 		this.notice_update = notice_update;
+		return this;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public NoticeVO setTitle(String title) {
+		this.title = title;
+		return this;
+	}
+	public String getContent() {
+		return content;
+	}
+	public NoticeVO setContent(String content) {
+		this.content = content;
+		return this;
+	}
+	public String getSel1() {
+		return sel1;
+	}
+	public NoticeVO setSel1(String sel1) {
+		this.sel1 = sel1;
+		return this;
+	}
+	public String getSearchText() {
+		return searchText;
+	}
+	public NoticeVO setSearchText(String searchText) {
+		this.searchText = searchText;
+		return this;
+	}
+	public int getPage() {
+		return page;
+	}
+	public NoticeVO setPage(int page) {
+		this.page = page;
+		return this;
+	}
+	public int getStartPage() {
+		return startPage;
+	}
+	public NoticeVO setStartPage(int startPage) {
+		this.startPage = startPage;
+		return this;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public NoticeVO setEndPage(int endPage) {
+		this.endPage = endPage;
+		return this;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public NoticeVO setLimit(int limit) {
+		this.limit = limit;
 		return this;
 	}
 	

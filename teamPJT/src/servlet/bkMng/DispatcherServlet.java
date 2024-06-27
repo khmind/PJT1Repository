@@ -120,6 +120,21 @@ public class DispatcherServlet extends HttpServlet {
 				
 			}
 			else if ("/view/bkMng/notice.do".equals(servletPath)) {
+				System.out.println("-----------------------------1");
+				String pg = arg0.getParameter("page");
+				System.out.println("-----------------------------2 : ");
+				pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
+				System.out.println("-----------------------------3");
+				int page = Integer.parseInt(pg);
+				System.out.println("-----------------------------3 : "+page);
+				System.out.println("-----------------------------4 : ");
+				model.put("PageInfo", new NoticeVO()
+							.setSel1(arg0.getParameter("sel1"))
+							.setSearchText(arg0.getParameter("searchText"))
+							.setPage(page)
+							);
+							
+				System.out.println("-----------------------------5");
 				flag = "notice_list";
 			} 
 			else if ("/view/bkMng/notice_update.do".equals(servletPath)) {
@@ -163,7 +178,7 @@ public class DispatcherServlet extends HttpServlet {
 				}
 				else if("/view/bkMng/notice_delete2.do".equals(servletPath)){
 					System.out.println("delete======1");
-					String[] del=arg0.getParameterValues("del_id");
+					String[] del =arg0.getParameterValues("del_id");
 					for(int i=0; i<del.length; i++) {
 						
 						System.out.println("delete======2"+del[i]);

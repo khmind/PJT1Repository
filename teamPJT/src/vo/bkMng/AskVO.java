@@ -12,6 +12,16 @@ public class AskVO {
 		private String recomm_content;
 		private String recomm_user_id;
 		private Date recomm_date;
+		private String title;
+		private String content;
+		
+		private String sel1;
+		private String searchText;
+		private int page;
+		private int startPage;
+		private int endPadge;
+		private int limit;
+		
 		
 		public String getAsk_id() {
 			return ask_id;
@@ -76,4 +86,53 @@ public class AskVO {
 			this.recomm_date = recomm_date;
 			return this;
 		}
+		public String getTitle() {
+			return title;
+		}
+		public void setTitle(String title) {
+			this.title = title;
+		}
+		public String getContent() {
+			return content;
+		}
+		public void setContent(String content) {
+			this.content = content;
+		}
+		public String getSel1() {
+			return sel1;
+		}
+		public void setSel1(String sel1) {
+			this.sel1 = sel1;
+		}
+		public String getSearchText() {
+			return searchText;
+		}
+		public void setSearchText(String searchText) {
+			this.searchText = searchText;
+		}
+		public int getPage() {
+			return page;
+		}
+		public void setPage(int page) {
+			this.page = page;
+		}
+		public int getStartPage() {
+			return startPage;
+		}
+		public void setStartPage(int startPage) {
+			this.startPage = startPage;
+		}
+		public int getEndPadge() {
+			return endPadge;
+		}
+		public void setEndPadge(int endPadge) {
+			this.endPadge = endPadge;
+		}
+		public int getLimit() {
+			return limit;
+		}
+		public void setLimit(int limit) {
+			this.limit = limit;
+		}
+
 }

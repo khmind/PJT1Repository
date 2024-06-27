@@ -35,9 +35,24 @@ public class NoticeController implements Controller{
 	}
 	
 	public String notice_list(String flag, Map<String, Object> model) throws Exception{
-	
-	
-		model.put("noticelist", noticeDAO.NoticeList());
+		System.out.println("-----------------------------6");
+		
+		NoticeVO notice = (NoticeVO)model.get("PageInfo");
+		
+		System.out.println("-----------------------------7");
+		
+		NoticeVO notice1 = noticeDAO.selectListCnt(notice);
+		
+		System.out.println("-----------------------------8");
+		
+		System.out.println("-------------------------getEndPage : " +notice1.getEndPage());
+		
+		
+		model.put("PageInfo", notice1);
+		model.put("noticelist", noticeDAO.selectList(notice1));
+		
+		System.out.println("-----------------------------9");
+		
 		return "bk_announcement.jsp";
 	}
 	
