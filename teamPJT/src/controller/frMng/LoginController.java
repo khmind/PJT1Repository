@@ -32,7 +32,7 @@ public class LoginController implements Controller{
 		
 		InfoVO vo=(InfoVO)model.get("log");
 		InfoVO ivo=loginDAO.exist(vo.getUser_email(), vo.getUser_pw());
-		if(ivo !=null) {
+		if(ivo !=null) { 
 			HttpSession session = (HttpSession)model.get("session");
 			session.setAttribute("loginVO", ivo);
 			

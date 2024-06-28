@@ -74,7 +74,7 @@
 						</a>
 					</div>
 					</c:if>
-					
+					 
 					<c:if test="${sessionScope.loginVO != null }">
 					<div class="navbar-buttons mbr-section-btn">
 						<a class="btn btn-warning-outline display-4" href="./fr_user_info.jsp">

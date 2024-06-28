@@ -35,7 +35,7 @@ public class InfoDAO {
 				return new InfoVO()
 						.setUser_name(rs.getString("user_name"))
 						.setUser_id(rs.getString("user_id"))
-						.setUser_role(rs.getString("user_role"));
+						.setUser_role(rs.getString("user_role")); 
 			}
 			else {
 				return null;

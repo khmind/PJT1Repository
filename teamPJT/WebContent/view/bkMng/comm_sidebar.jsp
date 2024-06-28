@@ -47,7 +47,7 @@
              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../frMng/main.jsp">
                 <div class="sidebar-brand-text mx-3"> 메인으로 이동 </div>
             </a>
-<%  if ( infoVO != null ) { %>
+<%  if ( infoVO != null) { %>
             <!-- Divider -->
             
 	<%  for (CategoryVO cvo : cvoList ) { %>            

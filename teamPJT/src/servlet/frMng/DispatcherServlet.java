@@ -58,7 +58,7 @@ public class DispatcherServlet extends HttpServlet {
 							);
 				}
 				flag="login";
-			}
+			} 
 			
 			String viewUrl = contro.execute(flag, model);
 
