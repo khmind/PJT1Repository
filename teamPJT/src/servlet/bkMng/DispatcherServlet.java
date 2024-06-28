@@ -195,7 +195,24 @@ public class DispatcherServlet extends HttpServlet {
 				
 				}
 				else if("/view/bkMng/ask.do".equals(servletPath)) {
+					System.out.println("-----------------------------1");
+					String pg = arg0.getParameter("page");
+					System.out.println("-----------------------------2 : ");
+					pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
+					System.out.println("-----------------------------3");
+					int page = Integer.parseInt(pg);
+					System.out.println("-----------------------------3 : "+page);
+					System.out.println("-----------------------------4 : ");
+					model.put("PageInfo", new AskVO()
+								.setSel1(arg0.getParameter("sel1"))
+								.setSel2(arg0.getParameter("sel2"))
+								.setSearchText(arg0.getParameter("searchText"))
+								.setPage(page)
+								);
+					System.out.println("-----------------------------5");
 					flag = "ask_list";
+					
+				
 				}else if("/view/bkMng/ask_update.do".equals(servletPath)) {
 					HttpSession session = (HttpSession)model.get("session");	
 					InfoVO vo = (InfoVO)session.getAttribute("infoVO");				

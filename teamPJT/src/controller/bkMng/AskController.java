@@ -34,8 +34,24 @@ public class AskController implements Controller{
 	}
 	
 	public String ask_list(String flag, Map<String, Object> model) throws Exception{
+		System.out.println("-----------------------------6");
 		
-		model.put("asklist", askDAO.AskList());
+		AskVO ask = (AskVO)model.get("PageInfo");
+		
+		System.out.println("-----------------------------7");
+		
+		AskVO ask1 = askDAO.selectListCnt(ask);
+		
+		System.out.println("-----------------------------8");
+		
+		System.out.println("-------------------------getEndPage : " +ask1.getEndPage());
+		
+		
+		model.put("PageInfo", ask1);
+		model.put("asklist", askDAO.selectList(ask1));
+		
+		System.out.println("-----------------------------9");
+		
 		return "bk_ask.jsp";
 	}
 	

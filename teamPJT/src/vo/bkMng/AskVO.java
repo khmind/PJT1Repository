@@ -16,10 +16,11 @@ public class AskVO {
 		private String content;
 		
 		private String sel1;
+		private String sel2;
 		private String searchText;
 		private int page;
 		private int startPage;
-		private int endPadge;
+		private int endPage;
 		private int limit;
 		
 		
@@ -89,50 +90,65 @@ public class AskVO {
 		public String getTitle() {
 			return title;
 		}
-		public void setTitle(String title) {
+		public AskVO setTitle(String title) {
 			this.title = title;
+			return this;
 		}
 		public String getContent() {
 			return content;
 		}
-		public void setContent(String content) {
+		public AskVO setContent(String content) {
 			this.content = content;
+			return this;
 		}
 		public String getSel1() {
 			return sel1;
 		}
-		public void setSel1(String sel1) {
+		public AskVO setSel1(String sel1) {
 			this.sel1 = sel1;
+			return this;
+		}
+		public String getSel2() {
+			return sel2;
+		}
+		public AskVO setSel2(String sel2) {
+			this.sel2 = sel2;
+			return this;
 		}
 		public String getSearchText() {
 			return searchText;
 		}
-		public void setSearchText(String searchText) {
+		public AskVO setSearchText(String searchText) {
 			this.searchText = searchText;
+			return this;
 		}
 		public int getPage() {
 			return page;
 		}
-		public void setPage(int page) {
+		public AskVO setPage(int page) {
 			this.page = page;
+			return this;
 		}
 		public int getStartPage() {
 			return startPage;
 		}
-		public void setStartPage(int startPage) {
+		public AskVO setStartPage(int startPage) {
 			this.startPage = startPage;
+			return this;
 		}
-		public int getEndPadge() {
-			return endPadge;
+		public int getEndPage() {
+			return endPage;
 		}
-		public void setEndPadge(int endPadge) {
-			this.endPadge = endPadge;
+		public AskVO setEndPage(int endPage) {
+			this.endPage = endPage;
+			return this;
 		}
 		public int getLimit() {
 			return limit;
 		}
-		public void setLimit(int limit) {
+		public AskVO setLimit(int limit) {
 			this.limit = limit;
+			return this;
 		}
 
 }

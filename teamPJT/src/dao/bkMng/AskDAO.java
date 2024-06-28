@@ -10,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import vo.bkMng.AskVO;
+import vo.bkMng.NoticeVO;
 import vo.bkMng.UserVO;
 
 public class AskDAO {
@@ -209,6 +210,140 @@ public class AskDAO {
 		
 		return res;
 	}
+	public AskVO selectListCnt(AskVO askVO) throws Exception {
+		System.out.println("-----------------------------10");
+		
+		Connection conn = null;				
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		System.out.println("-----------------------------11");
+		String where = "" ;	
+		int page = askVO.getPage();
+		int total = 0; 
+		int limit=3;
+		System.out.println("-----------------------------12");
+		int startPage = (((int) ((double)page / limit + 0.9)) - 1) * limit + 1;
+		int endPage = startPage+limit; 
+		
+		System.out.println("********** startPage : " + startPage + ", (page/limit) : " + (page/limit) +",  (page/limit) * limit :" + (page/limit) * limit   + ", endPage : " + endPage );
+		
+		System.out.println("-----------------------------13");
+		if (askVO.getSel2() != null &&  askVO.getSel2() != "") {	
+			System.out.println("-----------------------------14");
+			where = " and " +  askVO.getSel2() + " like '%" + askVO.getSearchText() +"%' \n";
+		}
+		System.out.println("-----------------------------15");
+		
+		String sqlCnt = " select count(ask_id) from ask_info where 1=1" + where ;	
+		
+		System.out.println("-----------------------------16");
+		
+		System.out.println("sqlCnt : " + sqlCnt);
+		
+		try {		
+			System.out.println("-----------------------------17");
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sqlCnt);
+			rs = pstmt.executeQuery();			
+			
+			if (rs.next())
+				total = rs.getInt(1);
+			
+			int maxPage=(int)((double)total/limit+0.95);
+			
+			if (endPage> maxPage) endPage= maxPage;
+			if (startPage == endPage )startPage = 1;
+			
+			System.out.println(" +++++++++++  total : " + total +",  maxPage : " + maxPage +", startPage : " + startPage  + ", endPage : " + endPage );
+			
+			return new AskVO()
+					.setSel1(askVO.getSel1())
+					.setSel2(askVO.getSel2())
+					.setEndPage(endPage)
+					.setPage(page)
+					.setStartPage(startPage)
+					.setSearchText(askVO.getSearchText())
+					.setLimit(limit);
+			
+						
+		} catch (Exception e) {
+			throw e;
+		}finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+		    try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
+		    try {if (conn != null) conn.close();} catch(Exception e) {}		    
+		}
+		
+	}
 	
+	public List<AskVO> selectList(AskVO askVO) throws Exception {
+		System.out.println("-----------------------------18");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		System.out.println("-----------------------------19");
+		
+		List<AskVO> list = new ArrayList<AskVO>();
+		
+		String where = "" ;		
+		String order = "";
+		System.out.println("-----------------------------20");
+	  	int page = askVO.getPage(); 
+		int limit=3;
+		int startrow=(page-1)*limit; 
+		System.out.println("-----------------------------21  page : " + page);
+		if ( askVO.getSel2() != null &&  askVO.getSel2() != "") {				
+			where = " and " +  askVO.getSel2() + " like '%" + askVO.getSearchText() +"%' \n";
+			//order = " order by " + noticeVO.getSel1() + " desc  \n" ;
+		}
+		if ( askVO.getSel1() != null &&  askVO.getSel1() != "") {
+			order = " order by " + askVO.getSel1() + " desc  \n" ;
+		}
+		
+
+		String sql =
+				" select ask_id, user_id, ask_title, ask_date, recomm_date from ask_info where 1=1 " + where + order + " limit ?, ?";
+		/*
+		String sql2 = 
+		" select a.user_id, a.user_name, a.user_email, a.user_pw, a.user_role, a.user_date, b.cnt, b.goodCnt, b.rcmCnt \n" + " from user_info as a \n" +
+		" inner join ( \n" + " 	select user_id, count(*) as cnt,  sum(recipe_good) as goodCnt, sum(recipe_rcm) as rcmCnt \n" + 
+		" 	from recipe_info \n" +  "   group by user_id \n" + " ) as b \n" +  " on a.user_id = b.user_id \n" +
+		" where 1=1 \n" + " and user_role = ? \n" + where + order + " limit ?, ?";
+		*/
+		System.out.println("sql : " + sql);
+					
+		try {		
+			System.out.println("-----------------------------22");
+			conn = ds.getConnection();	System.out.println("-----------------------------23");
+			pstmt = conn.prepareStatement(sql); 	System.out.println("-----------------------------24");
+			pstmt.setInt(1,startrow); 	System.out.println("-----------------------------25 : " + startrow);
+			pstmt.setInt(2, limit); 	System.out.println("-----------------------------26 : " +  limit);
+			rs = pstmt.executeQuery(); 	System.out.println("-----------------------------27");
+			
+			System.out.println(" startrow : "  + startrow + ", limit : " + limit);
+			
+			while(rs.next()) {
+				
+				AskVO ask = new AskVO()
+						.setAsk_id(rs.getString("ask_id"))
+						.setAsk_title(rs.getString("ask_title"))
+						.setUser_id(rs.getString("user_id"))
+						.setAsk_date(rs.getDate("ask_date"))
+						.setRecomm_date(rs.getDate("Recomm_date"));			
+				
+				list.add(ask);		
+				
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+		    try {if (pstmt != null) pstmt.close();} catch(Exception e) {}
+		    try {if (conn != null) conn.close();} catch(Exception e) {}		    
+		}
+
+		return list;
+	}
 	
 }
