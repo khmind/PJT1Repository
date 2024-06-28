@@ -7,24 +7,21 @@
 <meta name="description" content="간단하고 맛있는 레시피">
 <link rel="shortcut icon" href="assets/images/gdf61b046222fac5a3cd6fdc38144-h_lvo11nj9.png" type="image/x-icon">
 <title>맛있는 레시피</title>
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./css/login.css">
-<script src="./js/jquery.min.js"></script>
-<script src="./js/angular.min.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/login.css">
+<script src="../js/jquery.min.js"></script>
+<script src="../js/angular.min.js"></script>
 
 </head>
 <body>
     
-    <div class="login-page" ng-app="">
-        <div class="logo_img">
-            <a href="./frMng/main.jsp" title="메인으로 이동"><img src="./img/frMng/맛있는레시피logoremovebg.png"></a>
-        </div>
-        <div class="login-content login-content-signin" ng-hide="showSignIn">
+    <div class="login-page" ng-app="" >
+        <div class="login-content login-content-signin" ng-hide="showSignIn" style="margin-top: 30px;">
             <div>
                 <h2>Log in</h2>
-                <form class="wrapper-box" role="form" ng-submit="login()" action="login.to" method="post">
-                <input type="email" ng-model="email" class="form-control form-control-email" placeholder="Email address" required>
-                <input type="password" ng-model="password" class="form-control form-control-password" placeholder="Password" required >
+                <form class="wrapper-box" role="form" ng-submit="login()" action="../login.to" method="post">
+                <input type="email" name="email" ng-model="email" class="form-control form-control-email" placeholder="Email address" required>
+                <input type="password" name="pass" ng-model="password" class="form-control form-control-password" placeholder="Password" required >
                 <div class="checkbox pull-left">
                     <label>
                         <input type="checkbox">Remember me.
@@ -36,7 +33,7 @@
             </div>
         </div>
 
-        <div class="login-content login-content-signup ng-hide" ng-show="showSignIn">
+        <div class="login-content login-content-signup ng-hide" ng-show="showSignIn"  style="margin-top: 30px;">
             <div>
                 <h2>Sign Up</h2>
                 <form class="wrapper-box" role="form" ng-submit="register()">

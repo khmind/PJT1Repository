@@ -48,14 +48,18 @@ public class InfoController implements Controller{
 			
 			List<CategoryVO> cvo  = cateDAO.bkCateList();
 			
-			if(vo != null) {
+			if(vo != null && vo.getUser_role().equals("A")) {
 				
 				System.out.println(" id : " + vo.getUser_id());
 				System.out.println(" name : " + vo.getUser_name());
+				System.out.println(" name : " + vo.getUser_role());
 				
-				HttpSession session = (HttpSession)model.get("session");
-				session.setAttribute("infoVO", vo);
-				session.setAttribute("bkCateList", cvo);
+				
+					
+					HttpSession session = (HttpSession)model.get("session");
+					session.setAttribute("infoVO", vo);
+					session.setAttribute("bkCateList", cvo);
+					
 				
 				return "notice.do";
 			}

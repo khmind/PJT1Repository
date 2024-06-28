@@ -22,7 +22,6 @@ import vo.bkMng.UserVO;
 @WebServlet("*.to")
 public class DispatcherServlet extends HttpServlet {
 
-	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -49,6 +48,16 @@ public class DispatcherServlet extends HttpServlet {
 
 				flag = "";
 				
+			}
+			else if("/view/login.to".equals(servletPath)) {
+				System.out.println("==========="+servletPath);
+				if(req.getParameter("email") != null) {
+					model.put("log", new InfoVO()
+							.setUser_email(req.getParameter("email"))
+							.setUser_pw(req.getParameter("pass"))
+							);
+				}
+				flag="login";
 			}
 			
 			String viewUrl = contro.execute(flag, model);

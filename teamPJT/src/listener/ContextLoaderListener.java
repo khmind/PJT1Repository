@@ -18,6 +18,7 @@ import controller.bkMng.NoticeController;
 import controller.bkMng.RecipeController;
 import controller.bkMng.UserController;
 import controller.frMng.HeaderController;
+import controller.frMng.LoginController;
 import dao.bkMng.AskDAO;
 import dao.bkMng.CategoryDAO;
 import dao.bkMng.InfoDAO;
@@ -96,6 +97,8 @@ public class ContextLoaderListener implements ServletContextListener{
 			//sc.setAttribute("/view/frmMng/header.to", new HeaderController().setInfoDAO(cateDAO));
 			sc.setAttribute("/view/header.to", new HeaderController().setInfoDAO(cateDAO));
 			//sc.setAttribute("/header.to", new HeaderController().setInfoDAO(cateDAO));
+			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
+			
 			
 			
 		}catch (Exception e) {
