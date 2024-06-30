@@ -94,9 +94,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/ask_update.do", new AskController().setDAO(askDAO));
 						
 			/*###  fkMng  ###*/
-			//sc.setAttribute("/view/frmMng/header.to", new HeaderController().setInfoDAO(cateDAO));
-			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO));
-			//sc.setAttribute("/header.to", new HeaderController().setInfoDAO(cateDAO));
+			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO));			
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
 			
 			
