@@ -4,21 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>  
+<title>Insert title here</title>
 </head>
-
 <body>
 
-<%-- <%@ include file="../frMng/header.jsp"%> --%>
-
-<!-- 
 <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq">
     <div class="container">
         <div class="row justify-content-center" style="flex-direction: row;">
             <div class="col-12 col-md-12 col-lg">
                 <div class="text-wrapper align-left">
                     <h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
-                        <strong>마라탕 레시피 main2.jsp</strong>
+                        <strong>마라탕 레시피</strong>
                     </h1>
                     <p class="mbr-text align-left mbr-fonts-style mb-4 display-9">마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피</p>
                     
@@ -30,16 +26,14 @@
         </div>
     </div>
 </section>
- -->
- 
-<br><br><br><br><br>
+
 <section data-bs-version="5.1" class="slider4 mbr-embla cid-ubxwyl8tSX" id="gallery-5-ubxwyl8tSX">
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-12 content-head">
         
         <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">
-          오늘의 추천 레시피 main2.jsp
+          오늘의 추천 레시피
         </h5>
       </div>
     </div>
@@ -52,7 +46,7 @@
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">
-                      <img src="../view/assets/images/photo-1490818387583-1baba5e638af.jpeg" alt="" title="" height="300px">
+                      <img src="../assets/images/photo-1490818387583-1baba5e638af.jpeg" alt="" title="" height="300px">
                     </div>
                   </div>
                 </div>
@@ -61,7 +55,7 @@
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">
-                      <img src="../view/assets/images/photo-1714138667800-e93341a1792f.jpeg" alt="" title="">
+                      <img src="../assets/images/photo-1714138667800-e93341a1792f.jpeg" alt="" title="">
                     </div>
                   </div>
                 </div>
@@ -70,7 +64,7 @@
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">
-                      <img src="../view/assets/images/photo-1496412705862-e0088f16f791.jpeg" alt="" title="">
+                      <img src="../assets/images/photo-1496412705862-e0088f16f791.jpeg" alt="" title="">
                     </div>
                   </div>
                 </div>
@@ -79,7 +73,7 @@
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">
-                      <img src="../view/assets/images/photo-1495195134817-aeb325a55b65.jpeg" alt="" title="">
+                      <img src="../assets/images/photo-1495195134817-aeb325a55b65.jpeg" alt="" title="">
                     </div>
                   </div>
                 </div>
@@ -88,7 +82,7 @@
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">
-                      <img src="../view/assets/images/photo-1714138667501-5ff02866c4f2.jpeg" alt="" title="">
+                      <img src="../assets/images/photo-1714138667501-5ff02866c4f2.jpeg" alt="" title="">
                     </div>
                   </div>
                 </div>

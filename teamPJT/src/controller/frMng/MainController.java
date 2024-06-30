@@ -10,11 +10,11 @@ import dao.bkMng.CategoryDAO;
 import vo.bkMng.CategoryVO;
 
 
-public class HeaderController implements Controller{
+public class MainController implements Controller{
 
 	CategoryDAO cateDAO;
 	
-	public HeaderController setInfoDAO(CategoryDAO cateDAO) {		
+	public MainController setInfoDAO(CategoryDAO cateDAO) {		
 		this.cateDAO = cateDAO;
 		return this;
 	}
@@ -24,7 +24,7 @@ public class HeaderController implements Controller{
 		//System.out.println("-------------2");
 		String returnValue="";
 				
-		if(flag.equals("navbar")) {		
+		if(flag.equals("main")) {		
 			System.out.println("-------------3");
 			returnValue = navbar(flag, model);
 		}
@@ -38,19 +38,15 @@ public class HeaderController implements Controller{
 		
 		List<CategoryVO> cvo  = cateDAO.frCateList();
 						
-		HttpSession session = (HttpSession)model.get("session");
-		
-		//System.out.println("-------------4");
-		
-		session.setAttribute("frCateList", cvo);
-		
+		//HttpSession session = (HttpSession)model.get("session");		
+		//session.setAttribute("frCateList", cvo);
+				
+		model.put("navbar", cvo);		
 		System.out.println("-------------5");
+
 		
-		//http://localhost:8080/teamPJT/view/index.jsp
-	    //return "/view/frMng/main2.jsp";
 	    return "frMng/main2.jsp";
 	    //return "/view/frMng/main2.jsp";
-		//return null;
 		
 	}
 
