@@ -47,7 +47,7 @@ public class MainController implements Controller{
 		model.put("random", randomVo);	
 		System.out.println("-------------5");
 		
-	    return "frMng/main2.jsp";
+	    return "frMng/main.jsp";
 	    //return "/view/frMng/main2.jsp";
 		
 	}
