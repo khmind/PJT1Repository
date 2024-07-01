@@ -54,6 +54,10 @@ public class DispatcherServlet extends HttpServlet {
 				}
 				flag="login";
 			} 
+			else if("/view/recipeSearch.to".equals(servletPath)) {
+				
+				flag="searchAll";
+			}			
 			
 			String viewUrl = contro.execute(flag, model);
 

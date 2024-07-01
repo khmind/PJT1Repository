@@ -18,6 +18,7 @@ import controller.bkMng.NoticeController;
 import controller.bkMng.RecipeController;
 import controller.bkMng.UserController;
 import controller.frMng.MainController;
+import controller.frMng.RecipeSearchController;
 import controller.frMng.LoginController;
 import dao.bkMng.AskDAO;
 import dao.bkMng.CategoryDAO;
@@ -27,6 +28,7 @@ import dao.bkMng.NoticeDAO;
 
 import dao.bkMng.RecipeDAO;
 import dao.bkMng.UserDAO;
+import dao.frMng.RecipeFrDAO;
 import vo.bkMng.CategoryVO;
 
 @WebListener
@@ -53,7 +55,9 @@ public class ContextLoaderListener implements ServletContextListener{
 			RecipeDAO recipeDAO = new RecipeDAO();
 			NoticeDAO noticeDAO = new NoticeDAO();
 			CategoryDAO cateDAO=new CategoryDAO();
-			AskDAO askDAO = new AskDAO();
+			AskDAO askDAO = new AskDAO();			
+			
+			RecipeFrDAO recipeFrDAO = new RecipeFrDAO();
 			
 			dao.setDataSource(ds);
 			userDAO.setDataSource(ds);
@@ -61,6 +65,9 @@ public class ContextLoaderListener implements ServletContextListener{
 			noticeDAO.setDataSource(ds);
 			cateDAO.setDs(ds);
 			askDAO.setDataSource(ds);
+			
+			recipeFrDAO.setDs(ds);
+			
 
 			/*###  bkMng  ###*/
 			sc.setAttribute("/view/bkMng/login.do", new InfoController().setInfoDAO(dao, cateDAO));
@@ -93,8 +100,9 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/ask_delete2.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_update.do", new AskController().setDAO(askDAO));
 						
-			/*###  fkMng  ###*/
-			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO));			
+			/*###  fkMng  ###*/			
+			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO, recipeFrDAO));			
+			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setInfoDAO(cateDAO, recipeFrDAO));
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
 			
 			

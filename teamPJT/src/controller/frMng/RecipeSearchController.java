@@ -3,21 +3,18 @@ package controller.frMng;
 import java.util.List;
 import java.util.Map;
 
-
 import controller.Controller;
 import dao.bkMng.CategoryDAO;
 import dao.frMng.RecipeFrDAO;
 import vo.bkMng.CategoryVO;
 import vo.bkMng.RecipeVO;
 
-public class MainController implements Controller{
+public class RecipeSearchController implements Controller{
 	
-	//HeaderController hc = new HeaderController();
-
 	CategoryDAO cateDAO;
 	RecipeFrDAO recipeFrDAO;
 	
-	public MainController setInfoDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO) {		
+	public RecipeSearchController setInfoDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO) {		
 		this.cateDAO = cateDAO;
 		this.recipeFrDAO = recipeFrDAO;
 		return this;
@@ -25,31 +22,30 @@ public class MainController implements Controller{
 
 	@Override
 	public String execute(String flag, Map<String, Object> model) throws Exception {
-		
+
 		String returnValue="";
-				
-		if(flag.equals("main")) {		
+		
+		if(flag.equals("searchAll")) {		
 			System.out.println("-------------2");
-			returnValue = navbar(flag, model);
+			returnValue = searchAll(flag, model);
 		}
 		
 		return returnValue;
 		
 	}
 	
-	
-	public String navbar(String flag, Map<String, Object> model) throws Exception{
+	public String searchAll(String flag, Map<String, Object> model) throws Exception{
 		
 		List<CategoryVO> cvo  = cateDAO.frCateList();		
-		List<RecipeVO> randomVo = recipeFrDAO.recipeRandom();
+		//List<RecipeVO> searchVo = recipeFrDAO.searchAll(1);
 				
 		model.put("navbar", cvo);
-		model.put("random", randomVo);	
+		model.put("recipeSearch1", recipeFrDAO.searchAll(1));	
+		model.put("recipeSearch2", recipeFrDAO.searchAll(5));
 		System.out.println("-------------5");
 		
-	    return "frMng/main2.jsp";
-	    //return "/view/frMng/main2.jsp";
+	    return "frMng/fr_recipelist_all.jsp";
 		
-	}
+	}	
 
 }

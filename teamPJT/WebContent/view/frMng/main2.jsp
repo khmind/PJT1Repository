@@ -10,6 +10,7 @@
 <body>
 
 <%-- <%@ include file="../frMng/header.jsp"%> --%>
+<%-- <%@ include file="../frMng/img/된장찌개.jpg"%> --%>
 
 <!-- 
 <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq">
@@ -48,7 +49,24 @@
         <div class="embla position-relative" data-skip-snaps="true" data-align="center" data-contain-scroll="trimSnaps" data-loop="true" data-auto-play="true" data-auto-play-interval="2">
           <div class="embla__viewport">
             <div class="embla__container">
+
+              <c:forEach var="ran" items="${random }" varStatus="status">  
+
               <div class="embla__slide slider-image item" style="margin-left: 0rem; margin-right: 0rem;">
+                <div class="slide-content">
+                  <div class="item-img">
+                    <div class="item-wrapper">                    	                      
+                      <img src="../view/assets/images/${ran.img_main }" alt="" title="" height="300px">
+                        <!-- <img src="../view/assets/images/된장찌개.jpg" alt="" title="" height="300px"> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              </c:forEach>
+ <!--              
+ 
+               <div class="embla__slide slider-image item" style="margin-left: 0rem; margin-right: 0rem;">
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">
@@ -57,6 +75,7 @@
                   </div>
                 </div>
               </div>
+ 
               <div class="embla__slide slider-image item" style="margin-left: 0rem; margin-right: 0rem;">
                 <div class="slide-content">
                   <div class="item-img">
@@ -94,6 +113,7 @@
                 </div>
               </div>
             </div>
+           -->  
           </div>
           <button class="embla__button embla__button--prev">
             <span class="mobi-mbri mobi-mbri-arrow-prev" aria-hidden="true"></span>

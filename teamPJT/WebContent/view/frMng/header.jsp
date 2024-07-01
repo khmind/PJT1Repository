@@ -31,11 +31,11 @@
 		<div class="container">
 			<div class="navbar-brand">
 				<!-- <a href="./main.jsp"> -->
-				<a href="./header.to">
+				<a href="./main.to">
 					<span class="navbar-logo">
 						<img src="./assets/images/gdf61b046222fac5a3cd6fdc38144-h_lvo11nj9.png" alt="" style="height: 4.5rem;">
 					</span>
-					<span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="./header.to">맛있는 레시피</a></span>
+					<span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href=""./main.to">맛있는 레시피</a></span>
 				</a>
 			</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -57,11 +57,12 @@
 					
 					</ul>
 					<div >
-						<a href="fr_recipelist_all.jsp" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a>	
+						<!-- <a href="fr_recipelist_all.jsp" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a> -->	
+						<a href="recipeSearch.to" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a>
 					</div>
 					<c:if test="${sessionScope.loginVO ==null }">
 					<div class="navbar-buttons mbr-section-btn">
-						<a class="btn btn-warning-outline display-4" href="./login.html">
+						<a class="btn btn-warning-outline display-4" href="./frMng/login.html">
 							<span class="mbri-login mbr-iconfont mbr-iconfont-btn" style="color: rgb(119, 135, 165);"></span>
 							로그인<span class="mbri-로그인 mbr-iconfont mbr-iconfont-btn"></span>
 						</a>
@@ -70,7 +71,7 @@
 					 
 					<c:if test="${sessionScope.loginVO != null }">
 					<div class="navbar-buttons mbr-section-btn">
-						<a class="btn btn-warning-outline display-4" href="./fr_user_info.jsp">
+						<a class="btn btn-warning-outline display-4" href="./frMng/fr_user_info.jsp">
 							<span class="mbri-login mbr-iconfont mbr-iconfont-btn" style="color: rgb(119, 135, 165);"></span>
 							마이페이지<span class="mbri-로그인 mbr-iconfont mbr-iconfont-btn"></span>
 						</a>
