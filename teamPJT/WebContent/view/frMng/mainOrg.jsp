@@ -14,7 +14,7 @@
             <div class="col-12 col-md-12 col-lg">
                 <div class="text-wrapper align-left">
                     <h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
-                        <strong>마라탕 레시피 main2.jsp</strong>
+                        <strong>마라탕 레시피</strong>
                     </h1>
                     <p class="mbr-text align-left mbr-fonts-style mb-4 display-9">마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피</p>
                     

@@ -87,37 +87,6 @@
 						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 0 10px 10px 0; " value="난이도순">
 			</div>
 			
-			
-			<div class="row">
-			
-				<div class="col-12" style=" display: flex; justify-content: space-around;margin-top: 30px; ">
-				<c:forEach var="repSea1" items="${recipeSearch1 }" varStatus="status"> 
-				
-			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
-					  <img src="${repSea1.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
-					  <div class="card-body">
-					    <p class="card-text">${repSea1.recipe_title }</p>
-					  </div>
-					</div>
-				
-				</c:forEach>
-				</div>
-				
-				<div class="col-12" style=" display: flex; justify-content: space-around;margin-top: 30px; ">
-				<c:forEach var="repSea2" items="${recipeSearch2 }" varStatus="status"> 
-				
-			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
-					  <img src="${repSea2.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
-					  <div class="card-body">
-					    <p class="card-text">${repSea2.recipe_title }</p>
-					  </div>
-					</div>
-				
-				</c:forEach>
-				</div>
-				
-			</div>
-			<!-- 
 		    <div class="row">
 		    	<div class="col-12" style=" display: flex; justify-content: space-around;margin-top: 30px; ">
 			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">
@@ -172,8 +141,6 @@
 					</div> 
 			    </div>
 			</div>
-			
-			 -->
 			<div style="display: flex; justify-content: center ;margin-top: 30px;" >
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination">

@@ -37,7 +37,8 @@ public class LoginController implements Controller{
 			session.setAttribute("loginVO", ivo);
 			
 		}
-		return "/view/frMng/main.jsp";
+		//return "/view/frMng/main.jsp";
+		return "main.to";
 	}
 
 }

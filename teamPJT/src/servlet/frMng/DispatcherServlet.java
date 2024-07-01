@@ -39,14 +39,9 @@ public class DispatcherServlet extends HttpServlet {
 
 			Controller contro = (Controller) sc.getAttribute(servletPath);
 
-			if ("/view/header.to".equals(servletPath)) {
+			if ("/view/main.to".equals(servletPath)) {
 				System.out.println("-------------1");
-				flag = "navbar";
-				
-			}
-			else if ("".equals(servletPath)) { 
-
-				flag = "";
+				flag = "main";
 				
 			}
 			else if("/view/login.to".equals(servletPath)) {
@@ -59,6 +54,10 @@ public class DispatcherServlet extends HttpServlet {
 				}
 				flag="login";
 			} 
+			else if("/view/recipeSearch.to".equals(servletPath)) {
+				
+				flag="searchAll";
+			}			
 			
 			String viewUrl = contro.execute(flag, model);
 

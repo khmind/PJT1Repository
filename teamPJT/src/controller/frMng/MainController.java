@@ -3,29 +3,33 @@ package controller.frMng;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import dao.bkMng.CategoryDAO;
+import dao.frMng.RecipeFrDAO;
 import vo.bkMng.CategoryVO;
+import vo.bkMng.RecipeVO;
 
-
-public class HeaderController implements Controller{
+public class MainController implements Controller{
+	
+	//HeaderController hc = new HeaderController();
 
 	CategoryDAO cateDAO;
+	RecipeFrDAO recipeFrDAO;
 	
-	public HeaderController setInfoDAO(CategoryDAO cateDAO) {		
+	public MainController setInfoDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO) {		
 		this.cateDAO = cateDAO;
+		this.recipeFrDAO = recipeFrDAO;
 		return this;
 	}
 
 	@Override
 	public String execute(String flag, Map<String, Object> model) throws Exception {
-		//System.out.println("-------------2");
+		
 		String returnValue="";
 				
-		if(flag.equals("navbar")) {		
-			System.out.println("-------------3");
+		if(flag.equals("main")) {		
+			System.out.println("-------------2");
 			returnValue = navbar(flag, model);
 		}
 		
@@ -36,21 +40,15 @@ public class HeaderController implements Controller{
 	
 	public String navbar(String flag, Map<String, Object> model) throws Exception{
 		
-		List<CategoryVO> cvo  = cateDAO.frCateList();
-						
-		HttpSession session = (HttpSession)model.get("session");
-		
-		//System.out.println("-------------4");
-		
-		session.setAttribute("frCateList", cvo);
-		
+		List<CategoryVO> cvo  = cateDAO.frCateList();		
+		List<RecipeVO> randomVo = recipeFrDAO.recipeRandom();
+				
+		model.put("navbar", cvo);
+		model.put("random", randomVo);	
 		System.out.println("-------------5");
 		
-		//http://localhost:8080/teamPJT/view/index.jsp
+	    return "frMng/main.jsp";
 	    //return "/view/frMng/main2.jsp";
-	    return "frMng/main2.jsp";
-	    //return "/view/frMng/main2.jsp";
-		//return null;
 		
 	}
 
