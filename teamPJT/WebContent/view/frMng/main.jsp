@@ -19,7 +19,7 @@
             <div class="col-12 col-md-12 col-lg">
                 <div class="text-wrapper align-left">
                     <h1 class="mbr-section-title mbr-fonts-style mb-4 display-5">
-                        <strong>마라탕 레시피 main2.jsp</strong>
+                        <strong>마라탕 레시피</strong>
                     </h1>
                     <p class="mbr-text align-left mbr-fonts-style mb-4 display-9">마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피마라탕 레시피</p>
                     
@@ -40,7 +40,7 @@
       <div class="col-12 content-head">
         
         <h5 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">
-          오늘의 추천 레시피 main2.jsp
+          오늘의 추천 레시피
         </h5>
       </div>
     </div>
