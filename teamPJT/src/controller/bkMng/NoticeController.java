@@ -35,23 +35,12 @@ public class NoticeController implements Controller{
 	}
 	
 	public String notice_list(String flag, Map<String, Object> model) throws Exception{
-		System.out.println("-----------------------------6");
 		
-		NoticeVO notice = (NoticeVO)model.get("PageInfo");
-		
-		System.out.println("-----------------------------7");
-		
+		NoticeVO notice = (NoticeVO)model.get("PageInfo");		
 		NoticeVO notice1 = noticeDAO.selectListCnt(notice);
-		
-		System.out.println("-----------------------------8");
-		
-		System.out.println("-------------------------getEndPage : " +notice1.getEndPage());
-		
-		
+	
 		model.put("PageInfo", notice1);
 		model.put("noticelist", noticeDAO.selectList(notice1));
-		
-		System.out.println("-----------------------------9");
 		
 		return "bk_announcement.jsp";
 	}
@@ -78,18 +67,10 @@ public class NoticeController implements Controller{
 			return "bk_announcement_register.jsp";
 			 
 			 }else {
-				 System.out.println("-------------------12");
-				
 			
-				NoticeVO notice = (NoticeVO)model.get("notice_register"); 
-				
-				System.out.println(" notice :" + notice.getUser_id());
-				
-				
+				NoticeVO notice = (NoticeVO)model.get("notice_register"); 	
 				noticeDAO.insert(notice);
-				
-				System.out.println(" regi------------result  : ");
-				
+
 				return "redirect:notice.do";
 		 
 			 	}
@@ -98,21 +79,16 @@ public class NoticeController implements Controller{
 	
 	public String notice_delete1(String flag, Map<String, Object> model) throws Exception{
 		
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~14"); 
 		String notice_id = (String) model.get("notice_delete");
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15"+notice_id);
 		noticeDAO.delete1(notice_id);
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~15-1");
 		
 		return "redirect:notice.do";
 	}
 	public String notice_delete2(String flag, Map<String, Object> model) throws Exception{
 		
 		String[] no = (String[])model.get("no");
-		//cateDAO.delete(no);
-		int res = noticeDAO.delete2(no);
-		System.out.println("?????????????????????"+res);
+		noticeDAO.delete2(no);
 		return "redirect:notice.do";
 	}
-	
+
 }

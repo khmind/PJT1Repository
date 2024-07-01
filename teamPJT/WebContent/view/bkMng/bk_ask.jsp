@@ -58,7 +58,7 @@
         document.frmt.action="ask_update.do"; 
         document.frmt.submit();
     }
-    function deleteAction() {
+    function deleteAction(askId) {
         	
         document.frmt.ask_id.value = askId;
         document.frmt.action="ask_delete2.do"; 
@@ -131,7 +131,7 @@ function search(){
 
                     <!-- DataTales Example -->
                     <form action="" method="post" name="frmt">          
-	                    <input type="hidden" name="ask_id" >  
+	                    <input type="hidden" name="ask_id" value="">  
 	                    <input type="hidden" name="recomm_date" value="${ask.recomm_date}" >   
 	                    <input type="hidden" name="h_sel1" value="${PageInfo.sel1 }">
 	                    <input type="hidden" name="h_sel2" value="${PageInfo.sel2 }">
@@ -163,8 +163,8 @@ function search(){
 						<option value="ask_Y">답변완료</option>
 						<option value="ask_N">답변필요</option> 
 					</select>
-					<button type="button" class="btn btn-outline-danger float-right mr-1" 
-						onclick="deleteAction()" value="delete" name="btn">삭제</button>
+					<button type="submit" class="btn btn-outline-danger float-right mr-1" 
+						onclick="deleteAction(${ask.ask_id})" value="delete" name="btn">삭제</button>
 					<button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button>
                     <!-- Topbar Search -->
                            
@@ -174,11 +174,11 @@ function search(){
 					    <tr>
 					      <th class="th1"><input type="checkbox" id="chkAll"class="chkGrp"></th>
 					      <th class="th1" scope="col">no.</th>
-					      <th scope="col">작성자</th>
-					      <th scope="col">제목</th>
-					      <th scope="col">등록일자</th>
-					      <th scope="col">답변상태</th>
-					      <th scope="col">답변일자</th>
+					      <th class="th2" scope="col">작성자</th>
+					      <th class="th3" scope="col">제목</th>
+					      <th class="th4" scope="col">등록일자</th>
+					      <th class="th2" scope="col">답변상태</th>
+					      <th class="th5" scope="col">답변일자</th>
 					    </tr>
 					  </thead> 
 					  <tbody>
