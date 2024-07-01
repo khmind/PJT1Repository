@@ -35,7 +35,7 @@
 					<span class="navbar-logo">
 						<img src="./assets/images/gdf61b046222fac5a3cd6fdc38144-h_lvo11nj9.png" alt="" style="height: 4.5rem;">
 					</span>
-					<span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href=""./main.to">맛있는 레시피</a></span>
+					<span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="./main.to">맛있는 레시피</a></span>
 				</a>
 			</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
