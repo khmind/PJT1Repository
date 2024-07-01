@@ -93,8 +93,8 @@
 				<div class="col-12" style=" display: flex; justify-content: space-around;margin-top: 30px; ">
 				<c:forEach var="repSea1" items="${recipeSearch1 }" varStatus="status"> 
 				
-			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">
-					  <img src="../view/assets/images/${repSea1.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
+			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
+					  <img src="${repSea1.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
 					  <div class="card-body">
 					    <p class="card-text">${repSea1.recipe_title }</p>
 					  </div>
@@ -106,8 +106,8 @@
 				<div class="col-12" style=" display: flex; justify-content: space-around;margin-top: 30px; ">
 				<c:forEach var="repSea2" items="${recipeSearch2 }" varStatus="status"> 
 				
-			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">
-					  <img src="../view/assets/images/${repSea2.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
+			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
+					  <img src="${repSea2.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
 					  <div class="card-body">
 					    <p class="card-text">${repSea2.recipe_title }</p>
 					  </div>

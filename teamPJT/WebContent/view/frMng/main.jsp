@@ -56,7 +56,7 @@
                 <div class="slide-content">
                   <div class="item-img">
                     <div class="item-wrapper">                    	                      
-                      <img src="../view/assets/images/${ran.img_main }" alt="" title="" height="300px">
+                      <img src="${ran.img_main }" alt="" title="" height="300px">
                         <!-- <img src="../view/assets/images/된장찌개.jpg" alt="" title="" height="300px"> -->
                     </div>
                   </div>

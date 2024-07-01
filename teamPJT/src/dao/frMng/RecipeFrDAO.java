@@ -24,6 +24,7 @@ public class RecipeFrDAO {
 	//랜덤 조회  
 	public List<RecipeVO> recipeRandom() throws Exception{
 		
+		String imgPath = "../view/assets/images/";		
 		List<RecipeVO> recipeRand = new ArrayList<RecipeVO>();
 		
 		String sql = 	" select a.RECIPE_ID, \n" + 
@@ -47,7 +48,7 @@ public class RecipeFrDAO {
 				
 				RecipeVO listVO= new RecipeVO()
 						.setRecipe_id(rs.getString("recipe_id"))
-						.setImg_main(rs.getString("img_main"));
+						.setImg_main(imgPath + rs.getString("img_main"));
 				
 				recipeRand.add(listVO);
 				
@@ -70,6 +71,7 @@ public class RecipeFrDAO {
 		
 		List<RecipeVO> recipeRand = new ArrayList<RecipeVO>();
 		int limit=4;		
+		String imgPath = "../view/assets/images/";
 		
 		String sql = 	" select a.RECIPE_ID, a.RECIPE_TITLE, \n" + 
 						" case b.IMG_MAIN \n" + 
@@ -100,12 +102,12 @@ public class RecipeFrDAO {
 				
 				System.out.println(" -----------01 " + rs.getString("recipe_id"));
 				System.out.println(" -----------02 " + rs.getString("recipe_title"));
-				System.out.println(" -----------03 " + rs.getString("main"));
+				System.out.println(" -----------03 " + imgPath + rs.getString("main"));
 				
 				RecipeVO listVO= new RecipeVO()
 						.setRecipe_id(rs.getString("recipe_id"))
 						.setRecipe_title(rs.getString("recipe_title"))
-						.setImg_main(rs.getString("main"));
+						.setImg_main(imgPath + rs.getString("main"));
 				
 				recipeRand.add(listVO);
 				
