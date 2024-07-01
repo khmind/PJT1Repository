@@ -61,7 +61,7 @@
 	color:lightgray;
 	float: right;
 	
-}  	
+} 
   </style>
   
 	<script type="text/javascript">
