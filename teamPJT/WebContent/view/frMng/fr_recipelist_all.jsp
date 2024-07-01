@@ -63,14 +63,53 @@
 	
 }  	
   </style>
+  
+	<script type="text/javascript">
+	
+	
+		function move(args){	
+			
+ 			frmGo.action = "userModify.do";
+			frmGo.user_id.value = args
+			frmGo.submit();
+			//window.open('bk_user_detail.html', '_self');
+		}
+		
+		function search(){
+			
+			frmGo.action = "user.do";
+			frmGo.page.value = 1;
+			frmGo.submit();			 
+		}
+		
+		function gotoPage(page){
+			
+			frmGo.action = "user.do";
+			frmGo.page.value = page;
+			frmGo.submit();			 
+		}
+		
+		function setValue(){
+
+			 frmGo.sel1.value = frmGo.h_sel1.value;
+			 frmGo.sel2.value = frmGo.h_sel2.value;
+			 frmGo.searchText.value = frmGo.h_searchText.value;
+			 
+		}
+			
+ 	</script>    
 </head>
 <body>
 	<!--검색창-->
 	<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="  display: flex; justify-content: center; margin-top: 30px;">
+	
 		<form class="search-box" >
-			<input class="search-txt" type="text" name="" placeholder="search">
-			<button class="search-btn" type="submit"><i class="fa fa-search fa-lg"></i></button>
-		</form>
+			<div>
+				<input class="search-txt" type="text" name="searchText"  placeholder="search">
+				<button class="search-btn" type="submit"><i class="fa fa-search fa-lg"></i></button>	
+			</div>
+		
+		
 	</section>
 	<!--검색창-->
 	<!--레시피 창-->
@@ -193,6 +232,9 @@
 				  </ul>
 				</nav>
 			</div> 
+			
+			</form>
+			
 		</div>
 	</section>
 	<!--레시피 창-->

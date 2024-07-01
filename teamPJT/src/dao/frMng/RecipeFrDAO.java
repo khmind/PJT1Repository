@@ -17,14 +17,15 @@ public class RecipeFrDAO {
 	PreparedStatement pstmt = null;	
 	ResultSet rs =null;
 	
+	String imgPath = "../view/assets/images/";	
+	
 	public void setDs(DataSource ds) {
 		this.ds = ds;
 	}	
 	
 	//랜덤 조회  
 	public List<RecipeVO> recipeRandom() throws Exception{
-		
-		String imgPath = "../view/assets/images/";		
+			
 		List<RecipeVO> recipeRand = new ArrayList<RecipeVO>();
 		
 		String sql = 	" select a.RECIPE_ID, \n" + 
@@ -70,8 +71,7 @@ public class RecipeFrDAO {
 	public List<RecipeVO> searchAll(int startrow) throws Exception{
 		
 		List<RecipeVO> recipeRand = new ArrayList<RecipeVO>();
-		int limit=4;		
-		String imgPath = "../view/assets/images/";
+		int limit=4;
 		
 		String sql = 	" select a.RECIPE_ID, a.RECIPE_TITLE, \n" + 
 						" case b.IMG_MAIN \n" + 
