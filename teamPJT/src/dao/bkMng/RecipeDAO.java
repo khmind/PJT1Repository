@@ -246,7 +246,7 @@ public class RecipeDAO {
 			conn=ds.getConnection();
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			
+			 
 			if(rs.next()) {			
 				return new RecipeVO()
 						.setRecipe_id(rs.getString("recipe_id"))
