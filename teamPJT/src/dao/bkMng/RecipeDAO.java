@@ -227,15 +227,21 @@ public class RecipeDAO {
 	public RecipeVO detail(String recipe_id) throws Exception{
 		
 		System.out.println("detailDAO==============1");
-		String sql = "select a.recipe_id, a.recipe_title, b.class_name, c.img_path_01, c.img_path_02, c.img_path_03,\r\n" + 
-				"	a.recipe_level, a.recipe_stuff, a.recipe_content, d.user_name, e.comment_content, e.comment_date\r\n" + 
-				"    from recipe_info a\r\n" + 
-				"    inner join recipe_class_info b on a.class_id=b.class_id\r\n" + 
-				"    inner join recipe_image_info c on a.recipe_id=c.recipe_id\r\n" + 
-				"    inner join user_info d on a.user_id=d.user_id\r\n" + 
-				"    inner join recipe_reply e on a.recipe_id= e.recipe_id\r\n" + 
-				"	where a.recipe_id='"+recipe_id+"'";
-		
+//		String sql = "select a.recipe_id, a.recipe_title, b.class_name, c.img_path_01, c.img_path_02, c.img_path_03,\r\n" + 
+//				"	a.recipe_level, a.recipe_stuff, a.recipe_content, d.user_name, e.comment_content, e.comment_date\r\n" + 
+//				"    from recipe_info a\r\n" + 
+//				"    inner join recipe_class_info b on a.class_id=b.class_id\r\n" + 
+//				"    inner join recipe_image_info c on a.recipe_id=c.recipe_id\r\n" + 
+//				"    inner join user_info d on a.user_id=d.user_id\r\n" + 
+//				//"    inner join recipe_reply e on a.recipe_id= e.recipe_id\r\n" + 
+//				"	where a.recipe_id='"+recipe_id+"'";
+		String sql="select a.recipe_id, a.recipe_title, b.class_name, c.img_path_01, c.img_path_02, c.img_path_03, \r\n" + 
+				"					a.recipe_level, a.recipe_stuff, a.recipe_content, d.user_name\r\n" +  
+				"				   from recipe_info a\r\n" + 
+				"				   inner join recipe_class_info b on a.class_id=b.class_id\r\n" + 
+				"				   inner join recipe_image_info c on a.recipe_id=c.recipe_id\r\n" + 
+				"				   inner join user_info d on a.user_id=d.user_id\r\n" + 
+				"					where a.recipe_id='"+recipe_id+"'";
 		try {
 			conn=ds.getConnection();
 			pstmt=conn.prepareStatement(sql);
@@ -252,10 +258,10 @@ public class RecipeDAO {
 						.setRecipe_level(rs.getString("recipe_level"))
 						.setRecipe_stuff(rs.getString("recipe_stuff"))
 						.setRecipe_content(rs.getString("recipe_content"))
-						.setUser_name(rs.getString("user_name"))
+						.setUser_name(rs.getString("user_name"));
 						//.setComment_id(rs.getString("comment_id"))
-						.setComment_content(rs.getString("comment_content"))
-						.setComment_date(rs.getDate("comment_date"));
+						//.setComment_content(rs.getString("comment_content"))
+						//.setComment_date(rs.getDate("comment_date"));
 					
 			}
 			else {
