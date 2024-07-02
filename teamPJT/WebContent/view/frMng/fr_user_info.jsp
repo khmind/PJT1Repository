@@ -81,13 +81,15 @@
 	  		<!-- Sidebar -->
 			<!-- <div id="sidebar"></div> -->
 			<!-- End of Sidebar -->  	
-					
+			<%@ include file="fr_sidebar.jsp" %>
+
+<!-- 					
  			<div class="col-md-3 col-xl-2 bd-sidebar">
 			
 				<div class="collapse d-md-block row" id="bd-docs-nav">
 				  <nav class="bd-links" aria-label="Main navigation">				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_user_info.jsp">
+				        <a class="bd-toc-link" href="../fr_user_info.jsp">
 				          	개인정보
 				        </a>
 				      </div>
@@ -125,7 +127,7 @@
 				</div>
 			
 			</div>  			
-
+ -->
 		<!-- Content end--------------------------------------------------------------------->
 		</div>
 	</div>

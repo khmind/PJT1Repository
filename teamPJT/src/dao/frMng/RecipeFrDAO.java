@@ -90,7 +90,7 @@ public class RecipeFrDAO {
 			where = " and a.RECIPE_TITLE like '%" + recipeVo.getSearchText() +"%' \n";
 		}		
 		
-		String sqlCnt = 	" select count(a.RECIPE_ID) \n" +
+		String sqlCnt = " select count(a.RECIPE_ID) \n" +
 						" from recipe_info a \n" + 
 						" inner join recipe_image_info b on a.RECIPE_ID = b.RECIPE_ID \n" + 
 						" where 1=1 \n" + 
