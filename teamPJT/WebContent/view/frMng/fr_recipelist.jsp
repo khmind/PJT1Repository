@@ -187,6 +187,7 @@
 				
 			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
 					  <img src="${repSea1.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
+					  <!-- <img src="../view/img/frMng/제육.jpg" class="card-img-top" alt="..." style="width:300px; height: 200px;"> -->				
 					  <div class="card-body">
 					    <p class="card-text">${repSea1.recipe_title }</p>
 					  </div>
@@ -209,7 +210,9 @@
 				</div>
 				
 			</div>
-[ s : ${PageInfo.startPage } ]  [ e : ${PageInfo.endPage }]
+			
+<%-- [ s : ${PageInfo.startPage } ]  [ e : ${PageInfo.endPage }] --%>
+
 			<div style="display: flex; justify-content: center ;margin-top: 30px;" >
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination">

@@ -17,8 +17,12 @@ public class RecipeFrDAO {
 	PreparedStatement pstmt = null;	
 	ResultSet rs =null;
 	
-	String imgPath = "../view/assets/images/";
+	String imgPath = "../view/img/frMng/";
+	//String imgPath = "../view/assets/images/";
 	//String imgPath = "../view/frMng/images/";
+	
+	
+	
 	
 	public void setDs(DataSource ds) {
 		this.ds = ds;
