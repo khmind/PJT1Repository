@@ -136,7 +136,7 @@ function search(){
 	                    <input type="hidden" name="h_sel1" value="${PageInfo.sel1 }">
 	                    <input type="hidden" name="h_sel2" value="${PageInfo.sel2 }">
                  		<input type="hidden" name="h_searchText" value="${PageInfo.searchText }">
-                 		<input type="hidden" name="page" value="${PageInfo.page }">
+                 		<input type="hidden" name="page" value="${PageInfo.page }">  
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                    <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search float-right">
@@ -197,7 +197,7 @@ function search(){
 					      <td class="th2" onclick="move('${ask.ask_id}')">${ask.user_id}</td>
 					      <td class="th3" onclick="move('${ask.ask_id}')">${ask.ask_title}</td>
 					      <td class="th4" onclick="move('${ask.ask_id}')">${ask.ask_date}</td>
-					      <th class="th2" onclick="move('${ask.ask_id}')">Y</th>
+					      <th class="th2" onclick="move('${ask.ask_id}')">${ask.read}</th>
 					      <td class="th5" onclick="move('${ask.ask_id}')" >${ask.recomm_date}</td>
 					    </tr>
 					    </c:forEach>

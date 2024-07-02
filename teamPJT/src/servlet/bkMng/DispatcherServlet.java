@@ -197,7 +197,7 @@ public class DispatcherServlet extends HttpServlet {
 								);
 					flag = "ask_list";
 					
-				
+
 				}else if("/view/bkMng/ask_update.do".equals(servletPath)) {
 					HttpSession session = (HttpSession)model.get("session");	
 					InfoVO vo = (InfoVO)session.getAttribute("infoVO");				
@@ -205,7 +205,6 @@ public class DispatcherServlet extends HttpServlet {
 							
 						model.put("ask_update", new AskVO().setAsk_id(arg0.getParameter("ask_id")));	
 						flag="ask_update";
-						
 					}else {
 						model.put("ask_update", new AskVO()
 													.setUser_id(arg0.getParameter("user_id"))

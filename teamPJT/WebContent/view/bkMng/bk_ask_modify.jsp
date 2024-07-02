@@ -82,7 +82,7 @@
 						</div>
 						<div style="display:flex; margin-top: 20px;">
 							<span class="textfield" style="margin-left:20px;">답변일자</span>
-							<textarea rows="2%" style="margin-left: 40px; width:70%;" name="recomm_date"disabled>${ask.recomm_date }</textarea>
+							<textarea rows="2%" style="margin-left: 40px; width:70%; background-color: #efefef4d" name="recomm_date" value="${ask.recomm_date}" readonly>${ask.recomm_date }</textarea>
 						</div>
 					</div>
 						<div class="btn mt-3" style="display: flex; justify-content: flex-end; ">

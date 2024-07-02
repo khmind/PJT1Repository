@@ -58,25 +58,22 @@ public class AskDAO {
 		Connection conn = null;
 		Statement stmt= null;
 		ResultSet rs= null ;
-		
-		String sql = "select ask_id, ask_title, ask_content, user_id, ask_date, recomm_content "
+		String sql = "select ask_id, ask_title, ask_content, user_id, ask_date, recomm_content, recomm_date "
 				+ "from ask_info where ask_id='"+ask_id+"'";
-
 		try {
 			conn = ds.getConnection();
 			stmt = conn.createStatement(); 
 			rs = stmt.executeQuery(sql);
-
 			
 			if(rs.next()) {
-
 				return new AskVO()
 						.setAsk_title(rs.getString("ask_title"))
 						.setAsk_content(rs.getString("ask_content"))
 						.setUser_id(rs.getString("user_id"))
 						.setAsk_date(rs.getDate("ask_date"))
 						.setRecomm_content(rs.getString("recomm_content"))
-						.setAsk_id(rs.getString("ask_id"))	;
+						.setAsk_id(rs.getString("ask_id"))
+						.setRecomm_date(rs.getDate("recomm_date"));
 			}else {
 				throw new Exception("해당 번호의 회원을 찾을수 없습니다.");
 			}
@@ -194,6 +191,7 @@ public class AskDAO {
 		ResultSet rs = null;
 		String where = "" ;	
 		int page = askVO.getPage();
+		String read = askVO.getRead();
 		int total = 0; 
 		int limit=3;
 		int startPage = (((int) ((double)page / limit + 0.9)) - 1) * limit + 1;
@@ -205,6 +203,14 @@ public class AskDAO {
 			
 			where = " and " +  askVO.getSel2() + " like '%" + askVO.getSearchText() +"%' \n";
 		}
+		
+		if(askVO.getRecomm_date()==null) { 
+			 read = "N";
+		}
+		 else {
+			 read = "Y";
+		 }
+		
 		String sqlCnt = " select count(ask_id) from ask_info where 1=1" + where ;	
 		//System.out.println("sqlCnt : " + sqlCnt);
 		
@@ -230,7 +236,9 @@ public class AskDAO {
 					.setPage(page)
 					.setStartPage(startPage)
 					.setSearchText(askVO.getSearchText())
-					.setLimit(limit);
+					.setLimit(limit)
+					.setRead(read)
+					.setRecomm_date(askVO.getRecomm_date());
 			
 						
 		} catch (Exception e) {
@@ -253,6 +261,8 @@ public class AskDAO {
 		
 		String where = "" ;		
 		String order = "";
+		String read = askVO.getRead();
+		
 	  	int page = askVO.getPage(); 
 		int limit=3;
 		int startrow=(page-1)*limit; 
@@ -263,6 +273,13 @@ public class AskDAO {
 		if ( askVO.getSel1() != null &&  askVO.getSel1() != "") {
 			order = " order by " + askVO.getSel1() + " desc  \n" ;
 		}
+		/*
+		if(askVO.getRecomm_date()==null) { 
+			 read = "답변필요";
+		}
+		else {
+			 read = "답변완료";
+		}*/
 		
 		String sql =
 				" select ask_id, user_id, ask_title, ask_date, recomm_date from ask_info where 1=1 " + where + order + " limit ?, ?";
@@ -286,7 +303,8 @@ public class AskDAO {
 						.setAsk_title(rs.getString("ask_title"))
 						.setUser_id(rs.getString("user_id"))
 						.setAsk_date(rs.getDate("ask_date"))
-						.setRecomm_date(rs.getDate("Recomm_date"));			
+						.setRead(rs.getDate("Recomm_date") == null ? "답변필요" : "답변완료" )
+						.setRecomm_date( rs.getDate("Recomm_date"));			
 				
 				list.add(ask);		
 				

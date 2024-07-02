@@ -55,6 +55,7 @@ public class AskController implements Controller{
 			return "bk_ask_modify.jsp";
 			 
 		}else {
+
 				askDAO.insert(vo);
 				return "redirect:ask.do";
 		 

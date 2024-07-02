@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +33,10 @@
 </style>
 <script type="text/javascript">
 
-	function detail(){		
-		window.open('fr_announcement_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
+	function detail(notice_id){		// 이기능은 임시, DB 연결 후 로직변경
+        document.frm.notice_id.value = noticeId;
+        document.frm.action="notice_detail.to"; 
+        document.frm.submit(); 
 	}
 
 </script>
@@ -55,62 +58,31 @@
 			      <h4 class="bd-title" id="content">공지사항</h4>
 			    </div>
 			    
-			    <form class="">            		
-            		<input type="search" placeholder="  Search" aria-label="Search">
-            		<a href="#" target="_blank" ><i class="fas fa-search fa-2x"></i></a>	
-			    </form>
-				
+			    <form action="" method="post" name ="frm">
+			   	 <input type="hidden" name="notice_id" value="">            		
+				<input type="search" placeholder="  Search" aria-label="Search">
+            		<a href="javascript:search()" target="_blank" >
+            			<i class="fas fa-search fa-2x"></i>
+            		</a>
 				<table class="table">
 				  <thead>
 				    <tr>				      
 				      <th>순번</th>
 					  <th>제목</th>
+					  <th>작성자</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr onClick="detail()">				      
-				      <td class="text-muted">10</td>
-				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
+				  <c:forEach var="notice" items="${noticelist}">
+				    <tr>				      
+						<th class="th1" scope="row" onclick="detail('${notice.notice_id}')">${notice.notice_id}</th>
+						<td class="th2" onclick="detail('${notice.notice_id}')">${notice.notice_title}</td>
+						<td class="th1" onclick="detail('${notice.notice_id}')">${notice.user_name}</td>
 				    </tr>				  
-				    <tr onClick="detail()">		
-				      <td class="text-muted">9</td>
-				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">		
-				      <td class="text-muted">8</td>
-				      <td class="text-muted">다섯 번째 공지사항 입니다.</td>
-				    </tr>				  
-				    <tr onClick="detail()">		
-				      <td class="text-muted">7</td>
-				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
-				    </tr>				  
-				    <tr onClick="detail()">		
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">여섯 번째 공지사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">		
-				      <td class="text-muted">5</td>
-				      <td class="text-muted">다섯 번째 공지사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">		
-				      <td class="text-muted">4</td>
-				      <td class="text-muted">네 번째 공지사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">		
-				      <td class="text-muted">3</td>
-				      <td class="text-muted">세 번째 공지사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">		
-				      <td class="text-muted">2</td>
-				      <td class="text-muted">두 번째 공지사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">		
-				      <td class="text-muted">1</td>
-				      <td class="text-muted">첫 번째 공지사항 입니다.</td>
-				    </tr>
+				  </c:forEach>
 				  </tbody>
 				</table>
-				
+			
 				<nav aria-label="Page navigation example">  
 				  <ul class="pagination justify-content-center">
 				    <li class="page-item">
@@ -128,7 +100,7 @@
 				    </li>
 				  </ul>
 				</nav>				
-				
+				</form>
 			</main>
 			
 			
@@ -167,7 +139,7 @@
 				      </div>
 				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_announcement.jsp">
+				        <a class="bd-toc-link" href="notice.to">
 				          	공지사항
 				        </a>
 				      </div>

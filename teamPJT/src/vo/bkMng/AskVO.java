@@ -23,6 +23,7 @@ public class AskVO {
 		private int endPage;
 		private int limit;
 		
+		private String read;
 		
 		public String getAsk_id() {
 			return ask_id;
@@ -148,6 +149,13 @@ public class AskVO {
 		}
 		public AskVO setLimit(int limit) {
 			this.limit = limit;
+			return this;
+		}
+		public String getRead() {
+			return read;
+		}
+		public AskVO setRead(String read) {
+			this.read = read;
 			return this;
 		}
 
