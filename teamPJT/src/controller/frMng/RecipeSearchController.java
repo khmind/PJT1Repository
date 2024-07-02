@@ -6,6 +6,7 @@ import java.util.Map;
 
 import controller.Controller;
 import dao.bkMng.CategoryDAO;
+import dao.bkMng.RecipeDAO;
 import dao.frMng.RecipeFrDAO;
 import vo.bkMng.CategoryVO;
 import vo.bkMng.RecipeVO;
@@ -15,10 +16,12 @@ public class RecipeSearchController implements Controller{
 	
 	CategoryDAO cateDAO;
 	RecipeFrDAO recipeFrDAO;
+	RecipeDAO recipeDAO;
 	
-	public RecipeSearchController setDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO) {		
+	public RecipeSearchController setDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO, RecipeDAO recipeDAO) {		
 		this.cateDAO = cateDAO;
 		this.recipeFrDAO = recipeFrDAO;
+		this.recipeDAO=recipeDAO;
 		return this;
 	}
 
@@ -30,11 +33,48 @@ public class RecipeSearchController implements Controller{
 		if(flag.equals("search")) {
 			returnValue = searchAll(flag, model);
 		}
-		
+		else if(flag.equals("detail")) {
+			returnValue=recipeDetail(flag,model);
+		}
+		else if(flag.equals("update")) {
+			returnValue=recipeUpdate(flag,model);
+		}
 		return returnValue;
 		
 	}
 	
+	private String recipeUpdate(String flag, Map<String, Object> model) throws Exception {
+		System.out.println("fr================1");
+		RecipeVO vo=(RecipeVO)model.get("recipeUpdate");
+		System.out.println("fr================2"+vo.getRecipe_title());
+		if(vo.getRecipe_title()==null) {
+			
+			
+			String id = vo.getRecipe_id();
+			RecipeVO recipeVO = recipeDAO.detail(id);
+			
+			model.put("recipe", recipeVO);
+			model.put("class_name", recipeDAO.classList());
+			return "/view/frMng/fr_recipe_edit.jsp";
+		}
+		else {
+			
+			recipeDAO.update(vo);
+			return "redirect:recipeDetail.to";
+		}
+	}
+
+	private String recipeDetail(String flag, Map<String, Object> model) throws Exception {
+		RecipeVO vo = (RecipeVO)model.get("recipe_detail");
+		if(vo.getRecipe_title()==null) {
+			String id=vo.getRecipe_id();
+			RecipeVO reVO=(RecipeVO)recipeDAO.detail(id);
+			model.put("recipeD", reVO);
+			model.put("classN", recipeDAO.classList());
+		}
+		return "/view/frMng/fr_recipe_detail.jsp";
+	}
+
 	public String searchAll(String flag, Map<String, Object> model) throws Exception{
 		
 		RecipeVO recipeVo = (RecipeVO)model.get("PageInfo");

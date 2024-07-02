@@ -106,12 +106,15 @@ public class ContextLoaderListener implements ServletContextListener{
 						
 			/*###  fkMng  ###*/			
 			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO, recipeFrDAO));			
-			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO));
+			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO,recipeDAO));
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
 			sc.setAttribute("/view/myPage.to", new MyPageController().setDAO(cateDAO) );
 			sc.setAttribute("/view/notice.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO));
 			sc.setAttribute("/view/notice_detail.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO));
+			sc.setAttribute("/view/recipeDetail.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO, recipeDAO));
+			sc.setAttribute("/view/recipeEdit.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO, recipeDAO));
 			
+
 		}catch (Exception e) {
 			e.printStackTrace(); 
 		}

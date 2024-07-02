@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import vo.bkMng.InfoVO;
-import vo.bkMng.NoticeVO;
 import vo.bkMng.RecipeVO;
-
 
 @WebServlet("*.to")
 public class DispatcherServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -76,27 +79,47 @@ public class DispatcherServlet extends HttpServlet {
 						);
 
 				flag="search";
+			}			
+			else if("/view/recipeDetail.to".equals(servletPath)) {
+				System.out.println("frrrrrrrrrr======="+req.getParameter("recipe_id"));
+				if(req.getParameter("recipe_id") !=null) {
+					System.out.println(req.getParameter("recipe_id")+"?????????????//");
+					model.put("recipe_detail", new RecipeVO()
+							.setRecipe_id(req.getParameter("recipe_id"))
+							.setRecipe_title(req.getParameter("reci_title"))
+							.setClass_name(req.getParameter("class_name"))
+							.setImg_path_01(req.getParameter("upload1"))
+							.setImg_path_02(req.getParameter("upload2"))
+							.setImg_path_03(req.getParameter("upload3"))
+							.setRecipe_level(req.getParameter("level"))
+							.setRecipe_stuff(req.getParameter("stuff"))
+							.setRecipe_content(req.getParameter("content"))
+							);
+				}	
+				flag="detail";
 			}
-			else if("/view/notice.to".equals(servletPath)) {
-				String pg = req.getParameter("page");
-				System.out.println("pg--------1 : " + pg);
-				
-				pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
-				
-				int page = Integer.parseInt(pg);
-				
-				model.put("PageInfo", new NoticeVO()						
-							.setSearchText(req.getParameter("searchText"))
-							.setPage(page)
-						);
-				flag = "notice_list";
+			else if("/view/recipeEdit.to".equals(servletPath)) {
+				System.out.println("frrrrrrrrrr======="+req.getParameter("recipe_id"));
+				System.out.println("frrrrrrrrrr=======2"+req.getParameter("reci_title"));
+				if(req.getParameter("recipe_id") !=null) {
+					
+					model.put("recipeUpdate", new RecipeVO()
+							.setRecipe_id(req.getParameter("recipe_id"))
+							.setRecipe_title(req.getParameter("reci_title"))
+							.setClass_name(req.getParameter("class_name"))
+							.setImg_path_01(req.getParameter("upload1"))
+							.setImg_path_02(req.getParameter("upload2"))
+							.setImg_path_03(req.getParameter("upload3"))
+							.setRecipe_level(req.getParameter("level"))
+							.setRecipe_stuff(req.getParameter("stuff"))
+							.setRecipe_content(req.getParameter("content"))
+							);
+					
+					 
+					flag="update";
+				}
 			}
-			else if("/view/notice_detail.to".equals(servletPath)) {
-				model.put("detail", new NoticeVO()
-						.setNotice_id(req.getParameter("notice_id"))
-						);
-				flag = "notice_detail";
-			}
+			
 			
 			String viewUrl = contro.execute(flag, model);
 

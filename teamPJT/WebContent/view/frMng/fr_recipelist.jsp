@@ -81,11 +81,10 @@
   
 	<script type="text/javascript">
 	
-	
 		function move(args){	
 			
- 			frmGo.action = "";
-			frmGo.user_id.value = args
+			frmGo.recipe_id.value = args;
+ 			frmGo.action = "recipeDetail.to";
 			frmGo.submit();
 			
 		}
@@ -131,6 +130,7 @@
 		<input type="hidden" value="${PageInfo.page }" name="page">
 		<input type="hidden" value="" name="h_orderby">
 		<input type="hidden" value="${PageInfo.class_id }" name="classId">
+		<input type="hidden" value="" name="recipe_id" >
 		
 			<div>
 				<input class="search-txt" type="text" name="searchText"  placeholder="search...">
@@ -184,8 +184,7 @@
 			
 				<div style=" display: flex; justify-content: start; margin-top: 20px; margin-left: 50px">
 				<c:forEach var="repSea1" items="${recipeSearch1 }" varStatus="status"> 
-				
-			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
+			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="move('${repSea1.recipe_id }')">					  
 					  <img src="${repSea1.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
 					  <!-- <img src="../view/img/frMng/제육.jpg" class="card-img-top" alt="..." style="width:300px; height: 200px;"> -->				
 					  <div class="card-body">
@@ -199,7 +198,7 @@
 				<div style=" display: flex; justify-content: start; margin-top: 30px; margin-left: 50px">
 				<c:forEach var="repSea2" items="${recipeSearch2 }" varStatus="status"> 
 				
-			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="location.href='fr_recipe_detail.jsp'">					  
+			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="move('${repSea2.recipe_id }')">					  
 					  <img src="${repSea2.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
 					  <div class="card-body">
 					    <p class="card-text">${repSea2.recipe_title }</p>
