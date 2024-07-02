@@ -71,6 +71,7 @@ public class DispatcherServlet extends HttpServlet {
 							.setSearchText(req.getParameter("searchText"))
 							.setPage(page)
 							.setClass_id(req.getParameter("classId"))
+							.setOrderby(req.getParameter("h_orderby"))
 						);
 				
 				//classId

@@ -92,8 +92,6 @@ public class RecipeFrDAO {
 						" from recipe_info a \n" + 
 						" inner join recipe_image_info b on a.RECIPE_ID = b.RECIPE_ID \n" + 
 						" where 1=1 \n" + 
-						//" and a.RECIPE_TITLE like '%?%' \n" + 
-						//" and CLASS_ID = 'C002' \n" + 
 						where 
 						;
 		
