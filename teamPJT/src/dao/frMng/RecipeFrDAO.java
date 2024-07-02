@@ -22,8 +22,6 @@ public class RecipeFrDAO {
 	//String imgPath = "../view/frMng/images/";
 	
 	
-	
-	
 	public void setDs(DataSource ds) {
 		this.ds = ds;
 	}	
@@ -150,7 +148,7 @@ public class RecipeFrDAO {
 		
 		int startrow=(page-1)*contentCnt;
 		
-		System.out.println( " @@@@ page 1 : " + page + ", startrow : " + startrow);
+		//System.out.println( " @@@@ page 1 : " + page + ", startrow : " + startrow);
 		
 		if ( strow == 1 ) { 
 			pageTemp = (startrow);			
@@ -160,7 +158,7 @@ public class RecipeFrDAO {
 		
 		startrow = pageTemp;
 		
-		System.out.println(" ##--------- pageTemp : " + pageTemp + ", startrow : " + startrow);
+		//System.out.println(" ##--------- pageTemp : " + pageTemp + ", startrow : " + startrow);
 		
 		if ( recipeVo.getClass_id() != null &&  recipeVo.getClass_id()!= "") {
 			where = " and CLASS_ID = '" + recipeVo.getClass_id() + "' \n";
@@ -197,8 +195,6 @@ public class RecipeFrDAO {
 			}
 			
 		}
-		
-		
 
 
 		String sql = 	" select a.RECIPE_ID, a.RECIPE_TITLE, \n" + 
