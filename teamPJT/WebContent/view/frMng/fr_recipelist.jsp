@@ -133,7 +133,7 @@
 		<input type="hidden" value="${PageInfo.class_id }" name="classId">
 		
 			<div>
-				<input class="search-txt" type="search" name="searchText"  placeholder="search...">
+				<input class="search-txt" type="text" name="searchText"  placeholder="search...">
 				<a href="javascript:search()">
 				<!-- <button class="search-btn" type="submit"><i class="fa fa-search fa-lg"></i></button> -->	
 				<button class="search-btn" type="button"><i class="fa fa-search fa-lg"></i></button>
@@ -155,14 +155,14 @@
 						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 0 10px 10px 0; " value="난이도순">
 			</div> -->
 			
-			
+		
 			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;">
 				<input type="button" class="orderby" name = "recipe_date" value="최신순" onclick="orderby('recipe_date')" style="border-radius: 10px 0 0 10px; " >
 				<input type="button" class="orderby" name = "recipe_rcm"  value="추천순" onclick="orderby('recipe_rcm')" >
 				<input type="button" class="orderby" name = "recipe_good" value="관심순" onclick="orderby('recipe_good')" >
 				<input type="button" class="orderby" name = "recipe_level" value="난이도순" onclick="orderby('recipe_level')"  style="border-radius: 0 10px 10px 0; " >
 			</div>			
-			
+
 		
 <!-- 			
  			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> 
@@ -171,7 +171,7 @@
 				<input type="button" name = "recipe_good" class="btn btn-outline-primary"  value="관심순">
 				<input type="button" name = "recipe_level" class="btn btn-outline-primary" value="난이도순">
 			</div>		
-			 -->		
+			 -->
 			 	
 		    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
 		    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							

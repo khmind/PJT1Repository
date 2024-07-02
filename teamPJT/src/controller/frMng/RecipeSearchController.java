@@ -16,7 +16,7 @@ public class RecipeSearchController implements Controller{
 	CategoryDAO cateDAO;
 	RecipeFrDAO recipeFrDAO;
 	
-	public RecipeSearchController setInfoDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO) {		
+	public RecipeSearchController setDAO(CategoryDAO cateDAO, RecipeFrDAO recipeFrDAO) {		
 		this.cateDAO = cateDAO;
 		this.recipeFrDAO = recipeFrDAO;
 		return this;
@@ -27,8 +27,7 @@ public class RecipeSearchController implements Controller{
 
 		String returnValue="";
 		
-		if(flag.equals("searchAll")) {		
-			System.out.println("-------------2");
+		if(flag.equals("search")) {
 			returnValue = searchAll(flag, model);
 		}
 		
@@ -40,7 +39,7 @@ public class RecipeSearchController implements Controller{
 		
 		RecipeVO recipeVo = (RecipeVO)model.get("PageInfo");
 		RecipeVO recipeVo1 = recipeFrDAO.searchAllCnt(recipeVo);
-		
+		/*
 		System.out.println("@@ getSel1   : " + recipeVo1.getSel1());
 		System.out.println("@@ getSearchText   : " + recipeVo1.getSearchText());
 		System.out.println("@@ getPage   : " + recipeVo1.getPage());
@@ -49,13 +48,11 @@ public class RecipeSearchController implements Controller{
 		System.out.println("@@ getLimit   : " + recipeVo1.getLimit());
 		System.out.println("@@ getOrderby   : " + recipeVo1.getOrderby());
 		System.out.println("@@ getClass_id   : " + recipeVo1.getClass_id());
-				
+		*/		
 		model.put("PageInfo", recipeVo1);
 		model.put("navbar", cateDAO.frCateList());
 		model.put("recipeSearch1", recipeFrDAO.searchAll(1, recipeVo1));	
 		model.put("recipeSearch2", recipeFrDAO.searchAll(2, recipeVo1));
-		
-		System.out.println("-------------5");
 		
 	    return "frMng/fr_recipelist.jsp";
 		

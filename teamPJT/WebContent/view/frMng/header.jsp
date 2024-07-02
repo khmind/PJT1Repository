@@ -64,7 +64,7 @@
 						<a href="recipeSearch.to" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a>
 					</div>
 					<c:if test="${sessionScope.loginVO ==null }">
-					<div class="navbar-buttons mbr-section-btn">
+					<div class="navbar-buttons mbr-section-btn">						
 						<a class="btn btn-warning-outline display-4" href="./frMng/login.html">
 							<span class="mbri-login mbr-iconfont mbr-iconfont-btn" style="color: rgb(119, 135, 165);"></span>
 							로그인<span class="mbri-로그인 mbr-iconfont mbr-iconfont-btn"></span>
@@ -74,7 +74,8 @@
 					 
 					<c:if test="${sessionScope.loginVO != null }">
 					<div class="navbar-buttons mbr-section-btn">
-						<a class="btn btn-warning-outline display-4" href="./frMng/fr_user_info.jsp">
+						<!-- <a class="btn btn-warning-outline display-4" href="./frMng/fr_user_info.jsp"> -->
+						<a class="btn btn-warning-outline display-4" href="myPage.to">
 							<span class="mbri-login mbr-iconfont mbr-iconfont-btn" style="color: rgb(119, 135, 165);"></span>
 							마이페이지<span class="mbri-로그인 mbr-iconfont mbr-iconfont-btn"></span>
 						</a>

@@ -73,9 +73,8 @@ public class DispatcherServlet extends HttpServlet {
 							.setClass_id(req.getParameter("classId"))
 							.setOrderby(req.getParameter("h_orderby"))
 						);
-				
-				//classId
-				flag="searchAll";
+
+				flag="search";
 			}			
 			
 			String viewUrl = contro.execute(flag, model);

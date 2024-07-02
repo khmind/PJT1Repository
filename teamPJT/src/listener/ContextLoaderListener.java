@@ -18,6 +18,7 @@ import controller.bkMng.NoticeController;
 import controller.bkMng.RecipeController;
 import controller.bkMng.UserController;
 import controller.frMng.MainController;
+import controller.frMng.MyPageController;
 import controller.frMng.RecipeSearchController;
 import controller.frMng.LoginController;
 import dao.bkMng.AskDAO;
@@ -102,8 +103,9 @@ public class ContextLoaderListener implements ServletContextListener{
 						
 			/*###  fkMng  ###*/			
 			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO, recipeFrDAO));			
-			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setInfoDAO(cateDAO, recipeFrDAO));
+			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO));
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
+			sc.setAttribute("/view/myPage.to", new MyPageController().setDAO(cateDAO) );
 			
 			
 			
