@@ -262,12 +262,7 @@ public class RecipeDAO {
 				return new RecipeVO()
 						.setRecipe_id(rs.getString("recipe_id"))
 						.setRecipe_title(rs.getString("recipe_title"))
-						.setClass_name(rs.getString("class_name"))
-						/*
-						.setImg_path_01(rs.getString("img_path_01"))
-						.setImg_path_02(rs.getString("img_path_02"))
-						.setImg_path_03(rs.getString("img_path_03"))
-						*/						
+						.setClass_name(rs.getString("class_name"))										
 						.setImg_path_01(imgPath+rs.getString("img_path_01"))
 						.setImg_path_02(imgPath+rs.getString("img_path_02"))
 						.setImg_path_03(imgPath+rs.getString("img_path_03"))
@@ -297,8 +292,7 @@ public class RecipeDAO {
 	public List<RecipeVO> recipeList() throws Exception{
 		
 		
-		List<RecipeVO> recipelist = new ArrayList<RecipeVO>();
-		//String sql = " select a.RECIPE_ID, d.CLASS_NAME, c.IMG_MAIN,\r\n" + 
+		List<RecipeVO> recipelist = new ArrayList<RecipeVO>(); 
 		String sql = " select a.RECIPE_ID, d.CLASS_NAME, \n" +
 					" case c.IMG_MAIN \n" + 
 					" when 'PATH01' then IMG_PATH_01 \n" +
