@@ -19,6 +19,8 @@ public class RecipeDAO {
 	ResultSet rs =null;
 	Statement stmt = null;
 	
+	String imgPath = "../img/frMng/";
+	
 	public void setDs(DataSource ds) {
 		this.ds = ds;
 	}
@@ -56,7 +58,7 @@ public class RecipeDAO {
 		System.out.println("addDAO=============1");
 		int res;
 		int res1;
-		String imgPath = "../img/frMng/";
+		//String imgPath = "../img/frMng/";
 		String maxId ="select max(recipe_id)as maxId from recipe_info";
 		String sql1 = "insert into recipe_info \r\n" + 
 				"	(recipe_id, recipe_title, class_id, recipe_level,\r\n" + 
@@ -105,10 +107,14 @@ public class RecipeDAO {
 			
 			pstmt2=conn.prepareStatement(sql3);
 			pstmt2.setString(1, sql2);
+			pstmt2.setString(2, vo.getImg_path_01());
+			pstmt2.setString(3, vo.getImg_path_02());
+			pstmt2.setString(4, vo.getImg_path_03());
+			/*
 			pstmt2.setString(2, imgPath+vo.getImg_path_01());
 			pstmt2.setString(3, imgPath+vo.getImg_path_02());
-			pstmt2.setString(4, imgPath+vo.getImg_path_03());
-			
+			pstmt2.setString(4, imgPath+vo.getImg_path_03());			
+			*/
 
 			
 			res1=pstmt2.executeUpdate();
@@ -129,7 +135,7 @@ public class RecipeDAO {
 	public int update(RecipeVO vo) throws Exception{
 		
 		System.out.println("update===================1");
-		String imgPath = "../img/frMng/";
+		//String imgPath = "../img/frMng/";
 		int res;
 		String sql01="update recipe_info \r\n" + 
 				"	set recipe_title=?,recipe_level=?,recipe_stuff=?,\r\n" + 
@@ -150,9 +156,14 @@ public class RecipeDAO {
 			res=pstmt.executeUpdate();
 			
 			pstmt=conn.prepareStatement(sql02);
+			pstmt.setString(1, vo.getImg_path_01());
+			pstmt.setString(2, vo.getImg_path_02());
+			pstmt.setString(3, vo.getImg_path_03());
+			/*
 			pstmt.setString(1, imgPath+vo.getImg_path_01());
 			pstmt.setString(2, imgPath+vo.getImg_path_02());
-			pstmt.setString(3, imgPath+vo.getImg_path_03());
+			pstmt.setString(3, imgPath+vo.getImg_path_03());			
+			*/
 			pstmt.setString(4, vo.getRecipe_id());
 			res=pstmt.executeUpdate();
 			
@@ -252,9 +263,14 @@ public class RecipeDAO {
 						.setRecipe_id(rs.getString("recipe_id"))
 						.setRecipe_title(rs.getString("recipe_title"))
 						.setClass_name(rs.getString("class_name"))
+						/*
 						.setImg_path_01(rs.getString("img_path_01"))
 						.setImg_path_02(rs.getString("img_path_02"))
 						.setImg_path_03(rs.getString("img_path_03"))
+						*/						
+						.setImg_path_01(imgPath+rs.getString("img_path_01"))
+						.setImg_path_02(imgPath+rs.getString("img_path_02"))
+						.setImg_path_03(imgPath+rs.getString("img_path_03"))
 						.setRecipe_level(rs.getString("recipe_level"))
 						.setRecipe_stuff(rs.getString("recipe_stuff"))
 						.setRecipe_content(rs.getString("recipe_content"))
@@ -282,13 +298,22 @@ public class RecipeDAO {
 		
 		
 		List<RecipeVO> recipelist = new ArrayList<RecipeVO>();
-		String sql = "select a.RECIPE_ID, d.CLASS_NAME, c.IMG_MAIN,\r\n" + 
-				"	a.RECIPE_TITLE, b.USER_NAME, a.RECIPE_RCM,\r\n" + 
-				"    a.RECIPE_GOOD, a.RECIPE_SHOW, a.RECIPE_DATE\r\n" + 
-				"    from recipe_info a\r\n" + 
-				"    inner join user_info b on a.USER_ID = b.USER_ID\r\n" + 
-				"    inner join recipe_image_info c on a.RECIPE_ID = c.RECIPE_ID\r\n" + 
-				"    inner join recipe_class_info d on a.CLASS_ID = d.CLASS_ID;";
+		//String sql = " select a.RECIPE_ID, d.CLASS_NAME, c.IMG_MAIN,\r\n" + 
+		String sql = " select a.RECIPE_ID, d.CLASS_NAME, \n" +
+					" case c.IMG_MAIN \n" + 
+					" when 'PATH01' then IMG_PATH_01 \n" +
+					" when 'PATH02' then IMG_PATH_02 \n"  +
+					" when 'PATH03' then IMG_PATH_03 \n" +
+					" end as IMG_MAIN, \n" +				
+					" a.RECIPE_TITLE, b.USER_NAME, a.RECIPE_RCM,\r\n" + 
+					" a.RECIPE_GOOD, a.RECIPE_SHOW, a.RECIPE_DATE\r\n" + 
+					" from recipe_info a\r\n" + 
+					" inner join user_info b on a.USER_ID = b.USER_ID\r\n" + 
+					" inner join recipe_image_info c on a.RECIPE_ID = c.RECIPE_ID\r\n" + 
+					" inner join recipe_class_info d on a.CLASS_ID = d.CLASS_ID;";
+		
+		
+		System.out.println(" sql : " + sql);
 		
 		try {
 			conn = ds.getConnection();
@@ -299,7 +324,7 @@ public class RecipeDAO {
 				RecipeVO listVO= new RecipeVO()
 						.setRecipe_id(rs.getString("recipe_id"))
 						.setClass_name(rs.getString("class_name"))
-						.setImg_main(rs.getString("img_main"))
+						.setImg_main(imgPath+rs.getString("img_main"))
 						.setRecipe_title(rs.getString("recipe_title"))
 						.setUser_name(rs.getString("user_name"))
 						.setRecipe_rcm(rs.getInt("recipe_rcm"))
