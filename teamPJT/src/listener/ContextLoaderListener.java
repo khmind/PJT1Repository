@@ -19,6 +19,7 @@ import controller.bkMng.RecipeController;
 import controller.bkMng.UserController;
 import controller.frMng.MainController;
 import controller.frMng.MyPageController;
+import controller.frMng.NoticeListController;
 import controller.frMng.RecipeSearchController;
 import controller.frMng.LoginController;
 import dao.bkMng.AskDAO;
@@ -29,6 +30,7 @@ import dao.bkMng.NoticeDAO;
 
 import dao.bkMng.RecipeDAO;
 import dao.bkMng.UserDAO;
+import dao.frMng.NoticeFrDAO;
 import dao.frMng.RecipeFrDAO;
 import vo.bkMng.CategoryVO;
 
@@ -59,6 +61,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			AskDAO askDAO = new AskDAO();			
 			
 			RecipeFrDAO recipeFrDAO = new RecipeFrDAO();
+			NoticeFrDAO noticeFrDAO = new NoticeFrDAO();
 			
 			dao.setDataSource(ds);
 			userDAO.setDataSource(ds);
@@ -68,7 +71,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			askDAO.setDataSource(ds);
 			
 			recipeFrDAO.setDs(ds);
-			
+			noticeFrDAO.setDataSource(ds);
 
 			/*###  bkMng  ###*/
 			sc.setAttribute("/view/bkMng/login.do", new InfoController().setInfoDAO(dao, cateDAO));
@@ -106,8 +109,8 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO));
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
 			sc.setAttribute("/view/myPage.to", new MyPageController().setDAO(cateDAO) );
-			
-			
+			sc.setAttribute("/view/notice.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO));
+			sc.setAttribute("/view/notice_detail.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO));
 			
 		}catch (Exception e) {
 			e.printStackTrace(); 

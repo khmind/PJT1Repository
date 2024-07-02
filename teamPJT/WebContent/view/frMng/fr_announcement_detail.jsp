@@ -30,14 +30,14 @@
 	.textA{
 		margin-left: 20px;
 		width: 600px;
+		resize: none;
 	}   	
-
 
 </style>
 <script type="text/javascript">
 
 	function list(){
-		window.open('fr_announcement.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
+		window.open('notice.to', '_self'); // 이기능은 임시, DB 연결 후 로직변경
 	}
 
 </script>
@@ -65,28 +65,10 @@
 				
 				<table>
 					<tr>
-						<td>제목</td><td>	<textarea rows="1%" class="textA"  readonly>공지사항1</textarea></td>					
+						<td>제목</td><td>	<textarea rows="1%" class="textA" name="notice_title"style="background-color: #efefef4d" readonly>${notice.notice_title }</textarea></td>					
 					</tr>
 					<tr>
-						<td>내용</td><td>	<textarea rows="15%" class="textA" readonly>
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-공지사항 내용..
-						</textarea></td>					
+						<td>내용</td><td>	<textarea rows="15%" class="textA" name="notice_title" style="background-color: #efefef4d" readonly>${notice.notice_content }</textarea></td>					
 					</tr>
 					<tr>
 						<td colspan="2"><a href="javascript:list()" id="list">목록</a></td>
@@ -101,7 +83,8 @@
 	  		<!-- Sidebar -->
 			<!-- <div id="sidebar"></div> -->
 			<!-- End of Sidebar -->  	
-					
+			<%@ include file="fr_sidebar.jsp" %>
+<!-- 					
  			<div class="col-md-3 col-xl-2 bd-sidebar">
 			
 				<div class="collapse d-md-block row" id="bd-docs-nav">
@@ -145,7 +128,7 @@
 				  </nav>
 				</div>
 			
-			</div>  			
+			</div>  --> 			
 
 		<!-- Content end--------------------------------------------------------------------->
 		</div>

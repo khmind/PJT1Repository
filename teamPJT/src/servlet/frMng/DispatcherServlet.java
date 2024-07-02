@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import vo.bkMng.InfoVO;
+import vo.bkMng.NoticeVO;
 import vo.bkMng.RecipeVO;
 
 
@@ -75,7 +76,27 @@ public class DispatcherServlet extends HttpServlet {
 						);
 
 				flag="search";
-			}			
+			}
+			else if("/view/notice.to".equals(servletPath)) {
+				String pg = req.getParameter("page");
+				System.out.println("pg--------1 : " + pg);
+				
+				pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
+				
+				int page = Integer.parseInt(pg);
+				
+				model.put("PageInfo", new NoticeVO()						
+							.setSearchText(req.getParameter("searchText"))
+							.setPage(page)
+						);
+				flag = "notice_list";
+			}
+			else if("/view/notice_detail.to".equals(servletPath)) {
+				model.put("detail", new NoticeVO()
+						.setNotice_id(req.getParameter("notice_id"))
+						);
+				flag = "notice_detail";
+			}
 			
 			String viewUrl = contro.execute(flag, model);
 

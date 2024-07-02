@@ -40,7 +40,7 @@
 				      </div>
 				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="frMng/fr_announcement.jsp">
+				        <a class="bd-toc-link" href="notice.to">
 				          	공지사항
 				        </a>
 				      </div>

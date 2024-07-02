@@ -47,7 +47,6 @@ public class NoticeController implements Controller{
 	
 	public String notice_update(String flag, Map<String, Object> model) throws Exception{
 		NoticeVO vo = (NoticeVO)model.get("notice_modify");
-		
 		if(vo.getNotice_title() == null) {
 			String notice_id =  vo.getNotice_id();
 			NoticeVO notice = noticeDAO.selectOne(notice_id);
@@ -55,7 +54,7 @@ public class NoticeController implements Controller{
 			
 			return "bk_announcement_modify.jsp";
 		}
-		
+	
 		NoticeVO notice = (NoticeVO)model.get("notice_modify");
 		noticeDAO.update(notice);
 		return "redirect:notice.do";
