@@ -10,14 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import controller.Controller;
-import vo.bkMng.CategoryVO;
 import vo.bkMng.InfoVO;
-import vo.bkMng.NoticeVO;
 import vo.bkMng.RecipeVO;
-import vo.bkMng.UserVO;
+
 
 @WebServlet("*.to")
 public class DispatcherServlet extends HttpServlet {
@@ -40,7 +38,7 @@ public class DispatcherServlet extends HttpServlet {
 			Controller contro = (Controller) sc.getAttribute(servletPath);
 
 			if ("/view/main.to".equals(servletPath)) {
-				System.out.println("-------------1");
+				
 				flag = "main";
 				
 			}
@@ -56,6 +54,26 @@ public class DispatcherServlet extends HttpServlet {
 			} 
 			else if("/view/recipeSearch.to".equals(servletPath)) {
 				
+				String pg = req.getParameter("page");
+				System.out.println("pg--------1 : " + pg);
+				
+				pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
+				
+				int page = Integer.parseInt(pg);
+				
+				System.out.println("sel1 : " + req.getParameter("sel1"));
+				System.out.println("searchText : " + req.getParameter("searchText"));
+				System.out.println("h_orderby : " + req.getParameter("h_orderby"));
+				System.out.println("classId : " + req.getParameter("classId"));
+				
+				model.put("PageInfo", new RecipeVO()
+							.setSel1(req.getParameter("sel1"))							
+							.setSearchText(req.getParameter("searchText"))
+							.setPage(page)
+							.setClass_id(req.getParameter("classId"))
+						);
+				
+				//classId
 				flag="searchAll";
 			}			
 			

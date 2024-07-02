@@ -1,5 +1,6 @@
 package controller.frMng;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import dao.bkMng.CategoryDAO;
 import dao.frMng.RecipeFrDAO;
 import vo.bkMng.CategoryVO;
 import vo.bkMng.RecipeVO;
+import vo.bkMng.UserVO;
 
 public class RecipeSearchController implements Controller{
 	
@@ -36,15 +38,26 @@ public class RecipeSearchController implements Controller{
 	
 	public String searchAll(String flag, Map<String, Object> model) throws Exception{
 		
-		List<CategoryVO> cvo  = cateDAO.frCateList();		
-		//List<RecipeVO> searchVo = recipeFrDAO.searchAll(1);
+		RecipeVO recipeVo = (RecipeVO)model.get("PageInfo");
+		RecipeVO recipeVo1 = recipeFrDAO.searchAllCnt(recipeVo);
+		
+		System.out.println("@@ getSel1   : " + recipeVo1.getSel1());
+		System.out.println("@@ getSearchText   : " + recipeVo1.getSearchText());
+		System.out.println("@@ getPage   : " + recipeVo1.getPage());
+		System.out.println("@@ getStartPage   : " + recipeVo1.getStartPage());
+		System.out.println("@@ getEndPage   : " + recipeVo1.getEndPage());
+		System.out.println("@@ getLimit   : " + recipeVo1.getLimit());
+		System.out.println("@@ getOrderby   : " + recipeVo1.getOrderby());
+		System.out.println("@@ getClass_id   : " + recipeVo1.getClass_id());
 				
-		model.put("navbar", cvo);
-		model.put("recipeSearch1", recipeFrDAO.searchAll(1));	
-		model.put("recipeSearch2", recipeFrDAO.searchAll(5));
+		model.put("PageInfo", recipeVo1);
+		model.put("navbar", cateDAO.frCateList());
+		model.put("recipeSearch1", recipeFrDAO.searchAll(1, recipeVo1));	
+		model.put("recipeSearch2", recipeFrDAO.searchAll(2, recipeVo1));
+		
 		System.out.println("-------------5");
 		
-	    return "frMng/fr_recipelist_all.jsp";
+	    return "frMng/fr_recipelist.jsp";
 		
 	}	
 
