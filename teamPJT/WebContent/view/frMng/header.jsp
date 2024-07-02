@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,19 +44,21 @@
 					data-bs-target="#navbarSupportedContent"
 					aria-controls="navbarNavAltMarkup" aria-expanded="false"
 					aria-label="Toggle navigation"></button>
+				
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav" data-app-modern-menu="true">
 					
-					<c:forEach var="nav" items="${navbar}" varStatus="status">  
-					
-						<%-- <li class="nav-item"><a class="nav-link link text-black display-4" href="${nav.action }" --%>
-						<li class="nav-item"><a class="nav-link link text-black display-4" href="fr_recipelist_kor.jsp"
+					<c:forEach var="nav" items="${navbar}" varStatus="status">  				
+						
+						<!-- <li class="nav-item"><a class="nav-link link text-black display-4" href="fr_recipelist_kor.jsp" -->
+						<li class="nav-item"><a class="nav-link link text-black display-4" href="${nav.action }"
 							data-bs-auto-close="outside" aria-expanded="false">${nav.cate_name }</a>
 						</li>		
 					
 					</c:forEach>
 					
 					</ul>
+					
 					<div >
 						<!-- <a href="fr_recipelist_all.jsp" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a> -->	
 						<a href="recipeSearch.to" style="margin-right: 20px; color: lightgray"><i class="fas fa-search fa-2x"></i></a>
@@ -80,6 +83,7 @@
 				</div>
 		</div>
 	</nav>
+
 </section>
 
 </c:if>

@@ -30,6 +30,15 @@ public class RecipeVO {
 	private String comment_content;
 	private Date comment_date;
 	
+	private String sel1;	
+	private String searchText;
+	private int page;
+	private int startPage;
+	private int endPage;
+	private int limit;	
+	private String orderby;
+	
+	
 	public String getRecipe_id() {
 		return recipe_id;
 	}
@@ -179,5 +188,54 @@ public class RecipeVO {
 		this.comment_date = comment_date;
 		return this;
 	}
-	
+	public String getSel1() {
+		return sel1;
+	}
+	public RecipeVO setSel1(String sel1) {
+		this.sel1 = sel1;
+		return this;
+	}
+	public String getSearchText() {
+		return searchText;
+	}
+	public RecipeVO setSearchText(String searchText) {
+		this.searchText = searchText;
+		return this;
+	}
+	public int getPage() {
+		return page;
+	}
+	public RecipeVO setPage(int page) {
+		this.page = page;
+		return this;
+	}
+	public int getStartPage() {
+		return startPage;
+	}
+	public RecipeVO setStartPage(int startPage) {
+		this.startPage = startPage;
+		return this;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public RecipeVO setEndPage(int endPage) {
+		this.endPage = endPage;
+		return this;
+	}
+	public int getLimit() {
+		return limit;
+	}
+	public RecipeVO setLimit(int limit) {
+		this.limit = limit;
+		return this;
+	}
+	public String getOrderby() {
+		return orderby;
+	}
+	public RecipeVO setOrderby(String orderby) {
+		this.orderby = orderby;
+		return this;
+	}
+
 }
