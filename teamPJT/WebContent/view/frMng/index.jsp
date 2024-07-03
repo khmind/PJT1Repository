@@ -18,13 +18,8 @@
 <script type="text/javascript">
 
 
-//location.replace('../header.to');
+//location.replace('../main.to');
 
-
-	//location.replace('/view/frMng/header.to');
-	//location.replace('header.to');
-	//location.replace('/teamPJT/view/frMng/header.to');
-	
 	
 </script>
 
@@ -36,6 +31,5 @@
 		<h1><a href="../main.to">레시피 메인 </a><br><br></h1>
 		<h1><a href="login.html">로그인</a></h1>
 		
-
 </body>
 </html>
