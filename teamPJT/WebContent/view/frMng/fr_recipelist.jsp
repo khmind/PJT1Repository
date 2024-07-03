@@ -105,19 +105,22 @@
 			
 			frmGo.action = "recipeSearch.to";
 			frmGo.page.value = 1;
+			frmGo.classId.value = frmGo.class_name.value;
 			frmGo.submit();			 
 		}
 		
-		function gotoPage(page){
+		function gotoPage(page, ord){
 			
 			frmGo.action = "recipeSearch.to";
 			frmGo.page.value = page;
+			frmGo.h_orderby.value = ord;
 			frmGo.submit();			 
 		}
 		
 		function setValue(){
 						 
 			frmGo.searchText.value = frmGo.h_searchText.value;
+			frmGo.class_name.value = frmGo.classId.value;
 			 
 		}
 			
@@ -248,7 +251,7 @@
 						     </a>
 						  	</c:when>
 						<c:otherwise>
-						     <a class="page-link" href="javascript:gotoPage('${nowPage-1}')" aria-label="Previous">
+						     <a class="page-link" href="javascript:gotoPage('${nowPage-1}', '${PageInfo.orderby}')" aria-label="Previous">
 						       <span aria-hidden="true">&laquo;</span>
 						     </a>
 						</c:otherwise>
@@ -256,7 +259,7 @@
 				  	</li> 	
 				  	
 					<c:forEach var="i" begin="${PageInfo.startPage }" end="${PageInfo.endPage }">
-				    	<li class="page-item"><a class="page-link" href="javascript:gotoPage('${i }')">
+				    	<li class="page-item"><a class="page-link" href="javascript:gotoPage('${i }', '${PageInfo.orderby}')">
 				    	<c:choose>
 				    		<c:when test = "${i==nowPage}">	
 				    			<font color="#F29661"><b>${i }</b></font>
@@ -276,7 +279,7 @@
 						      </a>
 						    </c:when>
 						    <c:otherwise>
-						      <a class="page-link" href="javascript:gotoPage('${nowPage+1}')" aria-label="Next">
+						      <a class="page-link" href="javascript:gotoPage('${nowPage+1}', '${PageInfo.orderby}')" aria-label="Next">
 						        <span aria-hidden="true">&raquo;</span>
 						      </a>							    
 						    </c:otherwise>
