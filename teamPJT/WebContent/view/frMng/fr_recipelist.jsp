@@ -154,7 +154,7 @@
 				</c:forEach>	
 				</select>								
 				
-				<input class="search-txt" type="text" name="searchText"  placeholder="search...">
+				<input class="search-txt" type="search" name="searchText"  placeholder="search...">
 				
 				<a href="javascript:search()">				
 				<button class="search-btn" type="button"><i class="fa fa-search fa-lg"></i></button>
@@ -197,17 +197,39 @@
 			
 		 -->	
 			
- 			<!-- <div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> -->
- 			<div class="btn-group btn-group-sm" role="group" style="margin-left: 50px; margin-bottom: 10px;"> 
+ 			<!-- <div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> --> 			 
+ 			<div class="btn-group btn-group-sm" role="group" style="margin-left: 50px; margin-bottom: 10px;"> 			
 				<input type="button" name = "recipe_date" class="btn btn-outline-warning" value="최신순" onclick="orderby('recipe_date')">
 				<input type="button" name = "recipe_rcm"  class="btn btn-outline-warning" value="추천순" onclick="orderby('recipe_rcm')">
 				<input type="button" name = "recipe_good" class="btn btn-outline-warning" value="관심순" onclick="orderby('recipe_good')">
 				<input type="button" name = "recipe_level" class="btn btn-outline-warning" value="난이도순" onclick="orderby('recipe_level')">
 			</div>					
+<!-- 
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_date')">최신순</button>
+  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_rcm')">추천순</button>
+  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_good')">관심순</button>
+  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_level')">난이도순</button>
+</div>			 
 			 
-			 
+		 -->	 
+		 
+<!-- 		 
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+	<a href="javascript:orderby('recipe_date')"><button type="button" class="btn btn-outline-warning" >최신순</button></a>
+  	<a href="javascript:orderby('recipe_rcm')"><button type="button" class="btn btn-outline-warning" >추천순</button></a>
+  	<a href="javascript:orderby('recipe_good')"><button type="button" class="btn btn-outline-warning" >관심순</button></a>
+  	<a href="javascript:orderby('recipe_level')"><button type="button" class="btn btn-outline-warning" >난이도순</button></a>
+</div>	 -->				 
+<!-- 
+<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+	<button type="button" class="btn" >최신순</button>
+  	<button type="button" class="btn btn-outline-warning" >추천순</button>
+  	<button type="button" class="btn btn-outline-warning" >관심순</button>
+  	<button type="button" class="btn btn-outline-warning" >난이도순</button>
+</div>					 
 
-			 	
+			 --> 	
 		    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
 		    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
 		    <c:set var = "limit" scope = "page" value = "${PageInfo.limit  } "/>
