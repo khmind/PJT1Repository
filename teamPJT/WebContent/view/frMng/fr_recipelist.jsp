@@ -28,7 +28,7 @@
   				transform: scale(1.1);  
     			transition: transform .5s; 
   	}
-	 .search-box{
+	.search-box{
 		height: 50px;
 		width: 400px;
 		background: white;
@@ -65,29 +65,21 @@
 		color:lightgray;
 		float: right;
 		
-	} 
-	
-	.orderby {		
-		
-		width: 90px; height: 50px;
-		background-color: #0dcaf0; 
-		color: white; 
-		border-style: none;  
-		margin-top: 5px; 
-		font-size: 15px; 		
-		
-	} 
-	
+	}
 	#select {
-	
 	 	width: 20%; 
 	 	border-radius: 20px; 
 	 	text-align: center; 
 	 	font-size: 15px;
 	 	padding-top: 5px;
 	 	margin-right: 10px;
-	
 	}
+	#styleOn {
+	    color: #000;
+	    background-color: #ffc107;
+	    border-color: #ffc107
+	}
+
 	</style>
   
 	<script type="text/javascript">
@@ -133,8 +125,6 @@
 </head>
 <body onload="setValue()">
 	<!--검색창-->
-	
-	<!-- <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="  display: flex; justify-content: center; margin-top: 30px;"> -->
 	<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="display: flex; justify-content: center; margin-top: 20px;">
 	
 		<form action="" method="post" name="frmGo" class="search-box" >
@@ -167,69 +157,47 @@
 	<!--레시피 창-->
 	<section data-bs-version="5.1" class="slider4 mbr-embla cid-ubxwyl8tSX" id="gallery-5-ubxwyl8tSX">
 		<div class="container" style="margin-top: 20px;">
-<!-- 			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;">
-				<input type="button" name = "recipe_date" style="width: 90px; height: 50px;
-						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 10px 0 0 10px; " value="최신순"> &nbsp;
-				<input type="button" name = "recipe_rcm" style="width: 90px; height: 50px; 
-						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px;" value="추천순"> &nbsp;
-				<input type="button" name = "recipe_good" style="width: 90px; height: 50px; 
-						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px;" value="관심순"> &nbsp;
-				<input type="button" name = "recipe_level" style="width: 90px; height: 50px; 
-						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 0 10px 10px 0; " value="난이도순">
-			</div> -->
+	 	
+ 			<div class="btn-group btn-group-sm" role="group" style="margin-left: 50px; margin-bottom: 10px;"> 
+ 	
+	 			<c:choose>
+	 				<c:when test="${PageInfo.orderby == 'recipe_date'}"> 
+						<input type="button" name = "recipe_date" id="styleOn" class="btn btn-outline-warning" value="최신순" onclick="orderby('recipe_date')">
+					</c:when>
+					<c:otherwise>
+						<input type="button" name = "recipe_date" class="btn btn-outline-warning" value="최신순" onclick="orderby('recipe_date')">
+					</c:otherwise>
+				</c:choose>	
+					
+	 			<c:choose>
+	 				<c:when test="${PageInfo.orderby == 'recipe_rcm'}"> 
+						<input type="button" name = "recipe_rcm" id="styleOn" class="btn btn-outline-warning" value="추천순" onclick="orderby('recipe_rcm')">
+					</c:when>
+					<c:otherwise>
+						<input type="button" name = "recipe_rcm" class="btn btn-outline-warning" value="추천순" onclick="orderby('recipe_rcm')">
+					</c:otherwise>
+				</c:choose>
+					
+	 			<c:choose>
+	 				<c:when test="${PageInfo.orderby == 'recipe_good'}"> 
+						<input type="button" name = "recipe_good" id="styleOn" class="btn btn-outline-warning" value="관심순" onclick="orderby('recipe_good')">
+					</c:when>
+					<c:otherwise>
+						<input type="button" name = "recipe_good" class="btn btn-outline-warning" value="관심순" onclick="orderby('recipe_good')">
+					</c:otherwise>
+				</c:choose>								
+					
+	 			<c:choose>
+	 				<c:when test="${PageInfo.orderby == 'recipe_level'}"> 
+						<input type="button" name = "recipe_level" id="styleOn" class="btn btn-outline-warning" value="난이도순" onclick="orderby('recipe_level')">
+					</c:when>
+					<c:otherwise>
+						<input type="button" name = "recipe_level" class="btn btn-outline-warning" value="난이도순" onclick="orderby('recipe_level')">
+					</c:otherwise>
+				</c:choose>	
+				
+			</div>
 			
-<!-- 		
-			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;">
-				<input type="button" class="orderby" name = "recipe_date" value="최신순" onclick="orderby('recipe_date')" style="border-radius: 10px 0 0 10px; " >
-				<input type="button" class="orderby" name = "recipe_rcm"  value="추천순" onclick="orderby('recipe_rcm')" >
-				<input type="button" class="orderby" name = "recipe_good" value="관심순" onclick="orderby('recipe_good')" >
-				<input type="button" class="orderby" name = "recipe_level" value="난이도순" onclick="orderby('recipe_level')"  style="border-radius: 0 10px 10px 0; " >
-			</div>			
-
- -->		
-<!-- 			
- 			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> 
-				<input type="button" name = "recipe_date" class="btn btn-outline-primary" value="최신순">
-				<input type="button" name = "recipe_rcm" class="btn btn-outline-primary"  value="추천순">
-				<input type="button" name = "recipe_good" class="btn btn-outline-primary"  value="관심순">
-				<input type="button" name = "recipe_level" class="btn btn-outline-primary" value="난이도순">
-			</div>		
-			
-		 -->	
-			
- 			<!-- <div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> --> 			 
- 			<div class="btn-group btn-group-sm" role="group" style="margin-left: 50px; margin-bottom: 10px;"> 			
-				<input type="button" name = "recipe_date" class="btn btn-outline-warning" value="최신순" onclick="orderby('recipe_date')">
-				<input type="button" name = "recipe_rcm"  class="btn btn-outline-warning" value="추천순" onclick="orderby('recipe_rcm')">
-				<input type="button" name = "recipe_good" class="btn btn-outline-warning" value="관심순" onclick="orderby('recipe_good')">
-				<input type="button" name = "recipe_level" class="btn btn-outline-warning" value="난이도순" onclick="orderby('recipe_level')">
-			</div>					
-<!-- 
-<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_date')">최신순</button>
-  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_rcm')">추천순</button>
-  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_good')">관심순</button>
-  <button type="button" class="btn btn-outline-warning" onclick="orderby('recipe_level')">난이도순</button>
-</div>			 
-			 
-		 -->	 
-		 
-<!-- 		 
-<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-	<a href="javascript:orderby('recipe_date')"><button type="button" class="btn btn-outline-warning" >최신순</button></a>
-  	<a href="javascript:orderby('recipe_rcm')"><button type="button" class="btn btn-outline-warning" >추천순</button></a>
-  	<a href="javascript:orderby('recipe_good')"><button type="button" class="btn btn-outline-warning" >관심순</button></a>
-  	<a href="javascript:orderby('recipe_level')"><button type="button" class="btn btn-outline-warning" >난이도순</button></a>
-</div>	 -->				 
-<!-- 
-<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-	<button type="button" class="btn" >최신순</button>
-  	<button type="button" class="btn btn-outline-warning" >추천순</button>
-  	<button type="button" class="btn btn-outline-warning" >관심순</button>
-  	<button type="button" class="btn btn-outline-warning" >난이도순</button>
-</div>					 
-
-			 --> 	
 		    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
 		    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
 		    <c:set var = "limit" scope = "page" value = "${PageInfo.limit  } "/>
