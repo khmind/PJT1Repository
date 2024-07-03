@@ -77,6 +77,17 @@
 		font-size: 15px; 		
 		
 	} 
+	
+	#select {
+	
+	 	width: 20%; 
+	 	border-radius: 20px; 
+	 	text-align: center; 
+	 	font-size: 15px;
+	 	padding-top: 5px;
+	 	margin-right: 10px;
+	
+	}
 	</style>
   
 	<script type="text/javascript">
@@ -123,7 +134,8 @@
 <body onload="setValue()">
 	<!--검색창-->
 	
-	<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="  display: flex; justify-content: center; margin-top: 30px;">
+	<!-- <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="  display: flex; justify-content: center; margin-top: 30px;"> -->
+	<section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq" style="display: flex; justify-content: center; margin-top: 20px;">
 	
 		<form action="" method="post" name="frmGo" class="search-box" >
 		<input type="hidden" value="${PageInfo.searchText }" name="h_searchText">
@@ -133,17 +145,28 @@
 		<input type="hidden" value="" name="recipe_id" >
 		
 			<div>
+			
+				<select	name="class_name" class="search-txt" id="select">
+				<%-- <option value="${recipe.class_id}" disabled selected>${recipe.class_name }</option> --%>
+				<option value="" >- 전체 -</option>
+				<c:forEach var="c" items="${class_name}">
+					<option value="${c.class_id}">${c.class_name}</option>
+				</c:forEach>	
+				</select>								
+				
 				<input class="search-txt" type="text" name="searchText"  placeholder="search...">
-				<a href="javascript:search()">
-				<!-- <button class="search-btn" type="submit"><i class="fa fa-search fa-lg"></i></button> -->	
+				
+				<a href="javascript:search()">				
 				<button class="search-btn" type="button"><i class="fa fa-search fa-lg"></i></button>
 				</a>
+				
 			</div>
+
 	</section>
 	<!--검색창-->
 	<!--레시피 창-->
 	<section data-bs-version="5.1" class="slider4 mbr-embla cid-ubxwyl8tSX" id="gallery-5-ubxwyl8tSX">
-		<div class="container" style="margin-top: 30px;">
+		<div class="container" style="margin-top: 20px;">
 <!-- 			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;">
 				<input type="button" name = "recipe_date" style="width: 90px; height: 50px;
 						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 10px 0 0 10px; " value="최신순"> &nbsp;
@@ -155,7 +178,7 @@
 						background-color: #0dcaf0; color: white; border-style: none;  margin-top: 5px; font-size: 15px; border-radius: 0 10px 10px 0; " value="난이도순">
 			</div> -->
 			
-		
+<!-- 		
 			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;">
 				<input type="button" class="orderby" name = "recipe_date" value="최신순" onclick="orderby('recipe_date')" style="border-radius: 10px 0 0 10px; " >
 				<input type="button" class="orderby" name = "recipe_rcm"  value="추천순" onclick="orderby('recipe_rcm')" >
@@ -163,7 +186,7 @@
 				<input type="button" class="orderby" name = "recipe_level" value="난이도순" onclick="orderby('recipe_level')"  style="border-radius: 0 10px 10px 0; " >
 			</div>			
 
-		
+ -->		
 <!-- 			
  			<div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> 
 				<input type="button" name = "recipe_date" class="btn btn-outline-primary" value="최신순">
@@ -171,7 +194,19 @@
 				<input type="button" name = "recipe_good" class="btn btn-outline-primary"  value="관심순">
 				<input type="button" name = "recipe_level" class="btn btn-outline-primary" value="난이도순">
 			</div>		
-			 -->
+			
+		 -->	
+			
+ 			<!-- <div class="btn-group btn-group-toggle " data-toggle="buttons" style="margin-left: 50px; margin-bottom: 10px;"> -->
+ 			<div class="btn-group btn-group-sm" role="group" style="margin-left: 50px; margin-bottom: 10px;"> 
+				<input type="button" name = "recipe_date" class="btn btn-outline-warning" value="최신순" onclick="orderby('recipe_date')">
+				<input type="button" name = "recipe_rcm"  class="btn btn-outline-warning" value="추천순" onclick="orderby('recipe_rcm')">
+				<input type="button" name = "recipe_good" class="btn btn-outline-warning" value="관심순" onclick="orderby('recipe_good')">
+				<input type="button" name = "recipe_level" class="btn btn-outline-warning" value="난이도순" onclick="orderby('recipe_level')">
+			</div>					
+			 
+			 
+
 			 	
 		    <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
 		    <c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
@@ -182,7 +217,7 @@
 			
 			<div class="row">
 			
-				<div style=" display: flex; justify-content: start; margin-top: 20px; margin-left: 50px">
+				<div style=" display: flex; justify-content: start; margin-top: 10px; margin-left: 50px">
 				<c:forEach var="repSea1" items="${recipeSearch1 }" varStatus="status"> 
 			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="move('${repSea1.recipe_id }')">					  
 					  <img src="${repSea1.img_main }" class="card-img-top" alt="..." style="width:300px; height: 200px;">
@@ -195,7 +230,7 @@
 				</c:forEach>
 				</div>
 				
-				<div style=" display: flex; justify-content: start; margin-top: 30px; margin-left: 50px">
+				<div style=" display: flex; justify-content: start; margin-top: 10px; margin-left: 50px">
 				<c:forEach var="repSea2" items="${recipeSearch2 }" varStatus="status"> 
 				
 			  		<div class="card" style="width: 300px;cursor: pointer;" onclick="move('${repSea2.recipe_id }')">					  
@@ -212,7 +247,7 @@
 			
 <%-- [ s : ${PageInfo.startPage } ]  [ e : ${PageInfo.endPage }] --%>
 
-			<div style="display: flex; justify-content: center ;margin-top: 30px;" >
+			<div style="display: flex; justify-content: center ;margin-top: 10px; margin-bottom: 0px;"  >
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination">
 				  	<li class="page-item">
