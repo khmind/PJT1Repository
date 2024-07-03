@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 
-//location.replace('../main.to');
+location.replace('../main.to');
 
 	
 </script>
