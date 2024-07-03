@@ -84,25 +84,19 @@
   
 	<script type="text/javascript">
 	
-		function move(args){	
-			
+		function move(args){
 			frmGo.recipe_id.value = args;
  			frmGo.action = "recipeDetail.to";
 			frmGo.submit();
-			
 		}
 		
-		function orderby(args){	
-			
-			//alert (args);
-			
+		function orderby(args){
  			frmGo.action = "recipeSearch.to";
 			frmGo.h_orderby.value = args
-			frmGo.submit();			
+			frmGo.submit();
 		}		
 		
 		function search(){
-			
 			frmGo.action = "recipeSearch.to";
 			frmGo.page.value = 1;
 			frmGo.classId.value = frmGo.class_name.value;
@@ -110,7 +104,6 @@
 		}
 		
 		function gotoPage(page, ord){
-			
 			frmGo.action = "recipeSearch.to";
 			frmGo.page.value = page;
 			frmGo.h_orderby.value = ord;
@@ -118,10 +111,8 @@
 		}
 		
 		function setValue(){
-						 
 			frmGo.searchText.value = frmGo.h_searchText.value;
 			frmGo.class_name.value = frmGo.classId.value;
-			 
 		}
 			
  	</script>    
@@ -137,23 +128,22 @@
 		<input type="hidden" value="${PageInfo.class_id }" name="classId">
 		<input type="hidden" value="" name="recipe_id" >
 		
-			<div>
+		<div>
+		
+			<select	name="class_name" class="search-txt" id="select">			
+			<option value="" >- 전체 -</option>
+			<c:forEach var="c" items="${class_name}">
+				<option value="${c.class_id}">${c.class_name}</option>
+			</c:forEach>	
+			</select>								
 			
-				<select	name="class_name" class="search-txt" id="select">
-				<%-- <option value="${recipe.class_id}" disabled selected>${recipe.class_name }</option> --%>
-				<option value="" >- 전체 -</option>
-				<c:forEach var="c" items="${class_name}">
-					<option value="${c.class_id}">${c.class_name}</option>
-				</c:forEach>	
-				</select>								
-				
-				<input class="search-txt" type="search" name="searchText"  placeholder="search...">
-				
-				<a href="javascript:search()">				
-				<button class="search-btn" type="button"><i class="fa fa-search fa-lg"></i></button>
-				</a>
-				
-			</div>
+			<input class="search-txt" type="search" name="searchText"  placeholder="search...">
+			
+			<a href="javascript:search()">				
+			<button class="search-btn" type="button"><i class="fa fa-search fa-lg"></i></button>
+			</a>
+			
+		</div>
 
 	</section>
 	<!--검색창-->
