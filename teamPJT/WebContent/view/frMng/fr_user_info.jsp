@@ -76,58 +76,11 @@
 				
 			</main>
 			
-			
 			<!--  왼쪽 메뉴  -->
 	  		<!-- Sidebar -->
-			<!-- <div id="sidebar"></div> -->
-			<!-- End of Sidebar -->  	
 			<%@ include file="fr_sidebar.jsp" %>
-
-<!-- 					
- 			<div class="col-md-3 col-xl-2 bd-sidebar">
+			<!-- End of Sidebar --> 
 			
-				<div class="collapse d-md-block row" id="bd-docs-nav">
-				  <nav class="bd-links" aria-label="Main navigation">				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="../fr_user_info.jsp">
-				          	개인정보
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_myRecipe.jsp">
-				          	나의레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_interest_recipe.jsp">
-				          	관심레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_recommend_recipe.jsp">
-				          	추천레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_announcement.jsp">
-				          	공지사항
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_ask.jsp">
-				          	문의사항
-				        </a>
-				      </div>
-				  </nav>
-				</div>
-			
-			</div>  			
- -->
 		<!-- Content end--------------------------------------------------------------------->
 		</div>
 	</div>

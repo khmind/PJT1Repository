@@ -15,8 +15,8 @@
 			
 				<div class="collapse d-md-block row" id="bd-docs-nav">
 				  <nav class="bd-links" aria-label="Main navigation">				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="frMng/fr_user_info.jsp">
+				      <div class="bd-toc-item">				        
+				        <a class="bd-toc-link" href="userInfo.to">
 				          	개인정보
 				        </a>
 				      </div>
