@@ -16,8 +16,9 @@
 <body> 
     
     <div class="login-page" ng-app="" >
-        <div class="login-content login-content-signin" ng-hide="showSignIn" style="margin-top: 30px;">
+        <div class="login-content login-content-signin" ng-hide="showSignIn" style="margin-top: 0px; padding-top: 0px;">
             <div>
+            	<br><br>
                 <h2>Log in</h2>
                 <form class="wrapper-box" role="form" ng-submit="login()" action="../login.to" method="post">
                 <input type="email" name="email" ng-model="email" class="form-control form-control-email" placeholder="Email address" required>
