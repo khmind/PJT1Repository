@@ -13,6 +13,7 @@ public class LoginController implements Controller{
 
 	InfoDAO loginDAO;
 	CategoryDAO cateDAO;
+	
 	public LoginController setLoginDAO(InfoDAO loginDAO ,CategoryDAO cateDAO) {
 		this.loginDAO = loginDAO;
 		this.cateDAO=cateDAO;
@@ -31,15 +32,15 @@ public class LoginController implements Controller{
 	}
 
 	private String login(String flag, Map<String, Object> model) throws Exception {
+		
 		model.put("navbar", cateDAO.frCateList());
 		InfoVO vo=(InfoVO)model.get("log");
 		InfoVO ivo=loginDAO.exist(vo.getUser_email(), vo.getUser_pw());
 		if(ivo !=null) { 
 			HttpSession session = (HttpSession)model.get("session");
 			session.setAttribute("loginVO", ivo);
-			
 		}
-		//return "/view/frMng/main.jsp";
+
 		return "main.to";
 	}
 
