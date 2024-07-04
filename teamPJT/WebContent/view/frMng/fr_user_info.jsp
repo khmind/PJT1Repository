@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <style>
 
-
 	.div1{
 		margin-top: 50px;
 		margin-bottom: 0px;
@@ -34,8 +33,23 @@
 		padding-top: 10px;
 		padding-bottom: 50px;	
 	}
+	h5{
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
 
 </style>
+
+<script type="text/javascript">
+
+	function goAction(arg){
+		
+		frmGo.action = arg;
+		frmGo.submit();
+		
+	}
+
+</script>
 </head>
 <body>
 
@@ -53,24 +67,33 @@
 		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="#" ></a>
 			      <h4 class="bd-title" id="content">개인정보</h4>
 			    </div>	
-				<form>
-				   <div class="form-floating div1">
-				     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-				     <label for="floatingPassword">Password</label>
+				<form action="" method="post" name="frmGo">
+				
+				   <div class="div1">
+				       <h5>&nbsp;&nbsp;&nbsp;아이디 : ${userInfo.user_id} </h5>
+				   </div>		
+				   <div class="div2">
+				       <h5>&nbsp;&nbsp;&nbsp;성&nbsp;&nbsp;&nbsp;&nbsp;명 : ${userInfo.user_name} </h5>
+				   </div>					   
+				   		
+				
+				   <div class="form-floating div2">
+				     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" >
+				     <label for="floatingPassword">Password..</label>
 				   </div>
 				   <div class="form-floating div2">
-				     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-				     <label for="floatingPassword">Password</label>
+				     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="user_pw" >
+				     <label for="floatingPassword">Password..</label>
 				   </div>
 				   <div class="form-floating div2">
-				     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-				     <label for="floatingInput">Email address</label>
+				     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="user_email">
+				     <label for="floatingInput">${userInfo.user_email}</label>
 				   </div>    
 					<div class="form-button">					    
-					    <button class="btn btn-secondary w-100 py-2" type="submit">수정</button>
+					    <button class="btn btn-secondary w-100 py-2" type="button" onclick="goAction('userInfoModify.to')">수정</button>
 					</div>    
-					<div class="form-button">					    
-					    <button class="btn btn-warning w-100 py-2" type="submit">로그아웃</button>
+					<div class="form-button">
+					    <button class="btn btn-warning w-100 py-2" type="button" onclick="goAction('logout.to')">로그아웃</button>
 					</div>    					
 				</form>
 				

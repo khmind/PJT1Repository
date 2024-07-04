@@ -17,6 +17,7 @@ import vo.bkMng.AskVO;
 import vo.bkMng.InfoVO;
 import vo.bkMng.NoticeVO;
 import vo.bkMng.RecipeVO;
+import vo.bkMng.UserVO;
 
 @WebServlet("*.to")
 public class DispatcherServlet extends HttpServlet {
@@ -40,7 +41,10 @@ public class DispatcherServlet extends HttpServlet {
 
 			HashMap<String, Object> model = new HashMap<String, Object>();
 			model.put("session", req.getSession());
-
+			
+			HttpSession session = (HttpSession)model.get("session");	
+			InfoVO vo = (InfoVO)session.getAttribute("loginVO");
+			
 			Controller contro = (Controller) sc.getAttribute(servletPath);
 
 			if ("/view/main.to".equals(servletPath)) {
@@ -49,19 +53,39 @@ public class DispatcherServlet extends HttpServlet {
 				
 			}
 			else if("/view/login.to".equals(servletPath)) {
-				System.out.println("==========="+servletPath);
+				
 				if(req.getParameter("email") != null) {
 					model.put("log", new InfoVO()
 							.setUser_email(req.getParameter("email"))
 							.setUser_pw(req.getParameter("pass"))
 							);
 				}
+				
 				flag="login";
+				
 			} 
+			else if("/view/userInfo.to".equals(servletPath)) {
+				
+				model.put("getUserInfo", new UserVO()
+						.setUser_id( vo.getUser_id())
+						);
+				
+				flag="getUserInfo";
+				
+			}else if("/view/userInfoModify.to".equals(servletPath)) {
+				
+				model.put("modify", new UserVO()
+						.setUser_id( vo.getUser_id())
+						.setUser_pw(req.getParameter("user_pw"))
+						.setUser_email(req.getParameter("user_email"))
+					);				
+				
+				flag="modify";
+				
+			}
 			else if("/view/recipeSearch.to".equals(servletPath)) {
 				
 				String pg = req.getParameter("page");
-				System.out.println("pg--------1 : " + pg);
 				
 				pg = (pg==""||pg==null||pg.equals("null")) ? "1" : pg ;
 				
@@ -81,6 +105,7 @@ public class DispatcherServlet extends HttpServlet {
 						);
 
 				flag="search";
+				
 			}			
 			else if("/view/recipeDetail.to".equals(servletPath)) {
 				System.out.println("frrrrrrrrrr======="+req.getParameter("recipe_id"));
@@ -132,8 +157,8 @@ public class DispatcherServlet extends HttpServlet {
 						);
 				flag = "ask_list";
 			}else if("/view/ask_update.to".equals(servletPath)) {
-				HttpSession session = (HttpSession)model.get("session");	
-				InfoVO vo = (InfoVO)session.getAttribute("loginVO");	
+//				HttpSession session = (HttpSession)model.get("session");	
+//				InfoVO vo = (InfoVO)session.getAttribute("loginVO");	
 				System.out.println("1"+req.getParameter("ask_update"));
 				System.out.println("3-1"+req.getParameter("ask_id"));
 				System.out.println("3-2"+req.getParameter("ask_title"));
@@ -163,8 +188,8 @@ public class DispatcherServlet extends HttpServlet {
 				}
 			}
 			else if("/view/ask_register.to".equals(servletPath)) {
-				HttpSession session = (HttpSession)model.get("session");	
-				InfoVO vo = (InfoVO)session.getAttribute("loginVO");	
+//				HttpSession session = (HttpSession)model.get("session");	
+//				InfoVO vo = (InfoVO)session.getAttribute("loginVO");	
 
 				if(req.getParameter("ask_title")!=null) {
 					System.out.println("2"+req.getParameter("ask_title"));

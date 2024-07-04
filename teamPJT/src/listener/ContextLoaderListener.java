@@ -23,6 +23,7 @@ import controller.frMng.NoticeFrController;
 import controller.frMng.RecipeSearchController;
 import controller.frMng.UserInfoController;
 import controller.frMng.AskFrController;
+import controller.frMng.LogOutFrController;
 import controller.frMng.LoginController;
 import dao.bkMng.AskDAO;
 import dao.bkMng.CategoryDAO;
@@ -112,24 +113,31 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/ask_update.do", new AskController().setDAO(askDAO));
 						
 			/*###  fkMng  ###*/			
-			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO, recipeFrDAO));			
-			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO,recipeDAO));
+			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO, recipeFrDAO));
+			
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao, cateDAO));
-			sc.setAttribute("/view/myPage.to", new MyPageController().setDAO(cateDAO) );
+			sc.setAttribute("/view/logout.to", new LogOutFrController());
+			sc.setAttribute("/view/myPage.to", new MyPageController() );			
+			
 			sc.setAttribute("/view/notice.to", new NoticeFrController().setDAO(noticeFrDAO, cateDAO));
 			sc.setAttribute("/view/notice_detail.to", new NoticeFrController().setDAO(noticeFrDAO, cateDAO));
+			
 			sc.setAttribute("/view/ask.to", new AskFrController().setDAO(askFrDAO, cateDAO));
 			sc.setAttribute("/view/ask_update.to", new AskFrController().setDAO(askFrDAO, cateDAO));
 			sc.setAttribute("/view/ask_register.to", new AskFrController().setDAO(askFrDAO, cateDAO));
 			sc.setAttribute("/view/ask_delete1.to", new AskFrController().setDAO(askFrDAO, cateDAO));
 			sc.setAttribute("/view/ask_delete2.to", new AskFrController().setDAO(askFrDAO, cateDAO));
+			
+			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO,recipeDAO));
 			sc.setAttribute("/view/recipeDetail.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO, recipeDAO));
 			sc.setAttribute("/view/recipe_edit.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			sc.setAttribute("/view/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			sc.setAttribute("/view/recipe.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			sc.setAttribute("/view/recipe_in.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			sc.setAttribute("/view/recipe_co.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			
 			sc.setAttribute("/view/userInfo.to", new UserInfoController().setDAO(cateDAO, userinfoDAO));
+			sc.setAttribute("/view/userInfoModify.to", new UserInfoController().setDAO(cateDAO, userinfoDAO));
 
 		}catch (Exception e) {
 			e.printStackTrace(); 
