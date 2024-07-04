@@ -165,7 +165,7 @@ function search(){
 					</select>
 					<button type="submit" class="btn btn-outline-danger float-right mr-1" 
 						onclick="deleteAction(${ask.ask_id})" value="delete" name="btn">삭제</button>
-					<button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button>
+					<!-- <button type="button" class="btn btn-outline-primary float-right mr-1">읽음</button> -->
                     <!-- Topbar Search -->
                            
                         </div>   

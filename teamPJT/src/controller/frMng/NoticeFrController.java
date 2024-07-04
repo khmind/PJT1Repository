@@ -7,12 +7,12 @@ import dao.bkMng.CategoryDAO;
 import dao.frMng.NoticeFrDAO;
 import vo.bkMng.NoticeVO;
 
-public class NoticeListController implements Controller{
+public class NoticeFrController implements Controller{
 	CategoryDAO cateDAO;
 	NoticeFrDAO noticeFrDAO;
 	NoticeVO vo;
 	
-	public NoticeListController setDAO(NoticeFrDAO noticeFrDAO, CategoryDAO cateDAO) {
+	public NoticeFrController setDAO(NoticeFrDAO noticeFrDAO, CategoryDAO cateDAO) {
 		this.noticeFrDAO = noticeFrDAO;
 		this.cateDAO = cateDAO;
 		return this;
@@ -34,7 +34,7 @@ public class NoticeListController implements Controller{
 		
 		NoticeVO notice = (NoticeVO)model.get("PageInfo");		
 		NoticeVO notice1 = noticeFrDAO.selectListCnt(notice);
-	
+		model.put("navbar", cateDAO.frCateList());
 		model.put("PageInfo", notice1);
 		model.put("noticelist", noticeFrDAO.selectList(notice1));
 		
@@ -44,6 +44,7 @@ public class NoticeListController implements Controller{
 		NoticeVO vo = (NoticeVO)model.get("detail");
 		String notice_id = vo.getNotice_id();
 		NoticeVO notice = noticeFrDAO.selectOne(notice_id);
+		model.put("navbar", cateDAO.frCateList());
 		model.put("notice", notice);
 		return "frMng/fr_announcement_detail.jsp";
 	}

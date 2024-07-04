@@ -7,7 +7,16 @@
 <title>Insert title here</title>
 <style type="text/css">
 	
-	#list1, #list2, #list3, #list4{
+	#list2, #list3{
+		float: right;
+		height: 30px;
+		width: 80px;        
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+	}
+	 #list1{
 		float: right;
 		height: 30px;
 		width: 80px;        
@@ -51,6 +60,7 @@
 	.textA{
 		margin-left: 20px;
 		width: 600px;
+		resize: none;
 	}   	
 	input{
 		margin-left: 40px;
@@ -60,10 +70,46 @@
 </style>
 <script type="text/javascript">
 
-	function list(){
-		window.open('fr_ask.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
-	}
 
+	function list(){
+		window.open('ask.to', '_self'); 
+	}
+/* 	function update(askUpdate){
+		document.frm.ask_update.value=askUpdate;
+		document.frm.action = "ask_update.to";
+		document.frm.submit();
+	} */
+	function delete1(askId){
+		document.frm.ask_id.value=askId;
+		document.frm.action = "ask_delete1.to";
+		document.frm.submit();
+	}
+	
+/* 	 function toggleButtons() {
+	        var askTitle = "${ask.ask_title}"; 
+	        
+	        var regiBtn = document.getElementById("list4");
+	        var updateBtn = document.getElementById("list3");
+	        var deleteBtn = document.getElementById("list2");
+	        var listBtn = document.getElementById("list1");
+
+	        if (!askTitle) {
+	            regiBtn.style.display = "inline-block"; 
+	            listBtn.style.display = "inline-block"; 
+	            updateBtn.style.display = "none"; 
+	            deleteBtn.style.display = "none"; 
+	        } else {
+	            regiBtn.style.display = "none";
+	            listBtn.style.display = "inline-block"; 
+	            updateBtn.style.display = "inline-block"; 
+	            deleteBtn.style.display = "inline-block"; 
+	        }
+	    }
+
+	    // 문서가 로드되면 toggleButtons 함수를 호출하여 초기 상태 설정
+	    window.onload = toggleButtons;
+	 */
+	
 </script>
 </head>
 <body>
@@ -76,8 +122,6 @@
   		<!-- Content here ---------------------------------------------------------------->
 		  
 		  	<!--  오른쪽 메인  -->
-	
-			
             <!-- Main Content -->
 			<main class=" col-xl-8 py-md-3  " role="main">
 			
@@ -86,43 +130,30 @@
 			      <h4 class="bd-title" id="content">문의사항</h4>
 			    </div>
 				<br>
-				
+				<form action="ask_update.to" method="post" name="frm">
+					<input type="hidden" name="ask_update" value="${ask.ask_update }">
+					<input type="hidden" name="ask_id" value="${ask.ask_id }">
+					<input type="hidden" name="ask_title" value="${ask.ask_title}">
+					<input type="hidden" name="ask_content" value="${ask.ask_content}">
+					<input type="hidden" name="user_id" value="${ask.user_id }">
 				<table>
 					<tr>
-						<td>제목</td><td>	<textarea rows="1%" class="textA" readonly>문의사항1</textarea></td>					
+						<td>제목</td><td><textarea rows="1%" class="textA" name="ask_title" value="${ask.ask_title }">${ask.ask_title }</textarea></td>					
 					</tr>
 					<tr>
-						<td>내용</td><td>	<textarea rows="10%" class="textA" readonly>
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-문의사항 내용..
-						</textarea></td>					
+						<td>내용</td><td><textarea rows="10%" class="textA" name="ask_content" value="${ask.ask_content }">${ask.ask_content }</textarea></td>					
 					</tr>
 					<tr>	
-						<td>사용자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="동백이" disabled ></td>					
+						<td>사용자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="${ask.user_id }" disabled ></td>					
 					</tr>
 					<tr>
-						<td>등록일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="2024:05:03 00:00:00" disabled></td>					
+						<td>등록일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="${ask.ask_date}" disabled></td>					
 					</tr>		
 					<tr>	
-						<td>답변</td><td><textarea rows="3%" class="textA" disabled ></textarea></td>					
+						<td>답변</td><td><textarea rows="3%" class="textA" disabled >${ask.recomm_content }</textarea></td>					
 					</tr>
 					<tr>
-						<td>답변일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="2024:05:03 00:00:00" disabled></td>					
+						<td>답변일자</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" value="${ask.recomm_date }" disabled></td>					
 					</tr>
 	
 				</table>
@@ -130,13 +161,13 @@
 				<table align="center">
 					<tr>
 					<!-- 등록/수정/삭제 는 경우에 따라 활성화 비활성화 한다.  -->
-						<td><a href="javascript:list()" id="list4">등록</a></td><td></td>
-						<td><a href="javascript:list()" id="list3">수정</a></td><td></td>
-						<td><a href="javascript:list()" id="list2">삭제</a></td><td></td>
+						<!-- <td><a href="javascript:regi()" id="list4">등록</a></td><td></td> -->
+						<td><button type="submit" id="list3" >수정</button></td><td></td>
+						<td><button  id="list2" onclick="delete1('${ask.ask_id }')">삭제</button></td><td></td>
 						<td><a href="javascript:list()" id="list1">목록</a></td><td></td>
 					</tr>
 				</table>
-				
+				</form>
 			</main>     
             <!-- End of Main Content -->
 			
@@ -144,8 +175,8 @@
 	  		<!-- Sidebar -->
 			<!-- <div id="sidebar"></div> -->
 			<!-- End of Sidebar -->  	
-					
- 			<div class="col-md-3 col-xl-2 bd-sidebar">
+			<%@ include file="fr_sidebar.jsp" %>	
+ 			<!-- <div class="col-md-3 col-xl-2 bd-sidebar">
 			
 				<div class="collapse d-md-block row" id="bd-docs-nav">
 				  <nav class="bd-links" aria-label="Main navigation">
@@ -188,7 +219,7 @@
 				  </nav>
 				</div>
 			
-			</div>  			
+			</div>  			 -->
 
 		<!-- Content end--------------------------------------------------------------------->
 		</div>

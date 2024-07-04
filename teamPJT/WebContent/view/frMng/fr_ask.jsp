@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,9 +41,7 @@
 		height: 30px;
 		width: 80px;
         background-color: #ED0000;
-        color: white;
-       	padding-top: 7px;
-       	padding-bottom :7px;       	
+        color: white;       	
         text-align: center;
         text-decoration: none;
         display: inline-block;		
@@ -63,8 +63,38 @@
 </style>
 <script type="text/javascript">
 
-	function detail(){		
-		window.open('fr_ask_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
+	function detail(askId){		// 이기능은 임시, DB 연결 후 로직변경
+    document.frm.ask_id.value= askId;
+	document.frm.action="ask_update.to"; 
+    document.frm.submit(); 
+	}
+	function regi(){	
+		document.frm.user_id.value = userId
+		document.frm.action="ask_register.to"; 
+		document.frm.submit(); 
+	}
+	 function go(askId) {
+	        document.frm.ask_id.value = askId;
+	        document.frm.action="ask_delete2.to"; 
+	        document.frm.submit();
+	    }
+	function search(){
+		
+		frm.action = "ask.to";
+		frm.page.value = 1;
+		frm.submit();			 
+	}
+	
+	function gotoPage(page){
+		
+		frm.action = "ask.to";
+		frm.page.value = page;
+		frm.submit();			 
+	}	
+	
+	function setValue(){
+
+		frm.searchText.value = frm.h_searchText.value;
 	}
 
 </script>
@@ -75,112 +105,110 @@
 
 	<div class="container">
 	
-  		<div class="row justify-content-center">
+  		<div class="row justify-content-center" >
   		<!-- Content here ---------------------------------------------------------------->
 		  
 		  	<!--  오른쪽 메인  -->
-			<main class="col-md-9 col-xl-8 py-md-3 pl-md-2 bd-content " role="main">
+			<main class="col-md-9 col-xl-8 py-md-3 pl-md-2 bd-content " role="main" >
 			
-			    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">			      
+			    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between" >			      
 		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="#" ></a>
 			      <h4 class="bd-title" id="content">문의사항</h4>
 			    </div>
 			    
-			    <form class="">            		
+			    <form action="" method="post" name="frm" >   
+			     <input type="hidden" name="ask_id" value="">  
+			     <input type="hidden" name="ask_title" value="">  
+			     <input type="hidden" name="ask_content" value="">  
+			   	 <input type="hidden" name="h_searchText" value="${PageInfo.searchText }">         		
             		<input type="search" placeholder="  Search" aria-label="Search">
             		<a href="#" target="_blank" ><i class="fas fa-search fa-2x"></i></a>            				
-            		<a href="#" target="_blank" id="del">삭제</a>
-            		<a href="#" target="_blank" id="submit"  onClick="detail()">등록</a>            		
-			    </form>
-				
+            		<button type="submit" value="delete" name="btn" id="del"onclick="go(${ask.ask_id})">삭제</button>
+            		<a href="ask_register.to"id="submit" onclick="regi()" >등록</a>         		
 				<table class="table">
 				  <thead>				  
 				    <tr>
-				      <th><input type="checkbox"></th>
+				      <th><input type="checkbox" id="chkAll"></th>
 				      <th>순번</th>
 					  <th>제목</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">10</td>
-				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
+				  <c:forEach  var="ask" items="${asklist }">
+				    <tr >
+				      <td><input type="checkbox" name="del_id" class="chkGrp" id="chk" value="${ask.ask_id}"></td>
+				      <td class="text-muted" onClick="detail('${ask.ask_id }')">${ask.ask_id }</td>
+				      <td class="text-muted" onClick="detail('${ask.ask_id }')">${ask.ask_title }</td>
 				    </tr>				  
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">9</td>
-				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">8</td>
-				      <td class="text-muted">다섯 번째 문의사항 입니다.</td>
-				    </tr>				  
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">7</td>
-				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
-				    </tr>				  
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">여섯 번째 문의사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">5</td>
-				      <td class="text-muted">다섯 번째 문의사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">4</td>
-				      <td class="text-muted">네 번째 문의사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">3</td>
-				      <td class="text-muted">세 번째 문의사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">2</td>
-				      <td class="text-muted">두 번째 문의사항 입니다.</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td><input type="checkbox"></td>
-				      <td class="text-muted">1</td>
-				      <td class="text-muted">첫 번째 문의사항 입니다.</td>
-				    </tr>
+				  </c:forEach>
 				  </tbody>
+				  
+				  <c:set var = "page" scope = "page" value = "${PageInfo.page  } "/>
+					<c:set var = "endPage" scope = "page" value = "${PageInfo.endPage  } "/>							
+					<c:set var = "limit" scope = "page" value = "${PageInfo.limit  } "/>
+					<fmt:parseNumber var = "nowPage" value = "${page}"/>							
+					<fmt:parseNumber var = "endPage1" value = "${endPage}"/>							
+					<fmt:parseNumber var = "limit1" value = "${limit}"/>
+				  
+				  
 				</table>
 				
 				<nav aria-label="Page navigation example">  
-				  <ul class="pagination justify-content-center">
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				      </a>
-				    </li>
-				  </ul>
-				</nav>				
-				
+					<ul class="pagination justify-content-center">
+						<li class="page-item">						  			    
+							<c:choose>
+								<c:when test = "${nowPage<=1}">
+									<a class="page-link" href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a class="page-link" href="javascript:gotoPage('${nowPage-1}')" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+												     		
+						<c:forEach var="i" begin="${PageInfo.startPage }" end="${PageInfo.endPage }">
+							<li class="page-item"><a class="page-link" href="javascript:gotoPage('${i }')">
+								<c:choose>
+									<c:when test = "${i==nowPage}">	
+										<font color="#F29661"><b>${i }</b></font>
+									</c:when>
+									<c:otherwise>
+										${i }
+									</c:otherwise>
+								</c:choose>						    	
+							</a></li>
+						</c:forEach>
+												    
+						<li class="page-item">
+							<c:choose>
+								<c:when test = "${nowPage>=endPage1}">
+									<a class="page-link" href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+									</c:when>
+									<c:otherwise>
+										<a class="page-link" href="javascript:gotoPage('${nowPage+1}')" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>							    
+								</c:otherwise>
+							</c:choose>
+						</li>
+					</ul>
+				</nav>					
+			    </form>
 			</main>
 			
 			
 			<!--  왼쪽 메뉴  -->
 	  		<!-- Sidebar -->
 			<!-- <div id="sidebar"></div> -->
-			<!-- End of Sidebar -->  	
-					
+			<!-- End of Sidebar -->  
+			<%@ include file="fr_sidebar.jsp" %>	
+		<!-- 			
  			<div class="col-md-3 col-xl-2 bd-sidebar">
 			
 				<div class="collapse d-md-block row" id="bd-docs-nav">
@@ -224,7 +252,7 @@
 				  </nav>
 				</div>
 			
-			</div>  			
+			</div>   -->			
 
 		<!-- Content end--------------------------------------------------------------------->
 		</div>
