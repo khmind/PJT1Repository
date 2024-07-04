@@ -27,8 +27,8 @@
    		background-color: skyblue;    		
    	}	
 	.bd-sidebar{
-		padding-top: 10px;
-		padding-bottom: 300px;	
+		padding-top: 80px;
+		padding-bottom: 100px;	
 	}    	
 
 </style>
