@@ -114,6 +114,7 @@ public class RecipeSearchController implements Controller{
 		*/		
 		model.put("PageInfo", recipeVo1);
 		model.put("navbar", cateDAO.frCateList());
+		model.put("class_name", recipeDAO.classList());
 		model.put("recipeSearch1", recipeFrDAO.searchAll(1, recipeVo1));	
 		model.put("recipeSearch2", recipeFrDAO.searchAll(2, recipeVo1));
 		
