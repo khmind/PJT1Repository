@@ -102,16 +102,7 @@ public class RecipeSearchController implements Controller{
 		
 		RecipeVO recipeVo = (RecipeVO)model.get("PageInfo");
 		RecipeVO recipeVo1 = recipeFrDAO.searchAllCnt(recipeVo);
-		/*
-		System.out.println("@@ getSel1   : " + recipeVo1.getSel1());
-		System.out.println("@@ getSearchText   : " + recipeVo1.getSearchText());
-		System.out.println("@@ getPage   : " + recipeVo1.getPage());
-		System.out.println("@@ getStartPage   : " + recipeVo1.getStartPage());
-		System.out.println("@@ getEndPage   : " + recipeVo1.getEndPage());
-		System.out.println("@@ getLimit   : " + recipeVo1.getLimit());
-		System.out.println("@@ getOrderby   : " + recipeVo1.getOrderby());
-		System.out.println("@@ getClass_id   : " + recipeVo1.getClass_id());
-		*/		
+		
 		model.put("PageInfo", recipeVo1);
 		model.put("navbar", cateDAO.frCateList());
 		model.put("class_name", recipeDAO.classList());
