@@ -70,9 +70,9 @@
 			<main class="col-md-9 col-xl-8 py-md-3 pl-md-2 bd-content " role="main" style="display: flex">
 			    	<%@ include file="fr_sidebar.jsp" %>
  				<form action="ask_register.to" method="post" >
-                	<input type="hidden" name="ask_title" >
+<!--                 	<input type="hidden" name="ask_title" >
                 	<input type="hidden" name="ask_content">
-                	<input type="hidden" name="ask_id">
+                	<input type="hidden" name="ask_id"> -->
                 	
 	                <div class="container-fluid row justify-content-center " style="width:70%; margin-top: 5%; margin-left: 10% ">
 						<br>

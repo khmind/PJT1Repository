@@ -80,6 +80,8 @@ public class ContextLoaderListener implements ServletContextListener{
 			recipeFrDAO.setDs(ds);
 			noticeFrDAO.setDataSource(ds);
 			userinfoDAO.setDataSource(ds);
+			askFrDAO.setDataSource(ds);
+			
 
 			/*###  bkMng  ###*/
 			sc.setAttribute("/view/bkMng/login.do", new InfoController().setInfoDAO(dao, cateDAO));

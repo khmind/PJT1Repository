@@ -133,9 +133,9 @@
 				<form action="ask_update.to" method="post" name="frm">
 					<input type="hidden" name="ask_update" value="${ask.ask_update }">
 					<input type="hidden" name="ask_id" value="${ask.ask_id }">
-					<input type="hidden" name="ask_title" value="${ask.ask_title}">
+<%-- 					<input type="hidden" name="ask_title" value="${ask.ask_title}">
 					<input type="hidden" name="ask_content" value="${ask.ask_content}">
-					<input type="hidden" name="user_id" value="${ask.user_id }">
+					<input type="hidden" name="user_id" value="${ask.user_id }"> --%>
 				<table>
 					<tr>
 						<td>제목</td><td><textarea rows="1%" class="textA" name="ask_title" value="${ask.ask_title }">${ask.ask_title }</textarea></td>					
