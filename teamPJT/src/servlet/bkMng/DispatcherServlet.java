@@ -232,11 +232,7 @@ public class DispatcherServlet extends HttpServlet {
 					}
 					flag = "ask_delete2";
 				}
-			
-			else if ("/view/bkMng/recipe.do".equals(servletPath)) {
-				flag = "recipe_list";
-				
-			} 
+
 			else if("/view/bkMng/category.do".equals(servletPath)) {
 				flag="cate_list";
 			}
@@ -288,10 +284,26 @@ public class DispatcherServlet extends HttpServlet {
 
 				flag="cate_edit";
 			}
-			else if ("/view/bkMng/recipe.do".equals(servletPath)) {
-				flag = "recipe_list";
+			else if (("/view/bkMng/recipe.do".equals(servletPath)) || ("/view/recipe.do".equals(servletPath))
+					|| ("/view/recipe_in.do".equals(servletPath)) || ("/view/recipe_co.do".equals(servletPath))) {
+				System.out.println("++++++++++"+servletPath);
+				
+				if("/view/recipe.do".equals(servletPath)) {
+					
+					flag="recipe_listFr";
+				}
+				else if("/view/recipe_in.do".equals(servletPath)) {
+					flag="recipe_listFr1";
+				}
+				else if ("/view/recipe_co.do".equals(servletPath)) {
+					flag="recipe_listFr2";
+				}
+				else {
+					
+					flag = "recipe_listBk";
+				}
 			}
-			else if("/view/bkMng/recipe_edit.do".equals(servletPath)) {
+			else if(("/view/bkMng/recipe_edit.do".equals(servletPath)) || ("/view/recipe_edit.do".equals(servletPath))) {
 				System.out.println("servletPath"+servletPath);	
 				if(arg0.getParameter("recipe_id") !=null) {
 					System.out.println(arg0.getParameter("recipe_id")+"?????????????//");
@@ -311,15 +323,17 @@ public class DispatcherServlet extends HttpServlet {
 					flag="recipe_edit";
 				}
 			}
-			else if("/view/bkMng/recipe_add.do".equals(servletPath)) {
+			else if(("/view/bkMng/recipe_add.do".equals(servletPath)) || ("/view/recipe_add.do".equals(servletPath))) {
 				System.out.println("add===============1");
 				HttpSession session = (HttpSession)model.get("session");	
-				InfoVO vo = (InfoVO)session.getAttribute("infoVO");				
+				InfoVO vo = (InfoVO)session.getAttribute("loginVO");				
 					
 				System.out.println("add===============2");
 				System.out.println("add===============2"+arg0.getParameter("recipe_id"));
+				System.out.println("add===============2"+arg0.getParameter("reci_title"));
+				System.out.println("????????????????????????????00/ "+vo.getUser_id());
 				if(arg0.getParameter("reci_title") != null) {	
-					System.out.println("????????????????????????????/ "+arg0.getParameter("reci_title"));
+			
 						model.put("recipe_new", new RecipeVO()
 								.setUser_id(vo.getUser_id())
 								.setRecipe_title(arg0.getParameter("reci_title"))
@@ -336,7 +350,7 @@ public class DispatcherServlet extends HttpServlet {
 					}
 				flag="recipe_add";
 				System.out.println("add============2-2");
-				}
+			}
 			else if("/view/bkMng/recipe_delete.do".equals(servletPath)) {
 				System.out.println("delete======1");
 				String[] del=arg0.getParameterValues("del_id");

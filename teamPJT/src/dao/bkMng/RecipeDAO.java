@@ -107,9 +107,9 @@ public class RecipeDAO {
 			
 			pstmt2=conn.prepareStatement(sql3);
 			pstmt2.setString(1, sql2);
-			pstmt2.setString(2, vo.getImg_path_01());
-			pstmt2.setString(3, vo.getImg_path_02());
-			pstmt2.setString(4, vo.getImg_path_03());
+			pstmt2.setString(2, imgPath+vo.getImg_path_01());
+			pstmt2.setString(3, imgPath+vo.getImg_path_02());
+			pstmt2.setString(4, imgPath+vo.getImg_path_03());
 			/*
 			pstmt2.setString(2, imgPath+vo.getImg_path_01());
 			pstmt2.setString(3, imgPath+vo.getImg_path_02());
@@ -156,9 +156,9 @@ public class RecipeDAO {
 			res=pstmt.executeUpdate();
 			
 			pstmt=conn.prepareStatement(sql02);
-			pstmt.setString(1, vo.getImg_path_01());
-			pstmt.setString(2, vo.getImg_path_02());
-			pstmt.setString(3, vo.getImg_path_03());
+			pstmt.setString(1, imgPath+vo.getImg_path_01());
+			pstmt.setString(2, imgPath+vo.getImg_path_02());
+			pstmt.setString(3, imgPath+vo.getImg_path_03());
 			/*
 			pstmt.setString(1, imgPath+vo.getImg_path_01());
 			pstmt.setString(2, imgPath+vo.getImg_path_02());

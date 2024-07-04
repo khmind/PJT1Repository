@@ -14,7 +14,7 @@
 	function move(args){	
 		
 		frmGo.recipe_id.value = args;
-		frmGo.action = "recipeEdit.to";
+		frmGo.action = "recipe_edit.do";
 		frmGo.submit();
 		
 	} 
@@ -77,8 +77,10 @@
 				<div class="col-12 col-md-12 col-lg-6">
 					<div class="text-wrapper align-left" style="padding-bottom: 115px">
 						<div style="text-align: right;" >
+							<c:if test="${sessionScope.loginVO != null && sessionScope.user_id == recipeD.user_id }">
 							<input type="submit" value="수정" onclick="move('${recipeD.recipe_id }')"
 								style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
+							</c:if>
 							<input type="button" value="목록" onclick="confirmModal3()"
 								style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
 						</div>

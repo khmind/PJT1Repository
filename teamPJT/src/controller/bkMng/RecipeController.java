@@ -2,16 +2,23 @@ package controller.bkMng;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import controller.Controller;
+import dao.bkMng.CategoryDAO;
+import dao.bkMng.InfoDAO;
 import dao.bkMng.RecipeDAO;
+import vo.bkMng.InfoVO;
 import vo.bkMng.RecipeVO;
 
 public class RecipeController implements Controller{
 
 	RecipeDAO recipeDAO;
+	CategoryDAO cateDAO;
 	
-	public RecipeController setRecipeDAO(RecipeDAO recipeDAO) {
+	public RecipeController setRecipeDAO(RecipeDAO recipeDAO,CategoryDAO cateDAO) {
 		this.recipeDAO=recipeDAO;
+		this.cateDAO=cateDAO;
 		return this;
 	}
 	
@@ -19,7 +26,8 @@ public class RecipeController implements Controller{
 	public String execute(String flag, Map<String, Object> model) throws Exception {
 		System.out.println("add=================1=====1");
 		String returnValue="";
-		if(flag.equals("recipe_list")) {
+		if(flag.equals("recipe_listFr")|| flag.equals("recipe_listBk")
+				|| flag.equals("recipe_listFr1") || flag.equals("recipe_listFr2")) {
 			returnValue = recipe_list(flag, model);
 		}
 		else if(flag.equals("recipe_edit")) {
@@ -56,19 +64,25 @@ public class RecipeController implements Controller{
 			
 		}
 		else {
-			System.out.println("add=============4");
+			
 			RecipeVO vo=(RecipeVO)model.get("recipe_new");
 			recipeDAO.insert(vo);
-			return "redirect:recipe.do";
+			
+			
+				System.out.println("add=============4");
+				return "redirect:recipe.do";
+			
+			
 		}
 	}
 	
 	private String recipe_update(String flag, Map<String, Object> model) throws Exception {
-		
+		model.put("navbar", cateDAO.frCateList());
 		System.out.println("recipe=============1");
 		
 		RecipeVO vo=(RecipeVO)model.get("recipe_edit");
 		if(vo.getRecipe_title()==null) {
+			
 			System.out.println("recipe=============1"+vo.getRecipe_title());
 			
 			String id = vo.getRecipe_id();
@@ -89,8 +103,28 @@ public class RecipeController implements Controller{
 		
 	}
 	private String recipe_list(String flag, Map<String, Object> model) throws Exception {
-		model.put("recipe_list", recipeDAO.recipeList());
-		return "bk_recipe.jsp";
+		
+		System.out.println("888888888888888");
+		model.put("navbar", cateDAO.frCateList());
+		if(flag.equals("recipe_listFr")) {
+			System.out.println("add=============4");
+			model.put("recipe_list", recipeDAO.recipeList());
+			return "/view/frMng/fr_myRecipe.jsp";
+		}
+		else if(flag.equals("recipe_listFr1")) {
+			model.put("recipe_list1", recipeDAO.recipeList());
+			return "/view/frMng/fr_interest_recipe.jsp";
+		}
+		else if (flag.equals("recipe_listFr2")) {
+			model.put("recipe_list2", recipeDAO.recipeList());
+			return "/view/frMng/fr_recommend_recipe.jsp";
+		}
+		else {
+			model.put("recipe_list", recipeDAO.recipeList());
+			return "bk_recipe.jsp";
+		}
+		
+		
 	}
 
 }

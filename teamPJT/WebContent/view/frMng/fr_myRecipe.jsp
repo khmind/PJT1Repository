@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,15 +34,15 @@
 		padding-left: 5px;	
 		color: lightgray	
 	}
-	i:hover, #i:active  {
+/* 	i:hover, #i:active  {
 		 color: gray		 
-	}
-   	tbody tr{
+	} */
+/*    	tbody tr{
    		cursor: pointer;
-   	}   	    
-    tbody tr:hover{    		
+   	}   */ 	    
+/*     tbody tr:hover{    		
    		background-color: skyblue;    		
-   	}	
+   	} */	
 	.bd-sidebar{
 		padding-top: 10px;
 		padding-bottom: 300px;	
@@ -51,15 +52,23 @@
 
 <script type="text/javascript">
 
-	function detail(){		
+/* 	function detail(){		
 		window.open('fr_recipe_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
 	}
+ */
+	function move(id) {
+		document.frmtt.recipe_id.value = id;
+		document.frmtt.action = "recipe_edit.do";
+		document.frmtt.submit();
+	}
+</script>   
 
-</script>
 
 </head>
 <body>
-
+<form action="" method="post" name="frmtt">
+	<input type="hidden" name="recipe_id">
+</form>
 <section data-bs-version="5.1" class="features38 cid-ubxwyl9azq" id="features-66-ubxwyl9azq">
 
 	<div class="container">
@@ -71,9 +80,10 @@
 			<main class="col-md-9 col-xl-8 py-md-3 pl-md-2 bd-content " role="main">
 			
 			    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">			      
-		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="fr_recipe_register.jsp" >
+		       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="recipe_add.do" >
 		       	  	<input type="submit" value="레시피등록"
-						style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;"></a>
+						style="width: 90px; height: 40px; border-radius: 10px; background-color: #0dcaf0; color: white; border-style: none;">
+					</a>
 			      <h4 class="bd-title" id="content">나의레시피</h4>
 			    </div>
 			    
@@ -97,101 +107,24 @@
 					  <th>레시피명</th>
 					  <th>관심</th>
 					  <th>추천</th>
-					  <th>난이도</th>
 					  <th>등록일자</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr onClick="detail()">	
+				    <c:forEach var="list" items="${recipe_list}">
+				   <!--  <tr onClick="detail()">	 -->
+				   	<tr>
 				      <td>10</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
+				      <td class="text-muted">${list.class_name}</td>
+				      <td class="text-muted">
+				      	<a href="#" onclick="move('${list.recipe_id }')">${list.recipe_title}</a></td>
+				      <td class="text-muted">${list.recipe_good}</td>
+				      <td class="text-muted">${list.recipe_rcm}</td>
+				      
+				      <td class="text-muted">${list.recipe_date}</td>
 				    </tr>
-				    <tr onClick="detail()">	
-				      <td>9</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>				    				  
-				    <tr onClick="detail()">	
-				      <td>8</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>				  
-				    <tr onClick="detail()">	
-				      <td>7</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>				  
-				    <tr onClick="detail()">	
-				      <td>6</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>5</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>4</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>3</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>2</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>1</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">6</td>
-				      <td class="text-muted">중</td>
-				      <td class="text-muted">YYYY.MM.DD</td>
-				    </tr>
+				    </c:forEach>
+				    
 				  </tbody>
 				</table>
 				
@@ -221,50 +154,7 @@
 			<!-- <div id="sidebar"></div> -->
 			<!-- End of Sidebar -->  	
 					
- 			<div class="col-md-3 col-xl-2 bd-sidebar">
-			
-				<div class="collapse d-md-block row" id="bd-docs-nav">
-				  <nav class="bd-links" aria-label="Main navigation">
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_user_info.jsp">
-				          	개인정보
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_myRecipe.jsp">
-				          	나의레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_interest_recipe.jsp">
-				          	관심레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_recommend_recipe.jsp">
-				          	추천레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_announcement.jsp">
-				          	공지사항
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_ask.jsp">
-				          	문의사항
-				        </a>
-				      </div>
-				  </nav>
-				</div>
-			
-			</div>  			
+ 			<%@ include file="fr_sidebar.jsp" %> 			
 
 		<!-- Content end--------------------------------------------------------------------->
 		</div>

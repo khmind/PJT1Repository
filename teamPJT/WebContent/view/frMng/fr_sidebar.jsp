@@ -22,19 +22,19 @@
 				      </div>
 				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="frMng/fr_myRecipe.jsp">
+				        <a class="bd-toc-link" href="recipe.do">
 				          	나의레시피
 				        </a>
 				      </div>
 				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="frMng/fr_interest_recipe.jsp">
+				        <a class="bd-toc-link" href="recipe_in.do">
 				          	관심레시피
 				        </a>
 				      </div>
 				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="frMng/fr_recommend_recipe.jsp">
+				        <a class="bd-toc-link" href="recipe_co.do">
 				          	추천레시피
 				        </a>
 				      </div>

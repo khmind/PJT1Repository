@@ -39,11 +39,32 @@ public class RecipeSearchController implements Controller{
 		else if(flag.equals("update")) {
 			returnValue=recipeUpdate(flag,model);
 		}
+		else if(flag.equals("recipe_add")) {
+			returnValue = recipe_add(flag,model);
+		}
 		return returnValue;
 		
 	}
 	
+	private String recipe_add(String flag, Map<String, Object> model) throws Exception {
+		model.put("navbar", cateDAO.frCateList());
+		if(model.get("recipe_new") == null) {
+			model.put("class_name", recipeDAO.classList());
+			//model.put("navbar", cateDAO.frCateList());
+			return "/view/frMng/fr_recipe_register.jsp";
+			
+		}
+		else {
+			System.out.println("add=============4");
+			RecipeVO vo=(RecipeVO)model.get("recipe_new");
+			recipeDAO.insert(vo);
+			//model.put("navbar", cateDAO.frCateList());
+			return "redirect:recipeDetail.to";
+		}
+	}
+
 	private String recipeUpdate(String flag, Map<String, Object> model) throws Exception {
+		model.put("navbar", cateDAO.frCateList());
 		System.out.println("fr================1");
 		RecipeVO vo=(RecipeVO)model.get("recipeUpdate");
 		System.out.println("fr================2"+vo.getRecipe_title());
@@ -65,6 +86,7 @@ public class RecipeSearchController implements Controller{
 	}
 
 	private String recipeDetail(String flag, Map<String, Object> model) throws Exception {
+		model.put("navbar", cateDAO.frCateList());
 		RecipeVO vo = (RecipeVO)model.get("recipe_detail");
 		if(vo.getRecipe_title()==null) {
 			String id=vo.getRecipe_id();
@@ -76,6 +98,7 @@ public class RecipeSearchController implements Controller{
 	}
 
 	public String searchAll(String flag, Map<String, Object> model) throws Exception{
+		
 		
 		RecipeVO recipeVo = (RecipeVO)model.get("PageInfo");
 		RecipeVO recipeVo1 = recipeFrDAO.searchAllCnt(recipeVo);
@@ -91,7 +114,6 @@ public class RecipeSearchController implements Controller{
 		*/		
 		model.put("PageInfo", recipeVo1);
 		model.put("navbar", cateDAO.frCateList());
-		model.put("class_name", recipeDAO.classList());
 		model.put("recipeSearch1", recipeFrDAO.searchAll(1, recipeVo1));	
 		model.put("recipeSearch2", recipeFrDAO.searchAll(2, recipeVo1));
 		

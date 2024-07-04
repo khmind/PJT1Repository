@@ -21,7 +21,6 @@ import controller.frMng.MainController;
 import controller.frMng.MyPageController;
 import controller.frMng.NoticeListController;
 import controller.frMng.RecipeSearchController;
-import controller.frMng.UserInfoController;
 import controller.frMng.LoginController;
 import dao.bkMng.AskDAO;
 import dao.bkMng.CategoryDAO;
@@ -33,7 +32,6 @@ import dao.bkMng.RecipeDAO;
 import dao.bkMng.UserDAO;
 import dao.frMng.NoticeFrDAO;
 import dao.frMng.RecipeFrDAO;
-import dao.frMng.UserInfoDAO;
 import vo.bkMng.CategoryVO;
 
 @WebListener
@@ -63,8 +61,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			AskDAO askDAO = new AskDAO();			
 			
 			RecipeFrDAO recipeFrDAO = new RecipeFrDAO();
-			NoticeFrDAO noticeFrDAO = new NoticeFrDAO();			
-			UserInfoDAO userinfoDAO = new UserInfoDAO();
+			NoticeFrDAO noticeFrDAO = new NoticeFrDAO();
 			
 			dao.setDataSource(ds);
 			userDAO.setDataSource(ds);
@@ -75,7 +72,6 @@ public class ContextLoaderListener implements ServletContextListener{
 			
 			recipeFrDAO.setDs(ds);
 			noticeFrDAO.setDataSource(ds);
-			userinfoDAO.setDataSource(ds);
 
 			/*###  bkMng  ###*/
 			sc.setAttribute("/view/bkMng/login.do", new InfoController().setInfoDAO(dao, cateDAO));
@@ -98,10 +94,10 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/bkMng/cate_delete.do", new CategoryController().setCateDAO(cateDAO));
 			sc.setAttribute("/view/bkMng/cate_edit.do", new CategoryController().setCateDAO(cateDAO));
 			
-			sc.setAttribute("/view/bkMng/recipe.do", new RecipeController().setRecipeDAO(recipeDAO));
-			sc.setAttribute("/view/bkMng/recipe_edit.do", new RecipeController().setRecipeDAO(recipeDAO));
-			sc.setAttribute("/view/bkMng/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO));
-			sc.setAttribute("/view/bkMng/recipe_delete.do", new RecipeController().setRecipeDAO(recipeDAO));
+			sc.setAttribute("/view/bkMng/recipe.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/bkMng/recipe_edit.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/bkMng/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/bkMng/recipe_delete.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			
 			sc.setAttribute("/view/bkMng/ask.do", new AskController().setDAO(askDAO));
 			sc.setAttribute("/view/bkMng/ask_delete1.do", new AskController().setDAO(askDAO));
@@ -111,14 +107,17 @@ public class ContextLoaderListener implements ServletContextListener{
 			/*###  fkMng  ###*/			
 			sc.setAttribute("/view/main.to", new MainController().setInfoDAO(cateDAO, recipeFrDAO));			
 			sc.setAttribute("/view/recipeSearch.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO,recipeDAO));
-			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao));
+			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao, cateDAO));
 			sc.setAttribute("/view/myPage.to", new MyPageController().setDAO(cateDAO) );
-			sc.setAttribute("/view/notice.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO));
+			sc.setAttribute("/view/notice.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO)); 
 			sc.setAttribute("/view/notice_detail.to", new NoticeListController().setDAO(noticeFrDAO, cateDAO));
-			sc.setAttribute("/view/recipeDetail.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO, recipeDAO));
-			sc.setAttribute("/view/recipeEdit.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO, recipeDAO));
-			sc.setAttribute("/view/userInfo.to", new UserInfoController().setDAO(cateDAO, userinfoDAO));
 			
+			sc.setAttribute("/view/recipeDetail.to", new RecipeSearchController().setDAO(cateDAO, recipeFrDAO, recipeDAO));
+			sc.setAttribute("/view/recipe_edit.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/recipe_add.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/recipe.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/recipe_in.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/recipe_co.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 
 		}catch (Exception e) {
 			e.printStackTrace(); 

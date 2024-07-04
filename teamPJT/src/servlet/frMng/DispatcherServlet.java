@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import controller.Controller;
 import vo.bkMng.InfoVO;
@@ -97,27 +97,6 @@ public class DispatcherServlet extends HttpServlet {
 							);
 				}	
 				flag="detail";
-			}
-			else if("/view/recipeEdit.to".equals(servletPath)) {
-				System.out.println("frrrrrrrrrr======="+req.getParameter("recipe_id"));
-				System.out.println("frrrrrrrrrr=======2"+req.getParameter("reci_title"));
-				if(req.getParameter("recipe_id") !=null) {
-					
-					model.put("recipeUpdate", new RecipeVO()
-							.setRecipe_id(req.getParameter("recipe_id"))
-							.setRecipe_title(req.getParameter("reci_title"))
-							.setClass_name(req.getParameter("class_name"))
-							.setImg_path_01(req.getParameter("upload1"))
-							.setImg_path_02(req.getParameter("upload2"))
-							.setImg_path_03(req.getParameter("upload3"))
-							.setRecipe_level(req.getParameter("level"))
-							.setRecipe_stuff(req.getParameter("stuff"))
-							.setRecipe_content(req.getParameter("content"))
-							);
-					
-					 
-					flag="update";
-				}
 			}
 			
 			

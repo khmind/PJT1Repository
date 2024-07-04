@@ -119,75 +119,14 @@
 				    </tr>
 				  </thead>
 				  <tbody>
+				  <c:forEach var="list2" items="${recipe_list2}">
 				    <tr onClick="detail()">
 				      <td>10</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>				      
+				      <td class="text-muted">${list2.class_name }</td>
+				      <td class="text-muted">${list2.recipe_title }</td>				      
 				      <td><input type="checkbox"></td>
 				    </tr>
-				    <tr onClick="detail()">	
-				      <td>9</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>				    				  
-				    <tr>	
-				      <td>8</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>				  
-				    <tr onClick="detail()">	
-				      <td>7</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>				  
-				    <tr onClick="detail()">	
-				      <td>6</td>			      
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>5</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>4</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>3</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>2</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>
-				    <tr onClick="detail()">
-				      <td>1</td>
-				      <td class="text-muted">한식</td>
-				      <td class="text-muted">잡채</td>
-				      <td><input type="checkbox"></td>
-				      <td id="th5"></td>
-				    </tr>
+				    </c:forEach>
 				  </tbody>
 				</table>
 				
@@ -217,50 +156,7 @@
 			<!-- <div id="sidebar"></div> -->
 			<!-- End of Sidebar -->  	
 					
- 			<div class="col-md-3 col-xl-2 bd-sidebar">
-			
-				<div class="collapse d-md-block row" id="bd-docs-nav">
-				  <nav class="bd-links" aria-label="Main navigation">
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_user_info.jsp">
-				          	개인정보
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_myRecipe.jsp">
-				          	나의레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_interest_recipe.jsp">
-				          	관심레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_recommend_recipe.jsp">
-				          	추천레시피
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_announcement.jsp">
-				          	공지사항
-				        </a>
-				      </div>
-				
-				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="fr_ask.jsp">
-				          	문의사항
-				        </a>
-				      </div>
-				  </nav>
-				</div>
-			
-			</div>  			
+ 			<%@ include file="fr_sidebar.jsp" %>		
 
 		<!-- Content end--------------------------------------------------------------------->
 		</div>
