@@ -46,7 +46,7 @@
 				      </div>
 				
 				      <div class="bd-toc-item">
-				        <a class="bd-toc-link" href="frMng/fr_ask.jsp">
+				        <a class="bd-toc-link" href="ask.to">
 				          	문의사항
 				        </a>
 				      </div>
