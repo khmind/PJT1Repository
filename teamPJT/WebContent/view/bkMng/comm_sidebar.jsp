@@ -44,9 +44,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../frMng/main.jsp">
+<!--              <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../frMng/main.jsp">
                 <div class="sidebar-brand-text mx-3"> 메인으로 이동 </div>
-            </a>
+            </a> -->
+            <br><br><br>
 <%  if ( infoVO != null) { %>
             <!-- Divider -->
             
