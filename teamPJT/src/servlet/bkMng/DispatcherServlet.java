@@ -351,7 +351,7 @@ public class DispatcherServlet extends HttpServlet {
 				flag="recipe_add";
 				System.out.println("add============2-2");
 			}
-			else if("/view/bkMng/recipe_delete.do".equals(servletPath)) {
+			else if("/view/bkMng/recipe_delete.do".equals(servletPath) || "/view/recipe_delete.do".equals(servletPath)) {
 				System.out.println("delete======1");
 				String[] del=arg0.getParameterValues("del_id");
 				

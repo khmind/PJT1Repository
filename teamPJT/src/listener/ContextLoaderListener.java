@@ -120,6 +120,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/login.to", new LoginController().setLoginDAO(dao, cateDAO));
 			sc.setAttribute("/view/logout.to", new LogOutFrController());
 			sc.setAttribute("/view/myPage.to", new MyPageController() );			
+			sc.setAttribute("/view/addLogin.to", new LoginController().setLoginDAO(dao, cateDAO));
 			
 			sc.setAttribute("/view/notice.to", new NoticeFrController().setDAO(noticeFrDAO, cateDAO));
 			sc.setAttribute("/view/notice_detail.to", new NoticeFrController().setDAO(noticeFrDAO, cateDAO));
@@ -137,6 +138,7 @@ public class ContextLoaderListener implements ServletContextListener{
 			sc.setAttribute("/view/recipe.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			sc.setAttribute("/view/recipe_in.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			sc.setAttribute("/view/recipe_co.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
+			sc.setAttribute("/view/recipe_delete.do", new RecipeController().setRecipeDAO(recipeDAO, cateDAO));
 			
 			sc.setAttribute("/view/userInfo.to", new UserInfoController().setDAO(cateDAO, userinfoDAO));
 			sc.setAttribute("/view/userInfoModify.to", new UserInfoController().setDAO(cateDAO, userinfoDAO));

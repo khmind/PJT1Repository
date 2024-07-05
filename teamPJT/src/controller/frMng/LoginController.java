@@ -26,11 +26,23 @@ public class LoginController implements Controller{
 		String returnValue="";
 		if(flag.equals("login")) {
 			returnValue = login(flag, model);
+		}else if(flag.equals("logAdd")) {
+			returnValue= add(flag,model);
 		}
+		
 		return returnValue;
 		
 	}
-
+	private String add(String flag, Map<String, Object> model) throws Exception {
+		if(model.get("add") != null) {
+			System.out.println("add====4");
+			InfoVO vo =(InfoVO)model.get("add");
+			loginDAO.insert(vo);
+			System.out.println("add====5");
+			return "main.to";
+		}
+		return "main.to";
+	}
 	private String login(String flag, Map<String, Object> model) throws Exception {
 		
 		model.put("navbar", cateDAO.frCateList());

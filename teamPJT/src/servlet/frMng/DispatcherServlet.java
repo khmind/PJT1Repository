@@ -63,7 +63,21 @@ public class DispatcherServlet extends HttpServlet {
 				
 				flag="login";
 				
-			} 
+			}
+			else if("/view/addLogin.to".equals(servletPath)) {
+				System.out.println("add====1");
+				
+					if(req.getParameter("userEmail") !=null) {
+						System.out.println("add=====1-1");
+						model.put("add", new InfoVO()
+								.setUser_name(req.getParameter("userName"))
+								.setUser_email(req.getParameter("userEmail"))
+								.setUser_pw(req.getParameter("userPass"))
+								);
+						System.out.println("add====2");
+					}
+					flag="logAdd";
+			}
 			else if("/view/userInfo.to".equals(servletPath)) {
 				
 				model.put("getUserInfo", new UserVO()

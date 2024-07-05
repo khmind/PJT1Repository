@@ -74,6 +74,8 @@
 					</div>
 					<div style="text-align: left; line-height: 3.1">${recipeD.recipe_stuff }</div>
 				</div>
+				
+				<%-- [${ sessionScope.user_id}]   [${ recipeD.user_id}]  [${ recipeD.recipe_id}] --%>
 				<div class="col-12 col-md-12 col-lg-6">
 					<div class="text-wrapper align-left" style="padding-bottom: 115px">
 						<div style="text-align: right;" >

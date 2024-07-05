@@ -37,9 +37,9 @@
 		padding-left: 5px;
 		color: lightgray	
 	}
-	i:hover, #i:active  {
+/* 	i:hover, #i:active  {
 		 color: gray		 
-	}		
+	}	 */	
 	#submit{
 		float: right;
 		height: 30px;
@@ -48,19 +48,20 @@
         color: white;
        	padding-top: 7px;
        	padding-bottom :7px;
-        text-align: center;
+        padding-left:0;
+        padding-right:0;
         text-decoration: none;
         display: inline-block;		
 	}
 	#submit:hover {
 	    background-color: #00C6ED;
 	}
-   	tbody tr{
+/*    	tbody tr{
    		cursor: pointer;
    	}   	    
     tbody tr:hover{    		
    		background-color: skyblue;    		
-   	}	
+   	} */	
 	.bd-sidebar{
 		padding-top: 10px;
 		padding-bottom: 400px;	
@@ -69,13 +70,7 @@
 
 </style>
 
-<script type="text/javascript">
 
-	function detail(){		
-		window.open('fr_recipe_detail.jsp', '_self'); // 이기능은 임시, DB 연결 후 로직변경
-	}
-
-</script>
 
 
 </head>
@@ -96,7 +91,7 @@
 			      <h4 class="bd-title" id="content">관심레시피</h4>
 			    </div>
 			    
-			    <form class="">			    
+			   <!--  <form class="">	 -->		    
 					<select name="sel1" class="custom-select">
 						<option selected>- 전체 -</option>
 						<option value="1">한식</option>
@@ -106,9 +101,11 @@
 					</select>
 					<input type="search" placeholder="  Search" aria-label="Search">
 					<a href="#" target="_blank" ><i class="fas fa-search fa-2x"></i></a>               			
+							<form action="recipe_delete.do" method="post">
 					<!-- <button type="button" class="btn btn-secondary btn-sm" type="submit">저장</button> -->
-					<a href="#" target="_blank" id="submit">저장</a>
-			    </form>
+							<button type="submit" name="btn" value="delete" id="submit" style="font-size: 15px"
+									class="btn btn-outline-secondary">삭제</button>
+			    <!-- </form> -->
 				
 				<table class="table">
 				  <thead>
@@ -116,22 +113,25 @@
 				      <th>순번</th>
 				      <th>유형</th>
 					  <th>레시피명</th>	
-					  <th id="th4">관심</th>
-					  <th id="th5"><input type="checkbox" id="th51"></th>					  
+					  <!-- <th id="th4">관심</th> -->
+					  <th id="th5"><input type="checkbox" id="chkAll"
+										class="chkGrp"></th>					  
 				    </tr>
 				  </thead>
 				  <tbody>
 				  <c:forEach var="list1" items="${recipe_list1}">
-				    <tr onClick="detail()">
+				    <!-- <tr onClick="detail()"> -->
+				    <tr>
 				      <td>10</td>			      
 				      <td class="text-muted">${list1.class_name }</td>
 				      <td class="text-muted">${list1.recipe_title }</td>				      
-				      <td><input type="checkbox"></td>
+				      <td id="th5"><input type="checkbox" name="del_id" id="chk" class="chkGrp"
+											value="${list1.recipe_id }" /></td>
 				    </tr>
 				    </c:forEach>
 				  </tbody>
 				</table>
-				
+				</form>
 				<nav aria-label="Page navigation example">  
 				  <ul class="pagination justify-content-center">
 				    <li class="page-item">
@@ -166,7 +166,26 @@
 
     
 </section>
+<script type="text/javascript">
+		$(function() {
+			$("#chkAll").click(function() {
+				$(".chkGrp").attr("checked", this.checked);
+			});
+		});
 
+		function deleteChk() {
+			let groupList = "";
+			
+			/* 반복문 */
+			$(".chkGrp:checked").each(function(idx, item) {
+				if (idx == 0) {
+					groupList = item.value;
+				} else {
+					groupList += "," + item.value;
+				}
+			});
+		}
+	</script>
     
       
 </body>

@@ -72,26 +72,26 @@ public class RecipeDAO {
 			conn = ds.getConnection();
 			stmt = conn.createStatement(); 
 			rs = stmt.executeQuery(maxId);
-			//String sql2=null;
+			
 			PreparedStatement pstmt2=null;
 			
 			System.out.println("addDAO=============2");
 			
 			if(rs.next()) {
 			
-				System.out.println("////////////////////");
+				
 				maxId = rs.getString("maxId") ;
-				System.out.println("////////////////////"+maxId);
+				
 				int a = Integer.parseInt(maxId.substring(2));
-				System.out.println("////////////////////"+a);
+				
 				a++;
 				String sql2 = maxId.substring(0, 2) + a; 
-				System.out.println("addDAO=============3"+sql2);
+				
 			}		
 			int a = Integer.parseInt(maxId.substring(2));
 			a++;
 			String sql2 = maxId.substring(0, 2) + a;
-			System.out.println("addDAO=============3"+sql2);
+			
 			
 			pstmt=conn.prepareStatement(sql1);
 			pstmt.setString(1, sql2);
