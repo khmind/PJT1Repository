@@ -20,6 +20,7 @@ public class RecipeDAO {
 	Statement stmt = null;
 	
 	String imgPath = "../img/frMng/";
+	//String imgPath = "../view/img/frMng/";	
 	
 	public void setDs(DataSource ds) {
 		this.ds = ds;
