@@ -28,7 +28,7 @@
 		
 		location = "notice.do"; 
 	} */
-	function confirmModal3() {
+	function confirmModal3() { 
 	
 		location = "ask.to";
 

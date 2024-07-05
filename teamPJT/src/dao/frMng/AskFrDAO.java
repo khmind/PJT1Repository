@@ -15,7 +15,7 @@ import vo.bkMng.NoticeVO;
 
 public class AskFrDAO {
 
-	DataSource ds;
+	DataSource ds; 
 	
 	public void setDataSource(DataSource ds) {
 		this.ds=ds;

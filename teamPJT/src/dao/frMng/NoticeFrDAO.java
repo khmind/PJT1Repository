@@ -13,7 +13,7 @@ import vo.bkMng.NoticeVO;
 public class NoticeFrDAO {
 	
 	NoticeVO vo;
-	DataSource ds;
+	DataSource ds; 
 	
 	public void setDataSource(DataSource ds) {
 		this.ds=ds;
