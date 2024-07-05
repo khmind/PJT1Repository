@@ -326,16 +326,19 @@ public class DispatcherServlet extends HttpServlet {
 			else if(("/view/bkMng/recipe_add.do".equals(servletPath)) || ("/view/recipe_add.do".equals(servletPath))) {
 				System.out.println("add===============1");
 				HttpSession session = (HttpSession)model.get("session");	
-				InfoVO vo = (InfoVO)session.getAttribute("loginVO");				
+				InfoVO vo = (InfoVO)session.getAttribute("loginVO");	
+				InfoVO voo= (InfoVO)session.getAttribute("infoVO");
 					
 				System.out.println("add===============2");
 				System.out.println("add===============2"+arg0.getParameter("recipe_id"));
 				System.out.println("add===============2"+arg0.getParameter("reci_title"));
-				System.out.println("????????????????????????????00/ "+vo.getUser_id());
-				if(arg0.getParameter("reci_title") != null) {	
-			
+				//System.out.println("????????????????????????????00/ "+voo.getUser_id());
+				if(arg0.getParameter("reci_title") != null && 
+						"/view/bkMng/recipe_add.do".equals(servletPath)) {	
+					
+						
 						model.put("recipe_new", new RecipeVO()
-								.setUser_id(vo.getUser_id())
+								.setUser_id(voo.getUser_id())
 								.setRecipe_title(arg0.getParameter("reci_title"))
 								.setClass_id(arg0.getParameter("class_name"))
 								.setImg_path_01(arg0.getParameter("upload1"))
@@ -347,7 +350,27 @@ public class DispatcherServlet extends HttpServlet {
 								);	
 						
 						flag="recipe_add";
-					}
+				}
+					else if(arg0.getParameter("reci_title") != null && 
+							"/view/recipe_add.do".equals(servletPath)){
+						
+							
+							model.put("recipe_new", new RecipeVO()
+									.setUser_id(vo.getUser_id())
+									.setRecipe_title(arg0.getParameter("reci_title"))
+									.setClass_id(arg0.getParameter("class_name"))
+									.setImg_path_01(arg0.getParameter("upload1"))
+									.setImg_path_02(arg0.getParameter("upload2"))
+									.setImg_path_03(arg0.getParameter("upload3"))
+									.setRecipe_level(arg0.getParameter("level"))
+									.setRecipe_stuff(arg0.getParameter("reci_stuff"))
+									.setRecipe_content(arg0.getParameter("reci_content"))
+									);	
+							
+							flag="recipe_add";
+						}
+					
+				
 				flag="recipe_add";
 				System.out.println("add============2-2");
 			}

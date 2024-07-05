@@ -58,19 +58,19 @@ public class InfoDAO {
 			PreparedStatement pstmt = null;
 			Statement stmt=null;
 			ResultSet rs=null;
+			int res;
+			
+			
 			String maxId ="select max(user_id)as maxId from user_info";
 			String query ="insert into user_info \r\n" + 
 					"	values(?,?,?,?,user_role,now());";
-			int res ;
 			try {
 				System.out.println("addDAO===========2");
 				conn = ds.getConnection();
 				stmt = conn.createStatement(); 
 				rs = stmt.executeQuery(maxId);
 				
-				
 				if(rs.next()) {
-				
 					
 					maxId = rs.getString("maxId") ;
 					
@@ -94,9 +94,9 @@ public class InfoDAO {
 				System.out.println("addDAO===========1"+vo.getUser_email());
 				System.out.println("addDAO===========1"+vo.getUser_pw());
 				
-				
 				res = pstmt.executeUpdate();
-			
+				
+				System.out.println("==================================");
 				
 			}catch (Exception e) {
 				throw e;

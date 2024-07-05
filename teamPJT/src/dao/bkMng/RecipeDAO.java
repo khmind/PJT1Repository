@@ -66,7 +66,7 @@ public class RecipeDAO {
 				"	values(?,?,?,?,?,?,?,now())";
 		String sql3="insert into recipe_image_info \r\n" + 
 				"	(recipe_id,img_path_01,img_path_02,img_path_03,img_main)\r\n" + 
-				"	values(?,?,?,?,img_path_03)";
+				"	values(?,?,?,?,'PATH01')";
 		
 		try {
 			conn = ds.getConnection();
@@ -107,9 +107,9 @@ public class RecipeDAO {
 			
 			pstmt2=conn.prepareStatement(sql3);
 			pstmt2.setString(1, sql2);
-			pstmt2.setString(2, imgPath+vo.getImg_path_01());
-			pstmt2.setString(3, imgPath+vo.getImg_path_02());
-			pstmt2.setString(4, imgPath+vo.getImg_path_03());
+			pstmt2.setString(2, vo.getImg_path_01());
+			pstmt2.setString(3, vo.getImg_path_02());
+			pstmt2.setString(4, vo.getImg_path_03());
 			/*
 			pstmt2.setString(2, imgPath+vo.getImg_path_01());
 			pstmt2.setString(3, imgPath+vo.getImg_path_02());
@@ -156,9 +156,9 @@ public class RecipeDAO {
 			res=pstmt.executeUpdate();
 			
 			pstmt=conn.prepareStatement(sql02);
-			pstmt.setString(1, imgPath+vo.getImg_path_01());
-			pstmt.setString(2, imgPath+vo.getImg_path_02());
-			pstmt.setString(3, imgPath+vo.getImg_path_03());
+			pstmt.setString(1, vo.getImg_path_01());
+			pstmt.setString(2, vo.getImg_path_02());
+			pstmt.setString(3, vo.getImg_path_03());
 			/*
 			pstmt.setString(1, imgPath+vo.getImg_path_01());
 			pstmt.setString(2, imgPath+vo.getImg_path_02());
@@ -189,7 +189,7 @@ public class RecipeDAO {
 		String sql02 = "delete from recipe_info where recipe_id=?";
 		try {
 			conn=ds.getConnection();
-			//pstmt=conn.prepareStatement(sql01);
+			
 			
 			for(int i=0; i<ids.length; i++) {
 				
@@ -204,28 +204,7 @@ public class RecipeDAO {
 				cnt=pstmt.executeBatch();
 				
 			}
-			//cnt=pstmt.executeBatch();			
-			
-			
-			
-/*			
-			for(int i=0; i<ids.length; i++) {
-				pstmt.setString(1, ids[i]);
-				
-				pstmt.addBatch();
-			}
-			cnt=pstmt.executeBatch();
-			
-			pstmt=conn.prepareStatement(sql02);
-			
-			for(int i=0; i<ids.length; i++) {
-				pstmt.setString(1, ids[i]);
-				
-				pstmt.addBatch();
-			}
-			cnt=pstmt.executeBatch();
-			
-			*/
+
 			
 		}catch (Exception e) {
 			res = 0;
@@ -238,14 +217,7 @@ public class RecipeDAO {
 	public RecipeVO detail(String recipe_id) throws Exception{
 		
 		System.out.println("detailDAO==============1");
-//		String sql = "select a.recipe_id, a.recipe_title, b.class_name, c.img_path_01, c.img_path_02, c.img_path_03,\r\n" + 
-//				"	a.recipe_level, a.recipe_stuff, a.recipe_content, d.user_name, e.comment_content, e.comment_date\r\n" + 
-//				"    from recipe_info a\r\n" + 
-//				"    inner join recipe_class_info b on a.class_id=b.class_id\r\n" + 
-//				"    inner join recipe_image_info c on a.recipe_id=c.recipe_id\r\n" + 
-//				"    inner join user_info d on a.user_id=d.user_id\r\n" + 
-//				//"    inner join recipe_reply e on a.recipe_id= e.recipe_id\r\n" + 
-//				"	where a.recipe_id='"+recipe_id+"'";
+	
 		String sql="select a.recipe_id, a.recipe_title, b.class_name, c.img_path_01, c.img_path_02, c.img_path_03, \r\n" + 
 				"					a.recipe_level, a.recipe_stuff, a.recipe_content, d.user_name\r\n" +  
 				"				   from recipe_info a\r\n" + 
