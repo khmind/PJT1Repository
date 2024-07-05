@@ -61,7 +61,7 @@ public class NoticeFrDAO {
 		
 		int page = noticeVO.getPage();
 		int total = 0; 
-		int limit=3;
+		int limit=5;
 
 		int startPage = (((int) ((double)page / limit + 0.9)) - 1) * limit + 1;
 		int endPage = startPage+limit; 
@@ -121,7 +121,7 @@ public class NoticeFrDAO {
 		String order = "";
 
 	  	int page = noticeVO.getPage(); 
-		int limit=3;
+		int limit=5;
 		int startrow=(page-1)*limit; 
 
 		if ( noticeVO.getSel1() != null &&  noticeVO.getSel1() != "") {				

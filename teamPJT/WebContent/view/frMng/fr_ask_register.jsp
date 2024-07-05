@@ -30,12 +30,12 @@
 	} */
 	function confirmModal3() {
 	
-		location = "notice_delete.do";
+		location = "ask.to";
 
 	}
 </script>
 <style type="text/css">
-#list2, #list3{
+	#list1, #list2{
 		float: right;
 		height: 30px;
 		width: 80px;        
@@ -44,18 +44,25 @@
         text-decoration: none;
         display: inline-block;
 	}
-#list2{
-		background-color: #ED0000;
-	}
-#list3{
+	#list1{
 		background-color: #086A87;
 	}
-#list2:hover {
-	    background-color: #C90000;
+	#list2{
+		background-color: blue;
 	}
-#list3:hover {
+	
+ 	#list1:hover {
 	    background-color: #0489B1;
 	}
+ 	#list2:hover {
+	    background-color: #00C6ED;
+	}
+	
+	.textA{
+		margin-left: 20px;
+		width: 600px;
+		resize: none;
+	}  
 </style>
 </head>
 <body>
@@ -70,36 +77,26 @@
 			<main class="col-md-9 col-xl-8 py-md-3 pl-md-2 bd-content " role="main" style="display: flex">
 			    	<%@ include file="fr_sidebar.jsp" %>
  				<form action="ask_register.to" method="post" >
-<!--                 	<input type="hidden" name="ask_title" >
-                	<input type="hidden" name="ask_content">
-                	<input type="hidden" name="ask_id"> -->
-                	
-	                <div class="container-fluid row justify-content-center " style="width:70%; margin-top: 5%; margin-left: 10% ">
-						<br>
-	                    <!-- Page Heading -->
-	                    <h1 class="h3 mb-3 text-gray-800" style="margin-left: 100px">문의사항등록</h1>
-						
-	                    <!-- DataTales Example -->
-	                    <div class="card mb-4" style="display: flex; width: 80%; justify-content: center;">
-	                    				
-	                        <div class=" card-body mb-4" style="display: flex; "> 
-	                            <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-				
-								<span class="textfield" style="width: 50px;" >제목</span>
-		              			<textarea rows="2%" name="ask_title" style=" margin-left: 38px; width:100%; resize: none;"></textarea>	                            
-	                        </div>
-	                        <div style="display: flex">
-		                        <span class="textfield" style="margin-left:20px; width: 50px;">내용</span>
-		      					<textarea  rows="10%" name="ask_content" style="margin-left: 30px; margin-bottom :20px; width:100%; resize: none;"></textarea>
-	                        </div>
-							
-	                    </div> 
-	                    <div class="btn" style="display: flex; justify-content: end">
-	                    	<button type="submit" id ="list2"class="btn btn-outline-primary" style="width:100px">등록</button>
-	      					<button type="button" id="list3" class="btn btn-outline-secondary ml-3" onclick="confirmModal3()" style="width:100px;">삭제</button>
-						</div>                           
-	                </div>
-            	
+
+	                    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">			      
+				       	  <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="#" ></a>
+					      <h4 class="bd-title" id="content">문의사항</h4>
+					    </div>
+	                	<table>
+	                    <tr>		
+	                        <td><span class="textfield" style="width: 50px;">제목</span></td><td><textarea rows="2%" name="ask_title" class="textA"></textarea></td>	                            
+	                    </tr> 
+	                    <tr>
+	                        <td><span class="textfield" style="width: 50px;">내용</span></td><td><textarea  rows="10%" name="ask_content"  class="textA"></textarea></td>
+						</tr>
+						</table>
+						<br> 
+						<table align="center">
+							<tr>	
+	                    	 <td><button type="submit" id="list1" >등록</button></td>
+	                    	 <td><button type="button" id="list2" onclick="confirmModal3()">목록</button></td>
+							</tr>
+						</table>                   
                 </form>
 			</main>
 			

@@ -224,7 +224,7 @@ public class AskFrDAO {
 		String where = "" ;	 
 		int page = askVO.getPage();
 		int total = 0; 
-		int limit=3;
+		int limit=5;
 		int startPage = (((int) ((double)page / limit + 0.9)) - 1) * limit + 1;
 		int endPage = startPage+limit; 
 		
@@ -275,7 +275,7 @@ public class AskFrDAO {
 		String where = "" ;		
 		String order = "";
 	  	int page = askVO.getPage(); 
-		int limit=3;
+		int limit=5;
 		int startrow=(page-1)*limit; 
 		if ( askVO.getSel2() != null &&  askVO.getSel2() != "") {				
 			where = " and " +  askVO.getSel2() + " like '%" + askVO.getSearchText() +"%' \n";
