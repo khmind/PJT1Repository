@@ -58,7 +58,7 @@
 	.bd-sidebar{
 		padding-top: 100px;
 		padding-bottom: 200px;	
-	}    	
+	}    	 
 
 </style>
 <script type="text/javascript">
