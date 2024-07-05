@@ -66,7 +66,7 @@ public class RecipeDAO {
 				"	values(?,?,?,?,?,?,?,now())";
 		String sql3="insert into recipe_image_info \r\n" + 
 				"	(recipe_id,img_path_01,img_path_02,img_path_03,img_main)\r\n" + 
-				"	values(?,?,?,?,img_path_03)";
+				"	values(?,?,?,?,'PATH01')";
 		
 		try {
 			conn = ds.getConnection();
