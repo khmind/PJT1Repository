@@ -118,7 +118,7 @@
 									</div>
 								</div>
 							</form>
-							<button type="button" class="btn btn-outline-secondary">비활성화</button>
+							<!-- <button type="button" class="btn btn-outline-secondary">비활성화</button> -->
 					<form action="recipe_delete.do" method="post">
 							<button type="submit" name="btn" value="delete"
 									class="btn btn-outline-secondary">삭제</button>

@@ -30,10 +30,13 @@ public class InfoController implements Controller{
 		if(flag.equals("login")) {
 			returnValue = login(flag, model);
 		}
+		
 		return returnValue;
 		
 	}
 	
+	
+
 	public String login(String flag, Map<String, Object> model) throws Exception{
 		
 		if(model.get("adLogin") == null) {

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import vo.bkMng.InfoVO;
 import vo.bkMng.UserVO;
 
 
