@@ -135,6 +135,7 @@
 			</div>
 		</section>
 	</form>
+	<%@ include file="fr_sidebar.jsp" %>
 <script>
 
 	var file1 = document.querySelector('#upload1');

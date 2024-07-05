@@ -102,6 +102,7 @@
 			</div>
 		</section>
 	</form>
+	
 <script>
 
 /* function setThumbnail(event, ind) {

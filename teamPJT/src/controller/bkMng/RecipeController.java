@@ -58,6 +58,7 @@ public class RecipeController implements Controller{
 	//등록
 	private String recipe_add(String flag, Map<String, Object> model) throws Exception {
 		System.out.println("add=============3");
+		model.put("navbar", cateDAO.frCateList());
 		if(model.get("recipe_new") == null) {
 			model.put("class_name", recipeDAO.classList());
 			return "/view/frMng/fr_recipe_register.jsp";
